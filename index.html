@@ -1,512 +1,460 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <title>كشف حساب احترافي</title>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
+
 body{
-  font-family: Arial, Tahoma, sans-serif;
-  background:#eee;
-  margin:0;
-  padding:20px;
-  direction:rtl;
-}
-
-.controls{
-  max-width:1150px;
-  margin:0 auto 15px auto;
-  background:white;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
-}
-
-button{
-  background:#5b5fa8;
-  color:white;
-  border:0;
-  padding:12px 25px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-input{
-  padding:10px;
+    font-family:Arial;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
 }
 
 .page{
-  width:1120px;
-  min-height:1580px;
-  background:white;
-  margin:auto;
-  padding:30px;
-  box-sizing:border-box;
-  color:#222;
+    background:white;
+    width:1200px;
+    margin:auto;
+    padding:20px;
+    border-radius:12px;
 }
 
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:6px solid #5b5fa8;
-  padding-bottom:15px;
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logoBox{
+    background:#5b5fa8;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    font-weight:bold;
 }
 
 .company{
-  text-align:left;
-  color:#333;
-}
-
-.company h2{
-  margin:0;
-  color:#5b5fa8;
-}
-
-.badge{
-  background:#5b5fa8;
-  color:white;
-  padding:16px 30px;
-  border-radius:10px;
-  font-size:20px;
-  font-weight:bold;
-  text-align:center;
+    text-align:left;
+    color:#5b5fa8;
 }
 
 .title{
-  text-align:center;
-  font-size:28px;
-  margin:20px 0;
-  color:#5b5fa8;
-  font-weight:bold;
+    background:#5b5fa8;
+    color:white;
+    text-align:center;
+    padding:12px;
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
 }
 
-.info{
-  background:#f1f1fb;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:15px;
-  font-size:18px;
-  font-weight:bold;
+.customer{
+    background:#f0f0f8;
+    padding:20px;
+    margin-top:10px;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
 }
 
 .opening{
-  background:#fff7db;
-  border:1px solid #e0c46c;
-  color:#7a5b00;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:15px;
-  font-size:20px;
-  font-weight:bold;
+    background:#f7f3df;
+    padding:15px;
+    margin-top:10px;
+    border-radius:8px;
+    font-size:20px;
+    color:#8c6b00;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:12px;
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    font-size:13px;
 }
 
 th{
-  background:#5b5fa8;
-  color:white;
-  padding:8px;
-  border:1px solid #5b5fa8;
+    background:#5b5fa8;
+    color:white;
+    padding:10px;
 }
 
 td{
-  border:1px solid #ddd;
-  padding:7px;
-  text-align:center;
-}
-
-.debit{
-  color:#5b5fa8;
-  font-weight:bold;
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
 }
 
 .credit{
-  color:#168a45;
-  font-weight:bold;
+    color:#1f9d55;
+    font-weight:bold;
+}
+
+.debit{
+    color:#5b5fa8;
+    font-weight:bold;
 }
 
 .summary{
-  margin-top:20px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  overflow:hidden;
+    margin-top:25px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-.summary-title{
-  background:#f1f1fb;
-  padding:12px;
-  text-align:center;
-  font-weight:bold;
-  font-size:18px;
+.summaryTitle{
+    background:#f2f2f8;
+    padding:12px;
+    text-align:center;
+    font-weight:bold;
 }
 
-.summary-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  border-top:1px solid #eee;
+.summaryRow{
+    display:flex;
+    border-top:1px solid #eee;
 }
 
-.summary-row div{
-  padding:10px;
+.summaryRow div{
+    flex:1;
+    padding:12px;
 }
 
 .aging{
-  margin-top:20px;
-  border:1px solid #e0c46c;
-  border-radius:10px;
-  overflow:hidden;
+    margin-top:20px;
+    border:1px solid #e0c890;
+    border-radius:12px;
+    overflow:hidden;
 }
 
-.aging-title{
-  background:#fff7db;
-  padding:12px;
-  text-align:center;
-  font-weight:bold;
+.agingTitle{
+    background:#fff8e5;
+    padding:12px;
+    text-align:center;
+    font-weight:bold;
 }
 
-.aging-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+.agingBoxes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
 }
 
-.aging-box{
-  text-align:center;
-  padding:18px;
-  border-left:1px solid #eee;
-}
-
-.aging-box h2{
-  margin:10px 0 0 0;
-  color:#5b5fa8;
+.agingBox{
+    padding:20px;
+    text-align:center;
+    border-left:1px solid #eee;
 }
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
 }
 
 .card{
-  background:#f8f8ff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:15px;
-  text-align:center;
+    background:#f6f6fb;
+    border:1px solid #ddd;
+    padding:20px;
+    text-align:center;
+    border-radius:12px;
 }
 
 .card b{
-  display:block;
-  font-size:22px;
-  margin-top:8px;
-  color:#5b5fa8;
+    display:block;
+    margin-top:10px;
+    font-size:24px;
 }
 
 .signatures{
-  margin-top:25px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  overflow:hidden;
+    margin-top:25px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-.sign-title{
-  background:#f1f1fb;
-  text-align:center;
-  padding:10px;
-  font-weight:bold;
+.signTitle{
+    background:#f2f2f8;
+    text-align:center;
+    padding:10px;
+    font-weight:bold;
 }
 
-.sign-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+.signGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
 }
 
-.sign-grid div{
-  height:100px;
-  text-align:center;
-  padding-top:75px;
-  border-left:1px solid #ddd;
+.signGrid div{
+    height:120px;
+    border-left:1px solid #ddd;
+    text-align:center;
+    padding-top:80px;
 }
 
 .footer{
-  margin-top:15px;
-  text-align:center;
-  font-size:13px;
-  color:#777;
+    margin-top:20px;
+    text-align:center;
+    color:#888;
+    font-size:12px;
 }
 
-@media print{
-  body{
-    background:white;
-    padding:0;
-  }
-
-  .controls{
-    display:none;
-  }
-
-  .page{
-    width:100%;
-    min-height:auto;
-    margin:0;
-    padding:20px;
-    box-shadow:none;
-  }
-
-  @page{
-    size:A4 portrait;
-    margin:10mm;
-  }
+button{
+    margin-top:20px;
+    background:#5b5fa8;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="controls">
-  <input type="file" id="excelFile" accept=".xlsx,.xls">
-  <button onclick="window.print()">طباعة / حفظ PDF</button>
-</div>
-
 <div class="page" id="report">
 
-  <div class="header">
-    <div class="badge">
-      Account Statement<br>كشف حساب
-    </div>
+<div class="top">
+<div class="logoBox">
+Account Statement<br>
+كشف حساب
+</div>
 
-    <div class="company">
-      <h2>هلال الشرق للتجارة</h2>
-      <div>Hilal Al-Sharq Trading</div>
-      <div>Baghdad, Iraq</div>
-    </div>
-  </div>
+<div class="company">
+<h2>هلال الشرق للتجارة</h2>
+<div>Hilal Al-Sharq Trading</div>
+<div>Baghdad, Iraq</div>
+</div>
+</div>
 
-  <div class="title">كشف حساب | Account Statement</div>
+<div class="title">
+كشف حساب | Account Statement
+</div>
 
-  <div class="info" id="customerName">اسم الزبون: —</div>
+<div class="customer" id="customerName">
+اسم الزبون
+</div>
 
-  <div class="opening">
-    الرصيد الافتتاحي | Opening Balance:
-    <span id="openingBalance">0</span> د.ع
-  </div>
+<div class="opening">
+الرصيد الافتتاحي :
+<span id="openingBalance">0</span>
+</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>التاريخ<br>Date</th>
-        <th>النوع<br>Type</th>
-        <th>المستند<br>Doc</th>
-        <th>البيان<br>Description</th>
-        <th>مدين<br>Debit</th>
-        <th>دائن<br>Credit</th>
-        <th>الرصيد<br>Balance</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>التاريخ</th>
+<th>النوع</th>
+<th>المستند</th>
+<th>البيان</th>
+<th>مدين</th>
+<th>دائن</th>
+<th>الرصيد</th>
+</tr>
+</thead>
 
-  <div class="summary">
-    <div class="summary-title">ملخص الحساب | Summary Account</div>
+<tbody id="tbody"></tbody>
+</table>
 
-    <div class="summary-row">
-      <div>تاريخ آخر فاتورة | Last Invoice Date</div>
-      <div id="lastInvoice">—</div>
-    </div>
+<div class="summary">
+<div class="summaryTitle">
+ملخص الحساب | Summary Account
+</div>
 
-    <div class="summary-row">
-      <div>تاريخ آخر دفعة | Last Payment Date</div>
-      <div id="lastPayment">—</div>
-    </div>
+<div class="summaryRow">
+<div>آخر فاتورة</div>
+<div id="lastInvoice">-</div>
+</div>
 
-    <div class="summary-row">
-      <div>إجمالي الفواتير | Total Invoiced</div>
-      <div id="totalDebit">0</div>
-    </div>
+<div class="summaryRow">
+<div>آخر دفعة</div>
+<div id="lastPayment">-</div>
+</div>
 
-    <div class="summary-row">
-      <div>إجمالي المدفوعات | Total Payments</div>
-      <div id="totalCredit">0</div>
-    </div>
+<div class="summaryRow">
+<div>إجمالي الفواتير</div>
+<div id="totalDebit">0</div>
+</div>
 
-    <div class="summary-row">
-      <div>الرصيد المستحق | Outstanding Balance</div>
-      <div id="finalBalance">0</div>
-    </div>
-  </div>
+<div class="summaryRow">
+<div>إجمالي الدفعات</div>
+<div id="totalCredit">0</div>
+</div>
 
-  <div class="aging">
-    <div class="aging-title">تحليل عمر الدين | Aging Analysis</div>
-
-    <div class="aging-grid">
-      <div class="aging-box">0 - 30 يوم<h2 id="age1">0</h2></div>
-      <div class="aging-box">31 - 60 يوم<h2 id="age2">0</h2></div>
-      <div class="aging-box">61 - 90 يوم<h2 id="age3">0</h2></div>
-      <div class="aging-box">أكثر من 90 يوم<h2 id="age4">0</h2></div>
-    </div>
-  </div>
-
-  <div class="cards">
-    <div class="card">عدد الحركات<b id="transactions">0</b></div>
-    <div class="card">الرصيد المستحق<b id="outstanding">0</b></div>
-    <div class="card">إجمالي المدفوعات<b id="payments">0</b></div>
-    <div class="card">إجمالي الفواتير<b id="invoices">0</b></div>
-  </div>
-
-  <div class="signatures">
-    <div class="sign-title">التوقيعات | Signatures</div>
-    <div class="sign-grid">
-      <div>توقيع العميل</div>
-      <div>المبيعات</div>
-      <div>مندوب المبيعات</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    الرجاء التواصل معنا خلال 15 يومًا في حال وجود أي تناقضات<br>
-    Please contact us within 15 days if you have any discrepancies
-  </div>
+<div class="summaryRow">
+<div>الرصيد المستحق</div>
+<div id="finalBalance">0</div>
+</div>
 
 </div>
 
+<div class="aging">
+
+<div class="agingTitle">
+تحليل عمر الدين | Aging Analysis
+</div>
+
+<div class="agingBoxes">
+
+<div class="agingBox">
+0 - 30 يوم
+<h2 id="age1">0</h2>
+</div>
+
+<div class="agingBox">
+31 - 60 يوم
+<h2 id="age2">0</h2>
+</div>
+
+<div class="agingBox">
+61 - 90 يوم
+<h2 id="age3">0</h2>
+</div>
+
+<div class="agingBox">
+أكثر من 90 يوم
+<h2 id="age4">0</h2>
+</div>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+عدد الحركات
+<b id="transactions">0</b>
+</div>
+
+<div class="card">
+الرصيد المستحق
+<b id="outstanding">0</b>
+</div>
+
+<div class="card">
+إجمالي الدفعات
+<b id="payments">0</b>
+</div>
+
+<div class="card">
+إجمالي الفواتير
+<b id="invoices">0</b>
+</div>
+
+</div>
+
+<div class="signatures">
+
+<div class="signTitle">
+التوقيعات | Signatures
+</div>
+
+<div class="signGrid">
+<div>توقيع العميل</div>
+<div>المبيعات</div>
+<div>مندوب المبيعات</div>
+</div>
+
+</div>
+
+<div class="footer">
+الرجاء التواصل معنا خلال 15 يوم في حال وجود أي تناقضات
+</div>
+
+</div>
+
+<input type="file" id="excelFile">
+<br>
+<button onclick="downloadPDF()">تحميل PDF</button>
+
 <script>
-function fmt(n){
-  n = Number(n || 0);
-  return n.toLocaleString('en-US', {maximumFractionDigits:0});
+
+function formatNumber(num){
+    return Number(num || 0).toLocaleString();
 }
 
-function cleanNumber(v){
-  if(v === null || v === undefined || v === '') return 0;
-  if(typeof v === 'number') return v;
-  return Number(String(v).replace(/,/g,'').replace(/[^\d.-]/g,'')) || 0;
-}
+document.getElementById('excelFile').addEventListener('change',function(e){
 
-function excelDate(v){
-  if(!v) return '';
-  if(typeof v === 'number'){
-    const d = XLSX.SSF.parse_date_code(v);
-    if(!d) return '';
-    return String(d.d).padStart(2,'0') + '/' + String(d.m).padStart(2,'0') + '/' + d.y;
-  }
-  if(v instanceof Date){
-    return v.toLocaleDateString('en-GB');
-  }
-  return String(v);
-}
+const file = e.target.files[0];
 
-function getCell(row, names){
-  for(const n of names){
-    if(row[n] !== undefined) return row[n];
-  }
-  return '';
-}
+const reader = new FileReader();
 
-document.getElementById('excelFile').addEventListener('change', function(e){
-  const file = e.target.files[0];
-  const reader = new FileReader();
+reader.onload = function(event){
 
-  reader.onload = function(event){
-    const data = new Uint8Array(event.target.result);
-    const workbook = XLSX.read(data, {type:'array', cellDates:true});
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+const data = new Uint8Array(event.target.result);
 
-    const rawRows = XLSX.utils.sheet_to_json(sheet, {header:1, defval:''});
+const workbook = XLSX.read(data,{type:'array'});
 
-    let headerIndex = rawRows.findIndex(r =>
-      r.some(c => String(c).toLowerCase().trim() === 'date') &&
-      r.some(c => String(c).toLowerCase().trim() === 'debit')
-    );
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-    if(headerIndex === -1){
-      alert('ما لكيت أعمدة Date و Debit داخل ملف Excel');
-      return;
-    }
+const rows = XLSX.utils.sheet_to_json(sheet);
 
-    const headers = rawRows[headerIndex].map(h => String(h).trim());
-    const dataRows = rawRows.slice(headerIndex + 1);
+const tbody = document.getElementById('tbody');
 
-    const rows = dataRows.map(r => {
-      let obj = {};
-      headers.forEach((h,i) => obj[h] = r[i]);
-      return obj;
-    }).filter(r => Object.values(r).some(v => v !== ''));
+tbody.innerHTML='';
 
-    const possibleCustomer = rawRows[headerIndex - 1] ? rawRows[headerIndex - 1].filter(x => x !== '').join(' ') : '';
-    document.getElementById('customerName').innerText = 'اسم الزبون: ' + (possibleCustomer || '—');
+let totalDebit = 0;
+let totalCredit = 0;
+let balance = 0;
 
-    const tbody = document.getElementById('tbody');
-    tbody.innerHTML = '';
+rows.forEach((row,index)=>{
 
-    let totalDebit = 0;
-    let totalCredit = 0;
-    let finalBalance = 0;
-    let openingBalance = 0;
-    let lastInvoice = '—';
-    let lastPayment = '—';
+const debit = Number(row.Debit || 0);
+const credit = Number(row.Credit || 0);
+balance = Number(row.Balance || 0);
 
-    rows.forEach((row, index) => {
-      const date = excelDate(getCell(row, ['Date','التاريخ']));
-      const type = getCell(row, ['JRNL','Journal','Type','النوع']);
-      const doc = getCell(row, ['Ref','Reference','Doc','المستند']);
-      const desc = getCell(row, ['Account','Description','Label','البيان']);
-      const debit = cleanNumber(getCell(row, ['Debit','مدين']));
-      const credit = cleanNumber(getCell(row, ['Credit','دائن']));
-      const balance = cleanNumber(getCell(row, ['Balance','الرصيد']));
+totalDebit += debit;
+totalCredit += credit;
 
-      if(index === 0){
-        openingBalance = balance;
-      }
+const tr = document.createElement('tr');
 
-      totalDebit += debit;
-      totalCredit += credit;
-      finalBalance = balance;
+tr.innerHTML=`
+<td>${index+1}</td>
+<td>${row.Date || ''}</td>
+<td>${row.JRNL || ''}</td>
+<td>${row.Ref || ''}</td>
+<td>${row.Account || ''}</td>
+<td class="debit">${formatNumber(debit)}</td>
+<td class="credit">${formatNumber(credit)}</td>
+<td>${formatNumber(balance)}</td>
+`;
 
-      if(debit > 0) lastInvoice = date;
-      if(credit > 0) lastPayment = date;
+tbody.appendChild(tr);
 
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${date}</td>
-        <td>${type || ''}</td>
-        <td>${doc || ''}</td>
-        <td>${desc || ''}</td>
-        <td class="debit">${debit ? fmt(debit) : ''}</td>
-        <td class="credit">${credit ? fmt(credit) : ''}</td>
-        <td><b>${fmt(balance)}</b></td>
-      `;
-      tbody.appendChild(tr);
-    });
-
-    document.getElementById('openingBalance').innerText = fmt(openingBalance);
-    document.getElementById('lastInvoice').innerText = lastInvoice;
-    document.getElementById('lastPayment').innerText = lastPayment;
-    document.getElementById('totalDebit').innerText = 'IQD ' + fmt(totalDebit);
-    document.getElementById('totalCredit').innerText = 'IQD ' + fmt(totalCredit);
-    document.getElementById('finalBalance').innerText = 'IQD ' + fmt(finalBalance);
-
-    document.getElementById('transactions').innerText = rows.length;
-    document.getElementById('outstanding').innerText = fmt(finalBalance);
-    document.getElementById('payments').innerText = fmt(totalCredit);
-    document.getElementById('invoices').innerText = fmt(totalDebit);
-
-    document.getElementById('age1').innerText = fmt(finalBalance);
-    document.getElementById('age2').innerText = '0';
-    document.getElementById('age3').innerText = '0';
-    document.getElementById('age4').innerText = '0';
-  };
-
-  reader.readAsArrayBuffer(file);
 });
+
+document.getElementById('openingBalance').innerText=formatNumber(balance);
+document.getElementById('totalDebit').innerText=formatNumber(totalDebit);
+document.getElementById('totalCredit').innerText=formatNumber(totalCredit);
+document.getElementById('finalBalance').innerText=formatNumber(balance);
+
+document.getElementById('transactions').innerText=rows.length;
+document.getElementById('outstanding').innerText=formatNumber(balance);
+document.getElementById('payments').innerText=formatNumber(totalCredit);
+document.getElementById('invoices').innerText=formatNumber(totalDebit);
+
+};
+
+reader.readAsArrayBuffer(file);
+
+});
+
+function downloadPDF(){
+
+html2pdf().from(document.getElementById('report')).save('statement.pdf');
+
+}
+
 </script>
 
 </body>
