@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <title>كشف حساب الزبائن</title>
@@ -9,7 +9,7 @@
 
 <style>
 body{
-    font-family: Arial;
+    font-family: Arial, Tahoma, sans-serif;
     background:#f5f5f5;
     padding:20px;
     direction:rtl;
@@ -17,11 +17,36 @@ body{
 
 .container{
     background:white;
-    padding:20px;
+    padding:25px;
     border-radius:15px;
     max-width:1200px;
     margin:auto;
     box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:4px solid #3f51b5;
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.logo{
+    width:120px;
+    max-height:120px;
+    object-fit:contain;
+}
+
+.companyInfo{
+    text-align:left;
+    line-height:1.6;
+}
+
+.companyInfo h2{
+    margin:0;
+    color:#3f51b5;
 }
 
 h1{
@@ -67,6 +92,46 @@ table td{
     font-size:20px;
 }
 
+.card div{
+    margin-top:8px;
+    font-weight:bold;
+    color:#3f51b5;
+}
+
+.note{
+    margin-top:30px;
+    padding:15px;
+    background:#f7f7ff;
+    border-right:5px solid #3f51b5;
+    color:#555;
+    line-height:1.8;
+}
+
+.signatures{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+}
+
+.sign{
+    flex:1;
+    height:90px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    text-align:center;
+    padding-top:60px;
+    color:#555;
+}
+
+.footer{
+    margin-top:25px;
+    text-align:center;
+    color:#777;
+    font-size:13px;
+    border-top:1px solid #ddd;
+    padding-top:15px;
+}
+
 button{
     background:#3f51b5;
     color:white;
@@ -76,6 +141,23 @@ button{
     cursor:pointer;
     margin-top:20px;
 }
+
+@media print{
+    input, button{
+        display:none;
+    }
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .container{
+        box-shadow:none;
+        border-radius:0;
+        max-width:100%;
+    }
+}
 </style>
 </head>
 
@@ -83,9 +165,20 @@ button{
 
 <div class="container" id="report">
 
+<div class="header">
+    <img src="logo.png" class="logo" alt="Company Logo">
+
+    <div class="companyInfo">
+        <h2>شركة أنهار الحياة</h2>
+        <div>Anhar Alhayat Company</div>
+        <div>Baghdad - Iraq</div>
+        <div>IT Department</div>
+    </div>
+</div>
+
 <h1>كشف حساب الزبائن</h1>
 
-<input type="file" id="excelFile">
+<input type="file" id="excelFile" accept=".xlsx,.xls">
 
 <table id="table">
 <thead>
@@ -99,25 +192,44 @@ button{
 <th>الرصيد</th>
 </tr>
 </thead>
-
 <tbody></tbody>
 </table>
 
 <div class="summary">
-<div class="card">
-إجمالي المدين
-<div id="totalDebit">0</div>
+    <div class="card">
+        إجمالي المدين
+        <div id="totalDebit">0</div>
+    </div>
+
+    <div class="card">
+        إجمالي الدائن
+        <div id="totalCredit">0</div>
+    </div>
+
+    <div class="card">
+        الرصيد النهائي
+        <div id="finalBalance">0</div>
+    </div>
 </div>
 
-<div class="card">
-إجمالي الدائن
-<div id="totalCredit">0</div>
+<div class="note">
+    <strong>ملاحظة:</strong>
+    يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف، وفي حال وجود أي اختلاف يرجى التواصل مع قسم الحسابات.
+    <br>
+    <strong>Note:</strong>
+    Please review this statement within 15 days. For any discrepancies, contact the accounting department.
 </div>
 
-<div class="card">
-الرصيد النهائي
-<div id="finalBalance">0</div>
+<div class="signatures">
+    <div class="sign">توقيع العميل</div>
+    <div class="sign">المحاسبة</div>
+    <div class="sign">الإدارة</div>
 </div>
+
+<div class="footer">
+    هذا التقرير تم توليده إلكترونياً من ملف Excel المصدر من نظام Odoo
+    <br>
+    Generated electronically from Odoo Excel report
 </div>
 
 <button onclick="downloadPDF()">تحميل PDF</button>
@@ -125,72 +237,76 @@ button{
 </div>
 
 <script>
-
 document.getElementById('excelFile').addEventListener('change', handleFile);
+
+function numberFormat(value){
+    let num = Number(String(value || 0).replace(/,/g,''));
+    return num.toLocaleString('en-US');
+}
 
 function handleFile(e){
 
-const file = e.target.files[0];
-const reader = new FileReader();
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-reader.onload = function(event){
+    reader.onload = function(event){
 
-const data = new Uint8Array(event.target.result);
+        const data = new Uint8Array(event.target.result);
+        const workbook = XLSX.read(data,{type:'array'});
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(sheet);
 
-const workbook = XLSX.read(data,{type:'array'});
+        const tbody = document.querySelector("#table tbody");
+        tbody.innerHTML='';
 
-const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        let totalDebit = 0;
+        let totalCredit = 0;
+        let finalBalance = 0;
 
-const rows = XLSX.utils.sheet_to_json(sheet);
+        rows.forEach(row=>{
 
-const tbody = document.querySelector("#table tbody");
+            const debit = Number(String(row.Debit || 0).replace(/,/g,''));
+            const credit = Number(String(row.Credit || 0).replace(/,/g,''));
+            const balance = Number(String(row.Balance || 0).replace(/,/g,''));
 
-tbody.innerHTML='';
+            const tr = document.createElement('tr');
 
-let totalDebit = 0;
-let totalCredit = 0;
-let finalBalance = 0;
+            tr.innerHTML = `
+                <td>${row.Date || ''}</td>
+                <td>${row.Type || row.JRNL || ''}</td>
+                <td>${row.Doc || row.Ref || ''}</td>
+                <td>${row.Description || row.Account || ''}</td>
+                <td>${debit ? numberFormat(debit) : ''}</td>
+                <td>${credit ? numberFormat(credit) : ''}</td>
+                <td>${numberFormat(balance)}</td>
+            `;
 
-rows.forEach(row=>{
+            tbody.appendChild(tr);
 
-const tr = document.createElement('tr');
+            totalDebit += debit;
+            totalCredit += credit;
+            finalBalance = balance;
+        });
 
-tr.innerHTML = `
-<td>${row.Date || ''}</td>
-<td>${row.Type || ''}</td>
-<td>${row.Doc || ''}</td>
-<td>${row.Description || ''}</td>
-<td>${row.Debit || 0}</td>
-<td>${row.Credit || 0}</td>
-<td>${row.Balance || 0}</td>
-`;
+        document.getElementById('totalDebit').innerText = numberFormat(totalDebit);
+        document.getElementById('totalCredit').innerText = numberFormat(totalCredit);
+        document.getElementById('finalBalance').innerText = numberFormat(finalBalance);
+    };
 
-tbody.appendChild(tr);
-
-totalDebit += Number(row.Debit || 0);
-totalCredit += Number(row.Credit || 0);
-finalBalance = row.Balance || 0;
-
-});
-
-document.getElementById('totalDebit').innerText = totalDebit;
-document.getElementById('totalCredit').innerText = totalCredit;
-document.getElementById('finalBalance').innerText = finalBalance;
-
-};
-
-reader.readAsArrayBuffer(file);
-
+    reader.readAsArrayBuffer(file);
 }
 
 function downloadPDF(){
+    const element = document.getElementById('report');
 
-const element = document.getElementById('report');
-
-html2pdf().from(element).save('account_statement.pdf');
-
+    html2pdf().set({
+        margin: 0.3,
+        filename: 'account_statement.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+    }).from(element).save();
 }
-
 </script>
 
 </body>
