@@ -15,7 +15,7 @@ body{
 }
 
 .controls{
-  max-width:1100px;
+  max-width:1050px;
   margin:0 auto 20px;
   background:white;
   padding:18px;
@@ -43,7 +43,7 @@ body{
 }
 
 .report{
-  max-width:1100px;
+  max-width:1050px;
   margin:auto;
   background:white;
   border-radius:22px;
@@ -52,19 +52,20 @@ body{
 }
 
 .header{
-  background:linear-gradient(135deg,#1e3a8a,#2563eb,#06b6d4);
-  color:white;
-  padding:24px;
+  background:white;
+  color:#1f2937;
+  padding:22px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  border-bottom:1px solid #e5e7eb;
 }
 
 .logoBox{
-  width:100px;
-  height:100px;
+  width:95px;
+  height:95px;
   background:white;
-  border-radius:20px;
+  border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -80,26 +81,28 @@ body{
 .company{
   text-align:left;
   line-height:1.6;
+  color:#9ca3af;
 }
 
 .company h2{
   margin:0;
-  font-size:26px;
+  font-size:25px;
+  color:#9ca3af;
 }
 
 .title{
   text-align:center;
-  padding:18px;
-  font-size:25px;
+  padding:16px;
+  font-size:24px;
   font-weight:bold;
   color:#1e3a8a;
   border-bottom:1px solid #e5e7eb;
 }
 
 .info{
-  margin:18px;
+  margin:18px 22px;
   padding:14px;
-  background:#f8fafc;
+  background:#ffffff;
   border-radius:16px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -108,58 +111,85 @@ body{
 }
 
 .info div{
-  background:white;
+  background:#ffffff;
   padding:11px;
   border-radius:12px;
   border-right:5px solid #2563eb;
   font-size:13px;
+  text-align:center;
+}
+
+.table-wrap{
+  margin:10px 14px;
+  overflow:visible;
 }
 
 table{
-  width:calc(100% - 20px);
-  margin:10px;
+  width:100%;
   border-collapse:collapse;
-  font-size:10px;
   table-layout:fixed;
+  font-size:8.6px;
+  direction:rtl;
 }
 
 th{
-  background:#1e3a8a;
-  color:white;
-  padding:7px 4px;
-  border:1px solid #1e3a8a;
-  font-size:10px;
+  background:#ffffff;
+  color:#9ca3af;
+  padding:6px 2px;
+  border:1px solid #e5e7eb;
+  font-size:8.5px;
+  font-weight:bold;
 }
 
 td{
   border:1px solid #e5e7eb;
-  padding:5px 3px;
+  padding:5px 2px;
   text-align:center;
-  font-size:10px;
-  word-wrap:break-word;
-  overflow-wrap:anywhere;
+  font-size:8.5px;
+  vertical-align:middle;
+  overflow:hidden;
 }
 
 tbody tr:nth-child(even){
-  background:#f8fafc;
+  background:#fafafa;
 }
 
-th:nth-child(1), td:nth-child(1){width:4%;}
-th:nth-child(2), td:nth-child(2){width:10%;}
-th:nth-child(3), td:nth-child(3){width:10%;}
-th:nth-child(4), td:nth-child(4){width:15%;}
-th:nth-child(5), td:nth-child(5){width:25%;}
-th:nth-child(6), td:nth-child(6){width:12%;}
-th:nth-child(7), td:nth-child(7){width:12%;}
-th:nth-child(8), td:nth-child(8){width:12%;}
+.col-no{width:4%;}
+.col-date{width:10%;}
+.col-type{width:11%;}
+.col-doc{width:19%;}
+.col-account{width:12%;}
+.col-debit{width:15%;}
+.col-credit{width:15%;}
+.col-balance{width:14%;}
+
+.doc-cell{
+  font-size:8px;
+  line-height:1.25;
+  word-break:break-word;
+}
+
+.account-cell{
+  font-size:8px;
+  word-break:break-word;
+}
+
+.money{
+  direction:ltr;
+  unicode-bidi:plaintext;
+  white-space:nowrap;
+  font-size:8.2px;
+  font-weight:bold;
+  letter-spacing:-0.3px;
+}
 
 .badge{
-  padding:4px 8px;
+  padding:3px 5px;
   border-radius:999px;
   font-weight:bold;
   display:inline-block;
-  min-width:55px;
-  font-size:9px;
+  min-width:45px;
+  font-size:8px;
 }
 
 .invoice{
@@ -194,37 +224,28 @@ th:nth-child(8), td:nth-child(8){width:12%;}
 
 .debit{
   color:#2563eb;
-  font-weight:bold;
-  white-space:nowrap;
-  font-size:9px;
 }
 
 .credit{
   color:#16a34a;
-  font-weight:bold;
-  white-space:nowrap;
-  font-size:9px;
 }
 
 .balance{
   color:#b45309;
-  font-weight:bold;
-  white-space:nowrap;
-  font-size:9px;
 }
 
 .summary{
-  margin:18px;
+  margin:18px 22px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
 }
 
 .card{
-  background:linear-gradient(135deg,#f8fafc,#eef2ff);
+  background:#ffffff;
   border:1px solid #e5e7eb;
   border-radius:16px;
-  padding:14px;
+  padding:14px 8px;
   text-align:center;
   font-size:13px;
 }
@@ -232,13 +253,16 @@ th:nth-child(8), td:nth-child(8){width:12%;}
 .card span{
   display:block;
   margin-top:8px;
-  font-size:18px;
+  font-size:20px;
   font-weight:bold;
   color:#1e3a8a;
+  direction:ltr;
+  unicode-bidi:plaintext;
+  white-space:nowrap;
 }
 
 .note{
-  margin:18px;
+  margin:18px 22px;
   background:#fffbeb;
   border:1px solid #fde68a;
   border-right:6px solid #f59e0b;
@@ -246,18 +270,19 @@ th:nth-child(8), td:nth-child(8){width:12%;}
   border-radius:16px;
   line-height:1.8;
   font-size:13px;
+  text-align:center;
 }
 
 .signatures{
-  margin:18px;
+  margin:18px 22px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
 .sign{
-  height:80px;
-  border:1px dashed #9ca3af;
+  height:78px;
+  border:1px dashed #d1d5db;
   border-radius:16px;
   text-align:center;
   padding-top:55px;
@@ -267,7 +292,7 @@ th:nth-child(8), td:nth-child(8){width:12%;}
 
 .footer{
   text-align:center;
-  color:#6b7280;
+  color:#9ca3af;
   padding:15px;
   border-top:1px solid #e5e7eb;
   font-size:12px;
@@ -288,49 +313,121 @@ th:nth-child(8), td:nth-child(8){width:12%;}
     border-radius:0;
     max-width:100%;
     width:100%;
+    overflow:visible;
   }
 
   .header{
-    padding:16px;
+    padding:10px 16px;
+  }
+
+  .logoBox{
+    width:70px;
+    height:70px;
+  }
+
+  .logoBox img{
+    max-width:68px;
+    max-height:68px;
+  }
+
+  .company h2{
+    font-size:19px;
+  }
+
+  .company{
+    font-size:11px;
   }
 
   .title{
-    padding:12px;
-    font-size:20px;
+    padding:10px;
+    font-size:18px;
+  }
+
+  .info{
+    margin:10px 12px;
+    padding:8px;
+    gap:8px;
+  }
+
+  .info div{
+    font-size:10px;
+    padding:8px 5px;
+  }
+
+  .table-wrap{
+    margin:6px 4px;
   }
 
   table{
     width:100%;
-    margin:0;
-    font-size:8.5px;
+    font-size:7.4px;
   }
 
   th{
-    padding:5px 2px;
-    font-size:8.5px;
+    font-size:7.2px;
+    padding:4px 1px;
   }
 
   td{
-    padding:4px 2px;
-    font-size:8.5px;
-  }
-
-  .debit,
-  .credit,
-  .balance{
-    font-size:8px;
-    white-space:nowrap;
+    font-size:7.2px;
+    padding:3.5px 1px;
   }
 
   .badge{
-    font-size:8px;
-    padding:3px 5px;
-    min-width:45px;
+    font-size:7px;
+    min-width:38px;
+    padding:2px 4px;
+  }
+
+  .doc-cell,
+  .account-cell{
+    font-size:7px;
+  }
+
+  .money{
+    font-size:7px;
+    letter-spacing:-0.6px;
+  }
+
+  .summary{
+    margin:10px 12px;
+    gap:8px;
+  }
+
+  .card{
+    padding:9px 4px;
+    font-size:10px;
+  }
+
+  .card span{
+    font-size:16px;
+  }
+
+  .note{
+    margin:10px 12px;
+    padding:9px;
+    font-size:10px;
+  }
+
+  .signatures{
+    margin:10px 12px;
+    gap:8px;
+  }
+
+  .sign{
+    height:58px;
+    padding-top:42px;
+    font-size:10px;
+  }
+
+  .footer{
+    font-size:9px;
+    padding:8px;
   }
 
   @page{
     size:A4 portrait;
-    margin:8mm;
+    margin:7mm;
   }
 }
 </style>
@@ -352,17 +449,17 @@ th:nth-child(8), td:nth-child(8){width:12%;}
 <div class="report" id="report">
 
   <div class="header">
-    <div class="logoBox" id="logoBox">LOGO</div>
-
     <div class="company">
       <h2 id="companyName">شركة أنهار الحياة</h2>
       <div id="companySub">Anhar Alhayat Company</div>
       <div>Baghdad - Iraq</div>
       <div>Account Statement Report</div>
     </div>
+
+    <div class="logoBox" id="logoBox">LOGO</div>
   </div>
 
-  <div class="title">كشف حساب الزبائن | Customer Account Statement</div>
+  <div class="title">Customer Account | كشف حساب الزبائن<br>Statement</div>
 
   <div class="info">
     <div>اسم العميل: <b id="customerName">—</b></div>
@@ -370,21 +467,23 @@ th:nth-child(8), td:nth-child(8){width:12%;}
     <div>تاريخ التقرير: <b id="todayDate"></b></div>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>التاريخ</th>
-        <th>النوع</th>
-        <th>المستند</th>
-        <th>البيان</th>
-        <th>مدين</th>
-        <th>دائن</th>
-        <th>الرصيد</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-no">#</th>
+          <th class="col-date">التاريخ</th>
+          <th class="col-type">النوع</th>
+          <th class="col-doc">المستند</th>
+          <th class="col-account">الحساب</th>
+          <th class="col-debit">مدين</th>
+          <th class="col-credit">دائن</th>
+          <th class="col-balance">الرصيد</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
 
   <div class="summary">
     <div class="card">عدد الحركات<span id="transactions">0</span></div>
@@ -416,11 +515,15 @@ document.getElementById('todayDate').innerText = new Date().toLocaleDateString('
 
 function fmt(value){
   let num = Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,''));
-  return num.toLocaleString('en-US');
+  return num.toLocaleString('en-US', {maximumFractionDigits:0});
 }
 
 function cleanNum(value){
   return Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,'')) || 0;
+}
+
+function safeText(value){
+  return value === undefined || value === null ? '' : String(value);
 }
 
 function translateType(code){
@@ -475,7 +578,26 @@ document.getElementById('excelFile').addEventListener('change', function(e){
     const data = new Uint8Array(event.target.result);
     const workbook = XLSX.read(data,{type:'array', cellDates:true});
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const rows = XLSX.utils.sheet_to_json(sheet);
+    let rows = XLSX.utils.sheet_to_json(sheet);
+
+    rows = rows.filter(row => {
+      const rawType = safeText(row.Type || row.JRNL || row.Journal || '');
+      const doc = safeText(row.Doc || row.Ref || '');
+      const date = safeText(row.Date || '');
+      const debit = cleanNum(row.Debit);
+      const credit = cleanNum(row.Credit);
+      const balance = cleanNum(row.Balance);
+
+      const looksLikeTotal =
+        !date &&
+        !doc &&
+        !rawType &&
+        debit > 0 &&
+        credit > 0 &&
+        balance !== 0;
+
+      return !looksLikeTotal;
+    });
 
     const tbody = document.getElementById('tbody');
     tbody.innerHTML = '';
@@ -483,8 +605,9 @@ document.getElementById('excelFile').addEventListener('change', function(e){
     let totalDebit = 0;
     let totalCredit = 0;
     let finalBalance = 0;
+    let count = 0;
 
-    rows.forEach((row,index)=>{
+    rows.forEach((row)=>{
       const rawType = row.Type || row.JRNL || row.Journal || '';
       const type = translateType(rawType);
 
@@ -492,25 +615,33 @@ document.getElementById('excelFile').addEventListener('change', function(e){
       const credit = cleanNum(row.Credit);
       const balance = cleanNum(row.Balance);
 
+      const doc = safeText(row.Doc || row.Ref || '');
+      const account = safeText(row.Account || row.Description || '');
+
+      if(!doc && !account && !debit && !credit && !balance){
+        return;
+      }
+
+      count++;
       totalDebit += debit;
       totalCredit += credit;
       finalBalance = balance;
 
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${row.Date || ''}</td>
+        <td>${count}</td>
+        <td>${safeText(row.Date || '')}</td>
         <td><span class="badge ${type.cls}">${type.text}</span></td>
-        <td>${row.Doc || row.Ref || ''}</td>
-        <td>${row.Description || row.Account || ''}</td>
-        <td class="debit">${debit ? fmt(debit) : ''}</td>
-        <td class="credit">${credit ? fmt(credit) : ''}</td>
-        <td class="balance">${fmt(balance)}</td>
+        <td class="doc-cell">${doc}</td>
+        <td class="account-cell">${account}</td>
+        <td class="money debit">${debit ? fmt(debit) : ''}</td>
+        <td class="money credit">${credit ? fmt(credit) : ''}</td>
+        <td class="money balance">${fmt(balance)}</td>
       `;
       tbody.appendChild(tr);
     });
 
-    document.getElementById('transactions').innerText = rows.length;
+    document.getElementById('transactions').innerText = count;
     document.getElementById('totalDebit').innerText = fmt(totalDebit);
     document.getElementById('totalCredit').innerText = fmt(totalCredit);
     document.getElementById('finalBalance').innerText = fmt(finalBalance);
