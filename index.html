@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <title>كشف حساب احترافي</title>
@@ -188,7 +189,6 @@ tbody tr:nth-child(even){
   white-space:nowrap;
   font-size:11px;
   font-weight:900;
-  letter-spacing:-0.4px;
 }
 
 .badge{
@@ -265,9 +265,6 @@ tbody tr:nth-child(even){
   font-size:22px;
   font-weight:900;
   color:#1e3a8a;
-  direction:ltr;
-  unicode-bidi:plaintext;
-  white-space:nowrap;
 }
 
 .note{
@@ -341,61 +338,11 @@ tbody tr:nth-child(even){
   th{
     font-size:10px;
     padding:5px 2px;
-    font-weight:900;
   }
 
   td{
     font-size:10px;
     padding:4px 2px;
-    font-weight:900;
-  }
-
-  .money{
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:-0.7px;
-  }
-
-  .badge{
-    font-size:9px;
-    font-weight:900;
-    padding:3px 5px;
-    min-width:45px;
-  }
-
-  .title{
-    font-size:21px;
-    font-weight:900;
-  }
-
-  .company h2{
-    font-size:22px;
-    font-weight:900;
-  }
-
-  .info div{
-    font-size:12px;
-    font-weight:900;
-  }
-
-  .card{
-    font-size:12px;
-    font-weight:900;
-  }
-
-  .card span{
-    font-size:17px;
-    font-weight:900;
-  }
-
-  .note{
-    font-size:12px;
-    font-weight:900;
-  }
-
-  .footer{
-    font-size:10px;
-    font-weight:900;
   }
 
   @page{
@@ -410,14 +357,32 @@ tbody tr:nth-child(even){
 <body>
 
 <div class="controls">
-  <input type="file" id="excelFile" accept=".xlsx,.xls">
-  <input type="text" id="companyNameInput" value="شركة أنهار الحياة">
-  <input type="text" id="companySubInput" value="Anhar Alhayat Company">
-  <input type="text" id="customerInput" placeholder="اسم العميل">
-  <input type="text" id="periodInput" placeholder="الفترة">
-  <input type="file" id="logoInput" accept="image/*">
-  <button onclick="applyInfo()">تطبيق البيانات</button>
-  <button onclick="printReport()">طباعة / حفظ PDF</button>
+
+<input type="file" id="excelFile" accept=".xlsx,.xls">
+
+<input type="text" id="companyNameInput"
+value="شركة أنهار الحياة">
+
+<input type="text" id="companySubInput"
+value="Anhar Alhayat Company">
+
+<input type="text" id="customerInput"
+placeholder="اسم العميل">
+
+<input type="text" id="periodInput"
+placeholder="الفترة">
+
+<input type="file" id="logoInput"
+accept="image/*">
+
+<button onclick="applyInfo()">
+تطبيق البيانات
+</button>
+
+<button onclick="printReport()">
+طباعة / حفظ PDF
+</button>
+
 </div>
 
 <div class="report" id="report">
@@ -431,7 +396,9 @@ tbody tr:nth-child(even){
 <div>Account Statement Report</div>
 </div>
 
-<div class="logoBox" id="logoBox">LOGO</div>
+<div class="logoBox" id="logoBox">
+LOGO
+</div>
 
 </div>
 
@@ -440,9 +407,22 @@ Customer Account Statement | كشف حساب الزبائن
 </div>
 
 <div class="info">
-<div>اسم العميل: <b id="customerName">—</b></div>
-<div>الفترة: <b id="periodText">—</b></div>
-<div>تاريخ التقرير: <b id="todayDate"></b></div>
+
+<div>
+اسم العميل:
+<b id="customerName">—</b>
+</div>
+
+<div>
+الفترة:
+<b id="periodText">—</b>
+</div>
+
+<div>
+تاريخ التقرير:
+<b id="todayDate"></b>
+</div>
+
 </div>
 
 <div class="table-wrap">
@@ -450,6 +430,7 @@ Customer Account Statement | كشف حساب الزبائن
 <table>
 
 <thead>
+
 <tr>
 <th class="col-no">#</th>
 <th class="col-date">التاريخ</th>
@@ -460,6 +441,7 @@ Customer Account Statement | كشف حساب الزبائن
 <th class="col-credit">دائن</th>
 <th class="col-balance">الرصيد</th>
 </tr>
+
 </thead>
 
 <tbody id="tbody"></tbody>
@@ -552,6 +534,26 @@ function safeText(value){
 return value === undefined || value === null
 ? ''
 : String(value);
+
+}
+
+function formatDate(value){
+
+if(!value) return '';
+
+if(typeof value === 'number'){
+
+const d = XLSX.SSF.parse_date_code(value);
+
+if(!d) return '';
+
+return String(d.d).padStart(2,'0') + '/' +
+String(d.m).padStart(2,'0') + '/' +
+d.y;
+
+}
+
+return String(value);
 
 }
 
@@ -668,6 +670,9 @@ const doc = safeText(row.Doc || row.Ref || '');
 const account =
 safeText(row.Account || row.Description || '');
 
+const date =
+formatDate(row["Due Date"]);
+
 if(
 !doc &&
 !account &&
@@ -675,17 +680,6 @@ if(
 !credit &&
 !balance
 ){
-return;
-}
-
-const looksLikeTotal =
-!safeText(row.Date || '') &&
-!doc &&
-!rawType &&
-debit > 0 &&
-credit > 0;
-
-if(looksLikeTotal){
 return;
 }
 
@@ -700,7 +694,7 @@ const tr = document.createElement('tr');
 tr.innerHTML = `
 <td>${count}</td>
 
-<td>${safeText(row.Date || '')}</td>
+<td>${date}</td>
 
 <td>
 <span class="badge ${type.cls}">
