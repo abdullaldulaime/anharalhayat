@@ -1,169 +1,460 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
-<title>كشف حساب الزبائن</title>
+<title>كشف حساب احترافي</title>
+
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
-body{font-family:Arial;background:#f4f5fb;padding:20px;color:#222}
-.box{background:white;max-width:1200px;margin:auto;padding:25px;border-radius:16px}
-.header{display:flex;justify-content:space-between;align-items:center;border-bottom:8px solid #5b5fa8;padding-bottom:15px}
-.badge{background:#5b5fa8;color:white;padding:15px 25px;border-radius:8px;font-weight:bold}
-h1{text-align:center;color:#333}
-.info{background:#f1f1ff;padding:15px;border-radius:10px;margin:15px 0;font-size:20px;font-weight:bold}
-input,button{padding:12px;border-radius:8px;margin:10px 0}
-button{background:#5b5fa8;color:white;border:0;cursor:pointer}
-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:15px}
-th{background:#5b5fa8;color:white;padding:8px}
-td{border:1px solid #ccc;padding:7px;text-align:center}
-.credit{color:#159957;font-weight:bold}
-.debit{color:#5b5fa8;font-weight:bold}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.card{background:#f7f7ff;border:1px solid #ddd;padding:15px;border-radius:12px;text-align:center}
-.card b{display:block;font-size:20px;margin-top:8px;color:#5b5fa8}
-.sign{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
-.sign div{border:1px solid #ddd;height:90px;text-align:center;padding-top:55px;border-radius:10px}
-@media print{input,button{display:none}}
+
+body{
+    font-family:Arial;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
+}
+
+.page{
+    background:white;
+    width:1200px;
+    margin:auto;
+    padding:20px;
+    border-radius:12px;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logoBox{
+    background:#5b5fa8;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.company{
+    text-align:left;
+    color:#5b5fa8;
+}
+
+.title{
+    background:#5b5fa8;
+    color:white;
+    text-align:center;
+    padding:12px;
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.customer{
+    background:#f0f0f8;
+    padding:20px;
+    margin-top:10px;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.opening{
+    background:#f7f3df;
+    padding:15px;
+    margin-top:10px;
+    border-radius:8px;
+    font-size:20px;
+    color:#8c6b00;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    font-size:13px;
+}
+
+th{
+    background:#5b5fa8;
+    color:white;
+    padding:10px;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
+}
+
+.credit{
+    color:#1f9d55;
+    font-weight:bold;
+}
+
+.debit{
+    color:#5b5fa8;
+    font-weight:bold;
+}
+
+.summary{
+    margin-top:25px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.summaryTitle{
+    background:#f2f2f8;
+    padding:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.summaryRow{
+    display:flex;
+    border-top:1px solid #eee;
+}
+
+.summaryRow div{
+    flex:1;
+    padding:12px;
+}
+
+.aging{
+    margin-top:20px;
+    border:1px solid #e0c890;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.agingTitle{
+    background:#fff8e5;
+    padding:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.agingBoxes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.agingBox{
+    padding:20px;
+    text-align:center;
+    border-left:1px solid #eee;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.card{
+    background:#f6f6fb;
+    border:1px solid #ddd;
+    padding:20px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.card b{
+    display:block;
+    margin-top:10px;
+    font-size:24px;
+}
+
+.signatures{
+    margin-top:25px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.signTitle{
+    background:#f2f2f8;
+    text-align:center;
+    padding:10px;
+    font-weight:bold;
+}
+
+.signGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+}
+
+.signGrid div{
+    height:120px;
+    border-left:1px solid #ddd;
+    text-align:center;
+    padding-top:80px;
+}
+
+.footer{
+    margin-top:20px;
+    text-align:center;
+    color:#888;
+    font-size:12px;
+}
+
+button{
+    margin-top:20px;
+    background:#5b5fa8;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="box" id="report">
-  <div class="header">
-    <div>
-      <h2>شركة أنهار الحياة</h2>
-      <p>Anhar Alhayat Company</p>
-    </div>
-    <div class="badge">Account Statement<br>كشف حساب</div>
-  </div>
+<div class="page" id="report">
 
-  <h1>كشف حساب الزبائن</h1>
-
-  <input type="file" id="excelFile" accept=".xlsx,.xls">
-
-  <div class="info" id="customerName">اسم الزبون: —</div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>التاريخ</th>
-        <th>النوع</th>
-        <th>الحساب</th>
-        <th>الفرع</th>
-        <th>المستند</th>
-        <th>تاريخ الاستحقاق</th>
-        <th>مدين</th>
-        <th>دائن</th>
-        <th>الرصيد</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"></tbody>
-  </table>
-
-  <div class="summary">
-    <div class="card">الرصيد الافتتاحي<b id="opening">0</b></div>
-    <div class="card">إجمالي الفواتير / المدين<b id="debit">0</b></div>
-    <div class="card">إجمالي الدفعات / الدائن<b id="credit">0</b></div>
-    <div class="card">الرصيد النهائي<b id="balance">0</b></div>
-  </div>
-
-  <div class="sign">
-    <div>توقيع العميل</div>
-    <div>المبيعات</div>
-    <div>مندوب المبيعات</div>
-  </div>
+<div class="top">
+<div class="logoBox">
+Account Statement<br>
+كشف حساب
 </div>
 
+<div class="company">
+<h2>هلال الشرق للتجارة</h2>
+<div>Hilal Al-Sharq Trading</div>
+<div>Baghdad, Iraq</div>
+</div>
+</div>
+
+<div class="title">
+كشف حساب | Account Statement
+</div>
+
+<div class="customer" id="customerName">
+اسم الزبون
+</div>
+
+<div class="opening">
+الرصيد الافتتاحي :
+<span id="openingBalance">0</span>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>التاريخ</th>
+<th>النوع</th>
+<th>المستند</th>
+<th>البيان</th>
+<th>مدين</th>
+<th>دائن</th>
+<th>الرصيد</th>
+</tr>
+</thead>
+
+<tbody id="tbody"></tbody>
+</table>
+
+<div class="summary">
+<div class="summaryTitle">
+ملخص الحساب | Summary Account
+</div>
+
+<div class="summaryRow">
+<div>آخر فاتورة</div>
+<div id="lastInvoice">-</div>
+</div>
+
+<div class="summaryRow">
+<div>آخر دفعة</div>
+<div id="lastPayment">-</div>
+</div>
+
+<div class="summaryRow">
+<div>إجمالي الفواتير</div>
+<div id="totalDebit">0</div>
+</div>
+
+<div class="summaryRow">
+<div>إجمالي الدفعات</div>
+<div id="totalCredit">0</div>
+</div>
+
+<div class="summaryRow">
+<div>الرصيد المستحق</div>
+<div id="finalBalance">0</div>
+</div>
+
+</div>
+
+<div class="aging">
+
+<div class="agingTitle">
+تحليل عمر الدين | Aging Analysis
+</div>
+
+<div class="agingBoxes">
+
+<div class="agingBox">
+0 - 30 يوم
+<h2 id="age1">0</h2>
+</div>
+
+<div class="agingBox">
+31 - 60 يوم
+<h2 id="age2">0</h2>
+</div>
+
+<div class="agingBox">
+61 - 90 يوم
+<h2 id="age3">0</h2>
+</div>
+
+<div class="agingBox">
+أكثر من 90 يوم
+<h2 id="age4">0</h2>
+</div>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+عدد الحركات
+<b id="transactions">0</b>
+</div>
+
+<div class="card">
+الرصيد المستحق
+<b id="outstanding">0</b>
+</div>
+
+<div class="card">
+إجمالي الدفعات
+<b id="payments">0</b>
+</div>
+
+<div class="card">
+إجمالي الفواتير
+<b id="invoices">0</b>
+</div>
+
+</div>
+
+<div class="signatures">
+
+<div class="signTitle">
+التوقيعات | Signatures
+</div>
+
+<div class="signGrid">
+<div>توقيع العميل</div>
+<div>المبيعات</div>
+<div>مندوب المبيعات</div>
+</div>
+
+</div>
+
+<div class="footer">
+الرجاء التواصل معنا خلال 15 يوم في حال وجود أي تناقضات
+</div>
+
+</div>
+
+<input type="file" id="excelFile">
+<br>
 <button onclick="downloadPDF()">تحميل PDF</button>
 
 <script>
-function fmt(n){
-  n = Number(n || 0);
-  return n.toLocaleString('en-US', {maximumFractionDigits:0});
+
+function formatNumber(num){
+    return Number(num || 0).toLocaleString();
 }
 
-function excelDate(v){
-  if(!v) return '';
-  if(typeof v === 'number'){
-    const d = XLSX.SSF.parse_date_code(v);
-    return `${String(d.d).padStart(2,'0')}/${String(d.m).padStart(2,'0')}/${d.y}`;
-  }
-  if(v instanceof Date){
-    return v.toLocaleDateString('en-GB');
-  }
-  return v;
-}
+document.getElementById('excelFile').addEventListener('change',function(e){
 
-document.getElementById('excelFile').addEventListener('change', function(e){
-  const file = e.target.files[0];
-  const reader = new FileReader();
+const file = e.target.files[0];
 
-  reader.onload = function(event){
-    const data = new Uint8Array(event.target.result);
-    const workbook = XLSX.read(data,{type:'array', cellDates:true});
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const rows = XLSX.utils.sheet_to_json(sheet,{header:1, defval:''});
+const reader = new FileReader();
 
-    const header = rows[0];
-    const customerRow = rows[1];
+reader.onload = function(event){
 
-    document.getElementById('customerName').innerText = 'اسم الزبون: ' + (customerRow[0] || '—');
+const data = new Uint8Array(event.target.result);
 
-    let opening = Number(customerRow[7] || 0);
-    let totalDebit = 0;
-    let totalCredit = 0;
-    let finalBalance = Number(customerRow[11] || 0);
+const workbook = XLSX.read(data,{type:'array'});
 
-    const tbody = document.getElementById('tbody');
-    tbody.innerHTML = '';
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-    for(let i=2; i<rows.length; i++){
-      const r = rows[i];
-      if(!r[0]) continue;
+const rows = XLSX.utils.sheet_to_json(sheet);
 
-      let debit = Number(r[8] || 0);
-      let credit = Number(r[9] || 0);
-      let balance = Number(r[11] || 0);
+const tbody = document.getElementById('tbody');
 
-      totalDebit += debit;
-      totalCredit += credit;
-      finalBalance = balance;
+tbody.innerHTML='';
 
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${i-1}</td>
-        <td>${excelDate(r[0])}</td>
-        <td>${r[1] || ''}</td>
-        <td>${r[2] || ''}</td>
-        <td>${r[3] || ''}</td>
-        <td>${r[4] || ''}</td>
-        <td>${excelDate(r[5])}</td>
-        <td class="debit">${debit ? fmt(debit) : ''}</td>
-        <td class="credit">${credit ? fmt(credit) : ''}</td>
-        <td><b>${fmt(balance)}</b></td>
-      `;
-      tbody.appendChild(tr);
-    }
+let totalDebit = 0;
+let totalCredit = 0;
+let balance = 0;
 
-    document.getElementById('opening').innerText = fmt(opening);
-    document.getElementById('debit').innerText = fmt(totalDebit);
-    document.getElementById('credit').innerText = fmt(totalCredit);
-    document.getElementById('balance').innerText = fmt(finalBalance);
-  };
+rows.forEach((row,index)=>{
 
-  reader.readAsArrayBuffer(file);
+const debit = Number(row.Debit || 0);
+const credit = Number(row.Credit || 0);
+balance = Number(row.Balance || 0);
+
+totalDebit += debit;
+totalCredit += credit;
+
+const tr = document.createElement('tr');
+
+tr.innerHTML=`
+<td>${index+1}</td>
+<td>${row.Date || ''}</td>
+<td>${row.JRNL || ''}</td>
+<td>${row.Ref || ''}</td>
+<td>${row.Account || ''}</td>
+<td class="debit">${formatNumber(debit)}</td>
+<td class="credit">${formatNumber(credit)}</td>
+<td>${formatNumber(balance)}</td>
+`;
+
+tbody.appendChild(tr);
+
+});
+
+document.getElementById('openingBalance').innerText=formatNumber(balance);
+document.getElementById('totalDebit').innerText=formatNumber(totalDebit);
+document.getElementById('totalCredit').innerText=formatNumber(totalCredit);
+document.getElementById('finalBalance').innerText=formatNumber(balance);
+
+document.getElementById('transactions').innerText=rows.length;
+document.getElementById('outstanding').innerText=formatNumber(balance);
+document.getElementById('payments').innerText=formatNumber(totalCredit);
+document.getElementById('invoices').innerText=formatNumber(totalDebit);
+
+};
+
+reader.readAsArrayBuffer(file);
+
 });
 
 function downloadPDF(){
-  html2pdf().set({
-    margin: 0.3,
-    filename: 'account_statement.pdf',
-    html2canvas: {scale: 2},
-    jsPDF: {unit:'in', format:'a4', orientation:'landscape'}
-  }).from(document.getElementById('report')).save();
+
+html2pdf().from(document.getElementById('report')).save('statement.pdf');
+
 }
+
 </script>
 
 </body>
