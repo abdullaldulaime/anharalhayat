@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>كشف حساب الزبائن</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+body{font-family:Arial;background:#f4f5fb;padding:20px;color:#222}
+.box{background:white;max-width:1200px;margin:auto;padding:25px;border-radius:16px}
+.header{display:flex;justify-content:space-between;align-items:center;border-bottom:8px solid #5b5fa8;padding-bottom:15px}
+.badge{background:#5b5fa8;color:white;padding:15px 25px;border-radius:8px;font-weight:bold}
+h1{text-align:center;color:#333}
+.info{background:#f1f1ff;padding:15px;border-radius:10px;margin:15px 0;font-size:20px;font-weight:bold}
+input,button{padding:12px;border-radius:8px;margin:10px 0}
+button{background:#5b5fa8;color:white;border:0;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:15px}
+th{background:#5b5fa8;color:white;padding:8px}
+td{border:1px solid #ccc;padding:7px;text-align:center}
+.credit{color:#159957;font-weight:bold}
+.debit{color:#5b5fa8;font-weight:bold}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.card{background:#f7f7ff;border:1px solid #ddd;padding:15px;border-radius:12px;text-align:center}
+.card b{display:block;font-size:20px;margin-top:8px;color:#5b5fa8}
+.sign{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.sign div{border:1px solid #ddd;height:90px;text-align:center;padding-top:55px;border-radius:10px}
+@media print{input,button{display:none}}
+</style>
+</head>
+<body>
+
+<div class="box" id="report">
+  <div class="header">
+    <div>
+      <h2>شركة أنهار الحياة</h2>
+      <p>Anhar Alhayat Company</p>
+    </div>
+    <div class="badge">Account Statement<br>كشف حساب</div>
+  </div>
+
+  <h1>كشف حساب الزبائن</h1>
+
+  <input type="file" id="excelFile" accept=".xlsx,.xls">
+
+  <div class="info" id="customerName">اسم الزبون: —</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>التاريخ</th>
+        <th>النوع</th>
+        <th>الحساب</th>
+        <th>الفرع</th>
+        <th>المستند</th>
+        <th>تاريخ الاستحقاق</th>
+        <th>مدين</th>
+        <th>دائن</th>
+        <th>الرصيد</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="summary">
+    <div class="card">الرصيد الافتتاحي<b id="opening">0</b></div>
+    <div class="card">إجمالي الفواتير / المدين<b id="debit">0</b></div>
+    <div class="card">إجمالي الدفعات / الدائن<b id="credit">0</b></div>
+    <div class="card">الرصيد النهائي<b id="balance">0</b></div>
+  </div>
+
+  <div class="sign">
+    <div>توقيع العميل</div>
+    <div>المبيعات</div>
+    <div>مندوب المبيعات</div>
+  </div>
+</div>
+
+<button onclick="downloadPDF()">تحميل PDF</button>
+
+<script>
+function fmt(n){
+  n = Number(n || 0);
+  return n.toLocaleString('en-US', {maximumFractionDigits:0});
+}
+
+function excelDate(v){
+  if(!v) return '';
+  if(typeof v === 'number'){
+    const d = XLSX.SSF.parse_date_code(v);
+    return `${String(d.d).padStart(2,'0')}/${String(d.m).padStart(2,'0')}/${d.y}`;
+  }
+  if(v instanceof Date){
+    return v.toLocaleDateString('en-GB');
+  }
+  return v;
+}
+
+document.getElementById('excelFile').addEventListener('change', function(e){
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event){
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data,{type:'array', cellDates:true});
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(sheet,{header:1, defval:''});
+
+    const header = rows[0];
+    const customerRow = rows[1];
+
+    document.getElementById('customerName').innerText = 'اسم الزبون: ' + (customerRow[0] || '—');
+
+    let opening = Number(customerRow[7] || 0);
+    let totalDebit = 0;
+    let totalCredit = 0;
+    let finalBalance = Number(customerRow[11] || 0);
+
+    const tbody = document.getElementById('tbody');
+    tbody.innerHTML = '';
+
+    for(let i=2; i<rows.length; i++){
+      const r = rows[i];
+      if(!r[0]) continue;
+
+      let debit = Number(r[8] || 0);
+      let credit = Number(r[9] || 0);
+      let balance = Number(r[11] || 0);
+
+      totalDebit += debit;
+      totalCredit += credit;
+      finalBalance = balance;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${i-1}</td>
+        <td>${excelDate(r[0])}</td>
+        <td>${r[1] || ''}</td>
+        <td>${r[2] || ''}</td>
+        <td>${r[3] || ''}</td>
+        <td>${r[4] || ''}</td>
+        <td>${excelDate(r[5])}</td>
+        <td class="debit">${debit ? fmt(debit) : ''}</td>
+        <td class="credit">${credit ? fmt(credit) : ''}</td>
+        <td><b>${fmt(balance)}</b></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    document.getElementById('opening').innerText = fmt(opening);
+    document.getElementById('debit').innerText = fmt(totalDebit);
+    document.getElementById('credit').innerText = fmt(totalCredit);
+    document.getElementById('balance').innerText = fmt(finalBalance);
+  };
+
+  reader.readAsArrayBuffer(file);
+});
+
+function downloadPDF(){
+  html2pdf().set({
+    margin: 0.3,
+    filename: 'account_statement.pdf',
+    html2canvas: {scale: 2},
+    jsPDF: {unit:'in', format:'a4', orientation:'landscape'}
+  }).from(document.getElementById('report')).save();
+}
+</script>
+
+</body>
+</html>
