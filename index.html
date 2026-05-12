@@ -14,9 +14,7 @@ body{
   font-family:Tahoma, Arial, sans-serif;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   color:#1f2937;
-  font-weight:600;
-  -webkit-font-smoothing:auto;
-  text-rendering:optimizeLegibility;
+  font-weight:700;
 }
 
 .controls{
@@ -59,7 +57,6 @@ body{
 
 .header{
   background:white;
-  color:#1f2937;
   padding:22px 28px;
   display:flex;
   justify-content:space-between;
@@ -87,23 +84,22 @@ body{
 .company{
   text-align:left;
   line-height:1.6;
-  color:#6b7280;
-  font-weight:800;
+  color:#374151;
+  font-weight:900;
 }
 
 .company h2{
   margin:0;
-  font-size:25px;
-  color:#374151;
+  font-size:28px;
+  color:#1f2937;
   font-weight:900;
 }
 
 .title{
   text-align:center;
   padding:16px;
-  font-size:24px;
+  font-size:27px;
   font-weight:900;
-  letter-spacing:0.5px;
   color:#1e3a8a;
   border-bottom:1px solid #e5e7eb;
 }
@@ -111,7 +107,7 @@ body{
 .info{
   margin:18px 22px;
   padding:14px;
-  background:#ffffff;
+  background:white;
   border-radius:16px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -120,13 +116,13 @@ body{
 }
 
 .info div{
-  background:#ffffff;
+  background:white;
   padding:11px;
   border-radius:12px;
   border-right:5px solid #2563eb;
-  font-size:13px;
+  font-size:15px;
   text-align:center;
-  font-weight:800;
+  font-weight:900;
 }
 
 .table-wrap{
@@ -137,16 +133,16 @@ table{
   width:100%;
   border-collapse:collapse;
   table-layout:fixed;
-  font-size:8.8px;
+  font-size:11px;
   direction:rtl;
 }
 
 th{
   background:#f8fafc;
-  color:#374151;
+  color:#111827;
   padding:7px 3px;
   border:1px solid #d1d5db;
-  font-size:8.8px;
+  font-size:11px;
   font-weight:900;
 }
 
@@ -154,10 +150,10 @@ td{
   border:1px solid #e5e7eb;
   padding:6px 3px;
   text-align:center;
-  font-size:8.6px;
+  font-size:11px;
   vertical-align:middle;
   overflow:hidden;
-  font-weight:700;
+  font-weight:800;
 }
 
 tbody tr:nth-child(even){
@@ -174,34 +170,34 @@ tbody tr:nth-child(even){
 .col-balance{width:14%;}
 
 .doc-cell{
-  font-size:8px;
+  font-size:10px;
   line-height:1.25;
   word-break:break-word;
-  font-weight:700;
+  font-weight:800;
 }
 
 .account-cell{
-  font-size:8px;
+  font-size:10px;
   word-break:break-word;
-  font-weight:700;
+  font-weight:800;
 }
 
 .money{
   direction:ltr;
   unicode-bidi:plaintext;
   white-space:nowrap;
-  font-size:8.8px;
+  font-size:11px;
   font-weight:900;
-  letter-spacing:-0.3px;
+  letter-spacing:-0.4px;
 }
 
 .badge{
-  padding:4px 6px;
+  padding:4px 7px;
   border-radius:999px;
   font-weight:900;
   display:inline-block;
-  min-width:45px;
-  font-size:8px;
+  min-width:50px;
+  font-size:10px;
 }
 
 .invoice{
@@ -259,14 +255,14 @@ tbody tr:nth-child(even){
   border-radius:16px;
   padding:14px 8px;
   text-align:center;
-  font-size:13px;
-  font-weight:800;
+  font-size:15px;
+  font-weight:900;
 }
 
 .card span{
   display:block;
   margin-top:8px;
-  font-size:20px;
+  font-size:22px;
   font-weight:900;
   color:#1e3a8a;
   direction:ltr;
@@ -282,9 +278,9 @@ tbody tr:nth-child(even){
   padding:14px;
   border-radius:16px;
   line-height:1.8;
-  font-size:13px;
+  font-size:15px;
   text-align:center;
-  font-weight:800;
+  font-weight:900;
 }
 
 .signatures{
@@ -300,18 +296,18 @@ tbody tr:nth-child(even){
   border-radius:16px;
   text-align:center;
   padding-top:55px;
-  color:#4b5563;
-  font-size:13px;
+  color:#111827;
+  font-size:15px;
   font-weight:900;
 }
 
 .footer{
   text-align:center;
-  color:#6b7280;
+  color:#374151;
   padding:15px;
   border-top:1px solid #e5e7eb;
-  font-size:12px;
-  font-weight:800;
+  font-size:14px;
+  font-weight:900;
 }
 
 @media print{
@@ -339,64 +335,67 @@ tbody tr:nth-child(even){
 
   table{
     width:100%;
-    font-size:7.8px;
+    font-size:10px;
   }
 
   th{
-    font-size:7.8px;
+    font-size:10px;
     padding:5px 2px;
     font-weight:900;
   }
 
   td{
-    font-size:7.6px;
+    font-size:10px;
     padding:4px 2px;
-    font-weight:800;
+    font-weight:900;
   }
 
   .money{
-    font-size:7.5px;
+    font-size:10px;
     font-weight:900;
+    letter-spacing:-0.7px;
   }
 
   .badge{
-    font-size:7px;
+    font-size:9px;
     font-weight:900;
+    padding:3px 5px;
+    min-width:45px;
   }
 
   .title{
-    font-size:18px;
+    font-size:21px;
     font-weight:900;
   }
 
   .company h2{
-    font-size:20px;
+    font-size:22px;
     font-weight:900;
   }
 
   .info div{
-    font-size:10px;
-    font-weight:800;
+    font-size:12px;
+    font-weight:900;
   }
 
   .card{
-    font-size:10px;
-    font-weight:800;
+    font-size:12px;
+    font-weight:900;
   }
 
   .card span{
-    font-size:15px;
+    font-size:17px;
     font-weight:900;
   }
 
   .note{
-    font-size:10px;
-    font-weight:800;
+    font-size:12px;
+    font-weight:900;
   }
 
   .footer{
-    font-size:9px;
-    font-weight:800;
+    font-size:10px;
+    font-weight:900;
   }
 
   @page{
@@ -676,6 +675,17 @@ if(
 !credit &&
 !balance
 ){
+return;
+}
+
+const looksLikeTotal =
+!safeText(row.Date || '') &&
+!doc &&
+!rawType &&
+debit > 0 &&
+credit > 0;
+
+if(looksLikeTotal){
 return;
 }
 
