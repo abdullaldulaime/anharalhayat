@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>كشف حساب احترافي</title>
+
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <style>
+
 body{
   margin:0;
   padding:25px;
   font-family:Tahoma, Arial, sans-serif;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   color:#1f2937;
+  font-weight:600;
+  -webkit-font-smoothing:auto;
+  text-rendering:optimizeLegibility;
 }
 
 .controls{
@@ -30,6 +35,7 @@ body{
   padding:12px;
   border:1px solid #d1d5db;
   border-radius:12px;
+  font-weight:700;
 }
 
 .controls button{
@@ -38,7 +44,7 @@ body{
   border:0;
   border-radius:12px;
   padding:12px;
-  font-weight:bold;
+  font-weight:900;
   cursor:pointer;
 }
 
@@ -70,7 +76,7 @@ body{
   align-items:center;
   justify-content:center;
   color:#2563eb;
-  font-weight:bold;
+  font-weight:900;
 }
 
 .logoBox img{
@@ -81,20 +87,23 @@ body{
 .company{
   text-align:left;
   line-height:1.6;
-  color:#9ca3af;
+  color:#6b7280;
+  font-weight:800;
 }
 
 .company h2{
   margin:0;
   font-size:25px;
-  color:#9ca3af;
+  color:#374151;
+  font-weight:900;
 }
 
 .title{
   text-align:center;
   padding:16px;
   font-size:24px;
-  font-weight:bold;
+  font-weight:900;
+  letter-spacing:0.5px;
   color:#1e3a8a;
   border-bottom:1px solid #e5e7eb;
 }
@@ -117,37 +126,38 @@ body{
   border-right:5px solid #2563eb;
   font-size:13px;
   text-align:center;
+  font-weight:800;
 }
 
 .table-wrap{
   margin:10px 14px;
-  overflow:visible;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
   table-layout:fixed;
-  font-size:8.6px;
+  font-size:8.8px;
   direction:rtl;
 }
 
 th{
-  background:#ffffff;
-  color:#9ca3af;
-  padding:6px 2px;
-  border:1px solid #e5e7eb;
-  font-size:8.5px;
-  font-weight:bold;
+  background:#f8fafc;
+  color:#374151;
+  padding:7px 3px;
+  border:1px solid #d1d5db;
+  font-size:8.8px;
+  font-weight:900;
 }
 
 td{
   border:1px solid #e5e7eb;
-  padding:5px 2px;
+  padding:6px 3px;
   text-align:center;
-  font-size:8.5px;
+  font-size:8.6px;
   vertical-align:middle;
   overflow:hidden;
+  font-weight:700;
 }
 
 tbody tr:nth-child(even){
@@ -167,26 +177,28 @@ tbody tr:nth-child(even){
   font-size:8px;
   line-height:1.25;
   word-break:break-word;
+  font-weight:700;
 }
 
 .account-cell{
   font-size:8px;
   word-break:break-word;
+  font-weight:700;
 }
 
 .money{
   direction:ltr;
   unicode-bidi:plaintext;
   white-space:nowrap;
-  font-size:8.2px;
-  font-weight:bold;
+  font-size:8.8px;
+  font-weight:900;
   letter-spacing:-0.3px;
 }
 
 .badge{
-  padding:3px 5px;
+  padding:4px 6px;
   border-radius:999px;
-  font-weight:bold;
+  font-weight:900;
   display:inline-block;
   min-width:45px;
   font-size:8px;
@@ -242,19 +254,20 @@ tbody tr:nth-child(even){
 }
 
 .card{
-  background:#ffffff;
+  background:white;
   border:1px solid #e5e7eb;
   border-radius:16px;
   padding:14px 8px;
   text-align:center;
   font-size:13px;
+  font-weight:800;
 }
 
 .card span{
   display:block;
   margin-top:8px;
   font-size:20px;
-  font-weight:bold;
+  font-weight:900;
   color:#1e3a8a;
   direction:ltr;
   unicode-bidi:plaintext;
@@ -271,6 +284,7 @@ tbody tr:nth-child(even){
   line-height:1.8;
   font-size:13px;
   text-align:center;
+  font-weight:800;
 }
 
 .signatures{
@@ -282,23 +296,31 @@ tbody tr:nth-child(even){
 
 .sign{
   height:78px;
-  border:1px dashed #d1d5db;
+  border:1px dashed #9ca3af;
   border-radius:16px;
   text-align:center;
   padding-top:55px;
   color:#4b5563;
   font-size:13px;
+  font-weight:900;
 }
 
 .footer{
   text-align:center;
-  color:#9ca3af;
+  color:#6b7280;
   padding:15px;
   border-top:1px solid #e5e7eb;
   font-size:12px;
+  font-weight:800;
 }
 
 @media print{
+
+  *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+
   body{
     background:white;
     padding:0;
@@ -313,116 +335,68 @@ tbody tr:nth-child(even){
     border-radius:0;
     max-width:100%;
     width:100%;
-    overflow:visible;
-  }
-
-  .header{
-    padding:10px 16px;
-  }
-
-  .logoBox{
-    width:70px;
-    height:70px;
-  }
-
-  .logoBox img{
-    max-width:68px;
-    max-height:68px;
-  }
-
-  .company h2{
-    font-size:19px;
-  }
-
-  .company{
-    font-size:11px;
-  }
-
-  .title{
-    padding:10px;
-    font-size:18px;
-  }
-
-  .info{
-    margin:10px 12px;
-    padding:8px;
-    gap:8px;
-  }
-
-  .info div{
-    font-size:10px;
-    padding:8px 5px;
-  }
-
-  .table-wrap{
-    margin:6px 4px;
   }
 
   table{
     width:100%;
-    font-size:7.4px;
+    font-size:7.8px;
   }
 
   th{
-    font-size:7.2px;
-    padding:4px 1px;
+    font-size:7.8px;
+    padding:5px 2px;
+    font-weight:900;
   }
 
   td{
-    font-size:7.2px;
-    padding:3.5px 1px;
+    font-size:7.6px;
+    padding:4px 2px;
+    font-weight:800;
+  }
+
+  .money{
+    font-size:7.5px;
+    font-weight:900;
   }
 
   .badge{
     font-size:7px;
-    min-width:38px;
-    padding:2px 4px;
+    font-weight:900;
   }
 
-  .doc-cell,
-  .account-cell{
-    font-size:7px;
+  .title{
+    font-size:18px;
+    font-weight:900;
   }
 
-  .money{
-    font-size:7px;
-    letter-spacing:-0.6px;
+  .company h2{
+    font-size:20px;
+    font-weight:900;
   }
 
-  .summary{
-    margin:10px 12px;
-    gap:8px;
+  .info div{
+    font-size:10px;
+    font-weight:800;
   }
 
   .card{
-    padding:9px 4px;
     font-size:10px;
+    font-weight:800;
   }
 
   .card span{
-    font-size:16px;
+    font-size:15px;
+    font-weight:900;
   }
 
   .note{
-    margin:10px 12px;
-    padding:9px;
     font-size:10px;
-  }
-
-  .signatures{
-    margin:10px 12px;
-    gap:8px;
-  }
-
-  .sign{
-    height:58px;
-    padding-top:42px;
-    font-size:10px;
+    font-weight:800;
   }
 
   .footer{
     font-size:9px;
-    padding:8px;
+    font-weight:800;
   }
 
   @page{
@@ -430,6 +404,7 @@ tbody tr:nth-child(even){
     margin:7mm;
   }
 }
+
 </style>
 </head>
 
@@ -448,211 +423,324 @@ tbody tr:nth-child(even){
 
 <div class="report" id="report">
 
-  <div class="header">
-    <div class="company">
-      <h2 id="companyName">شركة أنهار الحياة</h2>
-      <div id="companySub">Anhar Alhayat Company</div>
-      <div>Baghdad - Iraq</div>
-      <div>Account Statement Report</div>
-    </div>
+<div class="header">
 
-    <div class="logoBox" id="logoBox">LOGO</div>
-  </div>
+<div class="company">
+<h2 id="companyName">شركة أنهار الحياة</h2>
+<div id="companySub">Anhar Alhayat Company</div>
+<div>Baghdad - Iraq</div>
+<div>Account Statement Report</div>
+</div>
 
-  <div class="title">Customer Account | كشف حساب الزبائن<br>Statement</div>
+<div class="logoBox" id="logoBox">LOGO</div>
 
-  <div class="info">
-    <div>اسم العميل: <b id="customerName">—</b></div>
-    <div>الفترة: <b id="periodText">—</b></div>
-    <div>تاريخ التقرير: <b id="todayDate"></b></div>
-  </div>
+</div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="col-no">#</th>
-          <th class="col-date">التاريخ</th>
-          <th class="col-type">النوع</th>
-          <th class="col-doc">المستند</th>
-          <th class="col-account">الحساب</th>
-          <th class="col-debit">مدين</th>
-          <th class="col-credit">دائن</th>
-          <th class="col-balance">الرصيد</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
+<div class="title">
+Customer Account Statement | كشف حساب الزبائن
+</div>
 
-  <div class="summary">
-    <div class="card">عدد الحركات<span id="transactions">0</span></div>
-    <div class="card">إجمالي الفواتير<span id="totalDebit">0</span></div>
-    <div class="card">إجمالي الدفعات<span id="totalCredit">0</span></div>
-    <div class="card">الرصيد النهائي<span id="finalBalance">0</span></div>
-  </div>
+<div class="info">
+<div>اسم العميل: <b id="customerName">—</b></div>
+<div>الفترة: <b id="periodText">—</b></div>
+<div>تاريخ التقرير: <b id="todayDate"></b></div>
+</div>
 
-  <div class="note">
-    <b>ملاحظة:</b> يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف.
-    <br>
-    <b>Note:</b> Please review this statement within 15 days.
-  </div>
+<div class="table-wrap">
 
-  <div class="signatures">
-    <div class="sign">توقيع العميل</div>
-    <div class="sign">المحاسبة</div>
-    <div class="sign">الإدارة</div>
-  </div>
+<table>
 
-  <div class="footer">
-    Generated electronically from Odoo Excel Report
-  </div>
+<thead>
+<tr>
+<th class="col-no">#</th>
+<th class="col-date">التاريخ</th>
+<th class="col-type">النوع</th>
+<th class="col-doc">المستند</th>
+<th class="col-account">الحساب</th>
+<th class="col-debit">مدين</th>
+<th class="col-credit">دائن</th>
+<th class="col-balance">الرصيد</th>
+</tr>
+</thead>
+
+<tbody id="tbody"></tbody>
+
+</table>
+
+</div>
+
+<div class="summary">
+
+<div class="card">
+عدد الحركات
+<span id="transactions">0</span>
+</div>
+
+<div class="card">
+إجمالي الفواتير
+<span id="totalDebit">0</span>
+</div>
+
+<div class="card">
+إجمالي الدفعات
+<span id="totalCredit">0</span>
+</div>
+
+<div class="card">
+الرصيد النهائي
+<span id="finalBalance">0</span>
+</div>
+
+</div>
+
+<div class="note">
+يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف
+</div>
+
+<div class="signatures">
+
+<div class="sign">
+توقيع العميل
+</div>
+
+<div class="sign">
+المحاسبة
+</div>
+
+<div class="sign">
+الإدارة
+</div>
+
+</div>
+
+<div class="footer">
+Generated electronically from Odoo Excel Report
+</div>
 
 </div>
 
 <script>
-document.getElementById('todayDate').innerText = new Date().toLocaleDateString('en-GB');
+
+document.getElementById('todayDate').innerText =
+new Date().toLocaleDateString('en-GB');
 
 function fmt(value){
-  let num = Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,''));
-  return num.toLocaleString('en-US', {maximumFractionDigits:0});
+
+let num = Number(
+String(value || 0)
+.replace(/,/g,'')
+.replace(/[^\d.-]/g,'')
+);
+
+return num.toLocaleString('en-US',{
+maximumFractionDigits:0
+});
+
 }
 
 function cleanNum(value){
-  return Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,'')) || 0;
+
+return Number(
+String(value || 0)
+.replace(/,/g,'')
+.replace(/[^\d.-]/g,'')
+) || 0;
+
 }
 
 function safeText(value){
-  return value === undefined || value === null ? '' : String(value);
+
+return value === undefined || value === null
+? ''
+: String(value);
+
 }
 
 function translateType(code){
-  code = String(code || '').toUpperCase();
 
-  if(code.includes('RINV') || code.includes('RRINV') || code.includes('REFUND')){
-    return {text:'مرتجع', cls:'return'};
-  }
+code = String(code || '').toUpperCase();
 
-  if(code.includes('INV')){
-    return {text:'فاتورة', cls:'invoice'};
-  }
+if(code.includes('RINV') || code.includes('REFUND')){
+return {text:'مرتجع', cls:'return'};
+}
 
-  if(code.includes('CS') || code.includes('CASH') || code.includes('CHS') || code.includes('PAY')){
-    return {text:'دفعة', cls:'payment'};
-  }
+if(code.includes('INV')){
+return {text:'فاتورة', cls:'invoice'};
+}
 
-  if(code.includes('BNK') || code.includes('BANK')){
-    return {text:'بنك', cls:'bank'};
-  }
+if(
+code.includes('CS') ||
+code.includes('PAY') ||
+code.includes('CASH')
+){
+return {text:'دفعة', cls:'payment'};
+}
 
-  if(code.includes('MISC') || code.includes('JRN')){
-    return {text:'قيد', cls:'misc'};
-  }
+if(code.includes('BNK')){
+return {text:'بنك', cls:'bank'};
+}
 
-  return {text: code || 'غير محدد', cls:'other'};
+if(code.includes('MISC')){
+return {text:'قيد', cls:'misc'};
+}
+
+return {text:code || 'غير محدد', cls:'other'};
+
 }
 
 function applyInfo(){
-  document.getElementById('companyName').innerText = document.getElementById('companyNameInput').value || '—';
-  document.getElementById('companySub').innerText = document.getElementById('companySubInput').value || '—';
-  document.getElementById('customerName').innerText = document.getElementById('customerInput').value || '—';
-  document.getElementById('periodText').innerText = document.getElementById('periodInput').value || '—';
+
+document.getElementById('companyName').innerText =
+document.getElementById('companyNameInput').value || '—';
+
+document.getElementById('companySub').innerText =
+document.getElementById('companySubInput').value || '—';
+
+document.getElementById('customerName').innerText =
+document.getElementById('customerInput').value || '—';
+
+document.getElementById('periodText').innerText =
+document.getElementById('periodInput').value || '—';
+
 }
 
-document.getElementById('logoInput').addEventListener('change', function(e){
-  const file = e.target.files[0];
-  if(!file) return;
+document.getElementById('logoInput')
+.addEventListener('change', function(e){
 
-  const reader = new FileReader();
-  reader.onload = function(event){
-    document.getElementById('logoBox').innerHTML = `<img src="${event.target.result}">`;
-  };
-  reader.readAsDataURL(file);
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+document.getElementById('logoBox').innerHTML =
+`<img src="${event.target.result}">`;
+
+};
+
+reader.readAsDataURL(file);
+
 });
 
-document.getElementById('excelFile').addEventListener('change', function(e){
-  const file = e.target.files[0];
-  const reader = new FileReader();
+document.getElementById('excelFile')
+.addEventListener('change', function(e){
 
-  reader.onload = function(event){
-    const data = new Uint8Array(event.target.result);
-    const workbook = XLSX.read(data,{type:'array', cellDates:true});
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    let rows = XLSX.utils.sheet_to_json(sheet);
+const file = e.target.files[0];
 
-    rows = rows.filter(row => {
-      const rawType = safeText(row.Type || row.JRNL || row.Journal || '');
-      const doc = safeText(row.Doc || row.Ref || '');
-      const date = safeText(row.Date || '');
-      const debit = cleanNum(row.Debit);
-      const credit = cleanNum(row.Credit);
-      const balance = cleanNum(row.Balance);
+const reader = new FileReader();
 
-      const looksLikeTotal =
-        !date &&
-        !doc &&
-        !rawType &&
-        debit > 0 &&
-        credit > 0 &&
-        balance !== 0;
+reader.onload = function(event){
 
-      return !looksLikeTotal;
-    });
+const data = new Uint8Array(event.target.result);
 
-    const tbody = document.getElementById('tbody');
-    tbody.innerHTML = '';
+const workbook = XLSX.read(data,{
+type:'array'
+});
 
-    let totalDebit = 0;
-    let totalCredit = 0;
-    let finalBalance = 0;
-    let count = 0;
+const sheet =
+workbook.Sheets[workbook.SheetNames[0]];
 
-    rows.forEach((row)=>{
-      const rawType = row.Type || row.JRNL || row.Journal || '';
-      const type = translateType(rawType);
+let rows = XLSX.utils.sheet_to_json(sheet);
 
-      const debit = cleanNum(row.Debit);
-      const credit = cleanNum(row.Credit);
-      const balance = cleanNum(row.Balance);
+const tbody = document.getElementById('tbody');
 
-      const doc = safeText(row.Doc || row.Ref || '');
-      const account = safeText(row.Account || row.Description || '');
+tbody.innerHTML = '';
 
-      if(!doc && !account && !debit && !credit && !balance){
-        return;
-      }
+let totalDebit = 0;
+let totalCredit = 0;
+let finalBalance = 0;
+let count = 0;
 
-      count++;
-      totalDebit += debit;
-      totalCredit += credit;
-      finalBalance = balance;
+rows.forEach((row)=>{
 
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${count}</td>
-        <td>${safeText(row.Date || '')}</td>
-        <td><span class="badge ${type.cls}">${type.text}</span></td>
-        <td class="doc-cell">${doc}</td>
-        <td class="account-cell">${account}</td>
-        <td class="money debit">${debit ? fmt(debit) : ''}</td>
-        <td class="money credit">${credit ? fmt(credit) : ''}</td>
-        <td class="money balance">${fmt(balance)}</td>
-      `;
-      tbody.appendChild(tr);
-    });
+const rawType =
+row.Type || row.JRNL || row.Journal || '';
 
-    document.getElementById('transactions').innerText = count;
-    document.getElementById('totalDebit').innerText = fmt(totalDebit);
-    document.getElementById('totalCredit').innerText = fmt(totalCredit);
-    document.getElementById('finalBalance').innerText = fmt(finalBalance);
-  };
+const type = translateType(rawType);
 
-  reader.readAsArrayBuffer(file);
+const debit = cleanNum(row.Debit);
+const credit = cleanNum(row.Credit);
+const balance = cleanNum(row.Balance);
+
+const doc = safeText(row.Doc || row.Ref || '');
+
+const account =
+safeText(row.Account || row.Description || '');
+
+if(
+!doc &&
+!account &&
+!debit &&
+!credit &&
+!balance
+){
+return;
+}
+
+count++;
+
+totalDebit += debit;
+totalCredit += credit;
+finalBalance = balance;
+
+const tr = document.createElement('tr');
+
+tr.innerHTML = `
+<td>${count}</td>
+
+<td>${safeText(row.Date || '')}</td>
+
+<td>
+<span class="badge ${type.cls}">
+${type.text}
+</span>
+</td>
+
+<td class="doc-cell">${doc}</td>
+
+<td class="account-cell">${account}</td>
+
+<td class="money debit">
+${debit ? fmt(debit) : ''}
+</td>
+
+<td class="money credit">
+${credit ? fmt(credit) : ''}
+</td>
+
+<td class="money balance">
+${fmt(balance)}
+</td>
+`;
+
+tbody.appendChild(tr);
+
+});
+
+document.getElementById('transactions').innerText =
+count;
+
+document.getElementById('totalDebit').innerText =
+fmt(totalDebit);
+
+document.getElementById('totalCredit').innerText =
+fmt(totalCredit);
+
+document.getElementById('finalBalance').innerText =
+fmt(finalBalance);
+
+};
+
+reader.readAsArrayBuffer(file);
+
 });
 
 function printReport(){
-  window.print();
+window.print();
 }
+
 </script>
 
 </body>
