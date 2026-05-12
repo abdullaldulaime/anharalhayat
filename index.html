@@ -137,6 +137,44 @@ tbody tr:nth-child(even){
   background:#f8fafc;
 }
 
+.badge{
+  padding:6px 12px;
+  border-radius:999px;
+  font-weight:bold;
+  display:inline-block;
+  min-width:75px;
+}
+
+.invoice{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.payment{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.return{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.bank{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.misc{
+  background:#ede9fe;
+  color:#6d28d9;
+}
+
+.other{
+  background:#e5e7eb;
+  color:#374151;
+}
+
 .debit{
   color:#2563eb;
   font-weight:bold;
@@ -237,10 +275,10 @@ tbody tr:nth-child(even){
 
 <div class="controls">
   <input type="file" id="excelFile" accept=".xlsx,.xls">
-  <input type="text" id="companyNameInput" placeholder="اسم الشركة" value="شركة أنهار الحياة">
-  <input type="text" id="companySubInput" placeholder="Company English Name" value="Anhar Alhayat Company">
+  <input type="text" id="companyNameInput" value="شركة أنهار الحياة">
+  <input type="text" id="companySubInput" value="Anhar Alhayat Company">
   <input type="text" id="customerInput" placeholder="اسم العميل">
-  <input type="text" id="periodInput" placeholder="الفترة مثلا 01/01/2026 - 31/01/2026">
+  <input type="text" id="periodInput" placeholder="الفترة">
   <input type="file" id="logoInput" accept="image/*">
   <button onclick="applyInfo()">تطبيق البيانات</button>
   <button onclick="printReport()">طباعة / حفظ PDF</button>
@@ -285,15 +323,15 @@ tbody tr:nth-child(even){
 
   <div class="summary">
     <div class="card">عدد الحركات<span id="transactions">0</span></div>
-    <div class="card">إجمالي المدين<span id="totalDebit">0</span></div>
-    <div class="card">إجمالي الدائن<span id="totalCredit">0</span></div>
+    <div class="card">إجمالي الفواتير<span id="totalDebit">0</span></div>
+    <div class="card">إجمالي الدفعات<span id="totalCredit">0</span></div>
     <div class="card">الرصيد النهائي<span id="finalBalance">0</span></div>
   </div>
 
   <div class="note">
-    <b>ملاحظة:</b> يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف، وفي حال وجود أي اختلاف يرجى التواصل مع قسم الحسابات.
+    <b>ملاحظة:</b> يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف.
     <br>
-    <b>Note:</b> Please review this statement within 15 days. For any discrepancies, contact the accounting department.
+    <b>Note:</b> Please review this statement within 15 days.
   </div>
 
   <div class="signatures">
@@ -314,6 +352,36 @@ document.getElementById('todayDate').innerText = new Date().toLocaleDateString('
 function fmt(value){
   let num = Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,''));
   return num.toLocaleString('en-US');
+}
+
+function cleanNum(value){
+  return Number(String(value || 0).replace(/,/g,'').replace(/[^\d.-]/g,'')) || 0;
+}
+
+function translateType(code){
+  code = String(code || '').toUpperCase();
+
+  if(code.includes('RINV') || code.includes('RRINV') || code.includes('REFUND')){
+    return {text:'مرتجع', cls:'return'};
+  }
+
+  if(code.includes('INV')){
+    return {text:'فاتورة', cls:'invoice'};
+  }
+
+  if(code.includes('CS') || code.includes('CASH') || code.includes('CHS') || code.includes('PAY')){
+    return {text:'دفعة', cls:'payment'};
+  }
+
+  if(code.includes('BNK') || code.includes('BANK')){
+    return {text:'بنك', cls:'bank'};
+  }
+
+  if(code.includes('MISC') || code.includes('JRN')){
+    return {text:'قيد يومي', cls:'misc'};
+  }
+
+  return {text: code || 'غير محدد', cls:'other'};
 }
 
 function applyInfo(){
@@ -352,9 +420,12 @@ document.getElementById('excelFile').addEventListener('change', function(e){
     let finalBalance = 0;
 
     rows.forEach((row,index)=>{
-      const debit = Number(String(row.Debit || 0).replace(/,/g,''));
-      const credit = Number(String(row.Credit || 0).replace(/,/g,''));
-      const balance = Number(String(row.Balance || 0).replace(/,/g,''));
+      const rawType = row.Type || row.JRNL || row.Journal || '';
+      const type = translateType(rawType);
+
+      const debit = cleanNum(row.Debit);
+      const credit = cleanNum(row.Credit);
+      const balance = cleanNum(row.Balance);
 
       totalDebit += debit;
       totalCredit += credit;
@@ -364,7 +435,7 @@ document.getElementById('excelFile').addEventListener('change', function(e){
       tr.innerHTML = `
         <td>${index + 1}</td>
         <td>${row.Date || ''}</td>
-        <td>${row.Type || row.JRNL || ''}</td>
+        <td><span class="badge ${type.cls}">${type.text}</span></td>
         <td>${row.Doc || row.Ref || ''}</td>
         <td>${row.Description || row.Account || ''}</td>
         <td class="debit">${debit ? fmt(debit) : ''}</td>
