@@ -1,21 +1,115 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
-<title>كشف حساب احترافي</title>
+<title>نظام تقارير أنهار الحياة</title>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <style>
-
 body{
   margin:0;
-  padding:25px;
+  padding:0;
   font-family:Tahoma, Arial, sans-serif;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   color:#1f2937;
   font-weight:700;
+}
+
+/* HOME PAGE */
+.home{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
+  padding:25px;
+}
+
+.home-card{
+  background:white;
+  width:900px;
+  padding:45px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(15,23,42,.16);
+}
+
+.home-logo{
+  width:110px;
+  height:110px;
+  margin:0 auto 20px;
+  border-radius:25px;
+  background:#eff6ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:#2563eb;
+  font-weight:900;
+}
+
+.home-logo img{
+  max-width:100px;
+  max-height:100px;
+}
+
+.home-card h1{
+  font-size:42px;
+  color:#1e3a8a;
+  margin:0;
+}
+
+.home-card p{
+  font-size:20px;
+  font-weight:800;
+  color:#475569;
+}
+
+.home-card h2{
+  color:#111827;
+  margin-top:25px;
+}
+
+.menu{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.menu-card{
+  padding:35px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#f8fafc,#eef2ff);
+  border:2px solid #dbeafe;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.menu-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(37,99,235,.18);
+  border-color:#2563eb;
+}
+
+.icon{
+  font-size:65px;
+}
+
+.menu-card h3{
+  color:#1e3a8a;
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.menu-card p{
+  font-size:15px;
+}
+
+/* REPORT PAGE */
+.page-area{
+  padding:25px;
 }
 
 .controls{
@@ -45,6 +139,10 @@ body{
   padding:12px;
   font-weight:900;
   cursor:pointer;
+}
+
+.controls .back-btn{
+  background:#334155;
 }
 
 .report{
@@ -200,47 +298,16 @@ tbody tr:nth-child(even){
   font-size:10px;
 }
 
-.invoice{
-  background:#dbeafe;
-  color:#1d4ed8;
-}
+.invoice{background:#dbeafe;color:#1d4ed8;}
+.payment{background:#dcfce7;color:#15803d;}
+.return{background:#fee2e2;color:#b91c1c;}
+.bank{background:#fef3c7;color:#92400e;}
+.misc{background:#ede9fe;color:#6d28d9;}
+.other{background:#e5e7eb;color:#374151;}
 
-.payment{
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.return{
-  background:#fee2e2;
-  color:#b91c1c;
-}
-
-.bank{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.misc{
-  background:#ede9fe;
-  color:#6d28d9;
-}
-
-.other{
-  background:#e5e7eb;
-  color:#374151;
-}
-
-.debit{
-  color:#2563eb;
-}
-
-.credit{
-  color:#16a34a;
-}
-
-.balance{
-  color:#b45309;
-}
+.debit{color:#2563eb;}
+.credit{color:#16a34a;}
+.balance{color:#b45309;}
 
 .summary{
   margin:18px 22px;
@@ -308,7 +375,6 @@ tbody tr:nth-child(even){
 }
 
 @media print{
-
   *{
     -webkit-print-color-adjust:exact !important;
     print-color-adjust:exact !important;
@@ -319,8 +385,13 @@ tbody tr:nth-child(even){
     padding:0;
   }
 
+  .home,
   .controls{
     display:none !important;
+  }
+
+  .page-area{
+    padding:0;
   }
 
   .report{
@@ -350,38 +421,63 @@ tbody tr:nth-child(even){
     margin:7mm;
   }
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- HOME PAGE -->
+<div id="homePage" class="home">
+  <div class="home-card">
+
+    <div class="home-logo" id="homeLogo">
+      LOGO
+    </div>
+
+    <h1>شركة أنهار الحياة</h1>
+    <p>Anhar Alhayat Company</p>
+    <h2>نظام التقارير الإلكترونية</h2>
+
+    <div class="menu">
+
+      <div class="menu-card" onclick="openStatement()">
+        <div class="icon">📄</div>
+        <h3>كشف حساب زبون معين</h3>
+        <p>رفع ملف Excel وتحويله إلى كشف حساب احترافي PDF</p>
+      </div>
+
+      <div class="menu-card" onclick="openRoute()">
+        <div class="icon">🚚</div>
+        <h3>كشف خط سير كامل</h3>
+        <p>تقرير خط السير الكامل والمندوبين</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- STATEMENT PAGE -->
+<div id="statementPage" class="page-area" style="display:none;">
+
 <div class="controls">
 
 <input type="file" id="excelFile" accept=".xlsx,.xls">
 
-<input type="text" id="companyNameInput"
-value="شركة أنهار الحياة">
+<input type="text" id="companyNameInput" value="شركة أنهار الحياة">
 
-<input type="text" id="companySubInput"
-value="Anhar Alhayat Company">
+<input type="text" id="companySubInput" value="Anhar Alhayat Company">
 
-<input type="text" id="customerInput"
-placeholder="اسم العميل">
+<input type="text" id="customerInput" placeholder="اسم العميل">
 
-<input type="text" id="periodInput"
-placeholder="الفترة">
+<input type="text" id="periodInput" placeholder="الفترة">
 
-<input type="file" id="logoInput"
-accept="image/*">
+<input type="file" id="logoInput" accept="image/*">
 
-<button onclick="applyInfo()">
-تطبيق البيانات
-</button>
+<button onclick="applyInfo()">تطبيق البيانات</button>
 
-<button onclick="printReport()">
-طباعة / حفظ PDF
-</button>
+<button onclick="printReport()">طباعة / حفظ PDF</button>
+
+<button class="back-btn" onclick="goHome()">رجوع</button>
 
 </div>
 
@@ -500,251 +596,254 @@ Generated electronically from Odoo Excel Report
 
 </div>
 
-<script>
+</div>
 
+<script>
 document.getElementById('todayDate').innerText =
 new Date().toLocaleDateString('en-GB');
 
+function openStatement(){
+  document.getElementById('homePage').style.display = 'none';
+  document.getElementById('statementPage').style.display = 'block';
+}
+
+function goHome(){
+  document.getElementById('statementPage').style.display = 'none';
+  document.getElementById('homePage').style.display = 'flex';
+}
+
+function openRoute(){
+  alert('تقرير كشف خط السير الكامل سيتم إضافته بالمرحلة القادمة');
+}
+
 function fmt(value){
+  let num = Number(
+    String(value || 0)
+    .replace(/,/g,'')
+    .replace(/[^\d.-]/g,'')
+  );
 
-let num = Number(
-String(value || 0)
-.replace(/,/g,'')
-.replace(/[^\d.-]/g,'')
-);
-
-return num.toLocaleString('en-US',{
-maximumFractionDigits:0
-});
-
+  return num.toLocaleString('en-US',{
+    maximumFractionDigits:0
+  });
 }
 
 function cleanNum(value){
-
-return Number(
-String(value || 0)
-.replace(/,/g,'')
-.replace(/[^\d.-]/g,'')
-) || 0;
-
+  return Number(
+    String(value || 0)
+    .replace(/,/g,'')
+    .replace(/[^\d.-]/g,'')
+  ) || 0;
 }
 
 function safeText(value){
-
-return value === undefined || value === null
-? ''
-: String(value);
-
+  return value === undefined || value === null
+  ? ''
+  : String(value);
 }
 
 function formatDate(value){
+  if(!value) return '';
 
-if(!value) return '';
+  if(typeof value === 'number'){
+    const d = XLSX.SSF.parse_date_code(value);
 
-if(typeof value === 'number'){
+    if(!d) return '';
 
-const d = XLSX.SSF.parse_date_code(value);
+    return String(d.d).padStart(2,'0') + '/' +
+           String(d.m).padStart(2,'0') + '/' +
+           d.y;
+  }
 
-if(!d) return '';
-
-return String(d.d).padStart(2,'0') + '/' +
-String(d.m).padStart(2,'0') + '/' +
-d.y;
-
-}
-
-return String(value);
-
+  return String(value);
 }
 
 function translateType(code){
+  code = String(code || '').toUpperCase();
 
-code = String(code || '').toUpperCase();
+  if(code.includes('RINV') || code.includes('REFUND')){
+    return {text:'مرتجع', cls:'return'};
+  }
 
-if(code.includes('RINV') || code.includes('REFUND')){
-return {text:'مرتجع', cls:'return'};
-}
+  if(code.includes('INV')){
+    return {text:'فاتورة', cls:'invoice'};
+  }
 
-if(code.includes('INV')){
-return {text:'فاتورة', cls:'invoice'};
-}
+  if(
+    code.includes('CS') ||
+    code.includes('PAY') ||
+    code.includes('CASH')
+  ){
+    return {text:'دفعة', cls:'payment'};
+  }
 
-if(
-code.includes('CS') ||
-code.includes('PAY') ||
-code.includes('CASH')
-){
-return {text:'دفعة', cls:'payment'};
-}
+  if(code.includes('BNK')){
+    return {text:'بنك', cls:'bank'};
+  }
 
-if(code.includes('BNK')){
-return {text:'بنك', cls:'bank'};
-}
+  if(code.includes('MISC')){
+    return {text:'قيد', cls:'misc'};
+  }
 
-if(code.includes('MISC')){
-return {text:'قيد', cls:'misc'};
-}
-
-return {text:code || 'غير محدد', cls:'other'};
-
+  return {text:code || 'غير محدد', cls:'other'};
 }
 
 function applyInfo(){
+  document.getElementById('companyName').innerText =
+  document.getElementById('companyNameInput').value || '—';
 
-document.getElementById('companyName').innerText =
-document.getElementById('companyNameInput').value || '—';
+  document.getElementById('companySub').innerText =
+  document.getElementById('companySubInput').value || '—';
 
-document.getElementById('companySub').innerText =
-document.getElementById('companySubInput').value || '—';
+  document.getElementById('customerName').innerText =
+  document.getElementById('customerInput').value || '—';
 
-document.getElementById('customerName').innerText =
-document.getElementById('customerInput').value || '—';
-
-document.getElementById('periodText').innerText =
-document.getElementById('periodInput').value || '—';
-
+  document.getElementById('periodText').innerText =
+  document.getElementById('periodInput').value || '—';
 }
 
 document.getElementById('logoInput')
 .addEventListener('change', function(e){
+  const file = e.target.files[0];
 
-const file = e.target.files[0];
+  if(!file) return;
 
-if(!file) return;
+  const reader = new FileReader();
 
-const reader = new FileReader();
+  reader.onload = function(event){
+    const imageHtml = `<img src="${event.target.result}">`;
 
-reader.onload = function(event){
+    document.getElementById('logoBox').innerHTML = imageHtml;
+    document.getElementById('homeLogo').innerHTML = imageHtml;
+  };
 
-document.getElementById('logoBox').innerHTML =
-`<img src="${event.target.result}">`;
-
-};
-
-reader.readAsDataURL(file);
-
+  reader.readAsDataURL(file);
 });
 
 document.getElementById('excelFile')
 .addEventListener('change', function(e){
+  const file = e.target.files[0];
 
-const file = e.target.files[0];
+  const reader = new FileReader();
 
-const reader = new FileReader();
+  reader.onload = function(event){
+    const data = new Uint8Array(event.target.result);
 
-reader.onload = function(event){
+    const workbook = XLSX.read(data,{
+      type:'array'
+    });
 
-const data = new Uint8Array(event.target.result);
+    const sheet =
+    workbook.Sheets[workbook.SheetNames[0]];
 
-const workbook = XLSX.read(data,{
-type:'array'
-});
+    let rows = XLSX.utils.sheet_to_json(sheet);
 
-const sheet =
-workbook.Sheets[workbook.SheetNames[0]];
+    const tbody = document.getElementById('tbody');
 
-let rows = XLSX.utils.sheet_to_json(sheet);
+    tbody.innerHTML = '';
 
-const tbody = document.getElementById('tbody');
+    let totalDebit = 0;
+    let totalCredit = 0;
+    let finalBalance = 0;
+    let count = 0;
 
-tbody.innerHTML = '';
+    rows.forEach((row)=>{
+      const rawType =
+      row.Type || row.JRNL || row.Journal || '';
 
-let totalDebit = 0;
-let totalCredit = 0;
-let finalBalance = 0;
-let count = 0;
+      const type = translateType(rawType);
 
-rows.forEach((row)=>{
+      const debit = cleanNum(row.Debit);
+      const credit = cleanNum(row.Credit);
+      const balance = cleanNum(row.Balance);
 
-const rawType =
-row.Type || row.JRNL || row.Journal || '';
+      const doc = safeText(row.Doc || row.Ref || '');
 
-const type = translateType(rawType);
+      const account =
+      safeText(row.Account || row.Description || '');
 
-const debit = cleanNum(row.Debit);
-const credit = cleanNum(row.Credit);
-const balance = cleanNum(row.Balance);
+      const date =
+      formatDate(row["Due Date"]);
 
-const doc = safeText(row.Doc || row.Ref || '');
+      if(
+        !doc &&
+        !account &&
+        !debit &&
+        !credit &&
+        !balance
+      ){
+        return;
+      }
 
-const account =
-safeText(row.Account || row.Description || '');
+      const looksLikeTotal =
+      !safeText(date) &&
+      !doc &&
+      !rawType &&
+      debit > 0 &&
+      credit > 0;
 
-const date =
-formatDate(row["Due Date"]);
+      if(looksLikeTotal){
+        return;
+      }
 
-if(
-!doc &&
-!account &&
-!debit &&
-!credit &&
-!balance
-){
-return;
-}
+      count++;
 
-count++;
+      totalDebit += debit;
+      totalCredit += credit;
+      finalBalance = balance;
 
-totalDebit += debit;
-totalCredit += credit;
-finalBalance = balance;
+      const tr = document.createElement('tr');
 
-const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${count}</td>
 
-tr.innerHTML = `
-<td>${count}</td>
+        <td>${date}</td>
 
-<td>${date}</td>
+        <td>
+          <span class="badge ${type.cls}">
+          ${type.text}
+          </span>
+        </td>
 
-<td>
-<span class="badge ${type.cls}">
-${type.text}
-</span>
-</td>
+        <td class="doc-cell">${doc}</td>
 
-<td class="doc-cell">${doc}</td>
+        <td class="account-cell">${account}</td>
 
-<td class="account-cell">${account}</td>
+        <td class="money debit">
+        ${debit ? fmt(debit) : ''}
+        </td>
 
-<td class="money debit">
-${debit ? fmt(debit) : ''}
-</td>
+        <td class="money credit">
+        ${credit ? fmt(credit) : ''}
+        </td>
 
-<td class="money credit">
-${credit ? fmt(credit) : ''}
-</td>
+        <td class="money balance">
+        ${fmt(balance)}
+        </td>
+      `;
 
-<td class="money balance">
-${fmt(balance)}
-</td>
-`;
+      tbody.appendChild(tr);
+    });
 
-tbody.appendChild(tr);
+    document.getElementById('transactions').innerText =
+    count;
 
-});
+    document.getElementById('totalDebit').innerText =
+    fmt(totalDebit);
 
-document.getElementById('transactions').innerText =
-count;
+    document.getElementById('totalCredit').innerText =
+    fmt(totalCredit);
 
-document.getElementById('totalDebit').innerText =
-fmt(totalDebit);
+    document.getElementById('finalBalance').innerText =
+    fmt(finalBalance);
+  };
 
-document.getElementById('totalCredit').innerText =
-fmt(totalCredit);
-
-document.getElementById('finalBalance').innerText =
-fmt(finalBalance);
-
-};
-
-reader.readAsArrayBuffer(file);
-
+  reader.readAsArrayBuffer(file);
 });
 
 function printReport(){
-window.print();
+  window.print();
 }
-
 </script>
 
 </body>
