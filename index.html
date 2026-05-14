@@ -313,6 +313,107 @@ tbody tr:nth-child(even){
   color:#dc2626 !important;
 }
 
+.account-summary{
+  margin:22px;
+  border:1px solid #d8d8f0;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.summary-title{
+  background:#f1f1ff;
+  padding:16px;
+  text-align:center;
+  font-size:26px;
+  font-weight:900;
+  color:#1e293b;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:16px 24px;
+  border-top:1px solid #ececf5;
+  font-size:18px;
+  font-weight:900;
+}
+
+.summary-row b{
+  color:#111827;
+  direction:ltr;
+}
+
+.summary-row.outstanding b,
+.summary-row.outstanding span{
+  color:#dc2626;
+}
+
+.aging-box{
+  margin:22px;
+  border:2px solid #f59e0b;
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.aging-header{
+  background:#fff7ed;
+  padding:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  font-size:28px;
+  font-weight:900;
+  color:#78350f;
+}
+
+.aging-badge{
+  background:#22c55e;
+  color:white;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:18px;
+}
+
+.aging-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.aging-item{
+  padding:28px;
+  text-align:center;
+  border-left:1px solid #fed7aa;
+}
+
+.aging-item div{
+  font-size:20px;
+  margin-bottom:18px;
+  color:#666;
+}
+
+.aging-item b{
+  display:block;
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.green b{
+  color:#16a34a;
+}
+
+.yellow b{
+  color:#ca8a04;
+}
+
+.orange b{
+  color:#ea580c;
+}
+
+.red b{
+  color:#dc2626;
+}
+
 .summary{
   margin:18px 22px;
   display:grid;
@@ -587,6 +688,93 @@ tbody tr:nth-child(even){
 
 </div>
 
+<div class="account-summary">
+
+<div class="summary-title">
+ملخص الحساب | Account Summary
+</div>
+
+<div class="summary-row">
+<span>تاريخ آخر فاتورة | Last Invoice Date:</span>
+<b id="lastInvoiceDate">-</b>
+</div>
+
+<div class="summary-row">
+<span>قيمة آخر فاتورة | Last Invoice Amount:</span>
+<b id="lastInvoiceAmount">0</b>
+</div>
+
+<div class="summary-row">
+<span>تاريخ آخر دفعة | Last Payment Date:</span>
+<b id="lastPaymentDate">-</b>
+</div>
+
+<div class="summary-row">
+<span>قيمة آخر دفعة | Last Payment Amount:</span>
+<b id="lastPaymentAmount">0</b>
+</div>
+
+<div class="summary-row">
+<span>إجمالي الفواتير | Total Invoiced:</span>
+<b id="summaryInvoices">0</b>
+</div>
+
+<div class="summary-row">
+<span>إجمالي المدفوعات | Total Payments:</span>
+<b id="summaryPayments">0</b>
+</div>
+
+<div class="summary-row outstanding">
+<span>الرصيد المستحق | Outstanding Balance:</span>
+<b id="summaryBalance">0</b>
+</div>
+
+</div>
+
+<div class="aging-box">
+
+<div class="aging-header">
+
+<div class="aging-badge">
+أقل من 30 يوماً
+</div>
+
+<div>
+تحليل عمر الدين | Aging Analysis
+</div>
+
+</div>
+
+<div class="aging-grid">
+
+<div class="aging-item green">
+<div>0 - 30 يوم</div>
+<b id="age30">0</b>
+<span>د.ع</span>
+</div>
+
+<div class="aging-item yellow">
+<div>31 - 60 يوم</div>
+<b id="age60">0</b>
+<span>د.ع</span>
+</div>
+
+<div class="aging-item orange">
+<div>61 - 90 يوم</div>
+<b id="age90">0</b>
+<span>د.ع</span>
+</div>
+
+<div class="aging-item red">
+<div>أكثر من 90 يوم</div>
+<b id="ageMore90">0</b>
+<span>د.ع</span>
+</div>
+
+</div>
+
+</div>
+
 <div class="summary">
 
 <div class="card">
@@ -729,6 +917,41 @@ return value.toLocaleDateString('en-GB');
 return String(value);
 }
 
+function parseDate(value){
+if(!value) return null;
+
+if(typeof value === 'number'){
+const d = XLSX.SSF.parse_date_code(value);
+if(!d) return null;
+return new Date(d.y, d.m - 1, d.d);
+}
+
+if(value instanceof Date){
+return value;
+}
+
+let text = String(value).trim();
+
+let parts = text.split(/[\/\-]/);
+
+if(parts.length === 3){
+let p1 = Number(parts[0]);
+let p2 = Number(parts[1]);
+let p3 = Number(parts[2]);
+
+if(p3 > 1900){
+return new Date(p3, p2 - 1, p1);
+}
+
+if(p1 > 1900){
+return new Date(p1, p2 - 1, p3);
+}
+}
+
+let d = new Date(text);
+return isNaN(d) ? null : d;
+}
+
 function translateType(code){
 code = String(code || '').toUpperCase();
 
@@ -792,12 +1015,23 @@ let finalBalance = 0;
 let count = 0;
 let autoCustomer = '';
 
+let lastInvoiceDate = '';
+let lastPaymentDate = '';
+let lastInvoiceAmount = 0;
+let lastPaymentAmount = 0;
+
+let age30 = 0;
+let age60 = 0;
+let age90 = 0;
+let ageMore90 = 0;
+
+const today = new Date();
+
 rows.forEach((row)=>{
 
 const rawType = getVal(row,[
 'JRNL',
 'دفتر اليومية',
-'دفتر اليومية ',
 'Journal',
 'Type',
 'النوع'
@@ -823,7 +1057,6 @@ const balance = cleanNum(getVal(row,[
 const doc = safeText(getVal(row,[
 'Ref',
 'المرجع',
-'المرجع ',
 'Doc',
 'المستند'
 ]));
@@ -846,6 +1079,7 @@ const dateValue = getVal(row,[
 ]);
 
 const date = formatDate(dateValue);
+const realDate = parseDate(dateValue);
 
 if(!autoCustomer && !rawType && !doc && safeText(dateValue) && (debit || credit || balance)){
 autoCustomer = safeText(dateValue);
@@ -871,10 +1105,40 @@ const type = translateType(rawType);
 count++;
 
 totalDebit += debit;
-
 totalCredit += credit;
-
 finalBalance = balance;
+
+if(type.text === 'فاتورة'){
+
+lastInvoiceDate = date;
+lastInvoiceAmount = debit;
+
+if(realDate){
+const diffDays = Math.floor((today - realDate) / (1000 * 60 * 60 * 24));
+
+if(diffDays <= 30){
+age30 += debit;
+}
+else if(diffDays <= 60){
+age60 += debit;
+}
+else if(diffDays <= 90){
+age90 += debit;
+}
+else{
+ageMore90 += debit;
+}
+}
+else{
+age30 += debit;
+}
+
+}
+
+if(type.text === 'دفعة'){
+lastPaymentDate = date;
+lastPaymentAmount = credit;
+}
 
 const tr = document.createElement('tr');
 
@@ -927,6 +1191,39 @@ document.getElementById('customerInput').value || autoCustomer || '—';
 
 document.getElementById('periodText').innerText =
 document.getElementById('periodInput').value || '—';
+
+document.getElementById('lastInvoiceDate').innerText =
+lastInvoiceDate || '-';
+
+document.getElementById('lastInvoiceAmount').innerText =
+fmt(lastInvoiceAmount);
+
+document.getElementById('lastPaymentDate').innerText =
+lastPaymentDate || '-';
+
+document.getElementById('lastPaymentAmount').innerText =
+fmt(lastPaymentAmount);
+
+document.getElementById('summaryInvoices').innerText =
+fmt(totalDebit);
+
+document.getElementById('summaryPayments').innerText =
+fmt(totalCredit);
+
+document.getElementById('summaryBalance').innerText =
+fmt(finalBalance);
+
+document.getElementById('age30').innerText =
+fmt(age30);
+
+document.getElementById('age60').innerText =
+fmt(age60);
+
+document.getElementById('age90').innerText =
+fmt(age90);
+
+document.getElementById('ageMore90').innerText =
+fmt(ageMore90);
 
 };
 
