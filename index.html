@@ -137,7 +137,7 @@ body{
   border-radius:18px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:12px;
 }
 
@@ -262,7 +262,7 @@ td{
   padding:10px;
   text-align:center;
   font-size:14px;
-  font-weight:800;
+  font-weight:900;
 }
 
 tbody tr:nth-child(even){
@@ -274,6 +274,8 @@ tbody tr:nth-child(even){
   border-radius:999px;
   font-size:13px;
   font-weight:900;
+  display:inline-block;
+  white-space:nowrap;
 }
 
 .invoice{
@@ -289,6 +291,25 @@ tbody tr:nth-child(even){
 .other{
   background:#e5e7eb;
   color:#374151;
+}
+
+.money{
+  direction:ltr;
+  unicode-bidi:plaintext;
+  white-space:nowrap;
+  font-weight:900;
+}
+
+.debit{
+  color:#2563eb !important;
+}
+
+.credit{
+  color:#16a34a !important;
+}
+
+.balance{
+  color:#dc2626 !important;
 }
 
 .summary{
@@ -322,7 +343,7 @@ tbody tr:nth-child(even){
   border-right:6px solid #f59e0b;
   padding:16px;
   border-radius:16px;
-  line-height:1.8;
+  line-height:2;
   font-size:17px;
   text-align:center;
   font-weight:900;
@@ -549,7 +570,9 @@ tbody tr:nth-child(even){
 </div>
 
 <div class="note">
-تم إنشاء هذا التقرير إلكترونياً من نظام Odoo
+تم إنشاء كشف الحساب إلكترونياً من قبل برنامج Odoo
+<br>
+في حال وجود أي مشكلة أو تناقض بالحساب يرجى التواصل على الرقم المختصر 6799 - قسم التدقيق
 </div>
 
 <div class="footer">
@@ -654,7 +677,15 @@ code.includes('PAY')
 return {text:'دفعة', cls:'payment'};
 }
 
-return {text:code || 'غير محدد', cls:'other'};
+if(code.includes('BNK')){
+return {text:'بنك', cls:'other'};
+}
+
+if(code.includes('MISC')){
+return {text:'قيد', cls:'other'};
+}
+
+return {text:'حركة', cls:'other'};
 
 }
 
@@ -706,7 +737,11 @@ const account =
 safeText(row.Account || row.Description || '');
 
 const date =
-formatDate(row["Due Date"]);
+formatDate(
+row["Due Date"] ||
+row["Date"] ||
+row["Invoice Date"]
+);
 
 if(
 !doc &&
@@ -743,11 +778,17 @@ ${type.text}
 
 <td>${account}</td>
 
-<td>${debit ? fmt(debit) : ''}</td>
+<td class="money debit">
+${debit ? fmt(debit) : ''}
+</td>
 
-<td>${credit ? fmt(credit) : ''}</td>
+<td class="money credit">
+${credit ? fmt(credit) : ''}
+</td>
 
-<td>${fmt(balance)}</td>
+<td class="money balance">
+${fmt(balance)}
+</td>
 `;
 
 tbody.appendChild(tr);
