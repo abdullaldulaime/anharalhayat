@@ -388,16 +388,53 @@ tbody tr:nth-child(even){
 
   body{
     background:white;
+    zoom:82%;
   }
 
   .report{
+    width:100%;
+    max-width:100%;
     box-shadow:none;
+    overflow:visible;
+  }
+
+  .table-wrap{
+    overflow:visible !important;
+  }
+
+  table{
+    width:100% !important;
+    table-layout:fixed;
+    font-size:11px;
+  }
+
+  th,td{
+    font-size:11px !important;
+    padding:6px !important;
+    word-wrap:break-word;
+  }
+
+  .money{
+    font-size:11px !important;
+  }
+
+  .title{
+    font-size:30px !important;
+  }
+
+  .company h2{
+    font-size:28px !important;
+  }
+
+  .card span{
+    font-size:22px !important;
   }
 
   @page{
     size:A4 portrait;
-    margin:7mm;
+    margin:6mm;
   }
+
 }
 
 </style>
