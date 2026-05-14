@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
-<title>نظام تقارير أنهار الحياة</title>
+<title>نظام تقارير شركة أنهار الحياة</title>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <style>
+
 body{
   margin:0;
   padding:0;
   font-family:Tahoma, Arial, sans-serif;
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
   color:#1f2937;
   font-weight:700;
 }
 
-/* HOME PAGE */
+/* الصفحة الرئيسية */
+
 .home{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
   padding:25px;
 }
 
 .home-card{
   background:white;
-  width:900px;
+  width:950px;
   padding:45px;
   border-radius:30px;
   text-align:center;
@@ -36,50 +38,61 @@ body{
 }
 
 .home-logo{
-  width:110px;
-  height:110px;
+  width:130px;
+  height:130px;
   margin:0 auto 20px;
   border-radius:25px;
   background:#eff6ff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:22px;
-  color:#2563eb;
-  font-weight:900;
+  overflow:hidden;
 }
 
 .home-logo img{
-  max-width:100px;
-  max-height:100px;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
 .home-card h1{
-  font-size:42px;
+  font-size:52px;
   color:#1e3a8a;
   margin:0;
+  font-weight:900;
 }
 
 .home-card p{
-  font-size:20px;
-  font-weight:800;
+  font-size:26px;
   color:#475569;
+  margin-top:10px;
+  font-weight:900;
 }
 
-.home-card h2{
+.department{
+  margin-top:18px;
+  font-size:30px;
   color:#111827;
-  margin-top:25px;
+  font-weight:900;
+}
+
+.company-info{
+  margin-top:22px;
+  line-height:2;
+  font-size:18px;
+  color:#475569;
+  font-weight:800;
 }
 
 .menu{
-  margin-top:35px;
+  margin-top:40px;
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:25px;
 }
 
 .menu-card{
-  padding:35px;
+  padding:40px;
   border-radius:24px;
   background:linear-gradient(135deg,#f8fafc,#eef2ff);
   border:2px solid #dbeafe;
@@ -94,20 +107,24 @@ body{
 }
 
 .icon{
-  font-size:65px;
+  font-size:70px;
 }
 
 .menu-card h3{
   color:#1e3a8a;
-  font-size:26px;
+  font-size:32px;
+  margin-top:18px;
   margin-bottom:10px;
+  font-weight:900;
 }
 
 .menu-card p{
-  font-size:15px;
+  font-size:17px;
+  color:#475569;
 }
 
-/* REPORT PAGE */
+/* صفحة التقرير */
+
 .page-area{
   padding:25px;
 }
@@ -129,6 +146,7 @@ body{
   border:1px solid #d1d5db;
   border-radius:12px;
   font-weight:700;
+  font-size:15px;
 }
 
 .controls button{
@@ -139,10 +157,11 @@ body{
   padding:12px;
   font-weight:900;
   cursor:pointer;
+  font-size:15px;
 }
 
-.controls .back-btn{
-  background:#334155;
+.back-btn{
+  background:#334155 !important;
 }
 
 .report{
@@ -155,8 +174,7 @@ body{
 }
 
 .header{
-  background:white;
-  padding:22px 28px;
+  padding:25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -164,40 +182,40 @@ body{
 }
 
 .logoBox{
-  width:95px;
-  height:95px;
-  background:white;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#2563eb;
-  font-weight:900;
+  width:110px;
+  height:110px;
+  border-radius:20px;
+  overflow:hidden;
+  background:#eff6ff;
 }
 
 .logoBox img{
-  max-width:90px;
-  max-height:90px;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
 .company{
   text-align:left;
-  line-height:1.6;
-  color:#374151;
-  font-weight:900;
+  line-height:1.8;
 }
 
 .company h2{
   margin:0;
-  font-size:28px;
-  color:#1f2937;
+  font-size:34px;
+  color:#1e3a8a;
   font-weight:900;
+}
+
+.company div{
+  font-size:18px;
+  font-weight:800;
 }
 
 .title{
   text-align:center;
-  padding:16px;
-  font-size:27px;
+  padding:18px;
+  font-size:34px;
   font-weight:900;
   color:#1e3a8a;
   border-bottom:1px solid #e5e7eb;
@@ -205,22 +223,19 @@ body{
 
 .info{
   margin:18px 22px;
-  padding:14px;
-  background:white;
-  border-radius:16px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
-  border:1px solid #e5e7eb;
 }
 
 .info div{
   background:white;
-  padding:11px;
-  border-radius:12px;
+  padding:14px;
+  border-radius:14px;
   border-right:5px solid #2563eb;
-  font-size:15px;
+  border:1px solid #e5e7eb;
   text-align:center;
+  font-size:18px;
   font-weight:900;
 }
 
@@ -231,27 +246,22 @@ body{
 table{
   width:100%;
   border-collapse:collapse;
-  table-layout:fixed;
-  font-size:11px;
-  direction:rtl;
 }
 
 th{
-  background:#f8fafc;
+  background:#eff6ff;
   color:#111827;
-  padding:7px 3px;
+  padding:12px;
   border:1px solid #d1d5db;
-  font-size:11px;
+  font-size:15px;
   font-weight:900;
 }
 
 td{
   border:1px solid #e5e7eb;
-  padding:6px 3px;
+  padding:10px;
   text-align:center;
-  font-size:11px;
-  vertical-align:middle;
-  overflow:hidden;
+  font-size:14px;
   font-weight:800;
 }
 
@@ -259,55 +269,27 @@ tbody tr:nth-child(even){
   background:#fafafa;
 }
 
-.col-no{width:4%;}
-.col-date{width:10%;}
-.col-type{width:11%;}
-.col-doc{width:19%;}
-.col-account{width:12%;}
-.col-debit{width:15%;}
-.col-credit{width:15%;}
-.col-balance{width:14%;}
-
-.doc-cell{
-  font-size:10px;
-  line-height:1.25;
-  word-break:break-word;
-  font-weight:800;
-}
-
-.account-cell{
-  font-size:10px;
-  word-break:break-word;
-  font-weight:800;
-}
-
-.money{
-  direction:ltr;
-  unicode-bidi:plaintext;
-  white-space:nowrap;
-  font-size:11px;
-  font-weight:900;
-}
-
 .badge{
-  padding:4px 7px;
+  padding:5px 10px;
   border-radius:999px;
+  font-size:13px;
   font-weight:900;
-  display:inline-block;
-  min-width:50px;
-  font-size:10px;
 }
 
-.invoice{background:#dbeafe;color:#1d4ed8;}
-.payment{background:#dcfce7;color:#15803d;}
-.return{background:#fee2e2;color:#b91c1c;}
-.bank{background:#fef3c7;color:#92400e;}
-.misc{background:#ede9fe;color:#6d28d9;}
-.other{background:#e5e7eb;color:#374151;}
+.invoice{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
 
-.debit{color:#2563eb;}
-.credit{color:#16a34a;}
-.balance{color:#b45309;}
+.payment{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.other{
+  background:#e5e7eb;
+  color:#374151;
+}
 
 .summary{
   margin:18px 22px;
@@ -320,17 +302,16 @@ tbody tr:nth-child(even){
   background:white;
   border:1px solid #e5e7eb;
   border-radius:16px;
-  padding:14px 8px;
+  padding:18px;
   text-align:center;
-  font-size:15px;
+  font-size:18px;
   font-weight:900;
 }
 
 .card span{
   display:block;
-  margin-top:8px;
-  font-size:22px;
-  font-weight:900;
+  margin-top:10px;
+  font-size:28px;
   color:#1e3a8a;
 }
 
@@ -339,81 +320,36 @@ tbody tr:nth-child(even){
   background:#fffbeb;
   border:1px solid #fde68a;
   border-right:6px solid #f59e0b;
-  padding:14px;
+  padding:16px;
   border-radius:16px;
   line-height:1.8;
-  font-size:15px;
+  font-size:17px;
   text-align:center;
-  font-weight:900;
-}
-
-.signatures{
-  margin:18px 22px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.sign{
-  height:78px;
-  border:1px dashed #9ca3af;
-  border-radius:16px;
-  text-align:center;
-  padding-top:55px;
-  color:#111827;
-  font-size:15px;
   font-weight:900;
 }
 
 .footer{
   text-align:center;
-  color:#374151;
-  padding:15px;
+  color:#475569;
+  padding:18px;
   border-top:1px solid #e5e7eb;
-  font-size:14px;
+  font-size:15px;
   font-weight:900;
 }
 
 @media print{
-  *{
-    -webkit-print-color-adjust:exact !important;
-    print-color-adjust:exact !important;
+
+  .controls,
+  .home{
+    display:none !important;
   }
 
   body{
     background:white;
-    padding:0;
-  }
-
-  .home,
-  .controls{
-    display:none !important;
-  }
-
-  .page-area{
-    padding:0;
   }
 
   .report{
     box-shadow:none;
-    border-radius:0;
-    max-width:100%;
-    width:100%;
-  }
-
-  table{
-    width:100%;
-    font-size:10px;
-  }
-
-  th{
-    font-size:10px;
-    padding:5px 2px;
-  }
-
-  td{
-    font-size:10px;
-    padding:4px 2px;
   }
 
   @page{
@@ -421,85 +357,118 @@ tbody tr:nth-child(even){
     margin:7mm;
   }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HOME PAGE -->
+<!-- الصفحة الرئيسية -->
+
 <div id="homePage" class="home">
-  <div class="home-card">
 
-    <div class="home-logo" id="homeLogo">
-      LOGO
-    </div>
+<div class="home-card">
 
-    <h1>شركة أنهار الحياة</h1>
-    <p>Anhar Alhayat Company</p>
-    <h2>نظام التقارير الإلكترونية</h2>
-
-    <div class="menu">
-
-      <div class="menu-card" onclick="openStatement()">
-        <div class="icon">📄</div>
-        <h3>كشف حساب زبون معين</h3>
-        <p>رفع ملف Excel وتحويله إلى كشف حساب احترافي PDF</p>
-      </div>
-
-      <div class="menu-card" onclick="openRoute()">
-        <div class="icon">🚚</div>
-        <h3>كشف خط سير كامل</h3>
-        <p>تقرير خط السير الكامل والمندوبين</p>
-      </div>
-
-    </div>
-  </div>
+<div class="home-logo">
+<img src="./logo.png">
 </div>
 
-<!-- STATEMENT PAGE -->
+<h1>شركة أنهار الحياة</h1>
+
+<p>Anhar Alhayat Company</p>
+
+<div class="department">
+قسم تكنلوجيا المعلومات
+</div>
+
+<div class="company-info">
+
+<div>📍 بغداد - العراق</div>
+
+<div>☎️ 6799</div>
+
+<div>✉️ it@anharalhayat.com</div>
+
+</div>
+
+<div class="menu">
+
+<div class="menu-card" onclick="openStatement()">
+
+<div class="icon">📄</div>
+
+<h3>كشف حساب زبون معين</h3>
+
+<p>
+رفع ملف Excel وتحويله إلى كشف حساب احترافي PDF
+</p>
+
+</div>
+
+<div class="menu-card" onclick="openRoute()">
+
+<div class="icon">🚚</div>
+
+<h3>كشف خط سير كامل</h3>
+
+<p>
+تقرير خط السير والمندوبين
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- صفحة التقرير -->
+
 <div id="statementPage" class="page-area" style="display:none;">
 
 <div class="controls">
 
 <input type="file" id="excelFile" accept=".xlsx,.xls">
 
-<input type="text" id="companyNameInput" value="شركة أنهار الحياة">
-
-<input type="text" id="companySubInput" value="Anhar Alhayat Company">
-
 <input type="text" id="customerInput" placeholder="اسم العميل">
 
 <input type="text" id="periodInput" placeholder="الفترة">
 
-<input type="file" id="logoInput" accept="image/*">
+<button onclick="printReport()">
+طباعة / حفظ PDF
+</button>
 
-<button onclick="applyInfo()">تطبيق البيانات</button>
-
-<button onclick="printReport()">طباعة / حفظ PDF</button>
-
-<button class="back-btn" onclick="goHome()">رجوع</button>
+<button class="back-btn" onclick="goHome()">
+رجوع للرئيسية
+</button>
 
 </div>
 
-<div class="report" id="report">
+<div class="report">
 
 <div class="header">
 
 <div class="company">
-<h2 id="companyName">شركة أنهار الحياة</h2>
-<div id="companySub">Anhar Alhayat Company</div>
-<div>Baghdad - Iraq</div>
-<div>Account Statement Report</div>
+
+<h2>شركة أنهار الحياة</h2>
+
+<div>Anhar Alhayat Company</div>
+
+<div>قسم تكنلوجيا المعلومات</div>
+
+<div>☎️ 6799</div>
+
 </div>
 
-<div class="logoBox" id="logoBox">
-LOGO
+<div class="logoBox">
+<img src="./logo.png">
 </div>
 
 </div>
 
 <div class="title">
-Customer Account Statement | كشف حساب الزبائن
+كشف حساب الزبائن | Customer Account Statement
 </div>
 
 <div class="info">
@@ -528,14 +497,23 @@ Customer Account Statement | كشف حساب الزبائن
 <thead>
 
 <tr>
-<th class="col-no">#</th>
-<th class="col-date">التاريخ</th>
-<th class="col-type">النوع</th>
-<th class="col-doc">المستند</th>
-<th class="col-account">الحساب</th>
-<th class="col-debit">مدين</th>
-<th class="col-credit">دائن</th>
-<th class="col-balance">الرصيد</th>
+
+<th>#</th>
+
+<th>التاريخ</th>
+
+<th>النوع</th>
+
+<th>المستند</th>
+
+<th>الحساب</th>
+
+<th>مدين</th>
+
+<th>دائن</th>
+
+<th>الرصيد</th>
+
 </tr>
 
 </thead>
@@ -571,27 +549,11 @@ Customer Account Statement | كشف حساب الزبائن
 </div>
 
 <div class="note">
-يرجى مراجعة الحساب خلال 15 يوم من تاريخ إصدار الكشف
-</div>
-
-<div class="signatures">
-
-<div class="sign">
-توقيع العميل
-</div>
-
-<div class="sign">
-المحاسبة
-</div>
-
-<div class="sign">
-الإدارة
-</div>
-
+تم إنشاء هذا التقرير إلكترونياً من نظام Odoo
 </div>
 
 <div class="footer">
-Generated electronically from Odoo Excel Report
+قسم تكنلوجيا المعلومات - شركة أنهار الحياة
 </div>
 
 </div>
@@ -599,251 +561,229 @@ Generated electronically from Odoo Excel Report
 </div>
 
 <script>
+
 document.getElementById('todayDate').innerText =
 new Date().toLocaleDateString('en-GB');
 
 function openStatement(){
-  document.getElementById('homePage').style.display = 'none';
-  document.getElementById('statementPage').style.display = 'block';
+
+document.getElementById('homePage').style.display='none';
+
+document.getElementById('statementPage').style.display='block';
+
 }
 
 function goHome(){
-  document.getElementById('statementPage').style.display = 'none';
-  document.getElementById('homePage').style.display = 'flex';
+
+document.getElementById('statementPage').style.display='none';
+
+document.getElementById('homePage').style.display='flex';
+
 }
 
 function openRoute(){
-  alert('تقرير كشف خط السير الكامل سيتم إضافته بالمرحلة القادمة');
+
+alert('سيتم إضافة تقرير خط السير قريباً');
+
 }
 
 function fmt(value){
-  let num = Number(
-    String(value || 0)
-    .replace(/,/g,'')
-    .replace(/[^\d.-]/g,'')
-  );
 
-  return num.toLocaleString('en-US',{
-    maximumFractionDigits:0
-  });
+let num = Number(
+String(value || 0)
+.replace(/,/g,'')
+.replace(/[^\d.-]/g,'')
+);
+
+return num.toLocaleString('en-US',{
+maximumFractionDigits:0
+});
+
 }
 
 function cleanNum(value){
-  return Number(
-    String(value || 0)
-    .replace(/,/g,'')
-    .replace(/[^\d.-]/g,'')
-  ) || 0;
+
+return Number(
+String(value || 0)
+.replace(/,/g,'')
+.replace(/[^\d.-]/g,'')
+) || 0;
+
 }
 
 function safeText(value){
-  return value === undefined || value === null
-  ? ''
-  : String(value);
+
+return value === undefined || value === null
+? ''
+: String(value);
+
 }
 
 function formatDate(value){
-  if(!value) return '';
 
-  if(typeof value === 'number'){
-    const d = XLSX.SSF.parse_date_code(value);
+if(!value) return '';
 
-    if(!d) return '';
+if(typeof value === 'number'){
 
-    return String(d.d).padStart(2,'0') + '/' +
-           String(d.m).padStart(2,'0') + '/' +
-           d.y;
-  }
+const d = XLSX.SSF.parse_date_code(value);
 
-  return String(value);
+if(!d) return '';
+
+return String(d.d).padStart(2,'0') + '/' +
+String(d.m).padStart(2,'0') + '/' +
+d.y;
+
+}
+
+return String(value);
+
 }
 
 function translateType(code){
-  code = String(code || '').toUpperCase();
 
-  if(code.includes('RINV') || code.includes('REFUND')){
-    return {text:'مرتجع', cls:'return'};
-  }
+code = String(code || '').toUpperCase();
 
-  if(code.includes('INV')){
-    return {text:'فاتورة', cls:'invoice'};
-  }
-
-  if(
-    code.includes('CS') ||
-    code.includes('PAY') ||
-    code.includes('CASH')
-  ){
-    return {text:'دفعة', cls:'payment'};
-  }
-
-  if(code.includes('BNK')){
-    return {text:'بنك', cls:'bank'};
-  }
-
-  if(code.includes('MISC')){
-    return {text:'قيد', cls:'misc'};
-  }
-
-  return {text:code || 'غير محدد', cls:'other'};
+if(code.includes('INV')){
+return {text:'فاتورة', cls:'invoice'};
 }
 
-function applyInfo(){
-  document.getElementById('companyName').innerText =
-  document.getElementById('companyNameInput').value || '—';
-
-  document.getElementById('companySub').innerText =
-  document.getElementById('companySubInput').value || '—';
-
-  document.getElementById('customerName').innerText =
-  document.getElementById('customerInput').value || '—';
-
-  document.getElementById('periodText').innerText =
-  document.getElementById('periodInput').value || '—';
+if(
+code.includes('CS') ||
+code.includes('PAY')
+){
+return {text:'دفعة', cls:'payment'};
 }
 
-document.getElementById('logoInput')
-.addEventListener('change', function(e){
-  const file = e.target.files[0];
+return {text:code || 'غير محدد', cls:'other'};
 
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(event){
-    const imageHtml = `<img src="${event.target.result}">`;
-
-    document.getElementById('logoBox').innerHTML = imageHtml;
-    document.getElementById('homeLogo').innerHTML = imageHtml;
-  };
-
-  reader.readAsDataURL(file);
-});
+}
 
 document.getElementById('excelFile')
 .addEventListener('change', function(e){
-  const file = e.target.files[0];
 
-  const reader = new FileReader();
+const file = e.target.files[0];
 
-  reader.onload = function(event){
-    const data = new Uint8Array(event.target.result);
+const reader = new FileReader();
 
-    const workbook = XLSX.read(data,{
-      type:'array'
-    });
+reader.onload = function(event){
 
-    const sheet =
-    workbook.Sheets[workbook.SheetNames[0]];
+const data = new Uint8Array(event.target.result);
 
-    let rows = XLSX.utils.sheet_to_json(sheet);
+const workbook = XLSX.read(data,{
+type:'array'
+});
 
-    const tbody = document.getElementById('tbody');
+const sheet =
+workbook.Sheets[workbook.SheetNames[0]];
 
-    tbody.innerHTML = '';
+let rows = XLSX.utils.sheet_to_json(sheet);
 
-    let totalDebit = 0;
-    let totalCredit = 0;
-    let finalBalance = 0;
-    let count = 0;
+const tbody = document.getElementById('tbody');
 
-    rows.forEach((row)=>{
-      const rawType =
-      row.Type || row.JRNL || row.Journal || '';
+tbody.innerHTML='';
 
-      const type = translateType(rawType);
+let totalDebit = 0;
+let totalCredit = 0;
+let finalBalance = 0;
+let count = 0;
 
-      const debit = cleanNum(row.Debit);
-      const credit = cleanNum(row.Credit);
-      const balance = cleanNum(row.Balance);
+rows.forEach((row)=>{
 
-      const doc = safeText(row.Doc || row.Ref || '');
+const rawType =
+row.Type || row.JRNL || row.Journal || '';
 
-      const account =
-      safeText(row.Account || row.Description || '');
+const type = translateType(rawType);
 
-      const date =
-      formatDate(row["Due Date"]);
+const debit = cleanNum(row.Debit);
 
-      if(
-        !doc &&
-        !account &&
-        !debit &&
-        !credit &&
-        !balance
-      ){
-        return;
-      }
+const credit = cleanNum(row.Credit);
 
-      const looksLikeTotal =
-      !safeText(date) &&
-      !doc &&
-      !rawType &&
-      debit > 0 &&
-      credit > 0;
+const balance = cleanNum(row.Balance);
 
-      if(looksLikeTotal){
-        return;
-      }
+const doc = safeText(row.Doc || row.Ref || '');
 
-      count++;
+const account =
+safeText(row.Account || row.Description || '');
 
-      totalDebit += debit;
-      totalCredit += credit;
-      finalBalance = balance;
+const date =
+formatDate(row["Due Date"]);
 
-      const tr = document.createElement('tr');
+if(
+!doc &&
+!account &&
+!debit &&
+!credit &&
+!balance
+){
+return;
+}
 
-      tr.innerHTML = `
-        <td>${count}</td>
+count++;
 
-        <td>${date}</td>
+totalDebit += debit;
 
-        <td>
-          <span class="badge ${type.cls}">
-          ${type.text}
-          </span>
-        </td>
+totalCredit += credit;
 
-        <td class="doc-cell">${doc}</td>
+finalBalance = balance;
 
-        <td class="account-cell">${account}</td>
+const tr = document.createElement('tr');
 
-        <td class="money debit">
-        ${debit ? fmt(debit) : ''}
-        </td>
+tr.innerHTML = `
+<td>${count}</td>
 
-        <td class="money credit">
-        ${credit ? fmt(credit) : ''}
-        </td>
+<td>${date}</td>
 
-        <td class="money balance">
-        ${fmt(balance)}
-        </td>
-      `;
+<td>
+<span class="badge ${type.cls}">
+${type.text}
+</span>
+</td>
 
-      tbody.appendChild(tr);
-    });
+<td>${doc}</td>
 
-    document.getElementById('transactions').innerText =
-    count;
+<td>${account}</td>
 
-    document.getElementById('totalDebit').innerText =
-    fmt(totalDebit);
+<td>${debit ? fmt(debit) : ''}</td>
 
-    document.getElementById('totalCredit').innerText =
-    fmt(totalCredit);
+<td>${credit ? fmt(credit) : ''}</td>
 
-    document.getElementById('finalBalance').innerText =
-    fmt(finalBalance);
-  };
+<td>${fmt(balance)}</td>
+`;
 
-  reader.readAsArrayBuffer(file);
+tbody.appendChild(tr);
+
+});
+
+document.getElementById('transactions').innerText =
+count;
+
+document.getElementById('totalDebit').innerText =
+fmt(totalDebit);
+
+document.getElementById('totalCredit').innerText =
+fmt(totalCredit);
+
+document.getElementById('finalBalance').innerText =
+fmt(finalBalance);
+
+document.getElementById('customerName').innerText =
+document.getElementById('customerInput').value || '—';
+
+document.getElementById('periodText').innerText =
+document.getElementById('periodInput').value || '—';
+
+};
+
+reader.readAsArrayBuffer(file);
+
 });
 
 function printReport(){
-  window.print();
+
+window.print();
+
 }
+
 </script>
 
 </body>
