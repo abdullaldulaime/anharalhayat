@@ -795,26 +795,44 @@ let count = 0;
 rows.forEach((row)=>{
 
 const rawType =
-row.Type || row.JRNL || row.Journal || '';
+row.Type ||
+row["النوع"] ||
+row.JRNL ||
+row.Journal || '';
 
-const type = translateType(rawType);
+const debit = cleanNum(
+row.Debit ||
+row["مدين"]
+);
 
-const debit = cleanNum(row.Debit);
+const credit = cleanNum(
+row.Credit ||
+row["دائن"]
+);
 
-const credit = cleanNum(row.Credit);
+const balance = cleanNum(
+row.Balance ||
+row["الرصيد"]
+);
 
-const balance = cleanNum(row.Balance);
+const doc = safeText(
+row.Doc ||
+row.Ref ||
+row["المستند"]
+);
 
-const doc = safeText(row.Doc || row.Ref || '');
+const account = safeText(
+row.Account ||
+row.Description ||
+row["البيان"] ||
+row["الحساب"]
+);
 
-const account =
-safeText(row.Account || row.Description || '');
-
-const date =
-formatDate(
+const date = formatDate(
 row["Due Date"] ||
 row["Date"] ||
-row["Invoice Date"]
+row["Invoice Date"] ||
+row["التاريخ"]
 );
 
 if(
