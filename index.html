@@ -13,8 +13,7 @@ body{
   margin:0;
   padding:0;
   font-family:Tahoma, Arial, sans-serif;
-background:
-linear-gradient(135deg,#0f172a,#1e293b,#111827);
+  background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
   color:#1f2937;
   font-weight:700;
 }
@@ -28,16 +27,12 @@ linear-gradient(135deg,#0f172a,#1e293b,#111827);
 }
 
 .home-card{
-  background:rgba(255,255,255,0.08);
+  background:white;
   width:950px;
   padding:45px;
   border-radius:35px;
   text-align:center;
-  backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,0.12);
-
-  box-shadow:
-  0 25px 70px rgba(0,0,0,.35);
+  box-shadow:0 25px 70px rgba(15,23,42,.16);
 }
 
 .home-logo{
@@ -58,21 +53,42 @@ linear-gradient(135deg,#0f172a,#1e293b,#111827);
   object-fit:contain;
 }
 
-.home-card h1{
-  font-size:58px;
-  color:#ffffff;
-  margin:0;
-  font-weight:900;
-  text-shadow:
-  0 0 10px #60a5fa,
-  0 0 25px #2563eb;
+.theme-switch{
+  display:flex;
+  justify-content:center;
+  margin-top:10px;
+  margin-bottom:20px;
 }
 
-.home-card p,
-.department,
-.company-info,
-.menu-card p{
-  color:#e2e8f0;
+.theme-switch button{
+  background:#1e293b;
+  color:white;
+  border:none;
+  border-radius:999px;
+  padding:12px 28px;
+  font-size:20px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.theme-switch button:hover{
+  transform:scale(1.08);
+  background:#2563eb;
+}
+
+.home-card h1{
+  font-size:58px;
+  color:#1e3a8a;
+  margin:0;
+  font-weight:900;
+}
+
+.home-card p{
+  font-size:26px;
+  color:#475569;
+  margin-top:10px;
+  font-weight:900;
 }
 
 .department{
@@ -100,22 +116,15 @@ linear-gradient(135deg,#0f172a,#1e293b,#111827);
 .menu-card{
   padding:40px;
   border-radius:28px;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  backdrop-filter:blur(12px);
+  background:linear-gradient(135deg,#f8fafc,#eef2ff);
+  border:2px solid #dbeafe;
   cursor:pointer;
   transition:.3s;
-  color:white;
 }
 
 .menu-card:hover{
-  transform:
-  translateY(-12px)
-  scale(1.03);
-
-  box-shadow:
-  0 25px 60px rgba(59,130,246,.35);
-
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 25px 60px rgba(59,130,246,.25);
   border-color:#60a5fa;
 }
 
@@ -498,52 +507,89 @@ tbody tr:nth-child(even){
   font-size:15px;
   font-weight:900;
 }
-.dark{
-  background:#0f172a !important;
-  color:white !important;
+
+/* Dark Mode فقط من الواجهة الرئيسية */
+
+body.dark{
+  background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+  color:white;
 }
 
-.dark .report,
-.dark .controls,
-.dark .card,
-.dark .account-summary,
-.dark .aging-box,
-.dark .home-card{
+body.dark .home-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+body.dark .home-card h1{
+  color:white;
+  text-shadow:0 0 10px #60a5fa,0 0 25px #2563eb;
+}
+
+body.dark .home-card p,
+body.dark .department,
+body.dark .company-info,
+body.dark .menu-card p{
+  color:#e2e8f0;
+}
+
+body.dark .menu-card{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  color:white;
+}
+
+body.dark .menu-card h3{
+  color:#93c5fd;
+}
+
+body.dark .theme-switch button{
+  background:#f8fafc;
+  color:#0f172a;
+}
+
+body.dark .report,
+body.dark .controls,
+body.dark .card,
+body.dark .account-summary,
+body.dark .aging-box{
   background:#111827 !important;
   color:white !important;
 }
 
-.dark table{
+body.dark table{
   color:white;
 }
 
-.dark th{
+body.dark th{
   background:#1e293b !important;
   color:white !important;
 }
 
-.dark td{
+body.dark td{
   border-color:#374151 !important;
 }
 
-.dark .summary-row{
+body.dark .summary-row{
   border-color:#374151;
 }
 
-.dark .summary-title{
+body.dark .summary-title{
   background:#1e293b;
   color:white;
 }
 
-.dark .note{
+body.dark .note{
   background:#3f2f0f;
   color:#fff7ed;
 }
 
-.dark .footer{
+body.dark .footer{
   color:#cbd5e1;
 }
-  
+
 @media print{
 
   .controls,
@@ -600,6 +646,10 @@ tbody tr:nth-child(even){
 
 <div class="home-logo">
 <img src="./logo.png">
+</div>
+
+<div class="theme-switch">
+<button onclick="toggleDarkMode()">🌙 / ☀️</button>
 </div>
 
 <h1>شركة أنهار الحياة</h1>
@@ -666,10 +716,6 @@ tbody tr:nth-child(even){
 
 <button onclick="printReport()">
 طباعة / حفظ PDF
-</button>
-
-<button onclick="toggleDarkMode()">
-🌙 الوضع الليلي
 </button>
 
 <button class="back-btn" onclick="goHome()">
@@ -915,6 +961,10 @@ document.getElementById('homePage').style.display='flex';
 
 function openRoute(){
 alert('سيتم إضافة تقرير خط السير قريباً');
+}
+
+function toggleDarkMode(){
+document.body.classList.toggle('dark');
 }
 
 function normalizeKey(key){
@@ -1303,6 +1353,7 @@ reader.readAsArrayBuffer(file);
 function printReport(){
 window.print();
 }
+
 document.getElementById('searchInput')
 .addEventListener('keyup', function(){
 
@@ -1320,12 +1371,7 @@ row.innerText.toLowerCase().includes(value)
 });
 
 });
-function toggleDarkMode(){
 
-document.body.classList.toggle('dark');
-
-}
-  
 </script>
 
 </body>
