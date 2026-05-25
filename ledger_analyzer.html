@@ -661,7 +661,10 @@ let allData = [];
 function formatMoney(value){
 
 return Number(value || 0)
-.toLocaleString('en-US');
+.toLocaleString('en-US',{
+minimumFractionDigits:0,
+maximumFractionDigits:2
+});
 
 }
 
@@ -679,11 +682,32 @@ function formatDate(value){
 
 if(!value) return '-';
 
+try{
+
+if(typeof value === 'number'){
+
+const excelDate =
+new Date(
+(value - 25569) * 86400 * 1000
+);
+
+return excelDate
+.toLocaleDateString('en-GB');
+
+}
+
 const d = new Date(value);
 
 if(isNaN(d)) return '-';
 
 return d.toLocaleDateString('en-GB');
+
+}
+catch{
+
+return '-';
+
+}
 
 }
 
@@ -694,21 +718,25 @@ document.getElementById('tbody');
 
 tbody.innerHTML = '';
 
-let totalCustomers = data.length;
+let totalCustomers = 0;
 let withBalance = 0;
 let zeroBalance = 0;
 let totalBalance = 0;
 
 data.forEach((row)=>{
 
+if(!row.customer) return;
+
+totalCustomers++;
+
 const balance =
 cleanNum(row.balance);
 
-if(balance === 0){
-zeroBalance++;
+if(balance > 0){
+withBalance++;
 }
 else{
-withBalance++;
+zeroBalance++;
 }
 
 totalBalance += balance;
@@ -729,14 +757,14 @@ ${row.customer}
 </div>
 
 <div class="customerCode">
-${row.code}
+${row.code || ''}
 </div>
 
 </td>
 
 <td class="
 balance
-${balance === 0 ? 'zero' : 'nonzero'}
+${balance > 0 ? 'nonzero' : 'zero'}
 money">
 
 ${formatMoney(balance)}
@@ -744,19 +772,23 @@ ${formatMoney(balance)}
 </td>
 
 <td class="money">
-${formatMoney(row.invoice)}
+${row.invoice > 0
+? formatMoney(row.invoice)
+: '-'}
 </td>
 
 <td>
-${row.invoiceDate}
+${row.invoiceDate || '-'}
 </td>
 
 <td class="money">
-${formatMoney(row.payment)}
+${row.payment > 0
+? formatMoney(row.payment)
+: '-'}
 </td>
 
 <td>
-${row.paymentDate}
+${row.paymentDate || '-'}
 </td>
 
 `;
@@ -810,6 +842,7 @@ workbook.SheetNames[0]
 
 const rows =
 XLSX.utils.sheet_to_json(sheet,{
+header:1,
 defval:''
 });
 
@@ -819,45 +852,52 @@ let currentCustomer = null;
 
 rows.forEach((row)=>{
 
-const values =
-Object.values(row);
+if(!row || row.length === 0) return;
 
-const first =
-String(values[0] || '').trim();
+const col0 =
+String(row[0] || '').trim();
 
-const date =
-values[1] || '-';
+const col1 = row[1];
+const col2 = row[2];
+const col6 = cleanNum(row[6]);
+const col7 = cleanNum(row[7]);
+const col8 = cleanNum(row[8]);
 
-const debit =
-cleanNum(values[6]);
+/* تجاهل الفراغات */
 
-const credit =
-cleanNum(values[7]);
+if(!col0) return;
 
-const balance =
-cleanNum(values[8]);
+/* تجاهل Total */
 
 if(
-first &&
-!first.startsWith('INV') &&
-!first.startsWith('CSR') &&
-first !== 'Initial Balance'
-){
+col0.toLowerCase() === 'total'
+) return;
+
+/* زبون جديد */
+
+const isCustomer =
+
+!col0.startsWith('RINV') &&
+!col0.startsWith('CRS') &&
+!col0.startsWith('INV') &&
+!col0.startsWith('CSR') &&
+col0 !== 'Initial Balance';
+
+if(isCustomer){
 
 currentCustomer = {
 
-customer:first,
+customer:col0,
 
-code:first.split(' ')[0],
+code:
+String(col2 || ''),
 
-balance:balance,
+balance:col8,
 
 invoice:0,
-
 invoiceDate:'-',
 
 payment:0,
-
 paymentDate:'-'
 
 };
@@ -866,33 +906,47 @@ allData.push(currentCustomer);
 
 }
 
+/* فاتورة */
+
 if(
 currentCustomer &&
-first.startsWith('INV')
+(
+col0.startsWith('RINV') ||
+col0.startsWith('INV')
+)
 ){
 
-currentCustomer.invoice =
-debit;
+currentCustomer.invoice = col6;
 
 currentCustomer.invoiceDate =
-formatDate(date);
+formatDate(col1);
 
 }
 
+/* دفعة */
+
 if(
 currentCustomer &&
-first.startsWith('CSR')
+(
+col0.startsWith('CRS') ||
+col0.startsWith('CSR')
+)
 ){
 
-currentCustomer.payment =
-credit;
+currentCustomer.payment = col7;
 
 currentCustomer.paymentDate =
-formatDate(date);
+formatDate(col1);
 
 }
 
 });
+
+allData =
+allData.filter(x =>
+x.customer &&
+x.customer !== '-'
+);
 
 renderTable(allData);
 
@@ -914,10 +968,13 @@ document
 .forEach((row)=>{
 
 row.style.display =
+
 row.innerText
 .toLowerCase()
 .includes(value)
+
 ? ''
+
 : 'none';
 
 });
