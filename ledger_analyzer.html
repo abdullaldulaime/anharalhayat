@@ -149,9 +149,17 @@ border:
 
 backdrop-filter:blur(10px);
 
-padding:25px;
+padding:18px;
 
-border-radius:24px;
+border-radius:18px;
+
+min-height:120px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
 
 }
 
@@ -167,8 +175,18 @@ margin-bottom:18px;
 
 .card span{
 
-font-size:46px;
+font-size:32px;
 font-weight:900;
+
+direction:ltr;
+
+display:block;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+white-space:nowrap;
 
 }
 
@@ -275,26 +293,30 @@ border-collapse:collapse;
 
 th{
 
-padding:22px 14px;
+padding:18px 12px;
 
 background:
 rgba(255,255,255,.04);
 
-font-size:17px;
+font-size:14px;
 
 color:#94a3b8;
+
+white-space:nowrap;
 
 }
 
 td{
 
-padding:22px 14px;
+padding:16px 12px;
 
 border-top:
 1px solid rgba(255,255,255,.05);
 
-font-size:18px;
-font-weight:900;
+font-size:15px;
+font-weight:700;
+
+vertical-align:middle;
 
 }
 
@@ -307,8 +329,10 @@ rgba(255,255,255,.03);
 
 .customer{
 
-font-size:24px;
+font-size:17px;
 font-weight:900;
+
+line-height:1.8;
 
 }
 
@@ -324,8 +348,12 @@ color:#64748b;
 
 .balance{
 
-font-size:36px;
+font-size:28px;
 font-weight:900;
+
+direction:ltr;
+
+white-space:nowrap;
 
 }
 
