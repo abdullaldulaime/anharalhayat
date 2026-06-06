@@ -1,18 +1,233 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>احتساب حافز المندوب</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family:Tahoma,Arial,sans-serif;
+background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
+color:#1f2937;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:25px;
+}
+
+.header{
+background:white;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+margin-bottom:25px;
+}
+
+.header h1{
+margin:0;
+font-size:42px;
+color:#1e3a8a;
+}
+
+.header p{
+font-size:18px;
+color:#64748b;
+}
+
+.upload-box{
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+margin-bottom:25px;
+text-align:center;
+}
+
+.upload-box input{
+padding:15px;
+width:90%;
+border:2px dashed #60a5fa;
+border-radius:15px;
+font-size:16px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+margin-bottom:25px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.card h3{
+margin:0;
+font-size:16px;
+color:#64748b;
+}
+
+.card span{
+display:block;
+margin-top:12px;
+font-size:28px;
+font-weight:900;
+color:#1e3a8a;
+}
+
+.table-wrap{
+background:white;
+padding:20px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+overflow:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#eff6ff;
+padding:12px;
+font-size:15px;
+}
+
+td{
+padding:10px;
+border-top:1px solid #e5e7eb;
+text-align:center;
+font-weight:700;
+}
+
+.back-btn{
+display:inline-block;
+margin-top:20px;
+background:#1e3a8a;
+color:white;
+padding:12px 25px;
+border-radius:12px;
+text-decoration:none;
+font-weight:900;
+}
+
+@media(max-width:900px){
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
 </head>
-<body style="font-family:Tahoma;text-align:center;padding:50px">
+
+<body>
+
+<div class="container">
+
+<div class="header">
 
 <h1>احتساب حافز المندوب</h1>
 
-<h2>الصفحة تعمل بنجاح ✅</h2>
+<p>
+عائلة حليب 1 لتر
+</p>
 
-<a href="index.html">
+</div>
+
+<div class="upload-box">
+
+<input
+type="file"
+id="excelFile"
+accept=".xlsx,.xls">
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>الهدف</h3>
+<span id="target">365</span>
+</div>
+
+<div class="card">
+<h3>إجمالي الكارتون</h3>
+<span id="cartons">0</span>
+</div>
+
+<div class="card">
+<h3>نسبة الإنجاز</h3>
+<span id="achievement">0%</span>
+</div>
+
+<div class="card">
+<h3>حافز المندوب</h3>
+<span id="salesBonus">0</span>
+</div>
+
+<div class="card">
+<h3>حافز السائق</h3>
+<span id="driverBonus">0</span>
+</div>
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>المنتج</th>
+
+<th>المباع</th>
+
+<th>المجاني الثابت</th>
+
+<th>المجاني المتغير</th>
+
+<th>الإجمالي</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tbody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<a class="back-btn" href="index.html">
+
 العودة للرئيسية
-</a>
 
-</body>
-</html>
+</a>
+```
