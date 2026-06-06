@@ -1,11 +1,10 @@
-```html
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>احتساب حافز المندوب</title>
@@ -16,80 +15,64 @@
 
 body{
 margin:0;
-padding:0;
+padding:20px;
 font-family:Tahoma,Arial,sans-serif;
-background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
-color:#1f2937;
+background:#f8fafc;
 }
 
 .container{
-max-width:1200px;
+max-width:1300px;
 margin:auto;
-padding:25px;
 }
 
 .header{
 background:white;
 padding:25px;
-border-radius:25px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-margin-bottom:25px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+margin-bottom:20px;
 }
 
 .header h1{
 margin:0;
-font-size:42px;
 color:#1e3a8a;
-}
-
-.header p{
-font-size:18px;
-color:#64748b;
 }
 
 .upload-box{
 background:white;
-padding:25px;
-border-radius:25px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-margin-bottom:25px;
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 text-align:center;
-}
-
-.upload-box input{
-padding:15px;
-width:90%;
-border:2px dashed #60a5fa;
-border-radius:15px;
-font-size:16px;
 }
 
 .cards{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:15px;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .card{
 background:white;
-border-radius:20px;
 padding:20px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .card h3{
 margin:0;
-font-size:16px;
+font-size:15px;
 color:#64748b;
 }
 
 .card span{
 display:block;
-margin-top:12px;
-font-size:28px;
+margin-top:10px;
+font-size:26px;
 font-weight:900;
 color:#1e3a8a;
 }
@@ -97,8 +80,8 @@ color:#1e3a8a;
 .table-wrap{
 background:white;
 padding:20px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 overflow:auto;
 }
 
@@ -110,25 +93,23 @@ border-collapse:collapse;
 th{
 background:#eff6ff;
 padding:12px;
-font-size:15px;
 }
 
 td{
 padding:10px;
 border-top:1px solid #e5e7eb;
 text-align:center;
-font-weight:700;
 }
 
 .back-btn{
 display:inline-block;
 margin-top:20px;
+padding:12px 25px;
 background:#1e3a8a;
 color:white;
-padding:12px 25px;
-border-radius:12px;
 text-decoration:none;
-font-weight:900;
+border-radius:10px;
+font-weight:bold;
 }
 
 @media(max-width:900px){
@@ -151,9 +132,7 @@ grid-template-columns:repeat(2,1fr);
 
 <h1>احتساب حافز المندوب</h1>
 
-<p>
-عائلة حليب 1 لتر
-</p>
+<p>عائلة حليب 1 لتر</p>
 
 </div>
 
@@ -202,32 +181,178 @@ accept=".xlsx,.xls">
 <thead>
 
 <tr>
-
 <th>المنتج</th>
-
 <th>المباع</th>
-
 <th>المجاني الثابت</th>
-
 <th>المجاني المتغير</th>
-
 <th>الإجمالي</th>
-
 </tr>
 
 </thead>
 
-<tbody id="tbody">
-
-</tbody>
+<tbody id="tbody"></tbody>
 
 </table>
 
 </div>
 
 <a class="back-btn" href="index.html">
-
 العودة للرئيسية
-
 </a>
+
+</div>
+
+<script>
+
+const TARGET = 365;
+const BONUS_PER_CARTON = 125;
+
+const milkProducts = [
+"[A1]",
+"[A2]",
+"[A3]",
+"[A4]",
+"[A5]",
+"[A6]"
+];
+
+function formatNumber(num){
+
+return Number(num || 0)
+.toLocaleString('en-US',{
+maximumFractionDigits:0
+});
+
+}
+
+function getDeductionPercent(rate){
+
+if(rate < 70) return 100;
+
+if(rate < 80) return 60;
+
+if(rate < 90) return 40;
+
+if(rate < 100) return 10;
+
+return 0;
+
+}
+
+document
+.getElementById('excelFile')
+.addEventListener('change', function(e){
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+const data =
+new Uint8Array(event.target.result);
+
+const workbook =
+XLSX.read(data,{
+type:'array'
+});
+
+const sheet =
+workbook.Sheets[
+workbook.SheetNames[0]
+];
+
+const rows =
+XLSX.utils.sheet_to_json(sheet,{
+defval:''
+});
+
+let totalCartons = 0;
+
+const tbody =
+document.getElementById('tbody');
+
+tbody.innerHTML = '';
+
+rows.forEach(row=>{
+
+const product =
+String(row['Product'] || '');
+
+const matched =
+milkProducts.some(code =>
+product.includes(code)
+);
+
+if(!matched) return;
+
+const sold =
+Number(row['Sold Qty'] || 0);
+
+const fixed =
+Number(row['Fixed Free'] || 0);
+
+const variable =
+Number(row['Variable Free'] || 0);
+
+const total =
+sold + fixed + variable;
+
+totalCartons += total;
+
+tbody.innerHTML += `
+<tr>
+<td>${product}</td>
+<td>${sold}</td>
+<td>${fixed}</td>
+<td>${variable}</td>
+<td>${total}</td>
+</tr>
+`;
+
+});
+
+const achievement =
+(totalCartons / TARGET) * 100;
+
+const grossBonus =
+totalCartons * BONUS_PER_CARTON;
+
+const deductionPercent =
+getDeductionPercent(achievement);
+
+const deductionAmount =
+grossBonus *
+(deductionPercent / 100);
+
+const finalSalesBonus =
+grossBonus - deductionAmount;
+
+const finalDriverBonus =
+finalSalesBonus * 0.5;
+
+document.getElementById('cartons').innerText =
+formatNumber(totalCartons);
+
+document.getElementById('achievement').innerText =
+achievement.toFixed(2) + '%';
+
+document.getElementById('salesBonus').innerText =
+formatNumber(finalSalesBonus);
+
+document.getElementById('driverBonus').innerText =
+formatNumber(finalDriverBonus);
+
+};
+
+reader.readAsArrayBuffer(file);
+
+});
+
+</script>
+
+</body>
+</html>
 ```
