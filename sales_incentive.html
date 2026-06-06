@@ -276,10 +276,25 @@ document.getElementById('tbody');
 
 tbody.innerHTML = '';
 
+```javascript
+const rows =
+XLSX.utils.sheet_to_json(sheet,{
+header:1
+});
+
+let totalCartons = 0;
+
+const tbody =
+document.getElementById('tbody');
+
+tbody.innerHTML='';
+
 rows.forEach(row=>{
 
+if(!row || row.length < 7) return;
+
 const product =
-String(row['Product'] || '');
+String(row[0] || '');
 
 const matched =
 milkProducts.some(code =>
@@ -289,13 +304,30 @@ product.includes(code)
 if(!matched) return;
 
 const sold =
-Number(row['Sold Qty'] || 0);
+Number(row[3] || 0);
 
 const fixed =
-Number(row['Fixed Free'] || 0);
+Number(row[4] || 0);
 
 const variable =
-Number(row['Variable Free'] || 0);
+Number(row[5] || 0);
+
+const total =
+sold + fixed + variable;
+
+totalCartons += total;
+
+tbody.innerHTML += `
+<tr>
+<td>${product}</td>
+<td>${sold}</td>
+<td>${fixed}</td>
+<td>${variable}</td>
+<td>${total}</td>
+</tr>
+`;
+
+});
 
 const total =
 sold + fixed + variable;
