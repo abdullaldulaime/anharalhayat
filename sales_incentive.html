@@ -12,24 +12,29 @@
 
 <style>
 
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     padding:20px;
     font-family:Tahoma,Arial,sans-serif;
     background:#f8fafc;
+    color:#0f172a;
 }
 
 .container{
-    max-width:1300px;
+    max-width:1400px;
     margin:auto;
 }
 
 .header{
     background:white;
-    padding:25px;
+    padding:28px;
     border-radius:20px;
     text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
     margin-bottom:20px;
 }
 
@@ -39,27 +44,35 @@ body{
 }
 
 .header p{
-    margin-top:10px;
+    margin:10px 0 0;
     color:#64748b;
 }
 
 .upload-box{
     background:white;
-    padding:20px;
+    padding:22px;
     border-radius:20px;
     margin-bottom:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
     text-align:center;
 }
 
 .upload-box input{
-    padding:10px;
-    font-size:15px;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:#f8fafc;
+}
+
+.message{
+    margin-top:15px;
+    font-weight:bold;
+    color:#64748b;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
     margin-bottom:20px;
 }
@@ -69,50 +82,107 @@ body{
     padding:20px;
     border-radius:20px;
     text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
 .card h3{
     margin:0;
-    font-size:15px;
+    font-size:14px;
     color:#64748b;
 }
 
 .card span{
     display:block;
     margin-top:10px;
-    font-size:26px;
+    font-size:25px;
     font-weight:900;
     color:#1e3a8a;
+}
+
+.card.green span{
+    color:#15803d;
+}
+
+.rules{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.rules h3{
+    text-align:center;
+    color:#1e3a8a;
+    margin-top:0;
+}
+
+.rules-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.rule{
+    text-align:center;
+    padding:12px;
+    background:#f8fafc;
+    border-radius:10px;
+}
+
+.rule strong{
+    display:block;
+    margin-bottom:5px;
 }
 
 .table-wrap{
     background:white;
     padding:20px;
     border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
     overflow:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
+    min-width:1100px;
 }
 
 th{
     background:#eff6ff;
-    padding:12px;
     color:#1e3a8a;
+    padding:13px 8px;
+    font-size:14px;
 }
 
 td{
-    padding:10px;
+    padding:12px 8px;
     border-top:1px solid #e5e7eb;
     text-align:center;
 }
 
+.product-name{
+    text-align:right;
+}
+
+.good{
+    color:#15803d;
+    font-weight:bold;
+}
+
+.warning{
+    color:#c2410c;
+    font-weight:bold;
+}
+
+.bad{
+    color:#b91c1c;
+    font-weight:bold;
+}
+
 .total-row{
-    background:#f8fafc;
+    background:#eff6ff;
     font-weight:bold;
 }
 
@@ -127,15 +197,13 @@ td{
     font-weight:bold;
 }
 
-.message{
-    margin-top:15px;
-    font-weight:bold;
-    color:#64748b;
-}
-
 @media(max-width:900px){
 
     .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .rules-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -143,7 +211,15 @@ td{
 
 @media(max-width:500px){
 
+    body{
+        padding:10px;
+    }
+
     .cards{
+        grid-template-columns:1fr;
+    }
+
+    .rules-grid{
         grid-template-columns:1fr;
     }
 
@@ -153,187 +229,417 @@ td{
 
 </head>
 
+
 <body>
 
 <div class="container">
 
-    <div class="header">
 
-        <h1>احتساب حافز المندوب</h1>
+<div class="header">
 
-        <p>عائلة حليب 1 لتر</p>
+    <h1>احتساب حافز المندوب</h1>
+
+    <p>
+        عائلة حليب 1 لتر
+    </p>
+
+</div>
+
+
+<div class="upload-box">
+
+    <input
+        type="file"
+        id="excelFile"
+        accept=".xlsx,.xls">
+
+    <div
+        class="message"
+        id="message">
+
+        اختر ملف Excel
+
+    </div>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card">
+
+        <h3>
+            إجمالي الكارتون
+        </h3>
+
+        <span id="totalCartons">
+            0
+        </span>
 
     </div>
 
 
-    <div class="upload-box">
+    <div class="card">
 
-        <input
-            type="file"
-            id="excelFile"
-            accept=".xlsx,.xls">
+        <h3>
+            عدد المنتجات المحتسبة
+        </h3>
 
-        <div class="message" id="message">
-            اختر ملف Excel
-        </div>
-
-    </div>
-
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>الهدف</h3>
-            <span id="target">365</span>
-        </div>
-
-        <div class="card">
-            <h3>إجمالي الكارتون</h3>
-            <span id="cartons">0</span>
-        </div>
-
-        <div class="card">
-            <h3>نسبة الإنجاز</h3>
-            <span id="achievement">0%</span>
-        </div>
-
-        <div class="card">
-            <h3>حافز المندوب</h3>
-            <span id="salesBonus">0</span>
-        </div>
-
-        <div class="card">
-            <h3>حافز السائق</h3>
-            <span id="driverBonus">0</span>
-        </div>
+        <span id="productCount">
+            0
+        </span>
 
     </div>
 
 
-    <div class="table-wrap">
+    <div class="card green">
 
-        <table>
+        <h3>
+            إجمالي حافز المندوب
+        </h3>
 
-            <thead>
-
-                <tr>
-                    <th>اسم المنتج</th>
-                    <th>الكمية</th>
-                </tr>
-
-            </thead>
-
-            <tbody id="tbody"></tbody>
-
-        </table>
+        <span id="totalSalesBonus">
+            0 د.ع
+        </span>
 
     </div>
 
 
-    <a class="back-btn" href="index.html">
-        العودة للرئيسية
-    </a>
+    <div class="card green">
+
+        <h3>
+            إجمالي حافز السائق
+        </h3>
+
+        <span id="totalDriverBonus">
+            0 د.ع
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="rules">
+
+    <h3>
+        شرائح الاستحقاق
+    </h3>
+
+    <div class="rules-grid">
+
+        <div class="rule">
+            <strong>0% - 69.99%</strong>
+            خصم 100%
+        </div>
+
+        <div class="rule">
+            <strong>70% - 79.99%</strong>
+            خصم 60%
+        </div>
+
+        <div class="rule">
+            <strong>80% - 89.99%</strong>
+            خصم 40%
+        </div>
+
+        <div class="rule">
+            <strong>90% - 99.99%</strong>
+            خصم 10%
+        </div>
+
+        <div class="rule">
+            <strong>100% فما فوق</strong>
+            حافز كامل
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>المنتج</th>
+
+    <th>الهدف</th>
+
+    <th>المباع</th>
+
+    <th>نسبة الإنجاز</th>
+
+    <th>الخصم</th>
+
+    <th>حافز المندوب / كارتون</th>
+
+    <th>حافز السائق / كارتون</th>
+
+    <th>استحقاق المندوب</th>
+
+    <th>استحقاق السائق</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="tbody"></tbody>
+
+
+</table>
+
+</div>
+
+
+<a
+class="back-btn"
+href="index.html">
+
+العودة للرئيسية
+
+</a>
+
 
 </div>
 
 
 <script>
 
-/* =========================
-   إعدادات الحافز
-========================= */
+/* =====================================================
+   بيانات المنتجات
+===================================================== */
 
-const TARGET = 365;
+const PRODUCTS = {
 
-const BONUS_PER_CARTON = 125;
+    A1:{
+        target:450,
+        salespersonBonus:125,
+        driverBonus:62
+    },
+
+    A2:{
+        target:60,
+        salespersonBonus:125,
+        driverBonus:62
+    },
+
+    A3:{
+        target:60,
+        salespersonBonus:125,
+        driverBonus:62
+    },
+
+    A4:{
+        target:105,
+        salespersonBonus:125,
+        driverBonus:62
+    },
+
+    A5:{
+        target:50,
+        salespersonBonus:125,
+        driverBonus:62
+    },
+
+    A6:{
+        target:13,
+        salespersonBonus:125,
+        driverBonus:62
+    }
+
+};
 
 
-/* =========================
-   منتجات عائلة حليب 1 لتر
-========================= */
-
-const milkProducts = [
-    "[A1]",
-    "[A2]",
-    "[A3]",
-    "[A4]",
-    "[A5]",
-    "[A6]"
-];
-
-
-/* =========================
+/* =====================================================
    تنسيق الأرقام
-========================= */
+===================================================== */
 
-function formatNumber(num){
+function formatNumber(number){
 
-    return Number(num || 0).toLocaleString('en-US',{
-        maximumFractionDigits:2
-    });
+    return Number(number || 0)
+        .toLocaleString(
+            'en-US',
+            {
+                maximumFractionDigits:2
+            }
+        );
 
 }
 
 
-/* =========================
+/* =====================================================
+   تنسيق الدينار
+===================================================== */
+
+function formatMoney(number){
+
+    return Math.round(
+        Number(number || 0)
+    )
+    .toLocaleString('en-US')
+    +
+    ' د.ع';
+
+}
+
+
+/* =====================================================
    نسبة الخصم
-========================= */
+===================================================== */
 
 function getDeductionPercent(rate){
 
     if(rate < 70){
+
         return 100;
+
     }
 
     if(rate < 80){
+
         return 60;
+
     }
 
     if(rate < 90){
+
         return 40;
+
     }
 
     if(rate < 100){
+
         return 10;
+
     }
 
+    /*
+       من 100% فما فوق
+       الحافز كامل
+    */
+
     return 0;
+
 }
 
 
-/* =========================
+/* =====================================================
+   استخراج كود المنتج
+===================================================== */
+
+function getProductCode(productName){
+
+    const text =
+        String(
+            productName || ''
+        );
+
+
+    const match =
+        text.match(
+            /\[(A[1-6])\]/i
+        );
+
+
+    if(!match){
+
+        return null;
+
+    }
+
+
+    return match[1]
+        .toUpperCase();
+
+}
+
+
+/* =====================================================
+   لون نسبة الإنجاز
+===================================================== */
+
+function getRateClass(rate){
+
+    if(rate >= 100){
+
+        return 'good';
+
+    }
+
+    if(rate >= 70){
+
+        return 'warning';
+
+    }
+
+    return 'bad';
+
+}
+
+
+/* =====================================================
    قراءة ملف Excel
-========================= */
+===================================================== */
 
 document
 .getElementById('excelFile')
-.addEventListener('change', function(e){
+.addEventListener(
+'change',
+function(event){
 
-    const file = e.target.files[0];
+
+    const file =
+        event.target.files[0];
+
 
     if(!file){
+
         return;
+
     }
 
-    document.getElementById('message').innerText =
-        "جاري قراءة الملف...";
+
+    const message =
+        document
+        .getElementById(
+            'message'
+        );
 
 
-    const reader = new FileReader();
+    message.innerText =
+        'جاري قراءة الملف...';
 
 
-    reader.onload = function(event){
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+    function(event){
+
 
         try{
 
+
             const data =
-                new Uint8Array(event.target.result);
+                new Uint8Array(
+                    event.target.result
+                );
 
 
             const workbook =
-                XLSX.read(data,{
-                    type:'array'
-                });
+                XLSX.read(
+                    data,
+                    {
+                        type:'array'
+                    }
+                );
 
 
             const sheet =
@@ -343,248 +649,559 @@ document
 
 
             const rows =
-                XLSX.utils.sheet_to_json(sheet,{
-                    header:1,
-                    defval:''
-                });
+                XLSX.utils
+                .sheet_to_json(
+                    sheet,
+                    {
+                        header:1,
+                        defval:''
+                    }
+                );
 
+
+            /* =================================================
+               تهيئة بيانات المنتجات
+            ================================================= */
+
+            const productData = {};
+
+
+            Object.keys(PRODUCTS)
+            .forEach(
+            code => {
+
+
+                productData[code] = {
+
+                    code:code,
+
+                    name:'',
+
+                    quantity:0
+
+                };
+
+
+            });
+
+
+            /* =================================================
+               قراءة اسم المنتج والكمية
+            ================================================= */
+
+            rows.forEach(
+            row => {
+
+
+                if(
+                    !row
+                    ||
+                    row.length < 2
+                ){
+
+                    return;
+
+                }
+
+
+                const productName =
+                    String(
+                        row[0] || ''
+                    )
+                    .trim();
+
+
+                if(!productName){
+
+                    return;
+
+                }
+
+
+                if(
+                    productName
+                    .toLowerCase()
+                    ===
+                    'total'
+                ){
+
+                    return;
+
+                }
+
+
+                const code =
+                    getProductCode(
+                        productName
+                    );
+
+
+                if(
+                    !code
+                    ||
+                    !PRODUCTS[code]
+                ){
+
+                    return;
+
+                }
+
+
+                const quantity =
+                    Number(
+                        String(
+                            row[1] || 0
+                        )
+                        .replace(/,/g,'')
+                    );
+
+
+                if(
+                    !Number.isFinite(
+                        quantity
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                /*
+                    الاحتفاظ باسم المنتج
+                */
+
+                if(
+                    !productData[code]
+                    .name
+                ){
+
+                    productData[code]
+                    .name =
+                        productName;
+
+                }
+
+
+                /*
+                    إذا المنتج مكرر
+                    نجمع كميته
+                */
+
+                productData[code]
+                    .quantity
+                    += quantity;
+
+
+            });
+
+
+            /* =================================================
+               الحسابات
+            ================================================= */
 
             let totalCartons = 0;
 
-            let matchedProducts = 0;
+            let totalSalesBonus = 0;
+
+            let totalDriverBonus = 0;
+
+            let productCount = 0;
 
 
             const tbody =
-                document.getElementById('tbody');
+                document
+                .getElementById(
+                    'tbody'
+                );
 
 
             tbody.innerHTML = '';
 
 
-            /* =========================
-               المرور على الصفوف
-            ========================= */
-
-            rows.forEach(row => {
+            Object.keys(PRODUCTS)
+            .forEach(
+            code => {
 
 
-                if(!row || row.length < 2){
+                const settings =
+                    PRODUCTS[code];
+
+
+                const data =
+                    productData[code];
+
+
+                /*
+                    إذا المنتج غير موجود
+                    أو كميته صفر
+                    لا نعرضه
+                */
+
+                if(
+                    data.quantity <= 0
+                ){
+
                     return;
+
                 }
 
 
-                const product =
-                    String(row[0] || '').trim();
+                productCount++;
 
 
                 const quantity =
-                    Number(row[1] || 0);
+                    data.quantity;
 
 
-                /* تجاهل السطور الفارغة */
-
-                if(!product){
-                    return;
-                }
+                const target =
+                    settings.target;
 
 
-                /* تجاهل Total */
+                /* =============================================
+                   نسبة الإنجاز الخاصة بهذا المنتج فقط
+                ============================================= */
 
-                if(
-                    product.toLowerCase() === "total"
-                ){
-                    return;
-                }
+                const achievement =
+
+                    (
+                        quantity
+                        /
+                        target
+                    )
+                    *
+                    100;
 
 
-                /* البحث عن A1 إلى A6 */
+                /* =============================================
+                   نسبة الخصم الخاصة بهذا المنتج
+                ============================================= */
 
-                const matched =
-                    milkProducts.some(code =>
-                        product.includes(code)
+                const deductionPercent =
+                    getDeductionPercent(
+                        achievement
                     );
 
 
-                if(!matched){
-                    return;
-                }
+                const payablePercent =
+
+                    (
+                        100
+                        -
+                        deductionPercent
+                    )
+
+                    /
+
+                    100;
 
 
-                if(
-                    isNaN(quantity)
-                ){
-                    return;
-                }
+                /* =============================================
+                   الحافز الأساسي للمندوب
+                ============================================= */
+
+                const grossSalesBonus =
+
+                    quantity
+                    *
+                    settings
+                    .salespersonBonus;
 
 
-                matchedProducts++;
+                /* =============================================
+                   الحافز الأساسي للسائق
+                ============================================= */
+
+                const grossDriverBonus =
+
+                    quantity
+                    *
+                    settings
+                    .driverBonus;
 
 
-                totalCartons += quantity;
+                /* =============================================
+                   الحافز النهائي بعد الخصم
+                ============================================= */
 
+                const finalSalesBonus =
+
+                    grossSalesBonus
+                    *
+                    payablePercent;
+
+
+                const finalDriverBonus =
+
+                    grossDriverBonus
+                    *
+                    payablePercent;
+
+
+                /* =============================================
+                   إضافة إلى الإجماليات
+                ============================================= */
+
+                totalCartons +=
+                    quantity;
+
+
+                totalSalesBonus +=
+                    finalSalesBonus;
+
+
+                totalDriverBonus +=
+                    finalDriverBonus;
+
+
+                /* =============================================
+                   إضافة الصف
+                ============================================= */
 
                 tbody.innerHTML += `
 
-                    <tr>
+                <tr>
 
-                        <td>
-                            ${product}
-                        </td>
+                    <td class="product-name">
 
-                        <td>
-                            ${formatNumber(quantity)}
-                        </td>
+                        ${
+                            data.name
+                            ||
+                            '[' + code + ']'
+                        }
 
-                    </tr>
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            formatNumber(
+                                target
+                            )
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            formatNumber(
+                                quantity
+                            )
+                        }
+
+                    </td>
+
+
+                    <td
+                    class="${
+                        getRateClass(
+                            achievement
+                        )
+                    }">
+
+                        ${
+                            achievement
+                            .toFixed(2)
+                        }%
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            deductionPercent
+                        }%
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            formatMoney(
+                                settings
+                                .salespersonBonus
+                            )
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            formatMoney(
+                                settings
+                                .driverBonus
+                            )
+                        }
+
+                    </td>
+
+
+                    <td class="good">
+
+                        ${
+                            formatMoney(
+                                finalSalesBonus
+                            )
+                        }
+
+                    </td>
+
+
+                    <td class="good">
+
+                        ${
+                            formatMoney(
+                                finalDriverBonus
+                            )
+                        }
+
+                    </td>
+
+                </tr>
 
                 `;
+
 
             });
 
 
-            /* =========================
-               إضافة الإجمالي للجدول
-            ========================= */
+            /* =================================================
+               صف الإجمالي
+            ================================================= */
 
-            if(matchedProducts > 0){
+            tbody.innerHTML += `
 
-                tbody.innerHTML += `
+            <tr class="total-row">
 
-                    <tr class="total-row">
+                <td>
+                    الإجمالي
+                </td>
 
-                        <td>
-                            إجمالي عائلة حليب 1 لتر
-                        </td>
+                <td>
+                    -
+                </td>
 
-                        <td>
-                            ${formatNumber(totalCartons)}
-                        </td>
+                <td>
 
-                    </tr>
+                    ${
+                        formatNumber(
+                            totalCartons
+                        )
+                    }
 
-                `;
+                </td>
 
-            }
+                <td>
+                    -
+                </td>
 
+                <td>
+                    -
+                </td>
 
-            /* =========================
-               نسبة الإنجاز
-            ========================= */
+                <td>
+                    -
+                </td>
 
-            const achievement =
-                (totalCartons / TARGET) * 100;
+                <td>
+                    -
+                </td>
 
+                <td>
 
-            /* =========================
-               الحافز قبل الخصم
-            ========================= */
+                    ${
+                        formatMoney(
+                            totalSalesBonus
+                        )
+                    }
 
-            const grossBonus =
-                totalCartons *
-                BONUS_PER_CARTON;
+                </td>
 
+                <td>
 
-            /* =========================
-               نسبة الخصم
-            ========================= */
+                    ${
+                        formatMoney(
+                            totalDriverBonus
+                        )
+                    }
 
-            const deductionPercent =
-                getDeductionPercent(
-                    achievement
-                );
+                </td>
 
+            </tr>
 
-            /* =========================
-               قيمة الخصم
-            ========================= */
-
-            const deductionAmount =
-                grossBonus *
-                (
-                    deductionPercent
-                    /
-                    100
-                );
-
-
-            /* =========================
-               حافز المندوب النهائي
-            ========================= */
-
-            const finalSalesBonus =
-                grossBonus -
-                deductionAmount;
+            `;
 
 
-            /* =========================
-               حافز السائق
-               50% من حافز المندوب
-            ========================= */
-
-            const finalDriverBonus =
-                finalSalesBonus *
-                0.5;
-
-
-            /* =========================
-               تحديث الواجهة
-            ========================= */
+            /* =================================================
+               تحديث الكروت
+            ================================================= */
 
             document
-            .getElementById('cartons')
+            .getElementById(
+                'totalCartons'
+            )
             .innerText =
+
                 formatNumber(
                     totalCartons
                 );
 
 
             document
-            .getElementById('achievement')
+            .getElementById(
+                'productCount'
+            )
             .innerText =
-                achievement.toFixed(2)
-                +
-                '%';
+
+                productCount;
 
 
             document
-            .getElementById('salesBonus')
+            .getElementById(
+                'totalSalesBonus'
+            )
             .innerText =
-                formatNumber(
-                    finalSalesBonus
-                )
-                +
-                ' د.ع';
+
+                formatMoney(
+                    totalSalesBonus
+                );
 
 
             document
-            .getElementById('driverBonus')
+            .getElementById(
+                'totalDriverBonus'
+            )
             .innerText =
-                formatNumber(
-                    finalDriverBonus
-                )
-                +
-                ' د.ع';
+
+                formatMoney(
+                    totalDriverBonus
+                );
 
 
-            /* =========================
-               رسالة نجاح
-            ========================= */
+            /* =================================================
+               رسالة النجاح
+            ================================================= */
 
-            if(matchedProducts > 0){
+            if(productCount > 0){
 
-                document
-                .getElementById('message')
-                .innerText =
-                    "تم تحميل الملف واحتساب الحافز بنجاح";
+                message.innerText =
+
+                    'تم تحميل الملف واحتساب استحقاق كل منتج بشكل مستقل بنجاح';
 
             }
 
             else{
 
-                document
-                .getElementById('message')
-                .innerText =
-                    "لم يتم العثور على منتجات A1 إلى A6 داخل الملف";
+                message.innerText =
+
+                    'لم يتم العثور على منتجات A1 إلى A6 داخل الملف';
 
             }
 
@@ -592,19 +1209,27 @@ document
         }
         catch(error){
 
-            console.error(error);
 
-            document
-            .getElementById('message')
-            .innerText =
-                "حدث خطأ أثناء قراءة ملف Excel";
+            console.error(
+                error
+            );
+
+
+            message.innerText =
+
+                'حدث خطأ أثناء قراءة ملف Excel';
+
 
         }
+
 
     };
 
 
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(
+        file
+    );
+
 
 });
 
