@@ -15,37 +15,38 @@
 :root{
   --blue:#1d4ed8;
   --blue-dark:#172554;
-  --blue-soft:#dbeafe;
 
   --green:#15803d;
-  --green-soft:#dcfce7;
 
-  --orange:#c2410c;
-  --orange-soft:#ffedd5;
+  --orange:#ea580c;
+
+  --yellow:#eab308;
 
   --red:#dc2626;
 
-  --gray:#475569;
-  --border:#dbe3ef;
+  --text:#172033;
 
   --shadow:0 18px 50px rgba(15,23,42,.10);
 }
+
 
 *{
   box-sizing:border-box;
 }
 
+
 html{
   scroll-behavior:smooth;
 }
+
 
 body{
   margin:0;
   min-height:100vh;
 
-  font-family:Tahoma, Arial, sans-serif;
+  font-family:Tahoma,Arial,sans-serif;
 
-  color:#172033;
+  color:var(--text);
 
   background:
   radial-gradient(circle at 10% 10%,rgba(59,130,246,.17),transparent 28%),
@@ -76,6 +77,7 @@ body{
   z-index:999999;
 }
 
+
 .login-box{
   width:100%;
   max-width:480px;
@@ -88,13 +90,12 @@ body{
 
   text-align:center;
 
-  border:1px solid rgba(255,255,255,.8);
-
   box-shadow:
   0 30px 90px rgba(30,64,175,.20);
 
   animation:loginIn .65s ease;
 }
+
 
 @keyframes loginIn{
 
@@ -110,27 +111,23 @@ body{
 
 }
 
+
 .login-logo{
   width:115px;
   height:115px;
-
   object-fit:contain;
-
-  filter:
-  drop-shadow(
-    0 10px 20px
-    rgba(30,64,175,.15)
-  );
 }
+
 
 .login-box h2{
   margin:18px 0 9px;
 
-  color:var(--blue-dark);
+  color:#172554;
 
   font-size:36px;
   font-weight:900;
 }
+
 
 .login-box p{
   color:#334155;
@@ -140,6 +137,7 @@ body{
 
   font-weight:900;
 }
+
 
 .pin-input{
   width:100%;
@@ -164,15 +162,16 @@ body{
   transition:.25s;
 }
 
+
 .pin-input:focus{
   border-color:#2563eb;
 
   background:white;
 
   box-shadow:
-  0 0 0 6px
-  rgba(37,99,235,.10);
+  0 0 0 6px rgba(37,99,235,.10);
 }
+
 
 .login-btn{
   width:100%;
@@ -184,11 +183,7 @@ body{
   border-radius:17px;
 
   background:
-  linear-gradient(
-    135deg,
-    #1d4ed8,
-    #1e3a8a
-  );
+  linear-gradient(135deg,#1d4ed8,#1e3a8a);
 
   color:white;
 
@@ -200,23 +195,16 @@ body{
   cursor:pointer;
 
   box-shadow:
-  0 12px 25px
-  rgba(37,99,235,.25);
+  0 12px 25px rgba(37,99,235,.25);
 
   transition:.2s;
 }
 
+
 .login-btn:hover{
   transform:translateY(-2px);
-
-  box-shadow:
-  0 16px 30px
-  rgba(37,99,235,.34);
 }
 
-.login-btn:active{
-  transform:scale(.97);
-}
 
 .error{
   min-height:30px;
@@ -242,6 +230,7 @@ body{
   animation:pageIn .6s ease;
 }
 
+
 @keyframes pageIn{
 
   from{
@@ -255,6 +244,7 @@ body{
   }
 
 }
+
 
 .wrapper{
   width:100%;
@@ -280,8 +270,7 @@ body{
     rgba(247,250,255,.96)
   );
 
-  border:1px solid
-  rgba(219,234,254,.9);
+  border:1px solid #dbeafe;
 
   border-radius:32px;
 
@@ -298,24 +287,6 @@ body{
   box-shadow:var(--shadow);
 }
 
-.top-header::after{
-  content:"";
-
-  position:absolute;
-
-  width:260px;
-  height:260px;
-
-  left:-90px;
-  top:-110px;
-
-  border-radius:50%;
-
-  background:
-  rgba(59,130,246,.08);
-
-  pointer-events:none;
-}
 
 .brand{
   display:flex;
@@ -323,24 +294,16 @@ body{
   align-items:center;
 
   gap:20px;
-
-  position:relative;
-
-  z-index:2;
 }
+
 
 .brand img{
   width:100px;
   height:100px;
 
   object-fit:contain;
-
-  filter:
-  drop-shadow(
-    0 8px 18px
-    rgba(30,64,175,.12)
-  );
 }
+
 
 .brand h1{
   margin:0;
@@ -351,6 +314,7 @@ body{
   font-weight:900;
 }
 
+
 .brand p{
   margin:9px 0 0;
 
@@ -360,17 +324,15 @@ body{
   font-weight:900;
 }
 
+
 .header-actions{
   display:flex;
 
   gap:11px;
 
   flex-wrap:wrap;
-
-  position:relative;
-
-  z-index:2;
 }
+
 
 .action-btn{
   border:0;
@@ -399,37 +361,26 @@ body{
   transition:.22s;
 }
 
+
 .action-btn:hover{
   transform:translateY(-3px);
 }
 
-.action-btn:active{
-  transform:scale(.96);
-}
 
 .pdf-btn{
   background:#dc2626;
-
   color:white;
-
-  box-shadow:
-  0 8px 20px
-  rgba(220,38,38,.18);
 }
+
 
 .excel-btn{
   background:#15803d;
-
   color:white;
-
-  box-shadow:
-  0 8px 20px
-  rgba(21,128,61,.18);
 }
+
 
 .home-btn{
   background:#334155;
-
   color:white;
 }
 
@@ -443,11 +394,11 @@ body{
 
   display:grid;
 
-  grid-template-columns:
-  repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:17px;
 }
+
 
 .summary-box{
   background:white;
@@ -461,19 +412,16 @@ body{
   border:1px solid #e5ebf5;
 
   box-shadow:
-  0 10px 30px
-  rgba(15,23,42,.07);
+  0 10px 30px rgba(15,23,42,.07);
 
   transition:.25s;
 }
 
+
 .summary-box:hover{
   transform:translateY(-5px);
-
-  box-shadow:
-  0 18px 35px
-  rgba(37,99,235,.12);
 }
+
 
 .summary-box small{
   display:block;
@@ -485,6 +433,7 @@ body{
   font-size:20px;
   font-weight:900;
 }
+
 
 .summary-box strong{
   display:block;
@@ -499,12 +448,13 @@ body{
 
 
 /* =========================================================
-   GROUP TITLE
+   GROUP
 ========================================================= */
 
 .group-section{
   margin-top:32px;
 }
+
 
 .group-title{
   min-height:80px;
@@ -522,9 +472,9 @@ body{
   margin-bottom:19px;
 
   box-shadow:
-  0 10px 28px
-  rgba(15,23,42,.07);
+  0 10px 28px rgba(15,23,42,.07);
 }
+
 
 .group-title-left{
   display:flex;
@@ -533,6 +483,7 @@ body{
 
   gap:15px;
 }
+
 
 .group-icon{
   width:56px;
@@ -548,9 +499,9 @@ body{
 
   font-size:32px;
 
-  background:
-  rgba(255,255,255,.75);
+  background:rgba(255,255,255,.75);
 }
+
 
 .group-title h2{
   margin:0;
@@ -559,9 +510,9 @@ body{
   font-weight:900;
 }
 
+
 .group-count{
-  background:
-  rgba(255,255,255,.80);
+  background:rgba(255,255,255,.80);
 
   padding:10px 17px;
 
@@ -571,42 +522,33 @@ body{
   font-weight:900;
 }
 
+
 .rahim-header{
   background:
-  linear-gradient(
-    135deg,
-    #dbeafe,
-    #e0e7ff
-  );
+  linear-gradient(135deg,#dbeafe,#e0e7ff);
 
   color:#1e3a8a;
 }
 
+
 .company-header{
   background:
-  linear-gradient(
-    135deg,
-    #fef3c7,
-    #fff7ed
-  );
+  linear-gradient(135deg,#fef3c7,#fff7ed);
 
   color:#92400e;
 }
 
+
 .tuama-header{
   background:
-  linear-gradient(
-    135deg,
-    #dcfce7,
-    #ecfdf5
-  );
+  linear-gradient(135deg,#dcfce7,#ecfdf5);
 
   color:#166534;
 }
 
 
 /* =========================================================
-   PARTNERS GRID
+   GRID
 ========================================================= */
 
 .partners-grid{
@@ -620,7 +562,7 @@ body{
 
 
 /* =========================================================
-   PARTNER CARD
+   CARD
 ========================================================= */
 
 .partner-card{
@@ -637,16 +579,13 @@ body{
   border-radius:26px;
 
   box-shadow:
-  0 11px 30px
-  rgba(15,23,42,.08);
+  0 11px 30px rgba(15,23,42,.08);
 
-  transition:
-  transform .28s ease,
-  box-shadow .28s ease,
-  border-color .28s ease;
+  transition:.28s;
 
   animation:cardIn .5s both;
 }
+
 
 @keyframes cardIn{
 
@@ -662,69 +601,35 @@ body{
 
 }
 
+
 .partner-card:hover{
   transform:translateY(-9px);
 
   border-color:#93c5fd;
 
   box-shadow:
-  0 22px 48px
-  rgba(37,99,235,.16);
+  0 22px 48px rgba(37,99,235,.16);
 }
 
-.partner-card::before{
-  content:"";
-
-  position:absolute;
-
-  width:80px;
-
-  height:180%;
-
-  top:-40%;
-
-  left:-150px;
-
-  transform:rotate(20deg);
-
-  background:
-  linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.75),
-    transparent
-  );
-
-  transition:.65s;
-
-  pointer-events:none;
-}
-
-.partner-card:hover::before{
-  left:120%;
-}
 
 .partner-top{
   padding:23px 16px 22px;
 
   text-align:center;
 
-  border-bottom:
-  1px solid #e5e7eb;
+  border-bottom:1px solid #e5e7eb;
 
   background:
-  linear-gradient(
-    135deg,
-    #fbfdff,
-    #edf5ff
-  );
+  linear-gradient(135deg,#fbfdff,#edf5ff);
 }
+
 
 .partner-icon{
   font-size:38px;
 
   margin-bottom:9px;
 }
+
 
 .partner-name{
   min-height:70px;
@@ -743,6 +648,7 @@ body{
   line-height:1.6;
 }
 
+
 .debt-label{
   margin-top:11px;
 
@@ -751,6 +657,7 @@ body{
   font-size:20px;
   font-weight:900;
 }
+
 
 .debt-number{
   margin-top:7px;
@@ -770,20 +677,18 @@ body{
   transition:.25s;
 }
 
+
 .debt-number:hover{
   transform:scale(1.15);
 
   color:#b91c1c;
-
-  text-shadow:
-  0 7px 18px
-  rgba(220,38,38,.16);
 }
+
 
 .debt-number.pulse{
-  animation:
-  numberPulse .55s ease;
+  animation:numberPulse .55s ease;
 }
+
 
 @keyframes numberPulse{
 
@@ -800,6 +705,7 @@ body{
   }
 
 }
+
 
 .currency{
   color:#334155;
@@ -819,101 +725,104 @@ body{
   padding:16px;
 }
 
+
 .operation{
-  border-radius:19px;
+  border-radius:20px;
 
-  padding:15px;
+  padding:17px;
 
-  margin-bottom:14px;
+  margin-bottom:15px;
 }
+
 
 .operation:last-child{
   margin-bottom:0;
 }
 
+
+/* سحب */
+
 .withdraw-operation{
   background:
-  linear-gradient(
-    135deg,
-    #fff7ed,
-    #fffaf5
-  );
+  linear-gradient(135deg,#fff7ed,#fffaf4);
 
-  border:
-  2px solid #fdba74;
+  border:2px solid #fb923c;
 }
+
+
+/* تسديد */
 
 .payment-operation{
   background:
-  linear-gradient(
-    135deg,
-    #f0fdf4,
-    #f7fff9
-  );
+  linear-gradient(135deg,#fffbeb,#fffdf5);
 
-  border:
-  2px solid #86efac;
+  border:2px solid #facc15;
 }
 
-.operation-title{
-  margin-bottom:14px;
 
-  font-size:22px;
+.operation-title{
+  margin-bottom:15px;
+
+  text-align:center;
+
+  font-size:23px;
   font-weight:900;
 }
 
-.withdraw-operation
-.operation-title{
-  color:#b45309;
+
+.withdraw-operation .operation-title{
+  color:#c2410c;
 }
 
-.payment-operation
-.operation-title{
-  color:#15803d;
+
+.payment-operation .operation-title{
+  color:#a16207;
 }
+
 
 .operation-fields{
-  display:grid;
-
-  grid-template-columns:
-  1fr 1.2fr auto;
-
-  gap:9px;
+  width:100%;
 }
 
-.field-mini{
-  min-width:0;
+
+/* مبلغ بعرض كامل */
+
+.money-row{
+  width:100%;
+
+  margin-bottom:13px;
 }
 
-.field-mini label{
+
+.money-row label,
+.person-row label{
   display:block;
 
-  margin:0 4px 10px;
+  margin:0 4px 9px;
 
   color:#1e293b;
 
-  font-size:19px;
+  font-size:20px;
   font-weight:900;
 }
 
+
 .operation-fields input{
   width:100%;
-  min-width:0;
 
-  height:64px;
+  height:66px;
 
-  border:
-  3px solid #b9c9df;
+  border:3px solid #b9c9df;
 
   border-radius:15px;
 
-  padding:0 14px;
+  padding:0 15px;
 
   background:white;
 
   color:#111827;
 
-  font-family:inherit;
+  font-family:Tahoma,Arial,sans-serif;
 
   font-size:22px;
   font-weight:900;
@@ -923,85 +832,117 @@ body{
   transition:.2s;
 }
 
+
 .operation-fields input::placeholder{
-  color:#475569;
+  color:#64748b;
+
+  font-size:18px;
+  font-weight:900;
 
   opacity:1;
-
-  font-size:19px;
-  font-weight:900;
 }
+
 
 .operation-fields input:focus{
   border-color:#2563eb;
 
   box-shadow:
-  0 0 0 5px
-  rgba(37,99,235,.09);
+  0 0 0 5px rgba(37,99,235,.09);
 }
+
+
+/* مهم: المبلغ كامل */
 
 .money-input{
   direction:ltr;
 
   text-align:center;
 
-  font-size:25px !important;
+  font-size:29px !important;
   font-weight:900 !important;
+
+  white-space:nowrap;
 }
 
-.operation-fields button{
-  min-width:96px;
 
-  height:64px;
+/* الاسم + السهم */
 
-  align-self:end;
+.person-action-row{
+  display:grid;
+
+  grid-template-columns:minmax(0,1fr) 72px;
+
+  gap:11px;
+
+  align-items:end;
+}
+
+
+.person-row{
+  min-width:0;
+}
+
+
+/* زر السهم */
+
+.arrow-action{
+  width:72px;
+  height:66px;
 
   border:0;
 
-  border-radius:15px;
+  border-radius:16px;
 
-  padding:0 14px;
+  display:flex;
 
-  color:white;
+  align-items:center;
 
-  font-family:inherit;
+  justify-content:center;
 
-  font-size:20px;
+  font-size:34px;
   font-weight:900;
 
   cursor:pointer;
 
-  box-shadow:
-  0 7px 16px
-  rgba(15,23,42,.12);
-
   transition:.2s;
 }
 
-.operation-fields button:hover{
-  transform:translateY(-3px);
+
+.arrow-action:hover{
+  transform:
+  translateY(-4px)
+  scale(1.05);
 }
 
-.operation-fields button:active{
-  transform:scale(.94);
+
+.arrow-action:active{
+  transform:scale(.92);
 }
 
-.withdraw-button{
+
+/* زيادة الدين */
+
+.withdraw-arrow{
   background:
-  linear-gradient(
-    135deg,
-    #f97316,
-    #c2410c
-  );
+  linear-gradient(135deg,#fb923c,#ea580c);
+
+  color:white;
+
+  box-shadow:
+  0 8px 18px rgba(234,88,12,.25);
 }
 
-.payment-button{
+
+/* تسديد */
+
+.payment-arrow{
   background:
-  linear-gradient(
-    135deg,
-    #22c55e,
-    #15803d
-  );
+  linear-gradient(135deg,#fde047,#eab308);
+
+  color:#422006;
+
+  box-shadow:
+  0 8px 18px rgba(234,179,8,.25);
 }
 
 
@@ -1018,17 +959,16 @@ body{
 
   background:white;
 
-  border:
-  1px solid #e1e8f3;
+  border:1px solid #e1e8f3;
 
   border-radius:32px;
 
   padding:30px;
 
   box-shadow:
-  0 18px 50px
-  rgba(15,23,42,.10);
+  0 18px 50px rgba(15,23,42,.10);
 }
+
 
 .history-section::before{
   content:"";
@@ -1050,6 +990,7 @@ body{
   );
 }
 
+
 .history-header{
   display:flex;
 
@@ -1064,6 +1005,7 @@ body{
   margin-bottom:22px;
 }
 
+
 .history-title h2{
   margin:0;
 
@@ -1072,6 +1014,7 @@ body{
   font-size:38px;
   font-weight:900;
 }
+
 
 .history-title p{
   margin:9px 0 0;
@@ -1082,6 +1025,7 @@ body{
   font-weight:900;
 }
 
+
 .filter-toggle{
   border:0;
 
@@ -1090,11 +1034,7 @@ body{
   padding:17px 25px;
 
   background:
-  linear-gradient(
-    135deg,
-    #2563eb,
-    #1e40af
-  );
+  linear-gradient(135deg,#2563eb,#1e40af);
 
   color:white;
 
@@ -1105,12 +1045,9 @@ body{
 
   cursor:pointer;
 
-  box-shadow:
-  0 8px 20px
-  rgba(37,99,235,.20);
-
   transition:.2s;
 }
+
 
 .filter-toggle:hover{
   transform:translateY(-3px);
@@ -1118,7 +1055,7 @@ body{
 
 
 /* =========================================================
-   TODAY SUMMARY
+   TODAY
 ========================================================= */
 
 .today-summary{
@@ -1131,6 +1068,7 @@ body{
 
   margin-bottom:23px;
 }
+
 
 .today-card{
   min-height:115px;
@@ -1147,15 +1085,16 @@ body{
 
   justify-content:center;
 
-  border:
-  1px solid #e5e7eb;
+  border:1px solid #e5e7eb;
 
   transition:.2s;
 }
 
+
 .today-card:hover{
   transform:translateY(-4px);
 }
+
 
 .today-card span{
   display:block;
@@ -1168,6 +1107,7 @@ body{
   margin-bottom:10px;
 }
 
+
 .today-card strong{
   direction:ltr;
 
@@ -1175,25 +1115,31 @@ body{
   font-weight:900;
 }
 
+
 .today-count{
   background:#eff6ff;
 }
+
 
 .today-count strong{
   color:#1e3a8a;
 }
 
+
 .today-withdraw{
   background:#fff7ed;
 }
+
 
 .today-withdraw strong{
   color:#c2410c;
 }
 
+
 .today-payment{
   background:#f0fdf4;
 }
+
 
 .today-payment strong{
   color:#15803d;
@@ -1201,7 +1147,7 @@ body{
 
 
 /* =========================================================
-   FILTER SLIDE
+   FILTER PANEL
 ========================================================= */
 
 .filter-shell{
@@ -1219,8 +1165,9 @@ body{
   transform .4s ease;
 }
 
+
 .filter-shell.open{
-  max-height:600px;
+  max-height:700px;
 
   opacity:1;
 
@@ -1229,41 +1176,28 @@ body{
   margin-bottom:24px;
 }
 
+
 .filter-panel{
   background:
-  linear-gradient(
-    135deg,
-    #eaf3ff,
-    #f8fbff
-  );
+  linear-gradient(135deg,#eaf3ff,#f8fbff);
 
-  border:
-  3px solid #bfdbfe;
+  border:3px solid #bfdbfe;
 
   border-radius:25px;
 
   padding:22px;
-
-  box-shadow:
-  inset 0 1px 0 white,
-  0 9px 24px
-  rgba(37,99,235,.07);
 }
+
 
 .filter-panel-title{
   margin-bottom:18px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
 
   color:#172554;
 
   font-size:27px;
   font-weight:900;
 }
+
 
 .history-filters{
   display:grid;
@@ -1274,11 +1208,11 @@ body{
   gap:13px;
 }
 
+
 .filter-field label{
   display:block;
 
-  margin:
-  0 5px 10px;
+  margin:0 5px 10px;
 
   color:#172554;
 
@@ -1286,13 +1220,14 @@ body{
   font-weight:900;
 }
 
+
 .filter-field select,
 .filter-field input{
   width:100%;
+
   height:67px;
 
-  border:
-  3px solid #b9c9df;
+  border:3px solid #b9c9df;
 
   border-radius:15px;
 
@@ -1308,27 +1243,27 @@ body{
   font-weight:900;
 
   outline:none;
-
-  transition:.2s;
 }
+
 
 .filter-field select:focus,
 .filter-field input:focus{
   border-color:#2563eb;
 
   box-shadow:
-  0 0 0 5px
-  rgba(37,99,235,.09);
+  0 0 0 5px rgba(37,99,235,.09);
 }
+
 
 .filter-field input::placeholder{
   color:#475569;
 
-  opacity:1;
-
   font-size:19px;
   font-weight:900;
+
+  opacity:1;
 }
+
 
 .clear-filter-btn{
   align-self:end;
@@ -1351,15 +1286,8 @@ body{
   font-weight:900;
 
   cursor:pointer;
-
-  transition:.2s;
 }
 
-.clear-filter-btn:hover{
-  background:#334155;
-
-  transform:translateY(-3px);
-}
 
 .filter-result{
   margin-top:18px;
@@ -1370,11 +1298,11 @@ body{
   font-weight:900;
 }
 
+
 .filter-result strong{
   color:#1d4ed8;
 
   font-size:26px;
-  font-weight:900;
 }
 
 
@@ -1387,12 +1315,9 @@ body{
 
   border-radius:20px;
 
-  border:
-  2px solid #dbe3ef;
-
-  box-shadow:
-  inset 0 0 0 1px #fff;
+  border:2px solid #dbe3ef;
 }
+
 
 .history-table{
   width:100%;
@@ -1402,17 +1327,10 @@ body{
   border-collapse:collapse;
 }
 
+
 .history-table th{
-  position:sticky;
-
-  top:0;
-
   background:
-  linear-gradient(
-    135deg,
-    #172554,
-    #1e3a8a
-  );
+  linear-gradient(135deg,#172554,#1e3a8a);
 
   color:white;
 
@@ -1424,13 +1342,13 @@ body{
   white-space:nowrap;
 }
 
+
 .history-table td{
   padding:19px 14px;
 
   text-align:center;
 
-  border-bottom:
-  1px solid #e5e7eb;
+  border-bottom:1px solid #e5e7eb;
 
   color:#111827;
 
@@ -1438,53 +1356,30 @@ body{
   font-weight:900;
 }
 
-.history-table tbody tr{
-  animation:
-  rowIn .35s ease both;
 
+.history-table tbody tr{
   transition:.18s;
 }
 
-@keyframes rowIn{
 
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-
-}
-
-.history-table
-tbody tr:nth-child(even){
+.history-table tbody tr:nth-child(even){
   background:#f8fafc;
 }
 
-.history-table
-tbody tr:hover{
-  background:#eaf3ff;
 
-  transform:
-  scale(1.004);
+.history-table tbody tr:hover{
+  background:#eaf3ff;
 }
 
-.history-table
-tbody tr.latest-row{
+
+.history-table tbody tr.latest-row{
   background:
-  linear-gradient(
-    90deg,
-    #fff7ed,
-    #ffffff
-  );
+  linear-gradient(90deg,#fff7ed,#ffffff);
 
   box-shadow:
-  inset -6px 0 0
-  #f97316;
+  inset -6px 0 0 #f97316;
 }
+
 
 .history-amount{
   direction:ltr;
@@ -1492,8 +1387,8 @@ tbody tr.latest-row{
   white-space:nowrap;
 
   font-size:22px !important;
-  font-weight:900 !important;
 }
+
 
 .history-balance{
   direction:ltr;
@@ -1503,8 +1398,8 @@ tbody tr.latest-row{
   color:#1d4ed8 !important;
 
   font-size:22px !important;
-  font-weight:900 !important;
 }
+
 
 .badge-withdraw{
   display:inline-block;
@@ -1520,11 +1415,10 @@ tbody tr.latest-row{
   color:#b45309;
 
   font-size:19px;
-  font-weight:900;
 
-  border:
-  1px solid #fdba74;
+  border:1px solid #fdba74;
 }
+
 
 .badge-payment{
   display:inline-block;
@@ -1540,11 +1434,10 @@ tbody tr.latest-row{
   color:#15803d;
 
   font-size:19px;
-  font-weight:900;
 
-  border:
-  1px solid #86efac;
+  border:1px solid #86efac;
 }
+
 
 .empty-history{
   padding:45px !important;
@@ -1572,11 +1465,7 @@ tbody tr.latest-row{
   min-width:310px;
 
   background:
-  linear-gradient(
-    135deg,
-    #172554,
-    #1e293b
-  );
+  linear-gradient(135deg,#172554,#1e293b);
 
   color:white;
 
@@ -1589,10 +1478,6 @@ tbody tr.latest-row{
   font-size:19px;
   font-weight:900;
 
-  box-shadow:
-  0 18px 45px
-  rgba(15,23,42,.28);
-
   opacity:0;
 
   pointer-events:none;
@@ -1601,6 +1486,7 @@ tbody tr.latest-row{
 
   transition:.3s;
 }
+
 
 .toast.show{
   opacity:1;
@@ -1628,6 +1514,7 @@ tbody tr.latest-row{
 
 }
 
+
 @media(max-width:950px){
 
   .partners-grid{
@@ -1647,15 +1534,18 @@ tbody tr.latest-row{
 
 }
 
+
 @media(max-width:650px){
 
   .main-content{
     padding:10px;
   }
 
+
   .partners-grid{
     grid-template-columns:1fr;
   }
+
 
   .summary-bar,
   .today-summary,
@@ -1663,23 +1553,11 @@ tbody tr.latest-row{
     grid-template-columns:1fr;
   }
 
-  .operation-fields{
-    grid-template-columns:1fr;
-  }
-
-  .operation-fields button{
-    width:100%;
-
-    height:66px;
-  }
 
   .brand h1{
     font-size:31px;
   }
 
-  .brand p{
-    font-size:18px;
-  }
 
   .group-title{
     flex-direction:column;
@@ -1689,16 +1567,14 @@ tbody tr.latest-row{
     text-align:center;
   }
 
+
   .partner-name{
     font-size:27px;
   }
 
+
   .debt-number{
     font-size:44px;
-  }
-
-  .clear-filter-btn{
-    width:100%;
   }
 
 }
@@ -1714,6 +1590,7 @@ tbody tr.latest-row{
     background:white !important;
   }
 
+
   .login-screen,
   .header-actions,
   .operations,
@@ -1722,18 +1599,13 @@ tbody tr.latest-row{
     display:none !important;
   }
 
+
   .main-content{
     display:block !important;
 
     padding:0 !important;
   }
 
-  .top-header,
-  .history-section{
-    box-shadow:none;
-
-    border:1px solid #ccc;
-  }
 
   .partners-grid{
     grid-template-columns:
@@ -1742,35 +1614,28 @@ tbody tr.latest-row{
     gap:10px;
   }
 
+
   .partner-card{
     box-shadow:none;
 
     break-inside:avoid;
   }
 
-  .partner-top{
-    padding:12px;
-  }
 
   .partner-name{
-    min-height:40px;
-
     font-size:15px;
   }
+
 
   .debt-number{
     font-size:24px;
   }
 
-  .summary-bar,
-  .today-summary{
-    grid-template-columns:
-    repeat(3,1fr);
-  }
 
   .history-table{
     min-width:0;
   }
+
 
   .history-table th,
   .history-table td{
@@ -1779,26 +1644,11 @@ tbody tr.latest-row{
     font-size:10px !important;
   }
 
+
   @page{
     size:A4 landscape;
 
     margin:6mm;
-  }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation:none !important;
-    transition:none !important;
   }
 
 }
@@ -1823,9 +1673,9 @@ id="loginScreen"
   <div class="login-box">
 
     <img
-      src="logo.png"
-      class="login-logo"
-      alt="شعار شركة أنهار الحياة"
+    src="logo.png"
+    class="login-logo"
+    alt="شعار شركة أنهار الحياة"
     >
 
     <h2>
@@ -1839,25 +1689,25 @@ id="loginScreen"
     </p>
 
     <input
-      type="password"
-      id="pinInput"
-      class="pin-input"
-      maxlength="6"
-      inputmode="numeric"
-      autocomplete="off"
-      placeholder="••••••"
+    type="password"
+    id="pinInput"
+    class="pin-input"
+    maxlength="6"
+    inputmode="numeric"
+    autocomplete="off"
+    placeholder="••••••"
     >
 
     <button
-      class="login-btn"
-      onclick="checkPin()"
+    class="login-btn"
+    onclick="checkPin()"
     >
       دخول
     </button>
 
     <div
-      class="error"
-      id="errorMessage"
+    class="error"
+    id="errorMessage"
     ></div>
 
   </div>
@@ -1878,15 +1728,13 @@ id="mainContent"
 <div class="wrapper">
 
 
-<!-- HEADER -->
-
 <div class="top-header">
 
   <div class="brand">
 
     <img
-      src="logo.png"
-      alt="شركة أنهار الحياة"
+    src="logo.png"
+    alt="شركة أنهار الحياة"
     >
 
     <div>
@@ -1907,22 +1755,22 @@ id="mainContent"
   <div class="header-actions">
 
     <button
-      class="action-btn pdf-btn"
-      onclick="printPDF()"
+    class="action-btn pdf-btn"
+    onclick="printPDF()"
     >
       🖨️ طباعة / PDF
     </button>
 
     <button
-      class="action-btn excel-btn"
-      onclick="exportExcel()"
+    class="action-btn excel-btn"
+    onclick="exportExcel()"
     >
       📊 تصدير Excel
     </button>
 
     <a
-      href="index.html"
-      class="action-btn home-btn"
+    href="index.html"
+    class="action-btn home-btn"
     >
       🏠 الرئيسية
     </a>
@@ -1979,15 +1827,12 @@ id="mainContent"
 
 
 
-<!-- =========================================================
-     RAHIM
-========================================================= -->
+<!-- RAHIM -->
 
 <div class="group-section">
 
   <div
-  class="group-title
-  rahim-header"
+  class="group-title rahim-header"
   >
 
     <div class="group-title-left">
@@ -2008,24 +1853,22 @@ id="mainContent"
 
   </div>
 
+
   <div
-    class="partners-grid"
-    id="rahimGrid"
+  class="partners-grid"
+  id="rahimGrid"
   ></div>
 
 </div>
 
 
 
-<!-- =========================================================
-     COMPANIES
-========================================================= -->
+<!-- COMPANIES -->
 
 <div class="group-section">
 
   <div
-  class="group-title
-  company-header"
+  class="group-title company-header"
   >
 
     <div class="group-title-left">
@@ -2046,24 +1889,22 @@ id="mainContent"
 
   </div>
 
+
   <div
-    class="partners-grid"
-    id="companiesGrid"
+  class="partners-grid"
+  id="companiesGrid"
   ></div>
 
 </div>
 
 
 
-<!-- =========================================================
-     TUAMA
-========================================================= -->
+<!-- TUAMA -->
 
 <div class="group-section">
 
   <div
-  class="group-title
-  tuama-header"
+  class="group-title tuama-header"
   >
 
     <div class="group-title-left">
@@ -2084,9 +1925,10 @@ id="mainContent"
 
   </div>
 
+
   <div
-    class="partners-grid"
-    id="tuamaGrid"
+  class="partners-grid"
+  id="tuamaGrid"
   ></div>
 
 </div>
@@ -2115,8 +1957,8 @@ id="mainContent"
 
 
     <button
-      class="filter-toggle"
-      onclick="toggleFilters()"
+    class="filter-toggle"
+    onclick="toggleFilters()"
     >
       🔎 فتح / إخفاء الفلترة
     </button>
@@ -2125,13 +1967,10 @@ id="mainContent"
 
 
 
-  <!-- TODAY -->
-
   <div class="today-summary">
 
     <div
-    class="today-card
-    today-count"
+    class="today-card today-count"
     >
 
       <span>
@@ -2146,8 +1985,7 @@ id="mainContent"
 
 
     <div
-    class="today-card
-    today-withdraw"
+    class="today-card today-withdraw"
     >
 
       <span>
@@ -2162,8 +2000,7 @@ id="mainContent"
 
 
     <div
-    class="today-card
-    today-payment"
+    class="today-card today-payment"
     >
 
       <span>
@@ -2180,11 +2017,11 @@ id="mainContent"
 
 
 
-  <!-- FILTERS -->
+  <!-- FILTER -->
 
   <div
-    class="filter-shell"
-    id="filterShell"
+  class="filter-shell"
+  id="filterShell"
   >
 
     <div class="filter-panel">
@@ -2204,8 +2041,8 @@ id="mainContent"
           </label>
 
           <select
-            id="partnerFilter"
-            onchange="renderHistory()"
+          id="partnerFilter"
+          onchange="renderHistory()"
           >
 
             <option value="">
@@ -2224,8 +2061,8 @@ id="mainContent"
           </label>
 
           <select
-            id="typeFilter"
-            onchange="renderHistory()"
+          id="typeFilter"
+          onchange="renderHistory()"
           >
 
             <option value="">
@@ -2252,9 +2089,9 @@ id="mainContent"
           </label>
 
           <input
-            type="date"
-            id="dateFilter"
-            onchange="renderHistory()"
+          type="date"
+          id="dateFilter"
+          onchange="renderHistory()"
           >
 
         </div>
@@ -2267,18 +2104,18 @@ id="mainContent"
           </label>
 
           <input
-            type="text"
-            id="searchHistory"
-            placeholder="اكتب اسم الشريك أو المستلم..."
-            oninput="renderHistory()"
+          type="text"
+          id="searchHistory"
+          placeholder="اسم الشريك أو المستلم"
+          oninput="renderHistory()"
           >
 
         </div>
 
 
         <button
-          class="clear-filter-btn"
-          onclick="clearHistoryFilters()"
+        class="clear-filter-btn"
+        onclick="clearHistoryFilters()"
         >
           ✖ مسح الفلاتر
         </button>
@@ -2346,8 +2183,9 @@ id="mainContent"
 
       </thead>
 
+
       <tbody
-        id="historyTable"
+      id="historyTable"
       ></tbody>
 
     </table>
@@ -2381,22 +2219,25 @@ const ACCESS_CODE =
 
 const loginScreen =
 document.getElementById(
-  "loginScreen"
+"loginScreen"
 );
+
 
 const mainContent =
 document.getElementById(
-  "mainContent"
+"mainContent"
 );
+
 
 const pinInput =
 document.getElementById(
-  "pinInput"
+"pinInput"
 );
+
 
 const errorMessage =
 document.getElementById(
-  "errorMessage"
+"errorMessage"
 );
 
 
@@ -2463,8 +2304,8 @@ function(){
 
   this.value =
   this.value.replace(
-    /[^0-9]/g,
-    ""
+  /[^0-9]/g,
+  ""
   );
 
 });
@@ -2678,11 +2519,13 @@ icon:"👤"
 ========================================================= */
 
 let partners = {};
+
 let history = [];
 
 
 const PARTNERS_KEY =
 "partnerCommitmentsPartners";
+
 
 const HISTORY_KEY =
 "partnerCommitmentsHistory";
@@ -2699,9 +2542,9 @@ function loadData(){
 
     savedPartners =
     JSON.parse(
-      localStorage.getItem(
-        PARTNERS_KEY
-      )
+    localStorage.getItem(
+    PARTNERS_KEY
+    )
     ) || {};
 
   }
@@ -2717,9 +2560,9 @@ function loadData(){
 
     savedHistory =
     JSON.parse(
-      localStorage.getItem(
-        HISTORY_KEY
-      )
+    localStorage.getItem(
+    HISTORY_KEY
+    )
     ) || [];
 
   }
@@ -2736,15 +2579,15 @@ function loadData(){
 
     if(
       savedPartners[
-        def.id
+      def.id
       ]
     ){
 
       partners[
-        def.id
+      def.id
       ] =
       savedPartners[
-        def.id
+      def.id
       ];
 
     }
@@ -2752,14 +2595,12 @@ function loadData(){
     else{
 
       partners[
-        def.id
+      def.id
       ] = {
 
-        name:
-        def.name,
+        name:def.name,
 
-        debt:
-        1000000
+        debt:1000000
 
       };
 
@@ -2795,11 +2636,11 @@ function savePartners(){
 
   localStorage.setItem(
 
-    PARTNERS_KEY,
+  PARTNERS_KEY,
 
-    JSON.stringify(
-      partners
-    )
+  JSON.stringify(
+  partners
+  )
 
   );
 
@@ -2810,11 +2651,11 @@ function saveHistory(){
 
   localStorage.setItem(
 
-    HISTORY_KEY,
+  HISTORY_KEY,
 
-    JSON.stringify(
-      history
-    )
+  JSON.stringify(
+  history
+  )
 
   );
 
@@ -2828,9 +2669,9 @@ function saveHistory(){
 function formatMoney(value){
 
   return Number(
-    value || 0
+  value || 0
   ).toLocaleString(
-    "en-US"
+  "en-US"
   );
 
 }
@@ -2840,19 +2681,19 @@ function parseMoney(value){
 
   return Number(
 
-    String(
-      value || ""
-    )
+  String(
+  value || ""
+  )
 
-    .replace(
-      /,/g,
-      ""
-    )
+  .replace(
+  /,/g,
+  ""
+  )
 
-    .replace(
-      /[^\d]/g,
-      ""
-    )
+  .replace(
+  /[^\d]/g,
+  ""
+  )
 
   ) || 0;
 
@@ -2863,8 +2704,8 @@ function formatMoneyInput(input){
 
   const raw =
   input.value.replace(
-    /[^\d]/g,
-    ""
+  /[^\d]/g,
+  ""
   );
 
 
@@ -2880,7 +2721,7 @@ function formatMoneyInput(input){
   input.value =
   Number(raw)
   .toLocaleString(
-    "en-US"
+  "en-US"
   );
 
 }
@@ -2894,13 +2735,13 @@ function createPartnerCard(def){
 
   const partner =
   partners[
-    def.id
+  def.id
   ];
 
 
   const card =
   document.createElement(
-    "div"
+  "div"
   );
 
 
@@ -2913,41 +2754,58 @@ function createPartnerCard(def){
   <div class="partner-top">
 
     <div class="partner-icon">
+
       ${def.icon}
+
     </div>
+
 
     <div class="partner-name">
+
       ${def.name}
+
     </div>
+
 
     <div class="debt-label">
+
       إجمالي الدين الحالي
+
     </div>
 
+
     <div
-      class="debt-number"
-      id="debt-${def.id}"
+    class="debt-number"
+    id="debt-${def.id}"
     >
 
       ${formatMoney(
-        partner.debt
+      partner.debt
       )}
 
     </div>
 
+
     <div class="currency">
+
       دينار عراقي
+
     </div>
 
   </div>
 
 
+
   <div class="operations">
 
 
+    <!-- ===================================
+         سحب
+    =================================== -->
+
     <div
-      class="operation
-      withdraw-operation"
+    class="operation
+    withdraw-operation"
     >
 
       <div class="operation-title">
@@ -2960,45 +2818,69 @@ function createPartnerCard(def){
       <div class="operation-fields">
 
 
-        <div class="field-mini">
+        <div class="money-row">
 
           <label>
+
             مبلغ السحب
+
           </label>
 
+
           <input
-            type="text"
-            inputmode="numeric"
-            class="money-input"
-            id="withdraw-${def.id}"
-            placeholder="مثال: 500,000"
-            oninput="formatMoneyInput(this)"
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="withdraw-${def.id}"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
           >
 
         </div>
 
 
-        <div class="field-mini">
 
-          <label>
-            اسم الشخص المستلم
-          </label>
+        <div class="person-action-row">
 
-          <input
+
+          <div class="person-row">
+
+            <label>
+
+              اسم الشخص المستلم
+
+            </label>
+
+
+            <input
             type="text"
             id="withdraw-person-${def.id}"
-            placeholder="اكتب اسم المستلم"
+            placeholder="اسم المستلم"
+            >
+
+          </div>
+
+
+
+          <button
+          class="
+          arrow-action
+          withdraw-arrow
+          "
+          onclick="
+          addWithdrawal('${def.id}')
+          "
+          title="
+          إضافة السحب إلى الدين
+          "
           >
 
+            ⬆
+
+          </button>
+
+
         </div>
-
-
-        <button
-          class="withdraw-button"
-          onclick="addWithdrawal('${def.id}')"
-        >
-          تطبيق
-        </button>
 
       </div>
 
@@ -3006,9 +2888,13 @@ function createPartnerCard(def){
 
 
 
+    <!-- ===================================
+         تسديد
+    =================================== -->
+
     <div
-      class="operation
-      payment-operation"
+    class="operation
+    payment-operation"
     >
 
       <div class="operation-title">
@@ -3021,45 +2907,69 @@ function createPartnerCard(def){
       <div class="operation-fields">
 
 
-        <div class="field-mini">
+        <div class="money-row">
 
           <label>
+
             مبلغ التسديد
+
           </label>
 
+
           <input
-            type="text"
-            inputmode="numeric"
-            class="money-input"
-            id="payment-${def.id}"
-            placeholder="مثال: 250,000"
-            oninput="formatMoneyInput(this)"
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="payment-${def.id}"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
           >
 
         </div>
 
 
-        <div class="field-mini">
 
-          <label>
-            اسم الشخص
-          </label>
+        <div class="person-action-row">
 
-          <input
+
+          <div class="person-row">
+
+            <label>
+
+              اسم الشخص
+
+            </label>
+
+
+            <input
             type="text"
             id="payment-person-${def.id}"
-            placeholder="اكتب اسم الشخص"
+            placeholder="اسم الشخص"
+            >
+
+          </div>
+
+
+
+          <button
+          class="
+          arrow-action
+          payment-arrow
+          "
+          onclick="
+          addPayment('${def.id}')
+          "
+          title="
+          تسجيل التسديد
+          "
           >
 
+            ⬇
+
+          </button>
+
+
         </div>
-
-
-        <button
-          class="payment-button"
-          onclick="addPayment('${def.id}')"
-        >
-          تطبيق
-        </button>
 
       </div>
 
@@ -3077,32 +2987,34 @@ function createPartnerCard(def){
 
 
 /* =========================================================
-   RENDER CARDS
+   RENDER
 ========================================================= */
 
 function renderAll(){
 
   const rahimGrid =
   document.getElementById(
-    "rahimGrid"
+  "rahimGrid"
   );
 
-  const tuamaGrid =
-  document.getElementById(
-    "tuamaGrid"
-  );
 
   const companiesGrid =
   document.getElementById(
-    "companiesGrid"
+  "companiesGrid"
+  );
+
+
+  const tuamaGrid =
+  document.getElementById(
+  "tuamaGrid"
   );
 
 
   rahimGrid.innerHTML = "";
 
-  tuamaGrid.innerHTML = "";
-
   companiesGrid.innerHTML = "";
+
+  tuamaGrid.innerHTML = "";
 
 
   partnerDefinitions.forEach(
@@ -3110,12 +3022,14 @@ function renderAll(){
 
     const card =
     createPartnerCard(
-      def
+    def
     );
 
 
     card.style.animationDelay =
-    (index * 35) +
+    (
+    index * 35
+    ) +
     "ms";
 
 
@@ -3125,7 +3039,7 @@ function renderAll(){
     ){
 
       rahimGrid.appendChild(
-        card
+      card
       );
 
     }
@@ -3137,7 +3051,7 @@ function renderAll(){
     ){
 
       companiesGrid.appendChild(
-        card
+      card
       );
 
     }
@@ -3149,7 +3063,7 @@ function renderAll(){
     ){
 
       tuamaGrid.appendChild(
-        card
+      card
       );
 
     }
@@ -3170,18 +3084,19 @@ function addWithdrawal(id){
 
   const amountInput =
   document.getElementById(
-    "withdraw-" + id
+  "withdraw-" + id
   );
+
 
   const personInput =
   document.getElementById(
-    "withdraw-person-" + id
+  "withdraw-person-" + id
   );
 
 
   const amount =
   parseMoney(
-    amountInput.value
+  amountInput.value
   );
 
 
@@ -3194,7 +3109,7 @@ function addWithdrawal(id){
   ){
 
     showToast(
-      "⚠️ أدخل مبلغ سحب صحيح"
+    "⚠️ أدخل مبلغ سحب صحيح"
     );
 
     amountInput.focus();
@@ -3209,7 +3124,7 @@ function addWithdrawal(id){
   ){
 
     showToast(
-      "⚠️ أدخل اسم الشخص المستلم"
+    "⚠️ أدخل اسم الشخص المستلم"
     );
 
     personInput.focus();
@@ -3221,7 +3136,7 @@ function addWithdrawal(id){
 
   const partnerDef =
   partnerDefinitions.find(
-    p => p.id === id
+  p => p.id === id
   );
 
 
@@ -3233,19 +3148,19 @@ function addWithdrawal(id){
   if(
     !confirm(
 
-      "تأكيد عملية السحب\n\n" +
+    "تأكيد عملية السحب\n\n" +
 
-      partnerDef.name +
+    partnerDef.name +
 
-      "\nالمبلغ: " +
+    "\nالمبلغ: " +
 
-      formatMoney(
-        amount
-      ) +
+    formatMoney(
+    amount
+    ) +
 
-      " د.ع\nبيد: " +
+    " د.ع\nبيد: " +
 
-      person
+    person
 
     )
   ){
@@ -3261,15 +3176,15 @@ function addWithdrawal(id){
 
   addHistory(
 
-    id,
+  id,
 
-    "withdraw",
+  "withdraw",
 
-    amount,
+  amount,
 
-    person,
+  person,
 
-    newBalance
+  newBalance
 
   );
 
@@ -3278,8 +3193,8 @@ function addWithdrawal(id){
 
 
   updateDebtNumber(
-    id,
-    newBalance
+  id,
+  newBalance
   );
 
 
@@ -3296,7 +3211,7 @@ function addWithdrawal(id){
 
 
   showToast(
-    "✅ تم تسجيل السحب بنجاح"
+  "⬆️ تم إضافة السحب وارتفع الدين"
   );
 
 }
@@ -3310,18 +3225,19 @@ function addPayment(id){
 
   const amountInput =
   document.getElementById(
-    "payment-" + id
+  "payment-" + id
   );
+
 
   const personInput =
   document.getElementById(
-    "payment-person-" + id
+  "payment-person-" + id
   );
 
 
   const amount =
   parseMoney(
-    amountInput.value
+  amountInput.value
   );
 
 
@@ -3334,7 +3250,7 @@ function addPayment(id){
   ){
 
     showToast(
-      "⚠️ أدخل مبلغ تسديد صحيح"
+    "⚠️ أدخل مبلغ تسديد صحيح"
     );
 
     amountInput.focus();
@@ -3349,7 +3265,7 @@ function addPayment(id){
   ){
 
     showToast(
-      "⚠️ أدخل اسم الشخص"
+    "⚠️ أدخل اسم الشخص"
     );
 
     personInput.focus();
@@ -3365,7 +3281,7 @@ function addPayment(id){
   ){
 
     showToast(
-      "⚠️ مبلغ التسديد أكبر من الدين الحالي"
+    "⚠️ مبلغ التسديد أكبر من الدين الحالي"
     );
 
     return;
@@ -3375,7 +3291,7 @@ function addPayment(id){
 
   const partnerDef =
   partnerDefinitions.find(
-    p => p.id === id
+  p => p.id === id
   );
 
 
@@ -3387,19 +3303,19 @@ function addPayment(id){
   if(
     !confirm(
 
-      "تأكيد عملية التسديد\n\n" +
+    "تأكيد عملية التسديد\n\n" +
 
-      partnerDef.name +
+    partnerDef.name +
 
-      "\nالمبلغ: " +
+    "\nالمبلغ: " +
 
-      formatMoney(
-        amount
-      ) +
+    formatMoney(
+    amount
+    ) +
 
-      " د.ع\nبواسطة: " +
+    " د.ع\nبواسطة: " +
 
-      person
+    person
 
     )
   ){
@@ -3415,15 +3331,15 @@ function addPayment(id){
 
   addHistory(
 
-    id,
+  id,
 
-    "payment",
+  "payment",
 
-    amount,
+  amount,
 
-    person,
+  person,
 
-    newBalance
+  newBalance
 
   );
 
@@ -3432,8 +3348,8 @@ function addPayment(id){
 
 
   updateDebtNumber(
-    id,
-    newBalance
+  id,
+  newBalance
   );
 
 
@@ -3450,14 +3366,14 @@ function addPayment(id){
 
 
   showToast(
-    "✅ تم تسجيل التسديد بنجاح"
+  "⬇️ تم تسجيل التسديد وانخفض الدين"
   );
 
 }
 
 
 /* =========================================================
-   NUMBER ANIMATION
+   DEBT ANIMATION
 ========================================================= */
 
 function updateDebtNumber(
@@ -3467,18 +3383,18 @@ value
 
   const element =
   document.getElementById(
-    "debt-" + id
+  "debt-" + id
   );
 
 
   element.innerText =
   formatMoney(
-    value
+  value
   );
 
 
   element.classList.remove(
-    "pulse"
+  "pulse"
   );
 
 
@@ -3486,7 +3402,7 @@ value
 
 
   element.classList.add(
-    "pulse"
+  "pulse"
   );
 
 }
@@ -3506,7 +3422,7 @@ balance
 
   const partnerDef =
   partnerDefinitions.find(
-    p => p.id === id
+  p => p.id === id
   );
 
 
@@ -3524,7 +3440,7 @@ balance
 
     isoDate:
     getLocalISODate(
-      now
+    now
     ),
 
     partnerId:
@@ -3547,18 +3463,18 @@ balance
 
     date:
     now.toLocaleDateString(
-      "en-GB"
+    "en-GB"
     ),
 
     time:
     now.toLocaleTimeString(
-      "en-GB",
-      {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
-        hour12:false
-      }
+    "en-GB",
+    {
+      hour:"2-digit",
+      minute:"2-digit",
+      second:"2-digit",
+      hour12:false
+    }
     ),
 
     balance:
@@ -3586,28 +3502,28 @@ date
 
   const month =
   String(
-    date.getMonth() + 1
+  date.getMonth() + 1
   ).padStart(
-    2,
-    "0"
+  2,
+  "0"
   );
 
 
   const day =
   String(
-    date.getDate()
+  date.getDate()
   ).padStart(
-    2,
-    "0"
+  2,
+  "0"
   );
 
 
   return (
-    year +
-    "-" +
-    month +
-    "-" +
-    day
+  year +
+  "-" +
+  month +
+  "-" +
+  day
   );
 
 }
@@ -3632,7 +3548,7 @@ record
 
     const parts =
     record.date.split(
-      "/"
+    "/"
     );
 
 
@@ -3641,11 +3557,11 @@ record
     ){
 
       return (
-        parts[2] +
-        "-" +
-        parts[1] +
-        "-" +
-        parts[0]
+      parts[2] +
+      "-" +
+      parts[1] +
+      "-" +
+      parts[0]
       );
 
     }
@@ -3659,40 +3575,42 @@ record
 
 
 /* =========================================================
-   FILTER SLIDE
+   FILTER
 ========================================================= */
 
 function toggleFilters(){
 
   document
   .getElementById(
-    "filterShell"
+  "filterShell"
   )
   .classList
   .toggle(
-    "open"
+  "open"
   );
 
 }
 
 
 /* =========================================================
-   FILTER PARTNERS
+   BUILD FILTER
 ========================================================= */
 
 function buildPartnerFilter(){
 
   const select =
   document.getElementById(
-    "partnerFilter"
+  "partnerFilter"
   );
 
 
   select.innerHTML = `
 
-    <option value="">
-      جميع الشركاء
-    </option>
+  <option value="">
+
+    جميع الشركاء
+
+  </option>
 
   `;
 
@@ -3702,7 +3620,7 @@ function buildPartnerFilter(){
 
     const option =
     document.createElement(
-      "option"
+    "option"
     );
 
 
@@ -3715,7 +3633,7 @@ function buildPartnerFilter(){
 
 
     select.appendChild(
-      option
+    option
     );
 
   });
@@ -3731,31 +3649,31 @@ function renderHistory(){
 
   const tbody =
   document.getElementById(
-    "historyTable"
+  "historyTable"
   );
 
 
   const partnerFilter =
   document.getElementById(
-    "partnerFilter"
+  "partnerFilter"
   ).value;
 
 
   const typeFilter =
   document.getElementById(
-    "typeFilter"
+  "typeFilter"
   ).value;
 
 
   const dateFilter =
   document.getElementById(
-    "dateFilter"
+  "dateFilter"
   ).value;
 
 
   const search =
   document.getElementById(
-    "searchHistory"
+  "searchHistory"
   )
   .value
   .trim()
@@ -3792,8 +3710,9 @@ function renderHistory(){
     if(
       dateFilter &&
       getRecordISODate(
-        record
-      ) !==
+      record
+      )
+      !==
       dateFilter
     ){
 
@@ -3806,22 +3725,22 @@ function renderHistory(){
 
       const searchable = (
 
-        (record.partnerName || "") +
+      (record.partnerName || "") +
 
-        " " +
+      " " +
 
-        (record.person || "") +
+      (record.person || "") +
 
-        " " +
+      " " +
 
-        (record.group || "")
+      (record.group || "")
 
       ).toLowerCase();
 
 
       if(
         !searchable.includes(
-          search
+        search
         )
       ){
 
@@ -3839,7 +3758,7 @@ function renderHistory(){
 
   document
   .getElementById(
-    "filterResultCount"
+  "filterResultCount"
   )
   .innerText =
   filtered.length;
@@ -3854,26 +3773,26 @@ function renderHistory(){
 
     const row =
     document.createElement(
-      "tr"
+    "tr"
     );
 
 
     row.innerHTML = `
 
-      <td
-      colspan="8"
-      class="empty-history"
-      >
+    <td
+    colspan="8"
+    class="empty-history"
+    >
 
-        📭 لا توجد حركات مطابقة للبحث
+      📭 لا توجد حركات مطابقة
 
-      </td>
+    </td>
 
     `;
 
 
     tbody.appendChild(
-      row
+    row
     );
 
 
@@ -3884,14 +3803,14 @@ function renderHistory(){
 
   filtered.forEach(
   function(
-    record,
-    index
+  record,
+  index
   ){
 
 
     const row =
     document.createElement(
-      "tr"
+    "tr"
     );
 
 
@@ -3900,15 +3819,10 @@ function renderHistory(){
     ){
 
       row.classList.add(
-        "latest-row"
+      "latest-row"
       );
 
     }
-
-
-    row.style.animationDelay =
-    (index * 25) +
-    "ms";
 
 
     const typeText =
@@ -3942,65 +3856,82 @@ function renderHistory(){
 
     row.innerHTML = `
 
-      <td>
-        ${index + 1}
-      </td>
+    <td>
 
-      <td>
-        ${record.partnerName}
-      </td>
+      ${index + 1}
 
-      <td>
+    </td>
 
-        <span
-        class="${badgeClass}"
-        >
 
-          ${typeText}
+    <td>
 
-        </span>
+      ${record.partnerName}
 
-      </td>
+    </td>
 
-      <td
-      class="history-amount"
+
+    <td>
+
+      <span
+      class="${badgeClass}"
       >
 
-        ${formatMoney(
-          record.amount
-        )}
-        د.ع
+        ${typeText}
 
-      </td>
+      </span>
 
-      <td>
-        ${personText}
-      </td>
+    </td>
 
-      <td>
-        ${record.date}
-      </td>
 
-      <td>
-        ${record.time}
-      </td>
+    <td
+    class="history-amount"
+    >
 
-      <td
-      class="history-balance"
-      >
+      ${formatMoney(
+      record.amount
+      )}
+      د.ع
 
-        ${formatMoney(
-          record.balance
-        )}
-        د.ع
+    </td>
 
-      </td>
+
+    <td>
+
+      ${personText}
+
+    </td>
+
+
+    <td>
+
+      ${record.date}
+
+    </td>
+
+
+    <td>
+
+      ${record.time}
+
+    </td>
+
+
+    <td
+    class="history-balance"
+    >
+
+      ${formatMoney(
+      record.balance
+      )}
+      د.ع
+
+    </td>
 
     `;
 
 
     tbody.appendChild(
-      row
+    row
     );
 
   });
@@ -4016,7 +3947,7 @@ function updateTodaySummary(){
 
   const today =
   getLocalISODate(
-    new Date()
+  new Date()
   );
 
 
@@ -4025,11 +3956,11 @@ function updateTodaySummary(){
   function(record){
 
     return (
-      getRecordISODate(
-        record
-      )
-      ===
-      today
+    getRecordISODate(
+    record
+    )
+    ===
+    today
     );
 
   });
@@ -4050,7 +3981,7 @@ function updateTodaySummary(){
 
       withdrawals +=
       Number(
-        record.amount || 0
+      record.amount || 0
       );
 
     }
@@ -4063,7 +3994,7 @@ function updateTodaySummary(){
 
       payments +=
       Number(
-        record.amount || 0
+      record.amount || 0
       );
 
     }
@@ -4073,7 +4004,7 @@ function updateTodaySummary(){
 
   document
   .getElementById(
-    "todayCount"
+  "todayCount"
   )
   .innerText =
   todayRecords.length;
@@ -4081,21 +4012,21 @@ function updateTodaySummary(){
 
   document
   .getElementById(
-    "todayWithdraw"
+  "todayWithdraw"
   )
   .innerText =
   formatMoney(
-    withdrawals
+  withdrawals
   );
 
 
   document
   .getElementById(
-    "todayPayment"
+  "todayPayment"
   )
   .innerText =
   formatMoney(
-    payments
+  payments
   );
 
 }
@@ -4109,25 +4040,25 @@ function clearHistoryFilters(){
 
   document
   .getElementById(
-    "partnerFilter"
+  "partnerFilter"
   ).value = "";
 
 
   document
   .getElementById(
-    "typeFilter"
+  "typeFilter"
   ).value = "";
 
 
   document
   .getElementById(
-    "dateFilter"
+  "dateFilter"
   ).value = "";
 
 
   document
   .getElementById(
-    "searchHistory"
+  "searchHistory"
   ).value = "";
 
 
@@ -4135,7 +4066,7 @@ function clearHistoryFilters(){
 
 
   showToast(
-    "تم مسح الفلاتر"
+  "تم مسح الفلاتر"
   );
 
 }
@@ -4155,9 +4086,9 @@ function updateSummary(){
 
     total +=
     Number(
-      partners[
-        def.id
-      ].debt || 0
+    partners[
+    def.id
+    ].debt || 0
     );
 
   });
@@ -4165,7 +4096,7 @@ function updateSummary(){
 
   document
   .getElementById(
-    "totalPartners"
+  "totalPartners"
   )
   .innerText =
   partnerDefinitions.length;
@@ -4173,11 +4104,11 @@ function updateSummary(){
 
   document
   .getElementById(
-    "totalDebt"
+  "totalDebt"
   )
   .innerText =
   formatMoney(
-    total
+  total
   );
 
 }
@@ -4202,11 +4133,11 @@ function exportExcel(){
 
   const balancesData = [
 
-    [
-      "المجموعة",
-      "اسم الشريك / الجهة",
-      "الرصيد الحالي"
-    ]
+  [
+    "المجموعة",
+    "اسم الشريك / الجهة",
+    "الرصيد الحالي"
+  ]
 
   ];
 
@@ -4216,13 +4147,13 @@ function exportExcel(){
 
     balancesData.push([
 
-      def.groupName,
+    def.groupName,
 
-      def.name,
+    def.name,
 
-      partners[
-        def.id
-      ].debt
+    partners[
+    def.id
+    ].debt
 
     ]);
 
@@ -4231,16 +4162,16 @@ function exportExcel(){
 
   const historyData = [
 
-    [
-      "المجموعة",
-      "اسم الشريك",
-      "نوع الحركة",
-      "المبلغ",
-      "بيد / بواسطة",
-      "التاريخ",
-      "الوقت",
-      "الرصيد بعد الحركة"
-    ]
+  [
+    "المجموعة",
+    "اسم الشريك",
+    "نوع الحركة",
+    "المبلغ",
+    "بيد / بواسطة",
+    "التاريخ",
+    "الوقت",
+    "الرصيد بعد الحركة"
+  ]
 
   ];
 
@@ -4250,24 +4181,24 @@ function exportExcel(){
 
     historyData.push([
 
-      record.group,
+    record.group,
 
-      record.partnerName,
+    record.partnerName,
 
-      record.type ===
-      "withdraw"
-      ? "سحب"
-      : "تسديد",
+    record.type ===
+    "withdraw"
+    ? "سحب"
+    : "تسديد",
 
-      record.amount,
+    record.amount,
 
-      record.person,
+    record.person,
 
-      record.date,
+    record.date,
 
-      record.time,
+    record.time,
 
-      record.balance
+    record.balance
 
     ]);
 
@@ -4280,70 +4211,75 @@ function exportExcel(){
 
   const balancesSheet =
   XLSX.utils.aoa_to_sheet(
-    balancesData
+  balancesData
   );
 
 
   const historySheet =
   XLSX.utils.aoa_to_sheet(
-    historyData
+  historyData
   );
 
 
-  balancesSheet[
-    "!cols"
-  ] = [
+  balancesSheet["!cols"] = [
 
-    {wch:28},
-    {wch:34},
-    {wch:22}
+  {wch:28},
+
+  {wch:34},
+
+  {wch:22}
 
   ];
 
 
-  historySheet[
-    "!cols"
-  ] = [
+  historySheet["!cols"] = [
 
-    {wch:28},
-    {wch:34},
-    {wch:16},
-    {wch:20},
-    {wch:28},
-    {wch:16},
-    {wch:16},
-    {wch:23}
+  {wch:28},
+
+  {wch:34},
+
+  {wch:16},
+
+  {wch:20},
+
+  {wch:28},
+
+  {wch:16},
+
+  {wch:16},
+
+  {wch:23}
 
   ];
 
 
   XLSX.utils.book_append_sheet(
 
-    workbook,
+  workbook,
 
-    balancesSheet,
+  balancesSheet,
 
-    "الأرصدة"
+  "الأرصدة"
 
   );
 
 
   XLSX.utils.book_append_sheet(
 
-    workbook,
+  workbook,
 
-    historySheet,
+  historySheet,
 
-    "سجل الحركات"
+  "سجل الحركات"
 
   );
 
 
   XLSX.writeFile(
 
-    workbook,
+  workbook,
 
-    "التزامات_الشركاء.xlsx"
+  "التزامات_الشركاء.xlsx"
 
   );
 
@@ -4358,7 +4294,7 @@ function showToast(message){
 
   const toast =
   document.getElementById(
-    "toast"
+  "toast"
   );
 
 
@@ -4367,7 +4303,7 @@ function showToast(message){
 
 
   toast.classList.add(
-    "show"
+  "show"
   );
 
 
@@ -4375,7 +4311,7 @@ function showToast(message){
   function(){
 
     toast.classList.remove(
-      "show"
+    "show"
     );
 
   },2400);
