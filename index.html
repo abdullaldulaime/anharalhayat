@@ -3,11 +3,17 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>نظام تقارير شركة أنهار الحياة</title>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <style>
+
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -17,6 +23,10 @@ body{
   color:#1f2937;
   font-weight:700;
 }
+
+/* =========================
+   الصفحة الرئيسية
+========================= */
 
 .home{
   min-height:100vh;
@@ -28,7 +38,8 @@ body{
 
 .home-card{
   background:white;
-  width:950px;
+  width:100%;
+  max-width:1200px;
   padding:45px;
   border-radius:35px;
   text-align:center;
@@ -84,7 +95,7 @@ body{
   font-weight:900;
 }
 
-.home-card p{
+.home-card > p{
   font-size:26px;
   color:#475569;
   margin-top:10px;
@@ -106,20 +117,29 @@ body{
   font-weight:800;
 }
 
+/* =========================
+   بطاقات القائمة الرئيسية
+========================= */
+
 .menu{
   margin-top:40px;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
 
 .menu-card{
-  padding:40px;
+  min-height:285px;
+  padding:30px 18px;
   border-radius:28px;
   background:linear-gradient(135deg,#f8fafc,#eef2ff);
   border:2px solid #dbeafe;
   cursor:pointer;
   transition:.3s;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 .menu-card:hover{
@@ -129,21 +149,28 @@ body{
 }
 
 .icon{
-  font-size:70px;
+  font-size:64px;
 }
 
 .menu-card h3{
   color:#1e3a8a;
-  font-size:32px;
+  font-size:26px;
   margin-top:18px;
   margin-bottom:10px;
   font-weight:900;
+  line-height:1.5;
 }
 
 .menu-card p{
-  font-size:17px;
+  font-size:16px;
   color:#475569;
+  line-height:1.8;
+  margin:0;
 }
+
+/* =========================
+   صفحة كشف الحساب
+========================= */
 
 .page-area{
   padding:25px;
@@ -157,11 +184,12 @@ body{
   border-radius:18px;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:12px;
 }
 
 .controls input{
+  min-width:0;
   padding:12px;
   border:1px solid #d1d5db;
   border-radius:12px;
@@ -178,6 +206,10 @@ body{
   font-weight:900;
   cursor:pointer;
   font-size:15px;
+}
+
+.controls button:hover{
+  opacity:.9;
 }
 
 .back-btn{
@@ -216,7 +248,7 @@ body{
 }
 
 .company{
-  text-align:left;
+  text-align:right;
   line-height:1.8;
 }
 
@@ -252,20 +284,26 @@ body{
   background:white;
   padding:14px;
   border-radius:14px;
-  border-right:5px solid #2563eb;
   border:1px solid #e5e7eb;
+  border-right:5px solid #2563eb;
   text-align:center;
   font-size:18px;
   font-weight:900;
 }
 
+/* =========================
+   الجدول
+========================= */
+
 .table-wrap{
   margin:10px 14px;
+  overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
+  min-width:850px;
 }
 
 th{
@@ -275,6 +313,7 @@ th{
   border:1px solid #d1d5db;
   font-size:15px;
   font-weight:900;
+  white-space:nowrap;
 }
 
 td{
@@ -337,6 +376,10 @@ tbody tr:nth-child(even){
   color:#dc2626 !important;
 }
 
+/* =========================
+   ملخص الحساب
+========================= */
+
 .account-summary{
   margin:22px;
   border:1px solid #d8d8f0;
@@ -356,6 +399,7 @@ tbody tr:nth-child(even){
 .summary-row{
   display:flex;
   justify-content:space-between;
+  gap:20px;
   padding:16px 24px;
   border-top:1px solid #ececf5;
   font-size:18px;
@@ -365,12 +409,17 @@ tbody tr:nth-child(even){
 .summary-row b{
   color:#111827;
   direction:ltr;
+  white-space:nowrap;
 }
 
 .summary-row.outstanding b,
 .summary-row.outstanding span{
   color:#dc2626;
 }
+
+/* =========================
+   تحليل عمر الدين
+========================= */
 
 .aging-box{
   margin:22px;
@@ -411,6 +460,10 @@ tbody tr:nth-child(even){
   overflow:hidden;
 }
 
+.aging-item:last-child{
+  border-left:0;
+}
+
 .aging-item div{
   font-size:20px;
   margin-bottom:18px;
@@ -441,6 +494,10 @@ tbody tr:nth-child(even){
   color:#dc2626;
 }
 
+/* =========================
+   الكروت السفلية
+========================= */
+
 .summary{
   margin:18px 22px;
   display:grid;
@@ -464,6 +521,10 @@ tbody tr:nth-child(even){
   font-size:28px;
   color:#1e3a8a;
 }
+
+/* =========================
+   الملاحظة والتواقيع
+========================= */
 
 .note{
   margin:18px 22px;
@@ -508,7 +569,9 @@ tbody tr:nth-child(even){
   font-weight:900;
 }
 
-/* Dark Mode فقط من الواجهة الرئيسية */
+/* =========================
+   Dark Mode
+========================= */
 
 body.dark{
   background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
@@ -527,7 +590,7 @@ body.dark .home-card h1{
   text-shadow:0 0 10px #60a5fa,0 0 25px #2563eb;
 }
 
-body.dark .home-card p,
+body.dark .home-card > p,
 body.dark .department,
 body.dark .company-info,
 body.dark .menu-card p{
@@ -559,6 +622,12 @@ body.dark .aging-box{
   color:white !important;
 }
 
+body.dark .info div{
+  background:#111827;
+  color:white;
+  border-color:#374151;
+}
+
 body.dark table{
   color:white;
 }
@@ -566,14 +635,23 @@ body.dark table{
 body.dark th{
   background:#1e293b !important;
   color:white !important;
+  border-color:#374151;
 }
 
 body.dark td{
   border-color:#374151 !important;
 }
 
+body.dark tbody tr:nth-child(even){
+  background:#1f2937;
+}
+
 body.dark .summary-row{
   border-color:#374151;
+}
+
+body.dark .summary-row b{
+  color:white;
 }
 
 body.dark .summary-title{
@@ -581,14 +659,143 @@ body.dark .summary-title{
   color:white;
 }
 
+body.dark .aging-header{
+  background:#422006;
+  color:#fff7ed;
+}
+
+body.dark .aging-item div{
+  color:#d1d5db;
+}
+
 body.dark .note{
   background:#3f2f0f;
   color:#fff7ed;
 }
 
+body.dark .sign-box{
+  background:#1e293b;
+  color:white;
+  border-color:#64748b;
+}
+
 body.dark .footer{
   color:#cbd5e1;
 }
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:1000px){
+
+  .menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .controls{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:650px){
+
+  .home{
+    padding:12px;
+  }
+
+  .home-card{
+    padding:25px 15px;
+    border-radius:25px;
+  }
+
+  .home-logo{
+    width:100px;
+    height:100px;
+  }
+
+  .home-card h1{
+    font-size:34px;
+  }
+
+  .home-card > p{
+    font-size:19px;
+  }
+
+  .department{
+    font-size:22px;
+  }
+
+  .company-info{
+    font-size:15px;
+  }
+
+  .menu{
+    grid-template-columns:1fr;
+  }
+
+  .menu-card{
+    min-height:220px;
+  }
+
+  .controls{
+    grid-template-columns:1fr;
+  }
+
+  .header{
+    flex-direction:column-reverse;
+    gap:20px;
+    text-align:center;
+  }
+
+  .company{
+    text-align:center;
+  }
+
+  .company h2{
+    font-size:28px;
+  }
+
+  .title{
+    font-size:25px;
+  }
+
+  .info{
+    grid-template-columns:1fr;
+  }
+
+  .summary-row{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .aging-header{
+    flex-direction:column;
+    font-size:23px;
+  }
+
+  .aging-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .signatures{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+   الطباعة
+========================= */
 
 @media print{
 
@@ -600,6 +807,10 @@ body.dark .footer{
   body{
     background:white;
     zoom:82%;
+  }
+
+  .page-area{
+    padding:0;
   }
 
   .report{
@@ -615,11 +826,13 @@ body.dark .footer{
 
   table{
     width:100% !important;
+    min-width:0;
     table-layout:fixed;
     font-size:11px;
   }
 
-  th,td{
+  th,
+  td{
     font-size:11px !important;
     padding:6px !important;
     word-wrap:break-word;
@@ -633,6 +846,7 @@ body.dark .footer{
     size:A4 portrait;
     margin:6mm;
   }
+
 }
 
 </style>
@@ -640,753 +854,1291 @@ body.dark .footer{
 
 <body>
 
+<!-- =========================
+     الصفحة الرئيسية
+========================= -->
+
 <div id="homePage" class="home">
 
-<div class="home-card">
+  <div class="home-card">
 
-<div class="home-logo">
-<img src="./logo.png">
-</div>
+    <div class="home-logo">
+      <img src="./logo.png" alt="شعار شركة أنهار الحياة">
+    </div>
 
-<div class="theme-switch">
-<button onclick="toggleDarkMode()">🌙 / ☀️</button>
-</div>
+    <div class="theme-switch">
+      <button onclick="toggleDarkMode()">🌙 / ☀️</button>
+    </div>
 
-<h1>شركة أنهار الحياة</h1>
+    <h1>شركة أنهار الحياة</h1>
 
-<p>Anhar Alhayat Company</p>
+    <p>Anhar Alhayat Company</p>
 
-<div class="department">
-قسم تكنلوجيا المعلومات
-</div>
+    <div class="department">
+      قسم تكنلوجيا المعلومات
+    </div>
 
-<div class="company-info">
+    <div class="company-info">
 
-<div>📍 بغداد - العراق</div>
+      <div>📍 بغداد - العراق</div>
 
-<div>☎️ 6799</div>
+      <div>☎️ 6799</div>
 
-<div>✉️ it@anharalhayat.com</div>
+      <div>✉️ it@anharalhayat.com</div>
 
-</div>
+    </div>
 
-<div class="menu">
 
-  <div class="menu-card" onclick="openStatement()">
+    <div class="menu">
 
-    <div class="icon">📄</div>
+      <!-- البطاقة الأولى -->
 
-    <h3>كشف حساب زبون معين</h3>
+      <div class="menu-card" onclick="openStatement()">
 
-    <p>
-      رفع ملف Excel وتحويله إلى كشف حساب احترافي PDF
-    </p>
+        <div class="icon">📄</div>
+
+        <h3>كشف حساب زبون معين</h3>
+
+        <p>
+          رفع ملف Excel وتحويله إلى كشف حساب احترافي PDF
+        </p>
+
+      </div>
+
+
+      <!-- البطاقة الثانية -->
+
+      <div
+        class="menu-card"
+        onclick="window.location.href='sales_incentive.html'">
+
+        <div class="icon">🎯</div>
+
+        <h3>احتساب حافز المندوب</h3>
+
+        <p>
+          احتساب الحافز الشهري حسب عدد الكارتون البيعية
+        </p>
+
+      </div>
+
+
+      <!-- البطاقة الثالثة -->
+
+      <div
+        class="menu-card"
+        onclick="window.location.href='ledger_analyzer.html'">
+
+        <div class="icon">📊</div>
+
+        <h3>كشف حساب زبائن مندوب</h3>
+
+        <p>
+          تحليل زبائن المندوب والأرصدة والحركات
+        </p>
+
+      </div>
+
+
+      <!-- البطاقة الرابعة -->
+
+      <div
+        class="menu-card"
+        onclick="window.location.href='partner_commitments.html'">
+
+        <div class="icon">🤝</div>
+
+        <h3>التزامات الشركاء</h3>
+
+        <p>
+          متابعة وإدارة التزامات الشركاء
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
-  <div class="menu-card"
-  onclick="window.location.href='sales_incentive.html'">
-
-    <div class="icon">🎯</div>
-
-    <h3>احتساب حافز المندوب</h3>
-
-    <p>
-      احتساب الحافز الشهري حسب عدد الكارتون البيعية
-    </p>
-
-  </div>
-
-  <div class="menu-card"
-  onclick="window.location.href='ledger_analyzer.html'">
-
-    <div class="icon">📊</div>
-
-    <h3>كشف حساب زبائن مندوب</h3>
-
-    <p>
-      تحليل زبائن المندوب والأرصدة والحركات
-    </p>
-
-  </div>
-
 </div>
 
-</div>
 
-</div>
+<!-- =========================
+     صفحة كشف الحساب
+========================= -->
 
 <div id="statementPage" class="page-area" style="display:none;">
 
-<div class="controls">
+  <div class="controls">
 
-<input type="file" id="excelFile" accept=".xlsx,.xls">
+    <input
+      type="file"
+      id="excelFile"
+      accept=".xlsx,.xls"
+    >
 
-<input type="text" id="customerInput" placeholder="اسم العميل">
+    <input
+      type="text"
+      id="customerInput"
+      placeholder="اسم العميل"
+    >
 
-<input type="text" id="periodInput" placeholder="الفترة">
+    <input
+      type="text"
+      id="periodInput"
+      placeholder="الفترة"
+    >
 
-<input type="text" id="searchInput" placeholder="بحث داخل الحركات">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="بحث داخل الحركات"
+    >
 
-<button onclick="printReport()">
-طباعة / حفظ PDF
-</button>
+    <button onclick="printReport()">
+      طباعة / حفظ PDF
+    </button>
 
-<button class="back-btn" onclick="goHome()">
-رجوع للرئيسية
-</button>
+    <button
+      class="back-btn"
+      onclick="goHome()">
+      رجوع للرئيسية
+    </button>
+
+  </div>
+
+
+  <div class="report">
+
+    <div class="header">
+
+      <div class="company">
+
+        <h2>شركة أنهار الحياة</h2>
+
+        <div>Anhar Alhayat Company</div>
+
+        <div>قسم تكنلوجيا المعلومات</div>
+
+        <div>☎️ 6799</div>
+
+      </div>
+
+      <div class="logoBox">
+
+        <img
+          src="./logo.png"
+          alt="شعار شركة أنهار الحياة"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="title">
+      كشف حساب الزبائن | Customer Account Statement
+    </div>
+
+
+    <div class="info">
+
+      <div>
+        اسم العميل:
+        <b id="customerName">—</b>
+      </div>
+
+      <div>
+        الفترة:
+        <b id="periodText">—</b>
+      </div>
+
+      <div>
+        تاريخ التقرير:
+        <b id="todayDate"></b>
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>التاريخ</th>
+
+            <th>النوع</th>
+
+            <th>المستند</th>
+
+            <th>الحساب</th>
+
+            <th>مدين</th>
+
+            <th>دائن</th>
+
+            <th>الرصيد</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="account-summary">
+
+      <div class="summary-title">
+        ملخص الحساب | Account Summary
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          تاريخ آخر فاتورة | Last Invoice Date:
+        </span>
+
+        <b id="lastInvoiceDate">-</b>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          قيمة آخر فاتورة | Last Invoice Amount:
+        </span>
+
+        <b id="lastInvoiceAmount">0</b>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          تاريخ آخر دفعة | Last Payment Date:
+        </span>
+
+        <b id="lastPaymentDate">-</b>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          قيمة آخر دفعة | Last Payment Amount:
+        </span>
+
+        <b id="lastPaymentAmount">0</b>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          إجمالي الفواتير | Total Invoiced:
+        </span>
+
+        <b id="summaryInvoices">0</b>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          إجمالي المدفوعات | Total Payments:
+        </span>
+
+        <b id="summaryPayments">0</b>
+
+      </div>
+
+
+      <div class="summary-row outstanding">
+
+        <span>
+          الرصيد المستحق | Outstanding Balance:
+        </span>
+
+        <b id="summaryBalance">0</b>
+
+      </div>
+
+    </div>
+
+
+    <div class="aging-box">
+
+      <div class="aging-header">
+
+        <div class="aging-badge">
+          أقل من 30 يوماً
+        </div>
+
+        <div>
+          تحليل عمر الدين | Aging Analysis
+        </div>
+
+      </div>
+
+
+      <div class="aging-grid">
+
+        <div class="aging-item green">
+
+          <div>0 - 30 يوم</div>
+
+          <b id="age30">0</b>
+
+          <span>د.ع</span>
+
+        </div>
+
+
+        <div class="aging-item yellow">
+
+          <div>31 - 60 يوم</div>
+
+          <b id="age60">0</b>
+
+          <span>د.ع</span>
+
+        </div>
+
+
+        <div class="aging-item orange">
+
+          <div>61 - 90 يوم</div>
+
+          <b id="age90">0</b>
+
+          <span>د.ع</span>
+
+        </div>
+
+
+        <div class="aging-item red">
+
+          <div>أكثر من 90 يوم</div>
+
+          <b id="ageMore90">0</b>
+
+          <span>د.ع</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="summary">
+
+      <div class="card">
+
+        عدد الحركات
+
+        <span id="transactions">0</span>
+
+      </div>
+
+
+      <div class="card">
+
+        إجمالي الفواتير
+
+        <span id="totalDebit">0</span>
+
+      </div>
+
+
+      <div class="card">
+
+        إجمالي الدفعات
+
+        <span id="totalCredit">0</span>
+
+      </div>
+
+
+      <div class="card">
+
+        الرصيد النهائي
+
+        <span id="finalBalance">0</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="note">
+
+      تم إنشاء كشف الحساب إلكترونياً من قبل برنامج Odoo
+
+      <br>
+
+      في حال وجود أي مشكلة أو تناقض بالحساب يرجى التواصل
+      على الرقم المختصر 6799 - قسم التدقيق
+
+    </div>
+
+
+    <div class="signatures">
+
+      <div class="sign-box">
+        توقيع العميل
+      </div>
+
+      <div class="sign-box">
+        توقيع المندوب
+      </div>
+
+      <div class="sign-box">
+        مسؤول المبيعات
+      </div>
+
+    </div>
+
+
+    <div class="footer">
+      قسم تكنلوجيا المعلومات - شركة أنهار الحياة
+    </div>
+
+  </div>
 
 </div>
 
-<div class="report">
-
-<div class="header">
-
-<div class="company">
-
-<h2>شركة أنهار الحياة</h2>
-
-<div>Anhar Alhayat Company</div>
-
-<div>قسم تكنلوجيا المعلومات</div>
-
-<div>☎️ 6799</div>
-
-</div>
-
-<div class="logoBox">
-<img src="./logo.png">
-</div>
-
-</div>
-
-<div class="title">
-كشف حساب الزبائن | Customer Account Statement
-</div>
-
-<div class="info">
-
-<div>
-اسم العميل:
-<b id="customerName">—</b>
-</div>
-
-<div>
-الفترة:
-<b id="periodText">—</b>
-</div>
-
-<div>
-تاريخ التقرير:
-<b id="todayDate"></b>
-</div>
-
-</div>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>#</th>
-
-<th>التاريخ</th>
-
-<th>النوع</th>
-
-<th>المستند</th>
-
-<th>الحساب</th>
-
-<th>مدين</th>
-
-<th>دائن</th>
-
-<th>الرصيد</th>
-
-</tr>
-
-</thead>
-
-<tbody id="tbody"></tbody>
-
-</table>
-
-</div>
-
-<div class="account-summary">
-
-<div class="summary-title">
-ملخص الحساب | Account Summary
-</div>
-
-<div class="summary-row">
-<span>تاريخ آخر فاتورة | Last Invoice Date:</span>
-<b id="lastInvoiceDate">-</b>
-</div>
-
-<div class="summary-row">
-<span>قيمة آخر فاتورة | Last Invoice Amount:</span>
-<b id="lastInvoiceAmount">0</b>
-</div>
-
-<div class="summary-row">
-<span>تاريخ آخر دفعة | Last Payment Date:</span>
-<b id="lastPaymentDate">-</b>
-</div>
-
-<div class="summary-row">
-<span>قيمة آخر دفعة | Last Payment Amount:</span>
-<b id="lastPaymentAmount">0</b>
-</div>
-
-<div class="summary-row">
-<span>إجمالي الفواتير | Total Invoiced:</span>
-<b id="summaryInvoices">0</b>
-</div>
-
-<div class="summary-row">
-<span>إجمالي المدفوعات | Total Payments:</span>
-<b id="summaryPayments">0</b>
-</div>
-
-<div class="summary-row outstanding">
-<span>الرصيد المستحق | Outstanding Balance:</span>
-<b id="summaryBalance">0</b>
-</div>
-
-</div>
-
-<div class="aging-box">
-
-<div class="aging-header">
-
-<div class="aging-badge">
-أقل من 30 يوماً
-</div>
-
-<div>
-تحليل عمر الدين | Aging Analysis
-</div>
-
-</div>
-
-<div class="aging-grid">
-
-<div class="aging-item green">
-<div>0 - 30 يوم</div>
-<b id="age30">0</b>
-<span>د.ع</span>
-</div>
-
-<div class="aging-item yellow">
-<div>31 - 60 يوم</div>
-<b id="age60">0</b>
-<span>د.ع</span>
-</div>
-
-<div class="aging-item orange">
-<div>61 - 90 يوم</div>
-<b id="age90">0</b>
-<span>د.ع</span>
-</div>
-
-<div class="aging-item red">
-<div>أكثر من 90 يوم</div>
-<b id="ageMore90">0</b>
-<span>د.ع</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="summary">
-
-<div class="card">
-عدد الحركات
-<span id="transactions">0</span>
-</div>
-
-<div class="card">
-إجمالي الفواتير
-<span id="totalDebit">0</span>
-</div>
-
-<div class="card">
-إجمالي الدفعات
-<span id="totalCredit">0</span>
-</div>
-
-<div class="card">
-الرصيد النهائي
-<span id="finalBalance">0</span>
-</div>
-
-</div>
-
-<div class="note">
-تم إنشاء كشف الحساب إلكترونياً من قبل برنامج Odoo
-<br>
-في حال وجود أي مشكلة أو تناقض بالحساب يرجى التواصل على الرقم المختصر 6799 - قسم التدقيق
-</div>
-
-<div class="signatures">
-
-<div class="sign-box">
-توقيع العميل
-</div>
-
-<div class="sign-box">
-توقيع المندوب
-</div>
-
-<div class="sign-box">
-مسؤول المبيعات
-</div>
-
-</div>
-
-<div class="footer">
-قسم تكنلوجيا المعلومات - شركة أنهار الحياة
-</div>
-
-</div>
-
-</div>
 
 <script>
+
+/* =========================
+   التاريخ
+========================= */
 
 document.getElementById('todayDate').innerText =
 new Date().toLocaleDateString('en-GB');
 
+
+/* =========================
+   فتح وإغلاق كشف الحساب
+========================= */
+
 function openStatement(){
-document.getElementById('homePage').style.display='none';
-document.getElementById('statementPage').style.display='block';
+
+  document.getElementById('homePage').style.display='none';
+
+  document.getElementById('statementPage').style.display='block';
+
 }
+
 
 function goHome(){
-document.getElementById('statementPage').style.display='none';
-document.getElementById('homePage').style.display='flex';
+
+  document.getElementById('statementPage').style.display='none';
+
+  document.getElementById('homePage').style.display='flex';
+
 }
 
-function openRoute(){
-alert('سيتم إضافة تقرير خط السير قريباً');
-}
+
+/* =========================
+   Dark Mode
+========================= */
 
 function toggleDarkMode(){
-document.body.classList.toggle('dark');
+
+  document.body.classList.toggle('dark');
+
 }
+
+
+/* =========================
+   وظائف مساعدة
+========================= */
 
 function normalizeKey(key){
-return String(key || '')
-.trim()
-.replace(/\s+/g,' ')
-.toLowerCase();
+
+  return String(key || '')
+  .trim()
+  .replace(/\s+/g,' ')
+  .toLowerCase();
+
 }
+
 
 function getVal(row, names){
-const keys = Object.keys(row);
 
-for(const name of names){
-const target = normalizeKey(name);
+  const keys = Object.keys(row);
 
-for(const key of keys){
-if(normalizeKey(key) === target){
-return row[key];
-}
-}
+  for(const name of names){
+
+    const target = normalizeKey(name);
+
+    for(const key of keys){
+
+      if(normalizeKey(key) === target){
+
+        return row[key];
+
+      }
+
+    }
+
+  }
+
+  return '';
+
 }
 
-return '';
-}
 
 function fmt(value){
-let num = Number(
-String(value || 0)
-.replace(/,/g,'')
-.replace(/[^\d.-]/g,'')
-);
 
-return num.toLocaleString('en-US',{
-maximumFractionDigits:0
-});
+  let num = Number(
+    String(value || 0)
+    .replace(/,/g,'')
+    .replace(/[^\d.-]/g,'')
+  );
+
+  if(!Number.isFinite(num)){
+    num = 0;
+  }
+
+  return num.toLocaleString('en-US',{
+    maximumFractionDigits:0
+  });
+
 }
+
 
 function cleanNum(value){
-return Number(
-String(value || 0)
-.replace(/,/g,'')
-.replace(/[^\d.-]/g,'')
-) || 0;
+
+  return Number(
+    String(value || 0)
+    .replace(/,/g,'')
+    .replace(/[^\d.-]/g,'')
+  ) || 0;
+
 }
+
 
 function safeText(value){
-return value === undefined || value === null
-? ''
-: String(value);
+
+  return value === undefined || value === null
+  ? ''
+  : String(value);
+
 }
+
+
+/* =========================
+   تنسيق التاريخ
+========================= */
 
 function formatDate(value){
-if(!value) return '';
 
-if(typeof value === 'number'){
-const d = XLSX.SSF.parse_date_code(value);
+  if(!value){
+    return '';
+  }
 
-if(!d) return '';
+  if(typeof value === 'number'){
 
-return String(d.d).padStart(2,'0') + '/' +
-String(d.m).padStart(2,'0') + '/' +
-d.y;
+    const d = XLSX.SSF.parse_date_code(value);
+
+    if(!d){
+      return '';
+    }
+
+    return (
+      String(d.d).padStart(2,'0') +
+      '/' +
+      String(d.m).padStart(2,'0') +
+      '/' +
+      d.y
+    );
+
+  }
+
+  if(value instanceof Date){
+
+    return value.toLocaleDateString('en-GB');
+
+  }
+
+  return String(value);
+
 }
 
-if(value instanceof Date){
-return value.toLocaleDateString('en-GB');
-}
 
-return String(value);
-}
+/* =========================
+   تحويل التاريخ إلى Date
+========================= */
 
 function parseDate(value){
-if(!value) return null;
 
-if(typeof value === 'number'){
-const d = XLSX.SSF.parse_date_code(value);
-if(!d) return null;
-return new Date(d.y, d.m - 1, d.d);
+  if(!value){
+    return null;
+  }
+
+  if(typeof value === 'number'){
+
+    const d = XLSX.SSF.parse_date_code(value);
+
+    if(!d){
+      return null;
+    }
+
+    return new Date(
+      d.y,
+      d.m - 1,
+      d.d
+    );
+
+  }
+
+  if(value instanceof Date){
+
+    return value;
+
+  }
+
+  const text = String(value).trim();
+
+  const parts = text.split(/[\/\-]/);
+
+  if(parts.length === 3){
+
+    const p1 = Number(parts[0]);
+    const p2 = Number(parts[1]);
+    const p3 = Number(parts[2]);
+
+    if(p3 > 1900){
+
+      return new Date(
+        p3,
+        p2 - 1,
+        p1
+      );
+
+    }
+
+    if(p1 > 1900){
+
+      return new Date(
+        p1,
+        p2 - 1,
+        p3
+      );
+
+    }
+
+  }
+
+  const d = new Date(text);
+
+  return isNaN(d.getTime())
+  ? null
+  : d;
+
 }
 
-if(value instanceof Date){
-return value;
-}
 
-let text = String(value).trim();
-
-let parts = text.split(/[\/\-]/);
-
-if(parts.length === 3){
-let p1 = Number(parts[0]);
-let p2 = Number(parts[1]);
-let p3 = Number(parts[2]);
-
-if(p3 > 1900){
-return new Date(p3, p2 - 1, p1);
-}
-
-if(p1 > 1900){
-return new Date(p1, p2 - 1, p3);
-}
-}
-
-let d = new Date(text);
-return isNaN(d) ? null : d;
-}
+/* =========================
+   ترجمة نوع الحركة
+========================= */
 
 function translateType(code){
-code = String(code || '').toUpperCase();
 
-if(code.includes('RINV') || code.includes('RRINV') || code.includes('REFUND')){
-return {text:'مرتجع', cls:'return'};
+  code = String(code || '').toUpperCase();
+
+  if(
+    code.includes('RINV') ||
+    code.includes('RRINV') ||
+    code.includes('REFUND')
+  ){
+
+    return {
+      text:'مرتجع',
+      cls:'return'
+    };
+
+  }
+
+  if(code.includes('INV')){
+
+    return {
+      text:'فاتورة',
+      cls:'invoice'
+    };
+
+  }
+
+  if(
+    code.includes('CS') ||
+    code.includes('PAY') ||
+    code.includes('CASH')
+  ){
+
+    return {
+      text:'دفعة',
+      cls:'payment'
+    };
+
+  }
+
+  if(code.includes('BNK')){
+
+    return {
+      text:'بنك',
+      cls:'other'
+    };
+
+  }
+
+  if(code.includes('MISC')){
+
+    return {
+      text:'قيد',
+      cls:'other'
+    };
+
+  }
+
+  return {
+    text:'حركة',
+    cls:'other'
+  };
+
 }
 
-if(code.includes('INV')){
-return {text:'فاتورة', cls:'invoice'};
-}
 
-if(
-code.includes('CS') ||
-code.includes('PAY') ||
-code.includes('CASH')
-){
-return {text:'دفعة', cls:'payment'};
-}
+/* =========================
+   قراءة Excel
+========================= */
 
-if(code.includes('BNK')){
-return {text:'بنك', cls:'other'};
-}
-
-if(code.includes('MISC')){
-return {text:'قيد', cls:'other'};
-}
-
-return {text:'حركة', cls:'other'};
-}
-
-document.getElementById('excelFile')
+document
+.getElementById('excelFile')
 .addEventListener('change', function(e){
 
-const file = e.target.files[0];
+  const file = e.target.files[0];
 
-const reader = new FileReader();
+  if(!file){
+    return;
+  }
 
-reader.onload = function(event){
+  const reader = new FileReader();
 
-const data = new Uint8Array(event.target.result);
 
-const workbook = XLSX.read(data,{
-type:'array',
-cellDates:true
+  reader.onload = function(event){
+
+    try{
+
+      const data =
+      new Uint8Array(event.target.result);
+
+
+      const workbook = XLSX.read(data,{
+        type:'array',
+        cellDates:true
+      });
+
+
+      const sheet =
+      workbook.Sheets[
+        workbook.SheetNames[0]
+      ];
+
+
+      const rows =
+      XLSX.utils.sheet_to_json(sheet,{
+        defval:''
+      });
+
+
+      const tbody =
+      document.getElementById('tbody');
+
+
+      tbody.innerHTML='';
+
+
+      let totalDebit = 0;
+      let totalCredit = 0;
+      let finalBalance = 0;
+      let count = 0;
+      let autoCustomer = '';
+
+      let lastInvoiceDate = '';
+      let lastPaymentDate = '';
+      let lastInvoiceAmount = 0;
+      let lastPaymentAmount = 0;
+
+      let age30 = 0;
+      let age60 = 0;
+      let age90 = 0;
+      let ageMore90 = 0;
+
+
+      const today = new Date();
+
+
+      rows.forEach((row)=>{
+
+
+        const rawType = getVal(row,[
+
+          'JRNL',
+          'دفتر اليومية',
+          'Journal',
+          'Type',
+          'النوع'
+
+        ]);
+
+
+        const debit = cleanNum(
+          getVal(row,[
+
+            'Debit',
+            'المدين',
+            'مدين'
+
+          ])
+        );
+
+
+        const credit = cleanNum(
+          getVal(row,[
+
+            'Credit',
+            'الدائن',
+            'دائن'
+
+          ])
+        );
+
+
+        const balance = cleanNum(
+          getVal(row,[
+
+            'Balance',
+            'الرصيد'
+
+          ])
+        );
+
+
+        const doc = safeText(
+          getVal(row,[
+
+            'Ref',
+            'المرجع',
+            'Doc',
+            'المستند'
+
+          ])
+        );
+
+
+        const account = safeText(
+          getVal(row,[
+
+            'Account',
+            'حساب',
+            'الحساب',
+            'Description',
+            'البيان'
+
+          ])
+        );
+
+
+        const dateValue =
+        getVal(row,[
+
+          '__EMPTY',
+          'Date',
+          'التاريخ',
+          'Due Date',
+          'تاريخ الاستحقاق',
+          'Invoice Date'
+
+        ]);
+
+
+        const date =
+        formatDate(dateValue);
+
+
+        const realDate =
+        parseDate(dateValue);
+
+
+        /*
+        التقاط اسم العميل تلقائياً
+        من بعض ملفات Odoo
+        */
+
+        if(
+          !autoCustomer &&
+          !rawType &&
+          !doc &&
+          safeText(dateValue) &&
+          (debit || credit || balance)
+        ){
+
+          autoCustomer =
+          safeText(dateValue);
+
+          return;
+
+        }
+
+
+        /*
+        تجاهل الأسطر غير المهمة
+        */
+
+        if(
+          !rawType &&
+          !doc &&
+          (debit || credit)
+        ){
+
+          return;
+
+        }
+
+
+        if(
+          !doc &&
+          !account &&
+          !debit &&
+          !credit &&
+          !balance
+        ){
+
+          return;
+
+        }
+
+
+        const type =
+        translateType(rawType);
+
+
+        count++;
+
+
+        totalDebit += debit;
+
+        totalCredit += credit;
+
+        finalBalance = balance;
+
+
+        /*
+        معلومات آخر فاتورة
+        وتحليل عمر الدين
+        */
+
+        if(type.text === 'فاتورة'){
+
+          lastInvoiceDate = date;
+
+          lastInvoiceAmount = debit;
+
+
+          if(realDate){
+
+            const diffDays =
+            Math.floor(
+              (today - realDate) /
+              (1000 * 60 * 60 * 24)
+            );
+
+
+            if(diffDays <= 30){
+
+              age30 += debit;
+
+            }
+            else if(diffDays <= 60){
+
+              age60 += debit;
+
+            }
+            else if(diffDays <= 90){
+
+              age90 += debit;
+
+            }
+            else{
+
+              ageMore90 += debit;
+
+            }
+
+          }
+          else{
+
+            age30 += debit;
+
+          }
+
+        }
+
+
+        /*
+        آخر دفعة
+        */
+
+        if(type.text === 'دفعة'){
+
+          lastPaymentDate = date;
+
+          lastPaymentAmount = credit;
+
+        }
+
+
+        /*
+        إنشاء صف الجدول
+        */
+
+        const tr =
+        document.createElement('tr');
+
+
+        tr.innerHTML = `
+
+          <td>${count}</td>
+
+          <td>${date}</td>
+
+          <td>
+            <span class="badge ${type.cls}">
+              ${type.text}
+            </span>
+          </td>
+
+          <td>${doc}</td>
+
+          <td>${account}</td>
+
+          <td class="money debit">
+            ${debit ? fmt(debit) : ''}
+          </td>
+
+          <td class="money credit">
+            ${credit ? fmt(credit) : ''}
+          </td>
+
+          <td class="money balance">
+            ${fmt(balance)}
+          </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+      });
+
+
+      /* =========================
+         تحديث النتائج
+      ========================= */
+
+
+      document
+      .getElementById('transactions')
+      .innerText =
+      count;
+
+
+      document
+      .getElementById('totalDebit')
+      .innerText =
+      fmt(totalDebit);
+
+
+      document
+      .getElementById('totalCredit')
+      .innerText =
+      fmt(totalCredit);
+
+
+      document
+      .getElementById('finalBalance')
+      .innerText =
+      fmt(finalBalance);
+
+
+      document
+      .getElementById('customerName')
+      .innerText =
+      document
+      .getElementById('customerInput')
+      .value ||
+      autoCustomer ||
+      '—';
+
+
+      document
+      .getElementById('periodText')
+      .innerText =
+      document
+      .getElementById('periodInput')
+      .value ||
+      '—';
+
+
+      document
+      .getElementById('lastInvoiceDate')
+      .innerText =
+      lastInvoiceDate ||
+      '-';
+
+
+      document
+      .getElementById('lastInvoiceAmount')
+      .innerText =
+      fmt(lastInvoiceAmount);
+
+
+      document
+      .getElementById('lastPaymentDate')
+      .innerText =
+      lastPaymentDate ||
+      '-';
+
+
+      document
+      .getElementById('lastPaymentAmount')
+      .innerText =
+      fmt(lastPaymentAmount);
+
+
+      document
+      .getElementById('summaryInvoices')
+      .innerText =
+      fmt(totalDebit);
+
+
+      document
+      .getElementById('summaryPayments')
+      .innerText =
+      fmt(totalCredit);
+
+
+      document
+      .getElementById('summaryBalance')
+      .innerText =
+      fmt(finalBalance);
+
+
+      document
+      .getElementById('age30')
+      .innerText =
+      fmt(age30);
+
+
+      document
+      .getElementById('age60')
+      .innerText =
+      fmt(age60);
+
+
+      document
+      .getElementById('age90')
+      .innerText =
+      fmt(age90);
+
+
+      document
+      .getElementById('ageMore90')
+      .innerText =
+      fmt(ageMore90);
+
+    }
+    catch(error){
+
+      console.error(error);
+
+      alert(
+        'حدث خطأ أثناء قراءة ملف Excel. تأكد من أن الملف صحيح.'
+      );
+
+    }
+
+  };
+
+
+  reader.readAsArrayBuffer(file);
+
 });
 
-const sheet =
-workbook.Sheets[workbook.SheetNames[0]];
 
-let rows = XLSX.utils.sheet_to_json(sheet,{
-defval:''
-});
-
-const tbody = document.getElementById('tbody');
-
-tbody.innerHTML='';
-
-let totalDebit = 0;
-let totalCredit = 0;
-let finalBalance = 0;
-let count = 0;
-let autoCustomer = '';
-
-let lastInvoiceDate = '';
-let lastPaymentDate = '';
-let lastInvoiceAmount = 0;
-let lastPaymentAmount = 0;
-
-let age30 = 0;
-let age60 = 0;
-let age90 = 0;
-let ageMore90 = 0;
-
-const today = new Date();
-
-rows.forEach((row)=>{
-
-const rawType = getVal(row,[
-'JRNL',
-'دفتر اليومية',
-'Journal',
-'Type',
-'النوع'
-]);
-
-const debit = cleanNum(getVal(row,[
-'Debit',
-'المدين',
-'مدين'
-]));
-
-const credit = cleanNum(getVal(row,[
-'Credit',
-'الدائن',
-'دائن'
-]));
-
-const balance = cleanNum(getVal(row,[
-'Balance',
-'الرصيد'
-]));
-
-const doc = safeText(getVal(row,[
-'Ref',
-'المرجع',
-'Doc',
-'المستند'
-]));
-
-const account = safeText(getVal(row,[
-'Account',
-'حساب',
-'الحساب',
-'Description',
-'البيان'
-]));
-
-const dateValue = getVal(row,[
-'__EMPTY',
-'Date',
-'التاريخ',
-'Due Date',
-'تاريخ الاستحقاق',
-'Invoice Date'
-]);
-
-const date = formatDate(dateValue);
-const realDate = parseDate(dateValue);
-
-if(!autoCustomer && !rawType && !doc && safeText(dateValue) && (debit || credit || balance)){
-autoCustomer = safeText(dateValue);
-return;
-}
-
-if(!rawType && !doc && (debit || credit)){
-return;
-}
-
-if(
-!doc &&
-!account &&
-!debit &&
-!credit &&
-!balance
-){
-return;
-}
-
-const type = translateType(rawType);
-
-count++;
-
-totalDebit += debit;
-totalCredit += credit;
-finalBalance = balance;
-
-if(type.text === 'فاتورة'){
-
-lastInvoiceDate = date;
-lastInvoiceAmount = debit;
-
-if(realDate){
-const diffDays = Math.floor((today - realDate) / (1000 * 60 * 60 * 24));
-
-if(diffDays <= 30){
-age30 += debit;
-}
-else if(diffDays <= 60){
-age60 += debit;
-}
-else if(diffDays <= 90){
-age90 += debit;
-}
-else{
-ageMore90 += debit;
-}
-}
-else{
-age30 += debit;
-}
-
-}
-
-if(type.text === 'دفعة'){
-lastPaymentDate = date;
-lastPaymentAmount = credit;
-}
-
-const tr = document.createElement('tr');
-
-tr.innerHTML = `
-<td>${count}</td>
-
-<td>${date}</td>
-
-<td>
-<span class="badge ${type.cls}">
-${type.text}
-</span>
-</td>
-
-<td>${doc}</td>
-
-<td>${account}</td>
-
-<td class="money debit">
-${debit ? fmt(debit) : ''}
-</td>
-
-<td class="money credit">
-${credit ? fmt(credit) : ''}
-</td>
-
-<td class="money balance">
-${fmt(balance)}
-</td>
-`;
-
-tbody.appendChild(tr);
-
-});
-
-document.getElementById('transactions').innerText =
-count;
-
-document.getElementById('totalDebit').innerText =
-fmt(totalDebit);
-
-document.getElementById('totalCredit').innerText =
-fmt(totalCredit);
-
-document.getElementById('finalBalance').innerText =
-fmt(finalBalance);
-
-document.getElementById('customerName').innerText =
-document.getElementById('customerInput').value || autoCustomer || '—';
-
-document.getElementById('periodText').innerText =
-document.getElementById('periodInput').value || '—';
-
-document.getElementById('lastInvoiceDate').innerText =
-lastInvoiceDate || '-';
-
-document.getElementById('lastInvoiceAmount').innerText =
-fmt(lastInvoiceAmount);
-
-document.getElementById('lastPaymentDate').innerText =
-lastPaymentDate || '-';
-
-document.getElementById('lastPaymentAmount').innerText =
-fmt(lastPaymentAmount);
-
-document.getElementById('summaryInvoices').innerText =
-fmt(totalDebit);
-
-document.getElementById('summaryPayments').innerText =
-fmt(totalCredit);
-
-document.getElementById('summaryBalance').innerText =
-fmt(finalBalance);
-
-document.getElementById('age30').innerText =
-fmt(age30);
-
-document.getElementById('age60').innerText =
-fmt(age60);
-
-document.getElementById('age90').innerText =
-fmt(age90);
-
-document.getElementById('ageMore90').innerText =
-fmt(ageMore90);
-
-};
-
-reader.readAsArrayBuffer(file);
-
-});
+/* =========================
+   طباعة PDF
+========================= */
 
 function printReport(){
-window.print();
+
+  window.print();
+
 }
 
-document.getElementById('searchInput')
+
+/* =========================
+   البحث داخل الحركات
+========================= */
+
+document
+.getElementById('searchInput')
 .addEventListener('keyup', function(){
 
-const value = this.value.toLowerCase();
+  const value =
+  this.value.toLowerCase();
 
-const rows = document.querySelectorAll('#tbody tr');
 
-rows.forEach((row)=>{
+  const rows =
+  document.querySelectorAll(
+    '#tbody tr'
+  );
 
-row.style.display =
-row.innerText.toLowerCase().includes(value)
-? ''
-: 'none';
 
-});
+  rows.forEach((row)=>{
+
+    row.style.display =
+    row.innerText
+    .toLowerCase()
+    .includes(value)
+    ? ''
+    : 'none';
+
+  });
 
 });
 
 </script>
 
 </body>
+
 </html>
