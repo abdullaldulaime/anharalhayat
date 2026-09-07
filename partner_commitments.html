@@ -23,7 +23,7 @@ body{
 
 
 /* =========================
-   شاشة تسجيل الدخول
+   شاشة الدخول
 ========================= */
 
 .login-screen{
@@ -40,161 +40,433 @@ body{
 .login-box{
   width:100%;
   max-width:420px;
-  background:#ffffff;
-  border-radius:25px;
+  background:white;
+  border-radius:28px;
   padding:40px 30px;
   text-align:center;
-  box-shadow:0 15px 45px rgba(0,0,0,0.12);
+  box-shadow:0 20px 55px rgba(0,0,0,.13);
 }
 
 .login-logo{
   width:90px;
   height:90px;
   object-fit:contain;
-  margin-bottom:10px;
 }
 
 .login-box h2{
-  color:#23479b;
-  margin:10px 0;
+  color:#1e3a8a;
+  margin:15px 0 8px;
   font-size:28px;
 }
 
 .login-box p{
   color:#64748b;
-  margin-bottom:25px;
   line-height:1.8;
-  font-size:16px;
 }
 
 .pin-input{
   width:100%;
-  height:58px;
+  height:60px;
   border:2px solid #dbeafe;
-  border-radius:14px;
+  border-radius:15px;
   text-align:center;
   font-size:28px;
   letter-spacing:10px;
-  outline:none;
   direction:ltr;
-  transition:.2s;
+  outline:none;
 }
 
 .pin-input:focus{
-  border-color:#23479b;
-  box-shadow:0 0 0 4px rgba(35,71,155,.08);
+  border-color:#2563eb;
 }
 
 .login-btn{
   width:100%;
-  margin-top:18px;
   height:52px;
+  margin-top:18px;
   border:0;
   border-radius:14px;
-  background:#23479b;
-  color:#ffffff;
+  background:#1e3a8a;
+  color:white;
+  font-weight:900;
   font-size:18px;
-  font-weight:bold;
   cursor:pointer;
-  transition:.2s;
 }
 
 .login-btn:hover{
-  opacity:.92;
+  background:#2563eb;
 }
 
 .error{
-  min-height:26px;
-  margin-top:14px;
   color:#dc2626;
-  font-weight:bold;
+  min-height:25px;
+  margin-top:12px;
+  font-weight:900;
 }
 
 
 /* =========================
-   الصفحة الرئيسية
+   المحتوى
 ========================= */
 
-.container{
-  max-width:1100px;
-  margin:40px auto;
-  padding:20px;
+.main-content{
   display:none;
+  padding:25px;
 }
 
-.card{
-  background:#ffffff;
-  border-radius:25px;
-  padding:40px 25px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+.wrapper{
+  max-width:1250px;
+  margin:auto;
 }
 
-.logo{
-  width:90px;
-  height:90px;
+.top-header{
+  background:white;
+  border-radius:28px;
+  padding:25px 30px;
+  box-shadow:0 15px 45px rgba(15,23,42,.10);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.brand img{
+  width:85px;
+  height:85px;
   object-fit:contain;
-  margin-bottom:15px;
 }
 
-h1{
-  color:#23479b;
-  margin:10px 0;
-  font-size:36px;
+.brand h1{
+  margin:0;
+  color:#1e3a8a;
+  font-size:32px;
 }
 
-h2{
-  margin-top:5px;
-  font-size:24px;
-}
-
-.subtitle{
+.brand p{
+  margin:8px 0 0;
   color:#64748b;
-  font-size:18px;
-  margin-top:15px;
+  font-weight:700;
 }
 
-.back{
-  display:inline-block;
-  margin-top:35px;
-  padding:12px 25px;
-  border-radius:12px;
+.back-btn{
   text-decoration:none;
-  background:#23479b;
+  background:#334155;
   color:white;
-  font-weight:bold;
-  transition:.2s;
-}
-
-.back:hover{
-  opacity:.9;
+  padding:12px 22px;
+  border-radius:12px;
+  font-weight:900;
 }
 
 
 /* =========================
-   الموبايل
+   بطاقات الشركاء
 ========================= */
+
+.partners-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+  margin-top:25px;
+}
+
+.partner-card{
+  background:white;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(15,23,42,.10);
+  border:1px solid #e2e8f0;
+}
+
+.partner-header{
+  padding:24px;
+  text-align:center;
+  background:linear-gradient(135deg,#eff6ff,#eef2ff);
+}
+
+.partner-name{
+  font-size:29px;
+  font-weight:900;
+  color:#1e3a8a;
+}
+
+.debt-label{
+  margin-top:18px;
+  color:#64748b;
+  font-size:16px;
+  font-weight:900;
+}
+
+.debt-number{
+  margin-top:8px;
+  font-size:46px;
+  font-weight:900;
+  color:#dc2626;
+  transition:.25s;
+  direction:ltr;
+}
+
+.debt-number:hover{
+  transform:scale(1.12);
+}
+
+.currency{
+  color:#64748b;
+  font-size:16px;
+  font-weight:900;
+}
+
+
+/* =========================
+   العمليات
+========================= */
+
+.actions{
+  padding:22px;
+}
+
+.operation-box{
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.withdraw-box{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+}
+
+.payment-box{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+}
+
+.operation-title{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.withdraw-title{
+  color:#c2410c;
+}
+
+.payment-title{
+  color:#15803d;
+}
+
+.fields{
+  display:grid;
+  grid-template-columns:1.1fr 1.3fr auto;
+  gap:10px;
+}
+
+.fields input{
+  width:100%;
+  min-width:0;
+  padding:13px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:800;
+  outline:none;
+}
+
+.fields input:focus{
+  border-color:#2563eb;
+}
+
+.fields button{
+  border:0;
+  border-radius:12px;
+  padding:12px 20px;
+  color:white;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.withdraw-btn{
+  background:#ea580c;
+}
+
+.withdraw-btn:hover{
+  background:#c2410c;
+}
+
+.payment-btn{
+  background:#16a34a;
+}
+
+.payment-btn:hover{
+  background:#15803d;
+}
+
+
+/* =========================
+   السجل اليومي
+========================= */
+
+.journal{
+  margin-top:28px;
+  background:white;
+  border-radius:28px;
+  padding:25px;
+  box-shadow:0 15px 45px rgba(15,23,42,.10);
+}
+
+.journal h2{
+  color:#1e3a8a;
+  margin-top:0;
+  text-align:center;
+  font-size:28px;
+}
+
+.journal-info{
+  color:#64748b;
+  text-align:center;
+  margin-bottom:22px;
+  font-weight:700;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+th{
+  background:#eff6ff;
+  color:#1e3a8a;
+  padding:13px 10px;
+  border:1px solid #dbeafe;
+  font-size:15px;
+}
+
+td{
+  padding:12px 10px;
+  text-align:center;
+  border:1px solid #e5e7eb;
+  font-weight:800;
+}
+
+tbody tr:nth-child(even){
+  background:#f8fafc;
+}
+
+.type-withdraw{
+  display:inline-block;
+  background:#ffedd5;
+  color:#c2410c;
+  padding:6px 13px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+.type-payment{
+  display:inline-block;
+  background:#dcfce7;
+  color:#15803d;
+  padding:6px 13px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+.amount{
+  direction:ltr;
+  white-space:nowrap;
+  font-weight:900;
+}
+
+.withdraw-amount{
+  color:#dc2626;
+}
+
+.payment-amount{
+  color:#16a34a;
+}
+
+.balance-after{
+  color:#1e3a8a;
+  font-weight:900;
+}
+
+
+/* =========================
+   رسالة صغيرة
+========================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111827;
+  color:white;
+  padding:13px 25px;
+  border-radius:999px;
+  font-weight:900;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:99999;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:900px){
+
+  .partners-grid{
+    grid-template-columns:1fr;
+  }
+
+  .top-header{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .brand{
+    flex-direction:column;
+  }
+
+}
 
 @media(max-width:600px){
 
-  .login-box{
-    padding:30px 20px;
+  .main-content{
+    padding:12px;
   }
 
-  .login-box h2{
+  .brand h1{
+    font-size:25px;
+  }
+
+  .partner-name{
     font-size:24px;
   }
 
-  h1{
-    font-size:28px;
+  .debt-number{
+    font-size:37px;
   }
 
-  h2{
-    font-size:21px;
-  }
-
-  .subtitle{
-    font-size:16px;
+  .fields{
+    grid-template-columns:1fr;
   }
 
 }
@@ -202,12 +474,11 @@ h2{
 </style>
 </head>
 
-
 <body>
 
 
 <!-- =========================
-     شاشة رمز الدخول
+     شاشة الدخول
 ========================= -->
 
 <div class="login-screen" id="loginScreen">
@@ -256,56 +527,319 @@ h2{
 
 
 <!-- =========================
-     محتوى التزامات الشركاء
+     المحتوى الرئيسي
 ========================= -->
 
-<div
-  class="container"
-  id="mainContent"
->
+<div class="main-content" id="mainContent">
 
-  <div class="card">
+  <div class="wrapper">
 
-    <img
-      src="logo.png"
-      class="logo"
-      alt="شعار شركة أنهار الحياة"
-    >
+    <div class="top-header">
 
-    <h1>
-      شركة أنهار الحياة
-    </h1>
+      <div class="brand">
 
-    <h2>
-      🤝 التزامات الشركاء
-    </h2>
+        <img src="logo.png" alt="شعار شركة أنهار الحياة">
 
-    <div class="subtitle">
-      نظام متابعة وإدارة التزامات الشركاء
+        <div>
+
+          <h1>
+            التزامات الشركاء
+          </h1>
+
+          <p>
+            متابعة السحوبات والتسديدات والسجل المالي
+          </p>
+
+        </div>
+
+      </div>
+
+      <a
+        href="index.html"
+        class="back-btn"
+      >
+        العودة للرئيسية
+      </a>
+
     </div>
 
-    <a
-      href="index.html"
-      class="back"
-    >
-      العودة إلى الصفحة الرئيسية
-    </a>
+
+    <!-- =========================
+         الشركاء
+    ========================= -->
+
+    <div class="partners-grid">
+
+
+      <!-- الحاج رحيم مجيسر -->
+
+      <div class="partner-card">
+
+        <div class="partner-header">
+
+          <div class="partner-name">
+            الحاج رحيم مجيسر
+          </div>
+
+          <div class="debt-label">
+            إجمالي الدين الحالي
+          </div>
+
+          <div
+            class="debt-number"
+            id="debt-rahim"
+          >
+            1,000,000
+          </div>
+
+          <div class="currency">
+            دينار عراقي
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <div class="operation-box withdraw-box">
+
+            <div class="operation-title withdraw-title">
+              💸 إضافة مبلغ سحب جديد
+            </div>
+
+            <div class="fields">
+
+              <input
+                type="number"
+                id="withdraw-rahim"
+                placeholder="مبلغ السحب"
+                min="1"
+              >
+
+              <input
+                type="text"
+                id="withdraw-person-rahim"
+                placeholder="اسم الشخص المستلم"
+              >
+
+              <button
+                class="withdraw-btn"
+                onclick="addWithdrawal('rahim')"
+              >
+                تطبيق
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="operation-box payment-box">
+
+            <div class="operation-title payment-title">
+              💰 تسجيل مبلغ تسديد
+            </div>
+
+            <div class="fields">
+
+              <input
+                type="number"
+                id="payment-rahim"
+                placeholder="مبلغ التسديد"
+                min="1"
+              >
+
+              <input
+                type="text"
+                id="payment-person-rahim"
+                placeholder="اسم الشخص"
+              >
+
+              <button
+                class="payment-btn"
+                onclick="addPayment('rahim')"
+              >
+                تطبيق
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- الحاج طعمة جبر -->
+
+      <div class="partner-card">
+
+        <div class="partner-header">
+
+          <div class="partner-name">
+            الحاج طعمة جبر
+          </div>
+
+          <div class="debt-label">
+            إجمالي الدين الحالي
+          </div>
+
+          <div
+            class="debt-number"
+            id="debt-tuama"
+          >
+            1,000,000
+          </div>
+
+          <div class="currency">
+            دينار عراقي
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <div class="operation-box withdraw-box">
+
+            <div class="operation-title withdraw-title">
+              💸 إضافة مبلغ سحب جديد
+            </div>
+
+            <div class="fields">
+
+              <input
+                type="number"
+                id="withdraw-tuama"
+                placeholder="مبلغ السحب"
+                min="1"
+              >
+
+              <input
+                type="text"
+                id="withdraw-person-tuama"
+                placeholder="اسم الشخص المستلم"
+              >
+
+              <button
+                class="withdraw-btn"
+                onclick="addWithdrawal('tuama')"
+              >
+                تطبيق
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="operation-box payment-box">
+
+            <div class="operation-title payment-title">
+              💰 تسجيل مبلغ تسديد
+            </div>
+
+            <div class="fields">
+
+              <input
+                type="number"
+                id="payment-tuama"
+                placeholder="مبلغ التسديد"
+                min="1"
+              >
+
+              <input
+                type="text"
+                id="payment-person-tuama"
+                placeholder="اسم الشخص"
+              >
+
+              <button
+                class="payment-btn"
+                onclick="addPayment('tuama')"
+              >
+                تطبيق
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         السجل اليومي
+    ========================= -->
+
+    <div class="journal">
+
+      <h2>
+        📋 السجل اليومي للسحب والتسديد
+      </h2>
+
+      <div class="journal-info">
+        يتم تسجيل كل حركة مع التاريخ والوقت والشخص المستلم أو المسدد
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>#</th>
+
+              <th>اسم الشريك</th>
+
+              <th>نوع الحركة</th>
+
+              <th>المبلغ</th>
+
+              <th>بيد / بواسطة</th>
+
+              <th>التاريخ</th>
+
+              <th>الوقت</th>
+
+              <th>الرصيد بعد الحركة</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="historyTable"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
 
   </div>
 
 </div>
 
 
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
 <script>
 
-/* =========================
+/* =========================================================
    رمز الدخول
-========================= */
-
-/*
-غيّر هذا الرقم إلى رمزك الخاص
-يجب أن يكون 6 أرقام
-*/
+========================================================= */
 
 const ACCESS_CODE = "582941";
 
@@ -323,10 +857,6 @@ const mainContent =
 document.getElementById("mainContent");
 
 
-/* =========================
-   قفل الصفحة
-========================= */
-
 function lockPage(){
 
   loginScreen.style.display = "flex";
@@ -338,23 +868,16 @@ function lockPage(){
   errorMessage.textContent = "";
 
   setTimeout(function(){
-
     pinInput.focus();
-
   },100);
 
 }
 
 
-/* =========================
-   التحقق من الرمز
-========================= */
-
 function checkPin(){
 
   const enteredCode =
   pinInput.value.trim();
-
 
   if(enteredCode === ACCESS_CODE){
 
@@ -365,6 +888,8 @@ function checkPin(){
     pinInput.value = "";
 
     errorMessage.textContent = "";
+
+    loadData();
 
   }
   else{
@@ -381,10 +906,6 @@ function checkPin(){
 }
 
 
-/* =========================
-   السماح بالأرقام فقط
-========================= */
-
 pinInput.addEventListener(
 "input",
 function(){
@@ -397,41 +918,532 @@ function(){
 });
 
 
-/* =========================
-   زر Enter
-========================= */
-
 pinInput.addEventListener(
 "keydown",
 function(event){
 
   if(event.key === "Enter"){
-
     checkPin();
-
   }
 
 });
 
 
-/* =========================
-   مهم جداً
-   عند كل دخول أو Refresh
-   يتم قفل الصفحة من جديد
-========================= */
-
 window.addEventListener(
 "pageshow",
 function(){
-
   lockPage();
-
 });
 
 
+/* =========================================================
+   بيانات الشركاء
+========================================================= */
+
+const defaultPartners = {
+
+  rahim:{
+    name:"الحاج رحيم مجيسر",
+    debt:1000000
+  },
+
+  tuama:{
+    name:"الحاج طعمة جبر",
+    debt:1000000
+  }
+
+};
+
+
+let partners = {};
+
+let history = [];
+
+
+/* =========================================================
+   تحميل البيانات
+========================================================= */
+
+function loadData(){
+
+  const savedPartners =
+  localStorage.getItem("partnerCommitmentsPartners");
+
+  const savedHistory =
+  localStorage.getItem("partnerCommitmentsHistory");
+
+
+  if(savedPartners){
+
+    partners =
+    JSON.parse(savedPartners);
+
+  }
+  else{
+
+    partners =
+    JSON.parse(
+      JSON.stringify(defaultPartners)
+    );
+
+    savePartners();
+
+  }
+
+
+  if(savedHistory){
+
+    history =
+    JSON.parse(savedHistory);
+
+  }
+  else{
+
+    history = [];
+
+    saveHistory();
+
+  }
+
+
+  renderPartners();
+
+  renderHistory();
+
+}
+
+
+/* =========================================================
+   حفظ البيانات
+========================================================= */
+
+function savePartners(){
+
+  localStorage.setItem(
+    "partnerCommitmentsPartners",
+    JSON.stringify(partners)
+  );
+
+}
+
+
+function saveHistory(){
+
+  localStorage.setItem(
+    "partnerCommitmentsHistory",
+    JSON.stringify(history)
+  );
+
+}
+
+
+/* =========================================================
+   تنسيق المبلغ
+========================================================= */
+
+function formatMoney(value){
+
+  return Number(value || 0)
+  .toLocaleString("en-US");
+
+}
+
+
+/* =========================================================
+   تحديث الأرصدة
+========================================================= */
+
+function renderPartners(){
+
+  document
+  .getElementById("debt-rahim")
+  .innerText =
+  formatMoney(partners.rahim.debt);
+
+
+  document
+  .getElementById("debt-tuama")
+  .innerText =
+  formatMoney(partners.tuama.debt);
+
+}
+
+
+/* =========================================================
+   إضافة سحب
+========================================================= */
+
+function addWithdrawal(partnerId){
+
+  const amountInput =
+  document.getElementById(
+    "withdraw-" + partnerId
+  );
+
+  const personInput =
+  document.getElementById(
+    "withdraw-person-" + partnerId
+  );
+
+
+  const amount =
+  Number(amountInput.value);
+
+  const person =
+  personInput.value.trim();
+
+
+  if(!amount || amount <= 0){
+
+    showToast(
+      "أدخل مبلغ سحب صحيح"
+    );
+
+    amountInput.focus();
+
+    return;
+
+  }
+
+
+  if(!person){
+
+    showToast(
+      "أدخل اسم الشخص المستلم"
+    );
+
+    personInput.focus();
+
+    return;
+
+  }
+
+
+  partners[partnerId].debt += amount;
+
+
+  addHistoryRecord(
+    partnerId,
+    "withdraw",
+    amount,
+    person
+  );
+
+
+  savePartners();
+
+  renderPartners();
+
+
+  amountInput.value = "";
+
+  personInput.value = "";
+
+
+  showToast(
+    "تمت إضافة مبلغ السحب بنجاح"
+  );
+
+}
+
+
+/* =========================================================
+   تسجيل تسديد
+========================================================= */
+
+function addPayment(partnerId){
+
+  const amountInput =
+  document.getElementById(
+    "payment-" + partnerId
+  );
+
+  const personInput =
+  document.getElementById(
+    "payment-person-" + partnerId
+  );
+
+
+  const amount =
+  Number(amountInput.value);
+
+  const person =
+  personInput.value.trim();
+
+
+  if(!amount || amount <= 0){
+
+    showToast(
+      "أدخل مبلغ تسديد صحيح"
+    );
+
+    amountInput.focus();
+
+    return;
+
+  }
+
+
+  if(!person){
+
+    showToast(
+      "أدخل اسم الشخص"
+    );
+
+    personInput.focus();
+
+    return;
+
+  }
+
+
+  if(amount > partners[partnerId].debt){
+
+    showToast(
+      "مبلغ التسديد أكبر من الدين الحالي"
+    );
+
+    return;
+
+  }
+
+
+  partners[partnerId].debt -= amount;
+
+
+  addHistoryRecord(
+    partnerId,
+    "payment",
+    amount,
+    person
+  );
+
+
+  savePartners();
+
+  renderPartners();
+
+
+  amountInput.value = "";
+
+  personInput.value = "";
+
+
+  showToast(
+    "تم تسجيل مبلغ التسديد بنجاح"
+  );
+
+}
+
+
+/* =========================================================
+   إنشاء سجل الحركة
+========================================================= */
+
+function addHistoryRecord(
+  partnerId,
+  type,
+  amount,
+  person
+){
+
+  const now = new Date();
+
+
+  const record = {
+
+    id:Date.now(),
+
+    partnerId:partnerId,
+
+    partnerName:
+    partners[partnerId].name,
+
+    type:type,
+
+    amount:amount,
+
+    person:person,
+
+    date:
+    now.toLocaleDateString(
+      "en-GB"
+    ),
+
+    time:
+    now.toLocaleTimeString(
+      "en-GB",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      }
+    ),
+
+    balance:
+    partners[partnerId].debt
+
+  };
+
+
+  /*
+  نضع أحدث حركة بالأعلى
+  */
+
+  history.unshift(record);
+
+
+  saveHistory();
+
+  renderHistory();
+
+}
+
+
+/* =========================================================
+   عرض السجل
+========================================================= */
+
+function renderHistory(){
+
+  const tbody =
+  document.getElementById(
+    "historyTable"
+  );
+
+
+  tbody.innerHTML = "";
+
+
+  if(history.length === 0){
+
+    const tr =
+    document.createElement("tr");
+
+    tr.innerHTML = `
+
+      <td colspan="8">
+        لا توجد حركات مسجلة حالياً
+      </td>
+
+    `;
+
+    tbody.appendChild(tr);
+
+    return;
+
+  }
+
+
+  history.forEach(
+  function(record,index){
+
+    const tr =
+    document.createElement("tr");
+
+
+    const typeText =
+    record.type === "withdraw"
+    ? "سحب"
+    : "تسديد";
+
+
+    const typeClass =
+    record.type === "withdraw"
+    ? "type-withdraw"
+    : "type-payment";
+
+
+    const amountClass =
+    record.type === "withdraw"
+    ? "withdraw-amount"
+    : "payment-amount";
+
+
+    const personText =
+    record.type === "withdraw"
+    ? "بيد " + record.person
+    : "بواسطة " + record.person;
+
+
+    tr.innerHTML = `
+
+      <td>
+        ${index + 1}
+      </td>
+
+      <td>
+        ${record.partnerName}
+      </td>
+
+      <td>
+
+        <span class="${typeClass}">
+          ${typeText}
+        </span>
+
+      </td>
+
+      <td class="amount ${amountClass}">
+
+        ${formatMoney(record.amount)}
+        د.ع
+
+      </td>
+
+      <td>
+        ${personText}
+      </td>
+
+      <td>
+        ${record.date}
+      </td>
+
+      <td>
+        ${record.time}
+      </td>
+
+      <td class="amount balance-after">
+
+        ${formatMoney(record.balance)}
+        د.ع
+
+      </td>
+
+    `;
+
+
+    tbody.appendChild(tr);
+
+  });
+
+}
+
+
+/* =========================================================
+   الرسائل
+========================================================= */
+
+function showToast(message){
+
+  const toast =
+  document.getElementById("toast");
+
+
+  toast.innerText = message;
+
+  toast.classList.add("show");
+
+
+  setTimeout(function(){
+
+    toast.classList.remove("show");
+
+  },2500);
+
+}
+
 </script>
 
-
 </body>
-
 </html>
