@@ -15,36 +15,26 @@
 :root{
   --blue:#1d4ed8;
   --blue-dark:#172554;
-
   --green:#15803d;
-
-  --orange:#ea580c;
-
   --yellow:#eab308;
-
   --red:#dc2626;
-
   --text:#172033;
-
-  --shadow:0 18px 50px rgba(15,23,42,.10);
 }
-
 
 *{
   box-sizing:border-box;
 }
 
-
 html{
   scroll-behavior:smooth;
 }
-
 
 body{
   margin:0;
   min-height:100vh;
 
   font-family:Tahoma,Arial,sans-serif;
+  font-weight:900;
 
   color:var(--text);
 
@@ -52,8 +42,6 @@ body{
   radial-gradient(circle at 10% 10%,rgba(59,130,246,.17),transparent 28%),
   radial-gradient(circle at 90% 20%,rgba(99,102,241,.12),transparent 25%),
   linear-gradient(135deg,#eef5ff,#f8fafc,#edf3fb);
-
-  font-weight:900;
 }
 
 
@@ -77,12 +65,11 @@ body{
   z-index:999999;
 }
 
-
 .login-box{
   width:100%;
   max-width:480px;
 
-  background:rgba(255,255,255,.97);
+  background:white;
 
   padding:45px 36px;
 
@@ -93,9 +80,8 @@ body{
   box-shadow:
   0 30px 90px rgba(30,64,175,.20);
 
-  animation:loginIn .65s ease;
+  animation:loginIn .6s ease;
 }
-
 
 @keyframes loginIn{
 
@@ -111,13 +97,12 @@ body{
 
 }
 
-
 .login-logo{
   width:115px;
   height:115px;
+
   object-fit:contain;
 }
-
 
 .login-box h2{
   margin:18px 0 9px;
@@ -128,7 +113,6 @@ body{
   font-weight:900;
 }
 
-
 .login-box p{
   color:#334155;
 
@@ -137,7 +121,6 @@ body{
 
   font-weight:900;
 }
-
 
 .pin-input{
   width:100%;
@@ -158,20 +141,14 @@ body{
   outline:none;
 
   background:#f8fbff;
-
-  transition:.25s;
 }
-
 
 .pin-input:focus{
   border-color:#2563eb;
 
-  background:white;
-
   box-shadow:
   0 0 0 6px rgba(37,99,235,.10);
 }
-
 
 .login-btn{
   width:100%;
@@ -193,18 +170,7 @@ body{
   font-weight:900;
 
   cursor:pointer;
-
-  box-shadow:
-  0 12px 25px rgba(37,99,235,.25);
-
-  transition:.2s;
 }
-
-
-.login-btn:hover{
-  transform:translateY(-2px);
-}
-
 
 .error{
   min-height:30px;
@@ -227,15 +193,14 @@ body{
 
   padding:25px;
 
-  animation:pageIn .6s ease;
+  animation:pageIn .5s ease;
 }
-
 
 @keyframes pageIn{
 
   from{
     opacity:0;
-    transform:translateY(18px);
+    transform:translateY(20px);
   }
 
   to{
@@ -244,7 +209,6 @@ body{
   }
 
 }
-
 
 .wrapper{
   width:100%;
@@ -259,16 +223,7 @@ body{
 ========================================================= */
 
 .top-header{
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(255,255,255,.98),
-    rgba(247,250,255,.96)
-  );
+  background:white;
 
   border:1px solid #dbeafe;
 
@@ -277,25 +232,21 @@ body{
   padding:26px 32px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
   gap:20px;
 
-  box-shadow:var(--shadow);
+  box-shadow:
+  0 18px 50px rgba(15,23,42,.10);
 }
-
 
 .brand{
   display:flex;
-
   align-items:center;
 
   gap:20px;
 }
-
 
 .brand img{
   width:100px;
@@ -303,7 +254,6 @@ body{
 
   object-fit:contain;
 }
-
 
 .brand h1{
   margin:0;
@@ -314,7 +264,6 @@ body{
   font-weight:900;
 }
 
-
 .brand p{
   margin:9px 0 0;
 
@@ -324,7 +273,6 @@ body{
   font-weight:900;
 }
 
-
 .header-actions{
   display:flex;
 
@@ -332,7 +280,6 @@ body{
 
   flex-wrap:wrap;
 }
-
 
 .action-btn{
   border:0;
@@ -351,33 +298,27 @@ body{
   text-decoration:none;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   gap:8px;
 
-  transition:.22s;
+  transition:.2s;
 }
-
 
 .action-btn:hover{
   transform:translateY(-3px);
 }
-
 
 .pdf-btn{
   background:#dc2626;
   color:white;
 }
 
-
 .excel-btn{
   background:#15803d;
   color:white;
 }
-
 
 .home-btn{
   background:#334155;
@@ -399,7 +340,6 @@ body{
   gap:17px;
 }
 
-
 .summary-box{
   background:white;
 
@@ -417,11 +357,9 @@ body{
   transition:.25s;
 }
 
-
 .summary-box:hover{
   transform:translateY(-5px);
 }
-
 
 .summary-box small{
   display:block;
@@ -433,7 +371,6 @@ body{
   font-size:20px;
   font-weight:900;
 }
-
 
 .summary-box strong{
   display:block;
@@ -455,7 +392,6 @@ body{
   margin-top:32px;
 }
 
-
 .group-title{
   min-height:80px;
 
@@ -464,9 +400,7 @@ body{
   padding:19px 24px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
   margin-bottom:19px;
@@ -475,15 +409,12 @@ body{
   0 10px 28px rgba(15,23,42,.07);
 }
 
-
 .group-title-left{
   display:flex;
-
   align-items:center;
 
   gap:15px;
 }
-
 
 .group-icon{
   width:56px;
@@ -492,9 +423,7 @@ body{
   border-radius:17px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   font-size:32px;
@@ -502,14 +431,12 @@ body{
   background:rgba(255,255,255,.75);
 }
 
-
 .group-title h2{
   margin:0;
 
   font-size:32px;
   font-weight:900;
 }
-
 
 .group-count{
   background:rgba(255,255,255,.80);
@@ -522,7 +449,6 @@ body{
   font-weight:900;
 }
 
-
 .rahim-header{
   background:
   linear-gradient(135deg,#dbeafe,#e0e7ff);
@@ -530,14 +456,12 @@ body{
   color:#1e3a8a;
 }
 
-
 .company-header{
   background:
   linear-gradient(135deg,#fef3c7,#fff7ed);
 
   color:#92400e;
 }
-
 
 .tuama-header{
   background:
@@ -566,8 +490,6 @@ body{
 ========================================================= */
 
 .partner-card{
-  position:relative;
-
   min-width:0;
 
   overflow:hidden;
@@ -583,9 +505,8 @@ body{
 
   transition:.28s;
 
-  animation:cardIn .5s both;
+  animation:cardIn .45s both;
 }
-
 
 @keyframes cardIn{
 
@@ -601,7 +522,6 @@ body{
 
 }
 
-
 .partner-card:hover{
   transform:translateY(-9px);
 
@@ -610,7 +530,6 @@ body{
   box-shadow:
   0 22px 48px rgba(37,99,235,.16);
 }
-
 
 .partner-top{
   padding:23px 16px 22px;
@@ -623,21 +542,17 @@ body{
   linear-gradient(135deg,#fbfdff,#edf5ff);
 }
 
-
 .partner-icon{
   font-size:38px;
 
   margin-bottom:9px;
 }
 
-
 .partner-name{
   min-height:70px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   color:#172554;
@@ -648,7 +563,6 @@ body{
   line-height:1.6;
 }
 
-
 .debt-label{
   margin-top:11px;
 
@@ -657,7 +571,6 @@ body{
   font-size:20px;
   font-weight:900;
 }
-
 
 .debt-number{
   margin-top:7px;
@@ -677,18 +590,15 @@ body{
   transition:.25s;
 }
 
-
 .debt-number:hover{
   transform:scale(1.15);
 
   color:#b91c1c;
 }
 
-
 .debt-number.pulse{
   animation:numberPulse .55s ease;
 }
-
 
 @keyframes numberPulse{
 
@@ -705,7 +615,6 @@ body{
   }
 
 }
-
 
 .currency{
   color:#334155;
@@ -725,7 +634,6 @@ body{
   padding:16px;
 }
 
-
 .operation{
   border-radius:20px;
 
@@ -734,29 +642,32 @@ body{
   margin-bottom:15px;
 }
 
-
 .operation:last-child{
   margin-bottom:0;
 }
 
 
-/* سحب */
+/* ===============================
+   الدين
+================================ */
 
 .withdraw-operation{
   background:
-  linear-gradient(135deg,#fff7ed,#fffaf4);
+  linear-gradient(135deg,#fffbeb,#fffdf4);
 
-  border:2px solid #fb923c;
+  border:3px solid #facc15;
 }
 
 
-/* تسديد */
+/* ===============================
+   التسديد
+================================ */
 
 .payment-operation{
   background:
-  linear-gradient(135deg,#fffbeb,#fffdf5);
+  linear-gradient(135deg,#f0fdf4,#f7fff9);
 
-  border:2px solid #facc15;
+  border:3px solid #4ade80;
 }
 
 
@@ -771,12 +682,12 @@ body{
 
 
 .withdraw-operation .operation-title{
-  color:#c2410c;
+  color:#a16207;
 }
 
 
 .payment-operation .operation-title{
-  color:#a16207;
+  color:#15803d;
 }
 
 
@@ -785,12 +696,14 @@ body{
 }
 
 
-/* مبلغ بعرض كامل */
+/* =========================================================
+   مربع المبلغ كامل
+========================================================= */
 
 .money-row{
   width:100%;
 
-  margin-bottom:13px;
+  margin-bottom:14px;
 }
 
 
@@ -810,7 +723,7 @@ body{
 .operation-fields input{
   width:100%;
 
-  height:66px;
+  height:68px;
 
   border:3px solid #b9c9df;
 
@@ -824,7 +737,7 @@ body{
 
   font-family:Tahoma,Arial,sans-serif;
 
-  font-size:22px;
+  font-size:23px;
   font-weight:900;
 
   outline:none;
@@ -836,7 +749,7 @@ body{
 .operation-fields input::placeholder{
   color:#64748b;
 
-  font-size:18px;
+  font-size:19px;
   font-weight:900;
 
   opacity:1;
@@ -851,28 +764,31 @@ body{
 }
 
 
-/* مهم: المبلغ كامل */
+/* الرقم داخل مربع المبلغ */
 
 .money-input{
   direction:ltr;
 
   text-align:center;
 
-  font-size:29px !important;
+  font-size:30px !important;
   font-weight:900 !important;
 
   white-space:nowrap;
 }
 
 
-/* الاسم + السهم */
+/* =========================================================
+   الاسم + زر السهم
+========================================================= */
 
 .person-action-row{
   display:grid;
 
-  grid-template-columns:minmax(0,1fr) 72px;
+  grid-template-columns:
+  minmax(0,1fr) 76px;
 
-  gap:11px;
+  gap:12px;
 
   align-items:end;
 }
@@ -883,23 +799,27 @@ body{
 }
 
 
-/* زر السهم */
+/* =========================================================
+   الأسهم
+========================================================= */
 
 .arrow-action{
-  width:72px;
-  height:66px;
+  width:76px;
+  height:68px;
 
   border:0;
 
-  border-radius:16px;
+  border-radius:17px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  font-size:34px;
+  font-family:Arial,sans-serif;
+
+  font-size:44px;
+  line-height:1;
+
   font-weight:900;
 
   cursor:pointer;
@@ -911,38 +831,48 @@ body{
 .arrow-action:hover{
   transform:
   translateY(-4px)
-  scale(1.05);
+  scale(1.06);
 }
 
 
 .arrow-action:active{
-  transform:scale(.92);
+  transform:scale(.90);
 }
 
 
-/* زيادة الدين */
+/* =========================================================
+   السهم الأصفر ↑
+   يعني زيادة الدين
+========================================================= */
 
-.withdraw-arrow{
-  background:
-  linear-gradient(135deg,#fb923c,#ea580c);
-
-  color:white;
-
-  box-shadow:
-  0 8px 18px rgba(234,88,12,.25);
-}
-
-
-/* تسديد */
-
-.payment-arrow{
+.debt-arrow{
   background:
   linear-gradient(135deg,#fde047,#eab308);
 
   color:#422006;
 
+  border:2px solid #ca8a04;
+
   box-shadow:
-  0 8px 18px rgba(234,179,8,.25);
+  0 9px 20px rgba(234,179,8,.30);
+}
+
+
+/* =========================================================
+   السهم الأخضر ↓
+   يعني تسديد
+========================================================= */
+
+.payment-arrow{
+  background:
+  linear-gradient(135deg,#22c55e,#15803d);
+
+  color:white;
+
+  border:2px solid #15803d;
+
+  box-shadow:
+  0 9px 20px rgba(21,128,61,.28);
 }
 
 
@@ -983,19 +913,17 @@ body{
 
   background:
   linear-gradient(
-    90deg,
-    #2563eb,
-    #6366f1,
-    #06b6d4
+  90deg,
+  #2563eb,
+  #6366f1,
+  #06b6d4
   );
 }
 
 
 .history-header{
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
   gap:18px;
@@ -1044,13 +972,6 @@ body{
   font-weight:900;
 
   cursor:pointer;
-
-  transition:.2s;
-}
-
-
-.filter-toggle:hover{
-  transform:translateY(-3px);
 }
 
 
@@ -1078,27 +999,15 @@ body{
   padding:18px;
 
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
 
   border:1px solid #e5e7eb;
-
-  transition:.2s;
-}
-
-
-.today-card:hover{
-  transform:translateY(-4px);
 }
 
 
 .today-card span{
-  display:block;
-
   color:#334155;
 
   font-size:20px;
@@ -1120,26 +1029,21 @@ body{
   background:#eff6ff;
 }
 
-
 .today-count strong{
   color:#1e3a8a;
 }
-
 
 .today-withdraw{
   background:#fff7ed;
 }
 
-
 .today-withdraw strong{
   color:#c2410c;
 }
 
-
 .today-payment{
   background:#f0fdf4;
 }
-
 
 .today-payment strong{
   color:#15803d;
@@ -1147,7 +1051,7 @@ body{
 
 
 /* =========================================================
-   FILTER PANEL
+   FILTER
 ========================================================= */
 
 .filter-shell{
@@ -1159,10 +1063,7 @@ body{
 
   transform:translateY(-12px);
 
-  transition:
-  max-height .5s ease,
-  opacity .35s ease,
-  transform .4s ease;
+  transition:.4s;
 }
 
 
@@ -1249,9 +1150,6 @@ body{
 .filter-field select:focus,
 .filter-field input:focus{
   border-color:#2563eb;
-
-  box-shadow:
-  0 0 0 5px rgba(37,99,235,.09);
 }
 
 
@@ -1357,11 +1255,6 @@ body{
 }
 
 
-.history-table tbody tr{
-  transition:.18s;
-}
-
-
 .history-table tbody tr:nth-child(even){
   background:#f8fafc;
 }
@@ -1410,13 +1303,13 @@ body{
 
   border-radius:999px;
 
-  background:#ffedd5;
+  background:#fef3c7;
 
-  color:#b45309;
+  color:#a16207;
 
   font-size:19px;
 
-  border:1px solid #fdba74;
+  border:1px solid #facc15;
 }
 
 
@@ -1456,7 +1349,6 @@ body{
   position:fixed;
 
   bottom:30px;
-
   left:50%;
 
   transform:
@@ -1541,11 +1433,9 @@ body{
     padding:10px;
   }
 
-
   .partners-grid{
     grid-template-columns:1fr;
   }
-
 
   .summary-bar,
   .today-summary,
@@ -1553,11 +1443,9 @@ body{
     grid-template-columns:1fr;
   }
 
-
   .brand h1{
     font-size:31px;
   }
-
 
   .group-title{
     flex-direction:column;
@@ -1566,12 +1454,6 @@ body{
 
     text-align:center;
   }
-
-
-  .partner-name{
-    font-size:27px;
-  }
-
 
   .debt-number{
     font-size:44px;
@@ -1590,7 +1472,6 @@ body{
     background:white !important;
   }
 
-
   .login-screen,
   .header-actions,
   .operations,
@@ -1599,13 +1480,11 @@ body{
     display:none !important;
   }
 
-
   .main-content{
     display:block !important;
 
     padding:0 !important;
   }
-
 
   .partners-grid{
     grid-template-columns:
@@ -1614,28 +1493,23 @@ body{
     gap:10px;
   }
 
-
   .partner-card{
     box-shadow:none;
 
     break-inside:avoid;
   }
 
-
   .partner-name{
     font-size:15px;
   }
-
 
   .debt-number{
     font-size:24px;
   }
 
-
   .history-table{
     min-width:0;
   }
-
 
   .history-table th,
   .history-table td{
@@ -1643,7 +1517,6 @@ body{
 
     font-size:10px !important;
   }
-
 
   @page{
     size:A4 landscape;
@@ -1853,7 +1726,6 @@ id="mainContent"
 
   </div>
 
-
   <div
   class="partners-grid"
   id="rahimGrid"
@@ -1889,7 +1761,6 @@ id="mainContent"
 
   </div>
 
-
   <div
   class="partners-grid"
   id="companiesGrid"
@@ -1924,7 +1795,6 @@ id="mainContent"
     </div>
 
   </div>
-
 
   <div
   class="partners-grid"
@@ -1969,9 +1839,7 @@ id="mainContent"
 
   <div class="today-summary">
 
-    <div
-    class="today-card today-count"
-    >
+    <div class="today-card today-count">
 
       <span>
         عدد حركات اليوم
@@ -1984,9 +1852,7 @@ id="mainContent"
     </div>
 
 
-    <div
-    class="today-card today-withdraw"
-    >
+    <div class="today-card today-withdraw">
 
       <span>
         إجمالي سحوبات اليوم
@@ -1999,9 +1865,7 @@ id="mainContent"
     </div>
 
 
-    <div
-    class="today-card today-payment"
-    >
+    <div class="today-card today-payment">
 
       <span>
         إجمالي تسديدات اليوم
@@ -2199,7 +2063,6 @@ id="mainContent"
 </div>
 
 
-
 <div
 class="toast"
 id="toast"
@@ -2253,8 +2116,7 @@ function lockPage(){
 
   errorMessage.textContent = "";
 
-  setTimeout(
-  function(){
+  setTimeout(function(){
 
     pinInput.focus();
 
@@ -2548,7 +2410,6 @@ function loadData(){
     ) || {};
 
   }
-
   catch(e){
 
     savedPartners = {};
@@ -2566,7 +2427,6 @@ function loadData(){
     ) || [];
 
   }
-
   catch(e){
 
     savedHistory = [];
@@ -2670,7 +2530,8 @@ function formatMoney(value){
 
   return Number(
   value || 0
-  ).toLocaleString(
+  )
+  .toLocaleString(
   "en-US"
   );
 
@@ -2799,9 +2660,9 @@ function createPartnerCard(def){
   <div class="operations">
 
 
-    <!-- ===================================
-         سحب
-    =================================== -->
+    <!-- =================================================
+         زيادة الدين
+    ================================================= -->
 
     <div
     class="operation
@@ -2830,6 +2691,8 @@ function createPartnerCard(def){
           <input
           type="text"
           inputmode="numeric"
+          autocomplete="off"
+          value=""
           class="money-input"
           id="withdraw-${def.id}"
           placeholder="أدخل المبلغ"
@@ -2854,6 +2717,8 @@ function createPartnerCard(def){
 
             <input
             type="text"
+            autocomplete="off"
+            value=""
             id="withdraw-person-${def.id}"
             placeholder="اسم المستلم"
             >
@@ -2865,17 +2730,20 @@ function createPartnerCard(def){
           <button
           class="
           arrow-action
-          withdraw-arrow
+          debt-arrow
           "
           onclick="
           addWithdrawal('${def.id}')
           "
           title="
-          إضافة السحب إلى الدين
+          زيادة الدين
+          "
+          aria-label="
+          زيادة الدين
           "
           >
 
-            ⬆
+            ↑
 
           </button>
 
@@ -2888,9 +2756,9 @@ function createPartnerCard(def){
 
 
 
-    <!-- ===================================
-         تسديد
-    =================================== -->
+    <!-- =================================================
+         التسديد
+    ================================================= -->
 
     <div
     class="operation
@@ -2919,6 +2787,8 @@ function createPartnerCard(def){
           <input
           type="text"
           inputmode="numeric"
+          autocomplete="off"
+          value=""
           class="money-input"
           id="payment-${def.id}"
           placeholder="أدخل المبلغ"
@@ -2943,6 +2813,8 @@ function createPartnerCard(def){
 
             <input
             type="text"
+            autocomplete="off"
+            value=""
             id="payment-person-${def.id}"
             placeholder="اسم الشخص"
             >
@@ -2962,9 +2834,12 @@ function createPartnerCard(def){
           title="
           تسجيل التسديد
           "
+          aria-label="
+          تسجيل التسديد
+          "
           >
 
-            ⬇
+            ↓
 
           </button>
 
@@ -3148,7 +3023,7 @@ function addWithdrawal(id){
   if(
     !confirm(
 
-    "تأكيد عملية السحب\n\n" +
+    "تأكيد زيادة الدين\n\n" +
 
     partnerDef.name +
 
@@ -3211,7 +3086,7 @@ function addWithdrawal(id){
 
 
   showToast(
-  "⬆️ تم إضافة السحب وارتفع الدين"
+  "⬆ تم إضافة المبلغ إلى الدين"
   );
 
 }
@@ -3366,7 +3241,7 @@ function addPayment(id){
 
 
   showToast(
-  "⬇️ تم تسجيل التسديد وانخفض الدين"
+  "⬇ تم تسجيل التسديد"
   );
 
 }
@@ -3409,7 +3284,7 @@ value
 
 
 /* =========================================================
-   HISTORY
+   HISTORY ADD
 ========================================================= */
 
 function addHistory(
@@ -3503,7 +3378,8 @@ date
   const month =
   String(
   date.getMonth() + 1
-  ).padStart(
+  )
+  .padStart(
   2,
   "0"
   );
@@ -3512,7 +3388,8 @@ date
   const day =
   String(
   date.getDate()
-  ).padStart(
+  )
+  .padStart(
   2,
   "0"
   );
@@ -3575,7 +3452,7 @@ record
 
 
 /* =========================================================
-   FILTER
+   FILTER PANEL
 ========================================================= */
 
 function toggleFilters(){
@@ -3593,7 +3470,7 @@ function toggleFilters(){
 
 
 /* =========================================================
-   BUILD FILTER
+   FILTER PARTNERS
 ========================================================= */
 
 function buildPartnerFilter(){
@@ -3607,9 +3484,7 @@ function buildPartnerFilter(){
   select.innerHTML = `
 
   <option value="">
-
     جميع الشركاء
-
   </option>
 
   `;
@@ -3829,7 +3704,7 @@ function renderHistory(){
     record.type ===
     "withdraw"
 
-    ? "سحب"
+    ? "زيادة دين"
 
     : "تسديد";
 
@@ -3857,16 +3732,12 @@ function renderHistory(){
     row.innerHTML = `
 
     <td>
-
       ${index + 1}
-
     </td>
 
 
     <td>
-
       ${record.partnerName}
-
     </td>
 
 
@@ -4187,7 +4058,7 @@ function exportExcel(){
 
     record.type ===
     "withdraw"
-    ? "سحب"
+    ? "زيادة دين"
     : "تسديد",
 
     record.amount,
