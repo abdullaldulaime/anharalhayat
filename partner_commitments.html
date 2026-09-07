@@ -19,10 +19,91 @@
       min-height:100vh;
     }
 
+    /* شاشة رمز الدخول */
+    .login-screen{
+      position:fixed;
+      inset:0;
+      background:linear-gradient(135deg,#dbeafe,#eef2ff,#f8fafc);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:20px;
+    }
+
+    .login-box{
+      width:100%;
+      max-width:420px;
+      background:#ffffff;
+      border-radius:25px;
+      padding:40px 30px;
+      text-align:center;
+      box-shadow:0 15px 45px rgba(0,0,0,0.12);
+    }
+
+    .login-logo{
+      width:85px;
+      margin-bottom:10px;
+    }
+
+    .login-box h2{
+      color:#23479b;
+      margin:10px 0;
+      font-size:28px;
+    }
+
+    .login-box p{
+      color:#64748b;
+      margin-bottom:25px;
+      line-height:1.8;
+    }
+
+    .pin-input{
+      width:100%;
+      height:55px;
+      border:2px solid #dbeafe;
+      border-radius:14px;
+      text-align:center;
+      font-size:26px;
+      letter-spacing:8px;
+      outline:none;
+      direction:ltr;
+    }
+
+    .pin-input:focus{
+      border-color:#23479b;
+    }
+
+    .login-btn{
+      width:100%;
+      margin-top:18px;
+      height:52px;
+      border:0;
+      border-radius:14px;
+      background:#23479b;
+      color:#ffffff;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .login-btn:hover{
+      opacity:0.92;
+    }
+
+    .error{
+      min-height:25px;
+      margin-top:12px;
+      color:#dc2626;
+      font-weight:bold;
+    }
+
+    /* الصفحة الرئيسية */
     .container{
       max-width:1100px;
       margin:40px auto;
       padding:20px;
+      display:none;
     }
 
     .card{
@@ -69,12 +150,58 @@
     .back:hover{
       opacity:0.9;
     }
+
+    @media(max-width:600px){
+      .login-box{
+        padding:30px 20px;
+      }
+
+      h1{
+        font-size:28px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <!-- شاشة الدخول -->
+  <div class="login-screen" id="loginScreen">
+
+    <div class="login-box">
+
+      <img src="logo.png" class="login-logo" alt="شعار شركة أنهار الحياة">
+
+      <h2>التزامات الشركاء</h2>
+
+      <p>
+        هذه الصفحة مخصصة لقسم المالية<br>
+        الرجاء إدخال رمز الدخول
+      </p>
+
+      <input
+        type="password"
+        id="pinInput"
+        class="pin-input"
+        maxlength="6"
+        inputmode="numeric"
+        autocomplete="off"
+        placeholder="••••••"
+      >
+
+      <button class="login-btn" onclick="checkPin()">
+        دخول
+      </button>
+
+      <div class="error" id="errorMessage"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- محتوى الصفحة -->
+  <div class="container" id="mainContent">
 
     <div class="card">
 
@@ -95,6 +222,71 @@
     </div>
 
   </div>
+
+
+  <script>
+
+    // رمز الدخول - غيره إلى الرقم الذي تريده
+    const ACCESS_CODE = "582941";
+
+    const pinInput = document.getElementById("pinInput");
+    const errorMessage = document.getElementById("errorMessage");
+
+    pinInput.addEventListener("input", function(){
+
+      this.value = this.value.replace(/[^0-9]/g, "");
+
+      errorMessage.textContent = "";
+
+    });
+
+
+    pinInput.addEventListener("keydown", function(event){
+
+      if(event.key === "Enter"){
+        checkPin();
+      }
+
+    });
+
+
+    function checkPin(){
+
+      const enteredCode = pinInput.value;
+
+      if(enteredCode === ACCESS_CODE){
+
+        sessionStorage.setItem("partnerAccess", "allowed");
+
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+
+      }else{
+
+        errorMessage.textContent = "رمز الدخول غير صحيح";
+
+        pinInput.value = "";
+
+        pinInput.focus();
+
+      }
+
+    }
+
+
+    // إذا سبق وسجل دخول بنفس جلسة المتصفح
+    if(sessionStorage.getItem("partnerAccess") === "allowed"){
+
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("mainContent").style.display = "block";
+
+    }else{
+
+      pinInput.focus();
+
+    }
+
+  </script>
 
 </body>
 </html>
