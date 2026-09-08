@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
@@ -17,6 +18,8 @@
   --green:#15803d;
   --yellow:#eab308;
   --red:#dc2626;
+  --purple:#7c3aed;
+  --cyan:#0891b2;
   --text:#172033;
   --shadow:0 18px 50px rgba(15,23,42,.10);
 }
@@ -32,8 +35,10 @@ html{
 body{
   margin:0;
   min-height:100vh;
+
   font-family:Tahoma,Arial,sans-serif;
   font-weight:900;
+
   color:var(--text);
 
   background:
@@ -50,38 +55,53 @@ body{
 .login-screen{
   position:fixed;
   inset:0;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:20px;
-  background:radial-gradient(circle at top,#dbeafe,#eef2ff 50%,#f8fafc);
+
+  background:
+  radial-gradient(circle at top,#dbeafe,#eef2ff 50%,#f8fafc);
+
   z-index:999999;
 }
 
 .login-box{
   width:100%;
   max-width:480px;
+
   background:white;
+
   padding:45px 36px;
+
   border-radius:34px;
+
   text-align:center;
-  box-shadow:0 30px 90px rgba(30,64,175,.20);
+
+  box-shadow:
+  0 30px 90px rgba(30,64,175,.20);
 }
 
 .login-logo{
   width:115px;
   height:115px;
+
   object-fit:contain;
 }
 
 .login-box h2{
   margin:18px 0 9px;
+
   color:#172554;
+
   font-size:36px;
 }
 
 .login-box p{
   color:#334155;
+
   font-size:22px;
   line-height:1.9;
 }
@@ -89,40 +109,59 @@ body{
 .pin-input{
   width:100%;
   height:74px;
+
   border:3px solid #b9c9df;
   border-radius:18px;
+
   text-align:center;
   direction:ltr;
+
   font-size:36px;
   font-weight:900;
+
   letter-spacing:12px;
+
   outline:none;
+
   background:#f8fbff;
 }
 
 .pin-input:focus{
   border-color:#2563eb;
-  box-shadow:0 0 0 6px rgba(37,99,235,.10);
+
+  box-shadow:
+  0 0 0 6px rgba(37,99,235,.10);
 }
 
 .login-btn{
   width:100%;
   height:64px;
+
   margin-top:22px;
+
   border:0;
   border-radius:17px;
-  background:linear-gradient(135deg,#1d4ed8,#1e3a8a);
+
+  background:
+  linear-gradient(135deg,#1d4ed8,#1e3a8a);
+
   color:white;
+
   font-family:inherit;
+
   font-size:23px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .error{
   min-height:30px;
+
   margin-top:15px;
+
   color:#dc2626;
+
   font-size:19px;
 }
 
@@ -133,12 +172,14 @@ body{
 
 .main-content{
   display:none;
+
   padding:25px;
 }
 
 .wrapper{
   width:100%;
-  max-width:1650px;
+  max-width:1680px;
+
   margin:auto;
 }
 
@@ -149,59 +190,81 @@ body{
 
 .top-header{
   background:white;
+
   border:1px solid #dbeafe;
   border-radius:32px;
+
   padding:26px 32px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:20px;
+
   box-shadow:var(--shadow);
 }
 
 .brand{
   display:flex;
   align-items:center;
+
   gap:20px;
 }
 
 .brand img{
   width:100px;
   height:100px;
+
   object-fit:contain;
 }
 
 .brand h1{
   margin:0;
+
   color:#172554;
+
   font-size:42px;
 }
 
 .brand p{
   margin:9px 0 0;
+
   color:#334155;
+
   font-size:21px;
 }
 
 .header-actions{
   display:flex;
+
   gap:10px;
+
   flex-wrap:wrap;
 }
 
 .action-btn{
   border:0;
+
   border-radius:15px;
+
   padding:14px 18px;
+
   font-family:inherit;
+
   font-size:17px;
   font-weight:900;
+
   cursor:pointer;
+
   text-decoration:none;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   gap:7px;
+
   transition:.2s;
 }
 
@@ -209,44 +272,83 @@ body{
   transform:translateY(-3px);
 }
 
-.pdf-btn{background:#dc2626;color:white;}
-.excel-btn{background:#15803d;color:white;}
-.backup-btn{background:#7c3aed;color:white;}
-.restore-btn{background:#0891b2;color:white;}
-.home-btn{background:#334155;color:white;}
+.pdf-btn{
+  background:#dc2626;
+  color:white;
+}
+
+.excel-btn{
+  background:#15803d;
+  color:white;
+}
+
+.backup-btn{
+  background:#7c3aed;
+  color:white;
+}
+
+.restore-btn{
+  background:#0891b2;
+  color:white;
+}
+
+.home-btn{
+  background:#334155;
+  color:white;
+}
 
 
 /* =========================================================
-   SUMMARY
+   TOP SUMMARY
 ========================================================= */
 
 .summary-bar{
   margin-top:23px;
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
+
+  grid-template-columns:
+  repeat(5,1fr);
+
+  gap:15px;
 }
 
 .summary-box{
+  min-width:0;
+
   background:white;
+
   border-radius:23px;
-  padding:22px;
+
+  padding:20px 14px;
+
   text-align:center;
+
   border:1px solid #e5ebf5;
-  box-shadow:0 10px 30px rgba(15,23,42,.07);
+
+  box-shadow:
+  0 10px 30px rgba(15,23,42,.07);
 }
 
 .summary-box small{
   display:block;
+
   color:#334155;
+
   margin-bottom:10px;
-  font-size:20px;
+
+  font-size:18px;
+  line-height:1.6;
 }
 
 .summary-box strong{
   display:block;
+
   direction:ltr;
-  font-size:35px;
+
+  font-size:31px;
+
+  white-space:nowrap;
 }
 
 .summary-partners strong{
@@ -255,6 +357,7 @@ body{
 
 .summary-dollar{
   background:#fffbea;
+
   border:2px solid #fde047;
 }
 
@@ -262,8 +365,20 @@ body{
   color:#a16207;
 }
 
+.summary-misc{
+  background:#faf5ff;
+
+  border:2px solid #c4b5fd;
+}
+
+.summary-misc strong{
+  color:#7c3aed;
+}
+
 .summary-total{
-  background:linear-gradient(135deg,#fff1f2,#ffffff);
+  background:
+  linear-gradient(135deg,#fff1f2,#ffffff);
+
   border:2px solid #fecaca;
 }
 
@@ -282,56 +397,77 @@ body{
 
 .group-title{
   min-height:80px;
+
   border-radius:24px;
+
   padding:19px 24px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   margin-bottom:19px;
-  box-shadow:0 10px 28px rgba(15,23,42,.07);
+
+  box-shadow:
+  0 10px 28px rgba(15,23,42,.07);
 }
 
 .group-title-left{
   display:flex;
   align-items:center;
+
   gap:15px;
 }
 
 .group-icon{
   width:56px;
   height:56px;
+
   border-radius:17px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:32px;
+
   background:rgba(255,255,255,.75);
 }
 
 .group-title h2{
   margin:0;
+
   font-size:32px;
 }
 
 .group-count{
   background:rgba(255,255,255,.8);
+
   padding:10px 17px;
+
   border-radius:999px;
+
   font-size:20px;
 }
 
 .rahim-header{
-  background:linear-gradient(135deg,#dbeafe,#e0e7ff);
+  background:
+  linear-gradient(135deg,#dbeafe,#e0e7ff);
+
   color:#1e3a8a;
 }
 
 .company-header{
-  background:linear-gradient(135deg,#fef3c7,#fff7ed);
+  background:
+  linear-gradient(135deg,#fef3c7,#fff7ed);
+
   color:#92400e;
 }
 
 .tuama-header{
-  background:linear-gradient(135deg,#dcfce7,#ecfdf5);
+  background:
+  linear-gradient(135deg,#dcfce7,#ecfdf5);
+
   color:#166534;
 }
 
@@ -342,70 +478,99 @@ body{
 
 .partners-grid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+
+  grid-template-columns:
+  repeat(4,minmax(0,1fr));
+
   gap:19px;
 }
 
 
 /* =========================================================
-   NORMAL PARTNER CARD
+   CARDS
 ========================================================= */
 
 .partner-card{
   min-width:0;
+
   overflow:hidden;
+
   background:white;
+
   border:1px solid #e2e8f0;
+
   border-radius:26px;
-  box-shadow:0 11px 30px rgba(15,23,42,.08);
+
+  box-shadow:
+  0 11px 30px rgba(15,23,42,.08);
+
   transition:.28s;
 }
 
 .partner-card:hover{
   transform:translateY(-7px);
-  box-shadow:0 22px 48px rgba(37,99,235,.16);
+
+  box-shadow:
+  0 22px 48px rgba(37,99,235,.16);
 }
 
 .partner-top{
   padding:23px 16px 22px;
+
   text-align:center;
+
   border-bottom:1px solid #e5e7eb;
-  background:linear-gradient(135deg,#fbfdff,#edf5ff);
+
+  background:
+  linear-gradient(135deg,#fbfdff,#edf5ff);
 }
 
 .partner-icon{
   font-size:38px;
+
   margin-bottom:9px;
 }
 
 .partner-name{
   min-height:70px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   color:#172554;
+
   font-size:27px;
   line-height:1.6;
 }
 
 .debt-label{
   margin-top:11px;
+
   color:#334155;
+
   font-size:20px;
 }
 
 .debt-number{
   margin-top:7px;
+
   color:#dc2626;
+
   direction:ltr;
+
   font-size:46px;
+
   line-height:1.25;
+
   white-space:nowrap;
 }
 
 .currency{
   color:#334155;
+
   margin-top:5px;
+
   font-size:19px;
 }
 
@@ -420,7 +585,9 @@ body{
 
 .operation{
   border-radius:20px;
+
   padding:17px;
+
   margin-bottom:15px;
 }
 
@@ -429,18 +596,24 @@ body{
 }
 
 .withdraw-operation{
-  background:linear-gradient(135deg,#fffbeb,#fffdf4);
+  background:
+  linear-gradient(135deg,#fffbeb,#fffdf4);
+
   border:3px solid #facc15;
 }
 
 .payment-operation{
-  background:linear-gradient(135deg,#f0fdf4,#f7fff9);
+  background:
+  linear-gradient(135deg,#f0fdf4,#f7fff9);
+
   border:3px solid #4ade80;
 }
 
 .operation-title{
   margin-bottom:15px;
+
   text-align:center;
+
   font-size:23px;
 }
 
@@ -454,6 +627,7 @@ body{
 
 .money-row{
   width:100%;
+
   margin-bottom:14px;
 }
 
@@ -462,76 +636,108 @@ body{
 .note-row label,
 .usd-field label{
   display:block;
+
   margin:0 4px 9px;
+
   color:#1e293b;
+
   font-size:20px;
 }
 
 .operation-fields input,
 .operation-fields textarea,
 .usd-card input,
-.usd-card textarea{
+.usd-card textarea,
+.misc-card input,
+.misc-card textarea{
   width:100%;
+
   border:3px solid #b9c9df;
+
   border-radius:15px;
+
   background:white;
+
   color:#111827;
+
   font-family:Tahoma,Arial,sans-serif;
+
   font-size:23px;
   font-weight:900;
+
   outline:none;
 }
 
 .operation-fields input,
-.usd-card input{
+.usd-card input,
+.misc-card input{
   height:68px;
+
   padding:0 15px;
 }
 
 .operation-fields textarea,
-.usd-card textarea{
+.usd-card textarea,
+.misc-card textarea{
   min-height:95px;
+
   padding:14px 15px;
+
   resize:vertical;
+
   line-height:1.7;
 }
 
 .operation-fields input::placeholder,
 .operation-fields textarea::placeholder,
 .usd-card input::placeholder,
-.usd-card textarea::placeholder{
+.usd-card textarea::placeholder,
+.misc-card input::placeholder,
+.misc-card textarea::placeholder{
   color:#64748b;
+
   font-size:19px;
   font-weight:900;
+
   opacity:1;
 }
 
 .money-input,
 .usd-input{
   direction:ltr;
+
   text-align:center;
+
   font-size:29px !important;
 }
 
 .person-action-row{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 76px;
+
+  grid-template-columns:
+  minmax(0,1fr) 76px;
+
   gap:12px;
+
   align-items:end;
 }
 
 .note-row{
   margin-top:15px;
+
   padding:12px;
+
   border-radius:17px;
 }
 
 .withdraw-operation .note-row{
-  background:rgba(254,243,199,.35);
+  background:
+  rgba(254,243,199,.35);
 }
 
 .payment-operation .note-row{
-  background:rgba(220,252,231,.45);
+  background:
+  rgba(220,252,231,.45);
 }
 
 
@@ -542,34 +748,53 @@ body{
 .arrow-action{
   width:76px;
   height:68px;
+
   border:0;
+
   border-radius:17px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-family:Arial,sans-serif;
+
   font-size:44px;
   font-weight:900;
+
   cursor:pointer;
+
   transition:.2s;
 }
 
 .arrow-action:hover{
-  transform:translateY(-4px) scale(1.06);
+  transform:
+  translateY(-4px)
+  scale(1.06);
 }
 
 .debt-arrow{
-  background:linear-gradient(135deg,#fde047,#eab308);
+  background:
+  linear-gradient(135deg,#fde047,#eab308);
+
   color:#422006;
+
   border:2px solid #ca8a04;
-  box-shadow:0 9px 20px rgba(234,179,8,.30);
+
+  box-shadow:
+  0 9px 20px rgba(234,179,8,.30);
 }
 
 .payment-arrow{
-  background:linear-gradient(135deg,#22c55e,#15803d);
+  background:
+  linear-gradient(135deg,#22c55e,#15803d);
+
   color:white;
+
   border:2px solid #15803d;
-  box-shadow:0 9px 20px rgba(21,128,61,.28);
+
+  box-shadow:
+  0 9px 20px rgba(21,128,61,.28);
 }
 
 
@@ -579,11 +804,14 @@ body{
 
 .usd-card{
   border:3px solid #eab308;
+
   background:#fffef8;
 }
 
 .usd-card .partner-top{
-  background:linear-gradient(135deg,#fff7c2,#fffdf1);
+  background:
+  linear-gradient(135deg,#fff7c2,#fffdf1);
+
   border-bottom:2px solid #fde68a;
 }
 
@@ -597,52 +825,71 @@ body{
 
 .usd-balance-box{
   margin-top:10px;
+
   padding:15px;
+
   border-radius:18px;
+
   background:white;
+
   border:2px solid #facc15;
 }
 
 .usd-balance-box span{
   display:block;
+
   color:#854d0e;
+
   font-size:18px;
+
   margin-bottom:7px;
 }
 
 .usd-balance-iqd{
   color:#dc2626;
+
   direction:ltr;
+
   font-size:34px;
+
   white-space:nowrap;
 }
 
 .usd-balance-usd{
   margin-top:7px;
+
   color:#1e3a8a;
+
   direction:ltr;
+
   font-size:21px;
 }
 
 .usd-operation{
   border-radius:20px;
+
   padding:17px;
+
   margin-bottom:15px;
 }
 
 .usd-buy{
   background:#fffbeb;
+
   border:3px solid #facc15;
 }
 
 .usd-pay{
   background:#f0fdf4;
+
   border:3px solid #4ade80;
 }
 
 .usd-operation-title{
   text-align:center;
+
   font-size:23px;
+
   margin-bottom:16px;
 }
 
@@ -660,9 +907,13 @@ body{
 
 .iqd-result{
   margin:15px 0;
+
   padding:17px 10px;
+
   border-radius:18px;
+
   text-align:center;
+
   background:white;
 }
 
@@ -676,24 +927,107 @@ body{
 
 .iqd-result span{
   display:block;
+
   font-size:18px;
+
   color:#475569;
+
   margin-bottom:7px;
 }
 
 .iqd-result strong{
   display:block;
+
   color:#dc2626;
+
   direction:ltr;
+
   font-size:32px;
+
   white-space:nowrap;
 }
 
 .usd-person-action{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 76px;
+
+  grid-template-columns:
+  minmax(0,1fr) 76px;
+
   gap:12px;
+
   align-items:end;
+}
+
+
+/* =========================================================
+   MISC CARD
+========================================================= */
+
+.misc-card{
+  border:3px solid #8b5cf6;
+
+  background:#fdfbff;
+}
+
+.misc-card .partner-top{
+  background:
+  linear-gradient(135deg,#f3e8ff,#faf5ff);
+
+  border-bottom:2px solid #c4b5fd;
+}
+
+.misc-card .partner-icon{
+  font-size:46px;
+}
+
+.misc-card .partner-name{
+  color:#6d28d9;
+}
+
+.misc-total-box{
+  margin-top:10px;
+
+  background:white;
+
+  border:2px solid #a78bfa;
+
+  border-radius:18px;
+
+  padding:15px;
+}
+
+.misc-total-box span{
+  display:block;
+
+  color:#6d28d9;
+
+  font-size:18px;
+
+  margin-bottom:7px;
+}
+
+.misc-total-number{
+  color:#dc2626;
+
+  direction:ltr;
+
+  font-size:35px;
+
+  white-space:nowrap;
+}
+
+.misc-withdraw{
+  background:
+  linear-gradient(135deg,#fffbeb,#fffdf4);
+
+  border:3px solid #facc15;
+}
+
+.misc-payment{
+  background:
+  linear-gradient(135deg,#f0fdf4,#f7fff9);
+
+  border:3px solid #4ade80;
 }
 
 
@@ -703,85 +1037,152 @@ body{
 
 .history-section{
   margin-top:42px;
+
   position:relative;
+
   overflow:hidden;
+
   background:white;
+
   border:1px solid #e1e8f3;
+
   border-radius:32px;
+
   padding:30px;
+
   box-shadow:var(--shadow);
 }
 
 .history-section::before{
   content:"";
+
   position:absolute;
+
   right:0;
   left:0;
   top:0;
+
   height:6px;
-  background:linear-gradient(90deg,#2563eb,#6366f1,#06b6d4);
+
+  background:
+  linear-gradient(
+    90deg,
+    #2563eb,
+    #6366f1,
+    #06b6d4
+  );
 }
 
 .history-title h2{
   margin:0;
+
   color:#172554;
+
   font-size:38px;
 }
 
 .history-title p{
   color:#334155;
+
   font-size:21px;
 }
 
 
 /* =========================================================
-   TODAY SUMMARY
+   TODAY
 ========================================================= */
 
 .today-summary{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+  repeat(6,1fr);
+
   gap:12px;
+
   margin:24px 0;
 }
 
 .today-card{
   min-height:110px;
+
   border-radius:20px;
+
   padding:15px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   text-align:center;
+
   border:1px solid #e5e7eb;
 }
 
 .today-card span{
   color:#334155;
-  font-size:17px;
+
+  font-size:16px;
+
   margin-bottom:9px;
+
+  line-height:1.5;
 }
 
 .today-card strong{
   direction:ltr;
-  font-size:27px;
+
+  font-size:25px;
 }
 
-.today-count{background:#eff6ff;}
-.today-count strong{color:#1e3a8a;}
+.today-count{
+  background:#eff6ff;
+}
 
-.today-withdraw{background:#fffbeb;}
-.today-withdraw strong{color:#a16207;}
+.today-count strong{
+  color:#1e3a8a;
+}
 
-.today-payment{background:#f0fdf4;}
-.today-payment strong{color:#15803d;}
+.today-withdraw{
+  background:#fffbeb;
+}
 
-.today-usd-buy{background:#fefce8;}
-.today-usd-buy strong{color:#a16207;}
+.today-withdraw strong{
+  color:#a16207;
+}
 
-.today-usd-pay{background:#ecfdf5;}
-.today-usd-pay strong{color:#15803d;}
+.today-payment{
+  background:#f0fdf4;
+}
+
+.today-payment strong{
+  color:#15803d;
+}
+
+.today-usd-buy{
+  background:#fefce8;
+}
+
+.today-usd-buy strong{
+  color:#a16207;
+}
+
+.today-usd-pay{
+  background:#ecfdf5;
+}
+
+.today-usd-pay strong{
+  color:#15803d;
+}
+
+.today-misc{
+  background:#faf5ff;
+}
+
+.today-misc strong{
+  color:#7c3aed;
+}
 
 
 /* =========================================================
@@ -790,50 +1191,91 @@ body{
 
 .filter-panel{
   margin-bottom:24px;
-  background:linear-gradient(135deg,#eaf3ff,#f8fbff);
+
+  background:
+  linear-gradient(135deg,#eaf3ff,#f8fbff);
+
   border:3px solid #bfdbfe;
+
   border-radius:25px;
+
   padding:22px;
 }
 
 .filter-panel-title{
   margin-bottom:18px;
+
   color:#172554;
+
   font-size:28px;
 }
 
 .quick-filters{
   display:flex;
+
   gap:10px;
+
   flex-wrap:wrap;
+
   margin-bottom:20px;
 }
 
 .quick-btn{
   border:0;
+
   border-radius:13px;
+
   padding:12px 20px;
+
   font-family:inherit;
+
   font-size:18px;
   font-weight:900;
+
   cursor:pointer;
 }
 
-.today-btn{background:#2563eb;color:white;}
-.all-btn{background:#475569;color:white;}
-.usd-btn{background:#eab308;color:#422006;}
-.print-filter-btn{background:#dc2626;color:white;}
+.today-btn{
+  background:#2563eb;
+  color:white;
+}
+
+.all-btn{
+  background:#475569;
+  color:white;
+}
+
+.usd-btn{
+  background:#eab308;
+  color:#422006;
+}
+
+.misc-btn{
+  background:#7c3aed;
+  color:white;
+}
+
+.print-filter-btn{
+  background:#dc2626;
+  color:white;
+}
 
 .history-filters{
   display:grid;
-  grid-template-columns:1.35fr 1fr 1fr 1fr 1.35fr;
+
+  grid-template-columns:
+  1.35fr 1fr 1fr 1fr 1.35fr;
+
   gap:13px;
 }
 
 .filter-field label{
   display:block;
+
   margin:0 5px 10px;
+
   color:#172554;
+
   font-size:20px;
 }
 
@@ -841,93 +1283,159 @@ body{
 .filter-field input{
   width:100%;
   height:64px;
+
   border:3px solid #b9c9df;
+
   border-radius:15px;
+
   padding:0 15px;
+
   background:white;
+
   color:#111827;
+
   font-family:inherit;
+
   font-size:20px;
   font-weight:900;
 }
 
 .filter-footer{
   margin-top:18px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:15px;
+
   flex-wrap:wrap;
 }
 
 .clear-filter-btn{
   min-height:52px;
+
   border:0;
+
   border-radius:13px;
+
   background:#475569;
+
   color:white;
+
   padding:0 20px;
+
   font-family:inherit;
+
   font-size:18px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .filter-result{
   color:#334155;
+
   font-size:20px;
 }
 
 .filter-result strong{
   color:#1d4ed8;
+
   font-size:26px;
 }
 
 
 /* =========================================================
-   FILTER SUMMARY
+   FILTERED SUMMARY
 ========================================================= */
 
 .filtered-summary{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+  repeat(6,1fr);
+
   gap:12px;
+
   margin-bottom:20px;
 }
 
 .filtered-card{
   border-radius:18px;
+
   padding:15px;
+
   text-align:center;
+
   border:1px solid #e5e7eb;
 }
 
 .filtered-card span{
   display:block;
+
   margin-bottom:7px;
+
   color:#334155;
-  font-size:16px;
+
+  font-size:15px;
+
+  line-height:1.5;
 }
 
 .filtered-card strong{
   direction:ltr;
-  font-size:25px;
+
+  font-size:23px;
 }
 
-.fc-count{background:#eff6ff;}
-.fc-count strong{color:#1e3a8a;}
+.fc-count{
+  background:#eff6ff;
+}
 
-.fc-debt{background:#fffbeb;}
-.fc-debt strong{color:#a16207;}
+.fc-count strong{
+  color:#1e3a8a;
+}
 
-.fc-pay{background:#f0fdf4;}
-.fc-pay strong{color:#15803d;}
+.fc-debt{
+  background:#fffbeb;
+}
 
-.fc-usd-buy{background:#fefce8;}
-.fc-usd-buy strong{color:#a16207;}
+.fc-debt strong{
+  color:#a16207;
+}
 
-.fc-usd-pay{background:#ecfdf5;}
-.fc-usd-pay strong{color:#15803d;}
+.fc-pay{
+  background:#f0fdf4;
+}
+
+.fc-pay strong{
+  color:#15803d;
+}
+
+.fc-usd-buy{
+  background:#fefce8;
+}
+
+.fc-usd-buy strong{
+  color:#a16207;
+}
+
+.fc-usd-pay{
+  background:#ecfdf5;
+}
+
+.fc-usd-pay strong{
+  color:#15803d;
+}
+
+.fc-misc{
+  background:#faf5ff;
+}
+
+.fc-misc strong{
+  color:#7c3aed;
+}
 
 
 /* =========================================================
@@ -936,29 +1444,42 @@ body{
 
 .history-table-wrap{
   overflow-x:auto;
+
   border-radius:20px;
+
   border:2px solid #dbe3ef;
 }
 
 .history-table{
   width:100%;
-  min-width:2050px;
+
+  min-width:2100px;
+
   border-collapse:collapse;
 }
 
 .history-table th{
-  background:linear-gradient(135deg,#172554,#1e3a8a);
+  background:
+  linear-gradient(135deg,#172554,#1e3a8a);
+
   color:white;
+
   padding:19px 11px;
+
   font-size:18px;
+
   white-space:nowrap;
 }
 
 .history-table td{
   padding:17px 11px;
+
   text-align:center;
+
   border-bottom:1px solid #e5e7eb;
+
   color:#111827;
+
   font-size:17px;
 }
 
@@ -972,66 +1493,106 @@ body{
 
 .history-note{
   min-width:230px;
+
   max-width:360px;
+
   line-height:1.7;
+
   white-space:normal;
 }
 
 .num{
   direction:ltr;
+
   white-space:nowrap;
 }
 
 .badge{
   display:inline-block;
-  min-width:110px;
+
+  min-width:120px;
+
   padding:9px 14px;
+
   border-radius:999px;
 }
 
 .badge-debt{
   background:#fef3c7;
+
   color:#a16207;
+
   border:1px solid #facc15;
 }
 
 .badge-pay{
   background:#dcfce7;
+
   color:#15803d;
+
   border:1px solid #86efac;
 }
 
 .badge-usd-buy{
   background:#fef9c3;
+
   color:#854d0e;
+
   border:1px solid #eab308;
 }
 
 .badge-usd-pay{
   background:#d1fae5;
+
   color:#047857;
+
   border:1px solid #34d399;
+}
+
+.badge-misc-withdraw{
+  background:#ede9fe;
+
+  color:#6d28d9;
+
+  border:1px solid #a78bfa;
+}
+
+.badge-misc-payment{
+  background:#dcfce7;
+
+  color:#166534;
+
+  border:1px solid #4ade80;
 }
 
 .delete-btn{
   width:46px;
   height:46px;
+
   border:0;
+
   border-radius:12px;
+
   background:#fee2e2;
+
   color:#b91c1c;
+
   font-size:21px;
+
   cursor:pointer;
 }
 
 .delete-btn:hover{
   background:#dc2626;
+
   color:white;
 }
 
 .empty-history{
   padding:45px !important;
+
   color:#64748b !important;
+
   font-size:21px !important;
 }
 
@@ -1042,25 +1603,42 @@ body{
 
 .toast{
   position:fixed;
+
   bottom:30px;
   left:50%;
-  transform:translate(-50%,30px);
+
+  transform:
+  translate(-50%,30px);
+
   min-width:330px;
-  background:linear-gradient(135deg,#172554,#1e293b);
+
+  background:
+  linear-gradient(135deg,#172554,#1e293b);
+
   color:white;
+
   padding:16px 28px;
+
   border-radius:999px;
+
   text-align:center;
+
   font-size:19px;
+
   opacity:0;
+
   pointer-events:none;
+
   z-index:999999;
+
   transition:.3s;
 }
 
 .toast.show{
   opacity:1;
-  transform:translate(-50%,0);
+
+  transform:
+  translate(-50%,0);
 }
 
 
@@ -1070,86 +1648,117 @@ body{
 
 .print-report{
   display:none;
+
   background:white;
+
   color:#111827;
 }
 
 .print-report-header{
   display:flex;
+
   align-items:center;
   justify-content:space-between;
+
   border-bottom:3px solid #1e3a8a;
+
   padding-bottom:15px;
+
   margin-bottom:15px;
 }
 
 .print-report-header img{
   width:80px;
   height:80px;
+
   object-fit:contain;
 }
 
 .print-company h1{
   margin:0;
+
   color:#172554;
 }
 
 .print-title{
   text-align:center;
+
   margin:16px 0;
+
   color:#172554;
+
   font-size:26px;
 }
 
 .print-meta,
 .print-summary{
   display:grid;
+
   gap:8px;
+
   margin-bottom:13px;
 }
 
 .print-meta{
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:
+  repeat(3,1fr);
 }
 
 .print-summary{
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:
+  repeat(6,1fr);
 }
 
 .print-meta div,
 .print-summary div{
   border:1px solid #cbd5e1;
+
   padding:8px;
+
   text-align:center;
+
   border-radius:8px;
-  font-size:11px;
+
+  font-size:10px;
 }
 
 .print-table{
   width:100%;
+
   border-collapse:collapse;
 }
 
 .print-table th{
   background:#172554;
+
   color:white;
+
   padding:5px;
+
   border:1px solid #cbd5e1;
+
   font-size:8px;
 }
 
 .print-table td{
   padding:5px;
+
   border:1px solid #cbd5e1;
+
   text-align:center;
+
   font-size:7px;
+
   font-weight:900;
 }
 
 .print-footer{
   margin-top:15px;
+
   text-align:center;
+
   color:#475569;
+
   font-size:10px;
 }
 
@@ -1158,20 +1767,27 @@ body{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1350px){
+@media(max-width:1400px){
 
   .partners-grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:
+    repeat(3,minmax(0,1fr));
   }
 
-  .summary-bar,
+  .summary-bar{
+    grid-template-columns:
+    repeat(3,1fr);
+  }
+
   .today-summary,
   .filtered-summary{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+    repeat(3,1fr);
   }
 
   .history-filters{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+    repeat(2,1fr);
   }
 
 }
@@ -1179,11 +1795,13 @@ body{
 @media(max-width:950px){
 
   .partners-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:
+    repeat(2,minmax(0,1fr));
   }
 
   .top-header{
     flex-direction:column;
+
     text-align:center;
   }
 
@@ -1213,11 +1831,18 @@ body{
 
   .group-title{
     flex-direction:column;
+
     gap:11px;
+
     text-align:center;
   }
 
 }
+
+
+/* =========================================================
+   PRINT MEDIA
+========================================================= */
 
 @media print{
 
@@ -1235,13 +1860,16 @@ body{
 
   @page{
     size:A4 landscape;
+
     margin:5mm;
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
@@ -1250,13 +1878,22 @@ body{
      LOGIN
 ========================================================= -->
 
-<div class="login-screen" id="loginScreen">
+<div
+class="login-screen"
+id="loginScreen"
+>
 
   <div class="login-box">
 
-    <img src="logo.png" class="login-logo" alt="شركة أنهار الحياة">
+    <img
+    src="logo.png"
+    class="login-logo"
+    alt="شركة أنهار الحياة"
+    >
 
-    <h2>🤝 التزامات مالية</h2>
+    <h2>
+      🤝 التزامات مالية
+    </h2>
 
     <p>
       هذه الصفحة مخصصة لقسم المالية
@@ -1265,20 +1902,26 @@ body{
     </p>
 
     <input
-      type="password"
-      id="pinInput"
-      class="pin-input"
-      maxlength="6"
-      inputmode="numeric"
-      autocomplete="off"
-      placeholder="••••••"
+    type="password"
+    id="pinInput"
+    class="pin-input"
+    maxlength="6"
+    inputmode="numeric"
+    autocomplete="off"
+    placeholder="••••••"
     >
 
-    <button class="login-btn" onclick="checkPin()">
+    <button
+    class="login-btn"
+    onclick="checkPin()"
+    >
       دخول
     </button>
 
-    <div class="error" id="errorMessage"></div>
+    <div
+    class="error"
+    id="errorMessage"
+    ></div>
 
   </div>
 
@@ -1290,25 +1933,35 @@ body{
      MAIN
 ========================================================= -->
 
-<div class="main-content" id="mainContent">
+<div
+class="main-content"
+id="mainContent"
+>
 
 <div class="wrapper">
 
 
-<!-- HEADER -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <div class="top-header">
 
   <div class="brand">
 
-    <img src="logo.png" alt="شركة أنهار الحياة">
+    <img
+    src="logo.png"
+    alt="شركة أنهار الحياة"
+    >
 
     <div>
 
-      <h1>التزامات مالية</h1>
+      <h1>
+        التزامات مالية
+      </h1>
 
       <p>
-        متابعة التزامات الشركاء وحركات شراء وتسديد الدولار
+        التزامات الشركاء والدولار والمتفرقات
       </p>
 
     </div>
@@ -1318,23 +1971,38 @@ body{
 
   <div class="header-actions">
 
-    <button class="action-btn pdf-btn" onclick="printFilteredHistory()">
+    <button
+    class="action-btn pdf-btn"
+    onclick="printFilteredHistory()"
+    >
       🖨️ PDF السجل
     </button>
 
-    <button class="action-btn excel-btn" onclick="exportExcel()">
+    <button
+    class="action-btn excel-btn"
+    onclick="exportExcel()"
+    >
       📊 Excel
     </button>
 
-    <button class="action-btn backup-btn" onclick="downloadBackup()">
+    <button
+    class="action-btn backup-btn"
+    onclick="downloadBackup()"
+    >
       💾 نسخة احتياطية
     </button>
 
-    <button class="action-btn restore-btn" onclick="openRestore()">
+    <button
+    class="action-btn restore-btn"
+    onclick="openRestore()"
+    >
       ♻️ استعادة نسخة
     </button>
 
-    <a href="index.html" class="action-btn home-btn">
+    <a
+    href="index.html"
+    class="action-btn home-btn"
+    >
       🏠 الرئيسية
     </a>
 
@@ -1344,52 +2012,82 @@ body{
 
 
 <input
-  type="file"
-  id="backupInput"
-  accept=".json,application/json"
-  style="display:none"
-  onchange="restoreBackup(event)"
+type="file"
+id="backupInput"
+accept=".json,application/json"
+style="display:none"
+onchange="restoreBackup(event)"
 >
 
 
+
 <!-- =========================================================
-     TOTAL SUMMARY
+     TOP TOTALS
 ========================================================= -->
 
 <div class="summary-bar">
 
   <div class="summary-box">
 
-    <small>عدد الشركاء والجهات</small>
+    <small>
+      عدد الشركاء والجهات
+    </small>
 
-    <strong id="totalPartners">0</strong>
+    <strong id="totalPartners">
+      0
+    </strong>
 
   </div>
 
 
   <div class="summary-box summary-partners">
 
-    <small>إجمالي التزامات الشركاء</small>
+    <small>
+      إجمالي التزامات الشركاء
+    </small>
 
-    <strong id="partnersDebtTotal">0</strong>
+    <strong id="partnersDebtTotal">
+      0
+    </strong>
 
   </div>
 
 
   <div class="summary-box summary-dollar">
 
-    <small>التزام شراء الدولار الحالي</small>
+    <small>
+      التزام شراء الدولار الحالي
+    </small>
 
-    <strong id="usdDebtTotal">0</strong>
+    <strong id="usdDebtTotal">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="summary-box summary-misc">
+
+    <small>
+      الالتزامات المتفرقة الحالية
+    </small>
+
+    <strong id="miscDebtTotal">
+      0
+    </strong>
 
   </div>
 
 
   <div class="summary-box summary-total">
 
-    <small>مجموع التزامات الشركة</small>
+    <small>
+      مجموع التزامات الشركة
+    </small>
 
-    <strong id="companyTotalDebt">0</strong>
+    <strong id="companyTotalDebt">
+      0
+    </strong>
 
   </div>
 
@@ -1407,17 +2105,26 @@ body{
 
     <div class="group-title-left">
 
-      <div class="group-icon">👨‍👩‍👦‍👦</div>
+      <div class="group-icon">
+        👨‍👩‍👦‍👦
+      </div>
 
-      <h2>عائلة الحاج رحيم مجيسر</h2>
+      <h2>
+        عائلة الحاج رحيم مجيسر
+      </h2>
 
     </div>
 
-    <div class="group-count">8 شركاء</div>
+    <div class="group-count">
+      8 شركاء
+    </div>
 
   </div>
 
-  <div class="partners-grid" id="rahimGrid"></div>
+  <div
+  class="partners-grid"
+  id="rahimGrid"
+  ></div>
 
 </div>
 
@@ -1433,24 +2140,33 @@ body{
 
     <div class="group-title-left">
 
-      <div class="group-icon">🏢</div>
+      <div class="group-icon">
+        🏢
+      </div>
 
-      <h2>الشركات والمؤسسات</h2>
+      <h2>
+        الشركات والمؤسسات
+      </h2>
 
     </div>
 
-    <div class="group-count">4 جهات</div>
+    <div class="group-count">
+      4 جهات
+    </div>
 
   </div>
 
-  <div class="partners-grid" id="companiesGrid"></div>
+  <div
+  class="partners-grid"
+  id="companiesGrid"
+  ></div>
 
 </div>
 
 
 
 <!-- =========================================================
-     TUAMA + USD
+     TUAMA + USD + MISC
 ========================================================= -->
 
 <div class="group-section">
@@ -1459,19 +2175,26 @@ body{
 
     <div class="group-title-left">
 
-      <div class="group-icon">👨‍👩‍👦‍👦</div>
+      <div class="group-icon">
+        👨‍👩‍👦‍👦
+      </div>
 
-      <h2>عائلة الحاج طعمة جبر</h2>
+      <h2>
+        عائلة الحاج طعمة جبر
+      </h2>
 
     </div>
 
     <div class="group-count">
-      9 شركاء + شراء دولار
+      9 شركاء + الدولار + المتفرقة
     </div>
 
   </div>
 
-  <div class="partners-grid" id="tuamaGrid"></div>
+  <div
+  class="partners-grid"
+  id="tuamaGrid"
+  ></div>
 
 </div>
 
@@ -1485,62 +2208,100 @@ body{
 
   <div class="history-title">
 
-    <h2>📋 سجل الحركات المالية</h2>
+    <h2>
+      📋 سجل الحركات المالية
+    </h2>
 
     <p>
-      الدين والتسديد وشراء الدولار وتسديد الدولار بالتاريخ والوقت
+      سجل الدين والتسديد والدولار والالتزامات المتفرقة
     </p>
 
   </div>
+
 
 
   <!-- TODAY -->
 
   <div class="today-summary">
 
+
     <div class="today-card today-count">
 
-      <span>عدد حركات اليوم</span>
+      <span>
+        عدد حركات اليوم
+      </span>
 
-      <strong id="todayCount">0</strong>
+      <strong id="todayCount">
+        0
+      </strong>
 
     </div>
 
 
     <div class="today-card today-withdraw">
 
-      <span>ديون الشركاء اليوم</span>
+      <span>
+        ديون الشركاء اليوم
+      </span>
 
-      <strong id="todayDebt">0</strong>
+      <strong id="todayDebt">
+        0
+      </strong>
 
     </div>
 
 
     <div class="today-card today-payment">
 
-      <span>تسديد الشركاء اليوم</span>
+      <span>
+        تسديد الشركاء اليوم
+      </span>
 
-      <strong id="todayPartnerPayment">0</strong>
+      <strong id="todayPartnerPayment">
+        0
+      </strong>
 
     </div>
 
 
     <div class="today-card today-usd-buy">
 
-      <span>شراء دولار اليوم - د.ع</span>
+      <span>
+        شراء الدولار اليوم د.ع
+      </span>
 
-      <strong id="todayUsdBuy">0</strong>
+      <strong id="todayUsdBuy">
+        0
+      </strong>
 
     </div>
 
 
     <div class="today-card today-usd-pay">
 
-      <span>تسديد دولار اليوم - د.ع</span>
+      <span>
+        تسديد الدولار اليوم د.ع
+      </span>
 
-      <strong id="todayUsdPayment">0</strong>
+      <strong id="todayUsdPayment">
+        0
+      </strong>
 
     </div>
+
+
+    <div class="today-card today-misc">
+
+      <span>
+        سحوبات المتفرقة اليوم
+      </span>
+
+      <strong id="todayMiscWithdraw">
+        0
+      </strong>
+
+    </div>
+
 
   </div>
 
@@ -1557,26 +2318,47 @@ body{
 
     <div class="quick-filters">
 
-      <button class="quick-btn today-btn" onclick="filterToday()">
+      <button
+      class="quick-btn today-btn"
+      onclick="filterToday()"
+      >
         📅 حركات اليوم
       </button>
 
 
-      <button class="quick-btn all-btn" onclick="showAllHistory()">
+      <button
+      class="quick-btn all-btn"
+      onclick="showAllHistory()"
+      >
         📋 كل الحركات
       </button>
 
 
-      <button class="quick-btn usd-btn" onclick="filterUsd()">
+      <button
+      class="quick-btn usd-btn"
+      onclick="filterUsd()"
+      >
         💵 حركات الدولار
       </button>
 
 
-      <button class="quick-btn print-filter-btn" onclick="printFilteredHistory()">
+      <button
+      class="quick-btn misc-btn"
+      onclick="filterMisc()"
+      >
+        📦 الالتزامات المتفرقة
+      </button>
+
+
+      <button
+      class="quick-btn print-filter-btn"
+      onclick="printFilteredHistory()"
+      >
         🖨️ طباعة النتائج PDF
       </button>
 
     </div>
+
 
 
     <div class="history-filters">
@@ -1584,9 +2366,14 @@ body{
 
       <div class="filter-field">
 
-        <label>👤 الشريك / الجهة</label>
+        <label>
+          👤 الشريك / الجهة
+        </label>
 
-        <select id="partnerFilter" onchange="renderHistory()">
+        <select
+        id="partnerFilter"
+        onchange="renderHistory()"
+        >
 
           <option value="">
             جميع الشركاء
@@ -1597,11 +2384,17 @@ body{
       </div>
 
 
+
       <div class="filter-field">
 
-        <label>🔄 نوع الحركة</label>
+        <label>
+          🔄 نوع الحركة
+        </label>
 
-        <select id="typeFilter" onchange="renderHistory()">
+        <select
+        id="typeFilter"
+        onchange="renderHistory()"
+        >
 
           <option value="">
             جميع الحركات
@@ -1623,56 +2416,78 @@ body{
             تسديد دولار
           </option>
 
+          <option value="misc_withdraw">
+            سحب متفرقة
+          </option>
+
+          <option value="misc_payment">
+            تسديد متفرقة
+          </option>
+
         </select>
 
       </div>
 
 
+
       <div class="filter-field">
 
-        <label>📅 من تاريخ</label>
+        <label>
+          📅 من تاريخ
+        </label>
 
         <input
-          type="date"
-          id="fromDateFilter"
-          onchange="renderHistory()"
+        type="date"
+        id="fromDateFilter"
+        onchange="renderHistory()"
         >
 
       </div>
 
 
+
       <div class="filter-field">
 
-        <label>📅 إلى تاريخ</label>
+        <label>
+          📅 إلى تاريخ
+        </label>
 
         <input
-          type="date"
-          id="toDateFilter"
-          onchange="renderHistory()"
+        type="date"
+        id="toDateFilter"
+        onchange="renderHistory()"
         >
 
       </div>
 
 
+
       <div class="filter-field">
 
-        <label>🔍 بحث سريع</label>
+        <label>
+          🔍 بحث سريع
+        </label>
 
         <input
-          type="text"
-          id="searchHistory"
-          placeholder="الشريك أو المستلم أو البيان"
-          oninput="renderHistory()"
+        type="text"
+        id="searchHistory"
+        placeholder="الاسم أو المستلم أو البيان"
+        oninput="renderHistory()"
         >
 
       </div>
+
 
     </div>
 
 
+
     <div class="filter-footer">
 
-      <button class="clear-filter-btn" onclick="clearHistoryFilters()">
+      <button
+      class="clear-filter-btn"
+      onclick="clearHistoryFilters()"
+      >
         ✖ مسح الفلاتر
       </button>
 
@@ -1681,7 +2496,9 @@ body{
 
         عدد النتائج:
 
-        <strong id="filterResultCount">0</strong>
+        <strong id="filterResultCount">
+          0
+        </strong>
 
       </div>
 
@@ -1691,59 +2508,94 @@ body{
 
 
 
-  <!-- FILTER TOTALS -->
+  <!-- FILTER TOTAL -->
 
   <div class="filtered-summary">
 
+
     <div class="filtered-card fc-count">
 
-      <span>عدد الحركات</span>
+      <span>
+        عدد الحركات
+      </span>
 
-      <strong id="filteredCount">0</strong>
+      <strong id="filteredCount">
+        0
+      </strong>
 
     </div>
 
 
     <div class="filtered-card fc-debt">
 
-      <span>زيادة الدين</span>
+      <span>
+        زيادة دين الشركاء
+      </span>
 
-      <strong id="filteredDebt">0</strong>
+      <strong id="filteredDebt">
+        0
+      </strong>
 
     </div>
 
 
     <div class="filtered-card fc-pay">
 
-      <span>تسديد الشركاء</span>
+      <span>
+        تسديد الشركاء
+      </span>
 
-      <strong id="filteredPayment">0</strong>
+      <strong id="filteredPayment">
+        0
+      </strong>
 
     </div>
 
 
     <div class="filtered-card fc-usd-buy">
 
-      <span>شراء الدولار - د.ع</span>
+      <span>
+        شراء الدولار د.ع
+      </span>
 
-      <strong id="filteredUsdBuy">0</strong>
+      <strong id="filteredUsdBuy">
+        0
+      </strong>
 
     </div>
 
 
     <div class="filtered-card fc-usd-pay">
 
-      <span>تسديد الدولار - د.ع</span>
+      <span>
+        تسديد الدولار د.ع
+      </span>
 
-      <strong id="filteredUsdPayment">0</strong>
+      <strong id="filteredUsdPayment">
+        0
+      </strong>
 
     </div>
+
+
+    <div class="filtered-card fc-misc">
+
+      <span>
+        سحب المتفرقة
+      </span>
+
+      <strong id="filteredMiscWithdraw">
+        0
+      </strong>
+
+    </div>
+
 
   </div>
 
 
 
-  <!-- HISTORY TABLE -->
+  <!-- TABLE -->
 
   <div class="history-table-wrap">
 
@@ -1755,50 +2607,80 @@ body{
 
           <th>#</th>
 
-          <th>الشريك / الجهة</th>
+          <th>
+            الشريك / الجهة
+          </th>
 
-          <th>نوع الحركة</th>
+          <th>
+            نوع الحركة
+          </th>
 
-          <th>مبلغ الشريك د.ع</th>
+          <th>
+            المبلغ د.ع
+          </th>
 
-          <th>قيمة الدولار</th>
+          <th>
+            قيمة الدولار
+          </th>
 
-          <th>سعر الصرف</th>
+          <th>
+            سعر الصرف
+          </th>
 
-          <th>المعادل بالعراقي</th>
+          <th>
+            المعادل بالعراقي
+          </th>
 
-          <th>بيد / بواسطة</th>
+          <th>
+            بيد / بواسطة
+          </th>
 
-          <th>بيان / رأي</th>
+          <th>
+            بيان / رأي
+          </th>
 
-          <th>التاريخ</th>
+          <th>
+            التاريخ
+          </th>
 
-          <th>الوقت</th>
+          <th>
+            الوقت
+          </th>
 
-          <th>الرصيد بعد الحركة</th>
+          <th>
+            الرصيد بعد الحركة
+          </th>
 
-          <th>حذف</th>
+          <th>
+            حذف
+          </th>
 
         </tr>
 
       </thead>
 
 
-      <tbody id="historyTable"></tbody>
+      <tbody
+      id="historyTable"
+      ></tbody>
 
     </table>
 
   </div>
 
+
+</div>
+
+
+</div>
 </div>
 
 
-</div>
-</div>
 
-
-
-<div class="toast" id="toast"></div>
+<div
+class="toast"
+id="toast"
+></div>
 
 
 
@@ -1806,27 +2688,42 @@ body{
      PRINT REPORT
 ========================================================= -->
 
-<div class="print-report" id="printReport">
+<div
+class="print-report"
+id="printReport"
+>
 
   <div class="print-report-header">
 
     <div class="print-company">
 
-      <h1>شركة أنهار الحياة</h1>
+      <h1>
+        شركة أنهار الحياة
+      </h1>
 
-      <div>Anhar Alhayat Company</div>
+      <div>
+        Anhar Alhayat Company
+      </div>
 
-      <div>سجل الالتزامات المالية</div>
+      <div>
+        سجل الالتزامات المالية
+      </div>
 
     </div>
 
 
-    <img src="logo.png" alt="شركة أنهار الحياة">
+    <img
+    src="logo.png"
+    alt="شركة أنهار الحياة"
+    >
 
   </div>
 
 
-  <div class="print-title" id="printTitle">
+  <div
+  class="print-title"
+  id="printTitle"
+  >
     سجل الحركات المالية
   </div>
 
@@ -1878,6 +2775,11 @@ body{
       <strong id="printUsdPayment"></strong>
     </div>
 
+    <div>
+      سحب المتفرقة
+      <strong id="printMiscWithdraw"></strong>
+    </div>
+
   </div>
 
 
@@ -1890,11 +2792,11 @@ body{
         <th>#</th>
         <th>الجهة</th>
         <th>الحركة</th>
-        <th>مبلغ د.ع</th>
+        <th>المبلغ د.ع</th>
         <th>USD</th>
         <th>الصرف</th>
-        <th>المعادل د.ع</th>
-        <th>المستلم</th>
+        <th>المعادل</th>
+        <th>الشخص</th>
         <th>البيان</th>
         <th>التاريخ</th>
         <th>الوقت</th>
@@ -1905,7 +2807,9 @@ body{
     </thead>
 
 
-    <tbody id="printTableBody"></tbody>
+    <tbody
+    id="printTableBody"
+    ></tbody>
 
   </table>
 
@@ -1924,33 +2828,53 @@ body{
    PASSWORD
 ========================================================= */
 
-const ACCESS_CODE = "582941";
+const ACCESS_CODE =
+"582941";
+
 
 const loginScreen =
-document.getElementById("loginScreen");
+document.getElementById(
+"loginScreen"
+);
+
 
 const mainContent =
-document.getElementById("mainContent");
+document.getElementById(
+"mainContent"
+);
+
 
 const pinInput =
-document.getElementById("pinInput");
+document.getElementById(
+"pinInput"
+);
+
 
 const errorMessage =
-document.getElementById("errorMessage");
+document.getElementById(
+"errorMessage"
+);
 
 
 function lockPage(){
 
-  loginScreen.style.display = "flex";
+  loginScreen.style.display =
+  "flex";
 
-  mainContent.style.display = "none";
+  mainContent.style.display =
+  "none";
 
-  pinInput.value = "";
+  pinInput.value =
+  "";
 
-  errorMessage.textContent = "";
+  errorMessage.textContent =
+  "";
 
-  setTimeout(function(){
+  setTimeout(
+  function(){
+
     pinInput.focus();
+
   },100);
 
 }
@@ -1958,23 +2882,35 @@ function lockPage(){
 
 function checkPin(){
 
-  if(pinInput.value.trim() === ACCESS_CODE){
+  if(
+    pinInput.value.trim()
+    ===
+    ACCESS_CODE
+  ){
 
-    loginScreen.style.display = "none";
+    loginScreen.style.display =
+    "none";
 
-    mainContent.style.display = "block";
+    mainContent.style.display =
+    "block";
 
-    pinInput.value = "";
+    pinInput.value =
+    "";
+
+    errorMessage.textContent =
+    "";
 
     loadData();
 
   }
+
   else{
 
     errorMessage.textContent =
     "رمز الدخول غير صحيح";
 
-    pinInput.value = "";
+    pinInput.value =
+    "";
 
     pinInput.focus();
 
@@ -1988,7 +2924,10 @@ pinInput.addEventListener(
 function(){
 
   this.value =
-  this.value.replace(/[^0-9]/g,"");
+  this.value.replace(
+  /[^0-9]/g,
+  ""
+  );
 
 });
 
@@ -1997,8 +2936,13 @@ pinInput.addEventListener(
 "keydown",
 function(event){
 
-  if(event.key === "Enter"){
+  if(
+    event.key ===
+    "Enter"
+  ){
+
     checkPin();
+
   }
 
 });
@@ -2196,12 +3140,17 @@ icon:"👤"
 const PARTNERS_KEY =
 "partnerCommitments_FINAL_2026_partners";
 
+
 const HISTORY_KEY =
 "partnerCommitments_FINAL_2026_history";
 
-let partners = {};
 
-let history = [];
+let partners =
+{};
+
+
+let history =
+[];
 
 
 /* =========================================================
@@ -2210,8 +3159,12 @@ let history = [];
 
 function formatMoney(value){
 
-  return Number(value || 0)
-  .toLocaleString("en-US");
+  return Number(
+  value || 0
+  )
+  .toLocaleString(
+  "en-US"
+  );
 
 }
 
@@ -2219,9 +3172,21 @@ function formatMoney(value){
 function parseMoney(value){
 
   return Number(
-    String(value || "")
-    .replace(/,/g,"")
-    .replace(/[^\d]/g,"")
+
+    String(
+    value || ""
+    )
+
+    .replace(
+    /,/g,
+    ""
+    )
+
+    .replace(
+    /[^\d]/g,
+    ""
+    )
+
   ) || 0;
 
 }
@@ -2230,31 +3195,82 @@ function parseMoney(value){
 function formatMoneyInput(input){
 
   const raw =
-  input.value.replace(/[^\d]/g,"");
+  input.value.replace(
+  /[^\d]/g,
+  ""
+  );
 
-  if(!raw){
 
-    input.value = "";
+  if(
+    !raw
+  ){
+
+    input.value =
+    "";
 
     return;
 
   }
 
+
   input.value =
-  Number(raw).toLocaleString("en-US");
+  Number(
+  raw
+  )
+  .toLocaleString(
+  "en-US"
+  );
 
 }
 
 
 /* =========================================================
-   LOAD / SAVE
+   ESCAPE
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(
+  value ?? ""
+  )
+  .replace(
+  /&/g,
+  "&amp;"
+  )
+  .replace(
+  /</g,
+  "&lt;"
+  )
+  .replace(
+  />/g,
+  "&gt;"
+  )
+  .replace(
+  /"/g,
+  "&quot;"
+  )
+  .replace(
+  /'/g,
+  "&#039;"
+  );
+
+}
+
+
+/* =========================================================
+   SAVE
 ========================================================= */
 
 function savePartners(){
 
   localStorage.setItem(
+
     PARTNERS_KEY,
-    JSON.stringify(partners)
+
+    JSON.stringify(
+    partners
+    )
+
   );
 
 }
@@ -2263,31 +3279,49 @@ function savePartners(){
 function saveHistory(){
 
   localStorage.setItem(
+
     HISTORY_KEY,
-    JSON.stringify(history)
+
+    JSON.stringify(
+    history
+    )
+
   );
 
 }
 
 
+/* =========================================================
+   LOAD
+========================================================= */
+
 function loadData(){
 
-  let savedPartners = {};
+  let savedPartners =
+  {};
 
-  let savedHistory = [];
+
+  let savedHistory =
+  [];
 
 
   try{
 
     savedPartners =
     JSON.parse(
-      localStorage.getItem(PARTNERS_KEY)
-    ) || {};
+    localStorage.getItem(
+    PARTNERS_KEY
+    )
+    )
+    ||
+    {};
 
   }
+
   catch(e){
 
-    savedPartners = {};
+    savedPartners =
+    {};
 
   }
 
@@ -2296,13 +3330,19 @@ function loadData(){
 
     savedHistory =
     JSON.parse(
-      localStorage.getItem(HISTORY_KEY)
-    ) || [];
+    localStorage.getItem(
+    HISTORY_KEY
+    )
+    )
+    ||
+    [];
 
   }
+
   catch(e){
 
-    savedHistory = [];
+    savedHistory =
+    [];
 
   }
 
@@ -2310,15 +3350,31 @@ function loadData(){
   partnerDefinitions.forEach(
   function(def){
 
-    partners[def.id] = {
-      name:def.name,
-      debt:0
+    partners[
+    def.id
+    ] = {
+
+      name:
+      def.name,
+
+      debt:
+      0
+
     };
 
-    if(savedPartners[def.id]){
 
-      partners[def.id] =
-      savedPartners[def.id];
+    if(
+      savedPartners[
+      def.id
+      ]
+    ){
+
+      partners[
+      def.id
+      ] =
+      savedPartners[
+      def.id
+      ];
 
     }
 
@@ -2326,9 +3382,13 @@ function loadData(){
 
 
   history =
-  Array.isArray(savedHistory)
-  ? savedHistory
-  : [];
+  Array.isArray(
+  savedHistory
+  )
+  ?
+  savedHistory
+  :
+  [];
 
 
   history.forEach(
@@ -2337,25 +3397,38 @@ function loadData(){
     record.note =
     record.note || "-";
 
+
     record.usdValue =
-    Number(record.usdValue || 0);
+    Number(
+    record.usdValue || 0
+    );
+
 
     record.exchangeRate =
-    Number(record.exchangeRate || 0);
+    Number(
+    record.exchangeRate || 0
+    );
+
 
     record.iqdEquivalent =
-    Number(record.iqdEquivalent || 0);
+    Number(
+    record.iqdEquivalent || 0
+    );
 
   });
 
 
   recomputeBalances();
 
+
   renderAll();
+
 
   buildPartnerFilter();
 
+
   renderHistory();
+
 
   updateTodaySummary();
 
@@ -2363,17 +3436,21 @@ function loadData(){
 
 
 /* =========================================================
-   CREATE PARTNER CARD
+   NORMAL PARTNER CARD
 ========================================================= */
 
 function createPartnerCard(def){
 
   const partner =
-  partners[def.id];
+  partners[
+  def.id
+  ];
 
 
   const card =
-  document.createElement("div");
+  document.createElement(
+  "div"
+  );
 
 
   card.className =
@@ -2382,180 +3459,199 @@ function createPartnerCard(def){
 
   card.innerHTML = `
 
-    <div class="partner-top">
+  <div class="partner-top">
 
-      <div class="partner-icon">
-        ${def.icon}
+    <div class="partner-icon">
+      ${def.icon}
+    </div>
+
+    <div class="partner-name">
+      ${def.name}
+    </div>
+
+    <div class="debt-label">
+      إجمالي الدين الحالي
+    </div>
+
+    <div
+    class="debt-number"
+    id="debt-${def.id}"
+    >
+      ${formatMoney(
+      partner.debt
+      )}
+    </div>
+
+    <div class="currency">
+      دينار عراقي
+    </div>
+
+  </div>
+
+
+  <div class="operations">
+
+
+    <div
+    class="operation
+    withdraw-operation"
+    >
+
+      <div class="operation-title">
+        💸 إضافة مبلغ دين جديد
       </div>
 
-      <div class="partner-name">
-        ${def.name}
-      </div>
 
-      <div class="debt-label">
-        إجمالي الدين الحالي
-      </div>
+      <div class="operation-fields">
 
-      <div
-        class="debt-number"
-        id="debt-${def.id}"
-      >
-        ${formatMoney(partner.debt)}
-      </div>
 
-      <div class="currency">
-        دينار عراقي
+        <div class="money-row">
+
+          <label>
+            مبلغ الدين
+          </label>
+
+          <input
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="withdraw-${def.id}"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
+          >
+
+        </div>
+
+
+        <div class="person-action-row">
+
+
+          <div class="person-row">
+
+            <label>
+              اسم الشخص المستلم
+            </label>
+
+            <input
+            type="text"
+            id="withdraw-person-${def.id}"
+            placeholder="اسم المستلم"
+            >
+
+          </div>
+
+
+          <button
+          class="arrow-action debt-arrow"
+          onclick="addWithdrawal('${def.id}')"
+          >
+            ↑
+          </button>
+
+
+        </div>
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+          <textarea
+          id="withdraw-note-${def.id}"
+          placeholder="اكتب البيان أو الملاحظة"
+          ></textarea>
+
+        </div>
+
+
       </div>
 
     </div>
 
 
-    <div class="operations">
 
+    <div
+    class="operation
+    payment-operation"
+    >
 
-      <div class="operation withdraw-operation">
-
-        <div class="operation-title">
-          💸 إضافة مبلغ دين جديد
-        </div>
-
-        <div class="operation-fields">
-
-          <div class="money-row">
-
-            <label>
-              مبلغ الدين
-            </label>
-
-            <input
-              type="text"
-              inputmode="numeric"
-              class="money-input"
-              id="withdraw-${def.id}"
-              placeholder="أدخل المبلغ"
-              oninput="formatMoneyInput(this)"
-            >
-
-          </div>
-
-
-          <div class="person-action-row">
-
-            <div class="person-row">
-
-              <label>
-                اسم الشخص المستلم
-              </label>
-
-              <input
-                type="text"
-                id="withdraw-person-${def.id}"
-                placeholder="اسم المستلم"
-              >
-
-            </div>
-
-
-            <button
-              class="arrow-action debt-arrow"
-              onclick="addWithdrawal('${def.id}')"
-            >
-              ↑
-            </button>
-
-          </div>
-
-
-          <div class="note-row">
-
-            <label>
-              📝 بيان / رأي
-            </label>
-
-            <textarea
-              id="withdraw-note-${def.id}"
-              placeholder="اكتب البيان أو الملاحظة"
-            ></textarea>
-
-          </div>
-
-        </div>
-
+      <div class="operation-title">
+        💰 تسجيل مبلغ تسديد
       </div>
 
 
+      <div class="operation-fields">
 
-      <div class="operation payment-operation">
 
-        <div class="operation-title">
-          💰 تسجيل مبلغ تسديد
+        <div class="money-row">
+
+          <label>
+            مبلغ التسديد
+          </label>
+
+          <input
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="payment-${def.id}"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
+          >
+
         </div>
 
-        <div class="operation-fields">
 
-          <div class="money-row">
+        <div class="person-action-row">
+
+
+          <div class="person-row">
 
             <label>
-              مبلغ التسديد
+              اسم الشخص
             </label>
 
             <input
-              type="text"
-              inputmode="numeric"
-              class="money-input"
-              id="payment-${def.id}"
-              placeholder="أدخل المبلغ"
-              oninput="formatMoneyInput(this)"
+            type="text"
+            id="payment-person-${def.id}"
+            placeholder="اسم الشخص"
             >
 
           </div>
 
 
-          <div class="person-action-row">
+          <button
+          class="arrow-action payment-arrow"
+          onclick="addPayment('${def.id}')"
+          >
+            ↓
+          </button>
 
-            <div class="person-row">
-
-              <label>
-                اسم الشخص
-              </label>
-
-              <input
-                type="text"
-                id="payment-person-${def.id}"
-                placeholder="اسم الشخص"
-              >
-
-            </div>
-
-
-            <button
-              class="arrow-action payment-arrow"
-              onclick="addPayment('${def.id}')"
-            >
-              ↓
-            </button>
-
-          </div>
-
-
-          <div class="note-row">
-
-            <label>
-              📝 بيان / رأي
-            </label>
-
-            <textarea
-              id="payment-note-${def.id}"
-              placeholder="اكتب البيان أو الملاحظة"
-            ></textarea>
-
-          </div>
 
         </div>
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+          <textarea
+          id="payment-note-${def.id}"
+          placeholder="اكتب البيان أو الملاحظة"
+          ></textarea>
+
+        </div>
+
 
       </div>
 
     </div>
+
+
+  </div>
 
   `;
 
@@ -2576,7 +3672,9 @@ function createUsdCard(){
 
 
   const card =
-  document.createElement("div");
+  document.createElement(
+  "div"
+  );
 
 
   card.className =
@@ -2585,274 +3683,283 @@ function createUsdCard(){
 
   card.innerHTML = `
 
-    <div class="partner-top">
+  <div class="partner-top">
 
-      <div class="partner-icon">
-        💵
+    <div class="partner-icon">
+      💵
+    </div>
+
+    <div class="partner-name">
+      شراء دولار
+    </div>
+
+
+    <div class="usd-balance-box">
+
+      <span>
+        إجمالي التزام الدولار الحالي
+      </span>
+
+
+      <div
+      class="usd-balance-iqd"
+      id="usdBalanceIqd"
+      >
+        ${formatMoney(
+        balances.iqd
+        )}
       </div>
 
-      <div class="partner-name">
-        شراء دولار
+
+      <div class="currency">
+        دينار عراقي
       </div>
 
 
-      <div class="usd-balance-box">
+      <div
+      class="usd-balance-usd"
+      id="usdBalanceUsd"
+      >
+        ${formatMoney(
+        balances.usd
+        )}
+        USD
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="operations">
+
+
+    <div class="usd-operation usd-buy">
+
+      <div class="usd-operation-title">
+        💵 شراء دولار جديد
+      </div>
+
+
+      <div class="usd-field">
+
+        <label>
+          قيمة الدولار USD
+        </label>
+
+        <input
+        type="text"
+        inputmode="numeric"
+        class="usd-input"
+        id="usdPurchaseValue"
+        placeholder="أدخل قيمة الدولار"
+        oninput="
+        formatMoneyInput(this);
+        calculateUsd('purchase');
+        "
+        >
+
+      </div>
+
+
+      <div class="usd-field">
+
+        <label>
+          سعر الصرف
+        </label>
+
+        <input
+        type="text"
+        inputmode="numeric"
+        class="usd-input"
+        id="usdPurchaseRate"
+        placeholder="أدخل سعر الصرف"
+        oninput="
+        formatMoneyInput(this);
+        calculateUsd('purchase');
+        "
+        >
+
+      </div>
+
+
+      <div class="iqd-result">
 
         <span>
-          إجمالي التزام الدولار الحالي
+          ما يعادل بالدينار العراقي
         </span>
 
-        <div
-          class="usd-balance-iqd"
-          id="usdBalanceIqd"
-        >
-          ${formatMoney(balances.iqd)}
-        </div>
+        <strong id="usdPurchaseIqd">
+          0
+        </strong>
 
-        <div class="currency">
+        <span>
           دينار عراقي
+        </span>
+
+      </div>
+
+
+      <div class="usd-person-action">
+
+
+        <div class="person-row">
+
+          <label>
+            اسم الشخص المستلم
+          </label>
+
+          <input
+          type="text"
+          id="usdPurchasePerson"
+          placeholder="اسم المستلم"
+          >
+
         </div>
 
 
-        <div
-          class="usd-balance-usd"
-          id="usdBalanceUsd"
+        <button
+        class="arrow-action debt-arrow"
+        onclick="addUsdMovement('usd_purchase')"
         >
-          ${formatMoney(balances.usd)} USD
-        </div>
+          ↑
+        </button>
 
-      </div>
-
-    </div>
-
-
-    <div class="operations">
-
-
-      <!-- شراء الدولار -->
-
-      <div class="usd-operation usd-buy">
-
-        <div class="usd-operation-title">
-          💵 شراء دولار جديد
-        </div>
-
-
-        <div class="usd-field">
-
-          <label>
-            قيمة الدولار USD
-          </label>
-
-          <input
-            type="text"
-            inputmode="numeric"
-            class="usd-input"
-            id="usdPurchaseValue"
-            placeholder="أدخل قيمة الدولار"
-            oninput="
-              formatMoneyInput(this);
-              calculateUsd('purchase');
-            "
-          >
-
-        </div>
-
-
-        <div class="usd-field">
-
-          <label>
-            سعر الصرف
-          </label>
-
-          <input
-            type="text"
-            inputmode="numeric"
-            class="usd-input"
-            id="usdPurchaseRate"
-            placeholder="أدخل سعر الصرف"
-            oninput="
-              formatMoneyInput(this);
-              calculateUsd('purchase');
-            "
-          >
-
-        </div>
-
-
-        <div class="iqd-result">
-
-          <span>
-            ما يعادل بالدينار العراقي
-          </span>
-
-          <strong id="usdPurchaseIqd">
-            0
-          </strong>
-
-          <span>
-            دينار عراقي
-          </span>
-
-        </div>
-
-
-        <div class="usd-person-action">
-
-          <div class="person-row">
-
-            <label>
-              اسم الشخص المستلم
-            </label>
-
-            <input
-              type="text"
-              id="usdPurchasePerson"
-              placeholder="اسم المستلم"
-            >
-
-          </div>
-
-
-          <button
-            class="arrow-action debt-arrow"
-            onclick="addUsdMovement('usd_purchase')"
-          >
-            ↑
-          </button>
-
-        </div>
-
-
-        <div class="note-row">
-
-          <label>
-            📝 بيان / رأي
-          </label>
-
-          <textarea
-            id="usdPurchaseNote"
-            placeholder="اكتب بيان عملية شراء الدولار"
-          ></textarea>
-
-        </div>
 
       </div>
 
 
+      <div class="note-row">
 
-      <!-- تسديد الدولار -->
+        <label>
+          📝 بيان / رأي
+        </label>
 
-      <div class="usd-operation usd-pay">
-
-        <div class="usd-operation-title">
-          💵 تسديد دولار
-        </div>
-
-
-        <div class="usd-field">
-
-          <label>
-            قيمة الدولار المسدد USD
-          </label>
-
-          <input
-            type="text"
-            inputmode="numeric"
-            class="usd-input"
-            id="usdPaymentValue"
-            placeholder="أدخل قيمة الدولار"
-            oninput="
-              formatMoneyInput(this);
-              calculateUsd('payment');
-            "
-          >
-
-        </div>
-
-
-        <div class="usd-field">
-
-          <label>
-            سعر الصرف
-          </label>
-
-          <input
-            type="text"
-            inputmode="numeric"
-            class="usd-input"
-            id="usdPaymentRate"
-            placeholder="أدخل سعر الصرف"
-            oninput="
-              formatMoneyInput(this);
-              calculateUsd('payment');
-            "
-          >
-
-        </div>
-
-
-        <div class="iqd-result">
-
-          <span>
-            ما يعادل بالدينار العراقي
-          </span>
-
-          <strong id="usdPaymentIqd">
-            0
-          </strong>
-
-          <span>
-            دينار عراقي
-          </span>
-
-        </div>
-
-
-        <div class="usd-person-action">
-
-          <div class="person-row">
-
-            <label>
-              اسم الشخص
-            </label>
-
-            <input
-              type="text"
-              id="usdPaymentPerson"
-              placeholder="اسم الشخص"
-            >
-
-          </div>
-
-
-          <button
-            class="arrow-action payment-arrow"
-            onclick="addUsdMovement('usd_payment')"
-          >
-            ↓
-          </button>
-
-        </div>
-
-
-        <div class="note-row">
-
-          <label>
-            📝 بيان / رأي
-          </label>
-
-          <textarea
-            id="usdPaymentNote"
-            placeholder="اكتب بيان عملية تسديد الدولار"
-          ></textarea>
-
-        </div>
+        <textarea
+        id="usdPurchaseNote"
+        placeholder="اكتب بيان عملية شراء الدولار"
+        ></textarea>
 
       </div>
 
 
     </div>
+
+
+
+    <div class="usd-operation usd-pay">
+
+      <div class="usd-operation-title">
+        💵 تسديد دولار
+      </div>
+
+
+      <div class="usd-field">
+
+        <label>
+          قيمة الدولار المسدد USD
+        </label>
+
+        <input
+        type="text"
+        inputmode="numeric"
+        class="usd-input"
+        id="usdPaymentValue"
+        placeholder="أدخل قيمة الدولار"
+        oninput="
+        formatMoneyInput(this);
+        calculateUsd('payment');
+        "
+        >
+
+      </div>
+
+
+      <div class="usd-field">
+
+        <label>
+          سعر الصرف
+        </label>
+
+        <input
+        type="text"
+        inputmode="numeric"
+        class="usd-input"
+        id="usdPaymentRate"
+        placeholder="أدخل سعر الصرف"
+        oninput="
+        formatMoneyInput(this);
+        calculateUsd('payment');
+        "
+        >
+
+      </div>
+
+
+      <div class="iqd-result">
+
+        <span>
+          ما يعادل بالدينار العراقي
+        </span>
+
+        <strong id="usdPaymentIqd">
+          0
+        </strong>
+
+        <span>
+          دينار عراقي
+        </span>
+
+      </div>
+
+
+      <div class="usd-person-action">
+
+
+        <div class="person-row">
+
+          <label>
+            اسم الشخص
+          </label>
+
+          <input
+          type="text"
+          id="usdPaymentPerson"
+          placeholder="اسم الشخص"
+          >
+
+        </div>
+
+
+        <button
+        class="arrow-action payment-arrow"
+        onclick="addUsdMovement('usd_payment')"
+        >
+          ↓
+        </button>
+
+
+      </div>
+
+
+      <div class="note-row">
+
+        <label>
+          📝 بيان / رأي
+        </label>
+
+        <textarea
+        id="usdPaymentNote"
+        placeholder="اكتب بيان عملية تسديد الدولار"
+        ></textarea>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
 
   `;
 
@@ -2863,52 +3970,333 @@ function createUsdCard(){
 
 
 /* =========================================================
-   RENDER ALL
+   MISC CARD
+========================================================= */
+
+function createMiscCard(){
+
+  const balance =
+  getMiscBalance();
+
+
+  const card =
+  document.createElement(
+  "div"
+  );
+
+
+  card.className =
+  "partner-card misc-card";
+
+
+  card.innerHTML = `
+
+  <div class="partner-top">
+
+
+    <div class="partner-icon">
+      📦
+    </div>
+
+
+    <div class="partner-name">
+      التزامات متفرقة
+    </div>
+
+
+    <div class="misc-total-box">
+
+      <span>
+        إجمالي الالتزامات المتفرقة الحالي
+      </span>
+
+
+      <div
+      class="misc-total-number"
+      id="miscBalanceNumber"
+      >
+        ${formatMoney(
+        balance
+        )}
+      </div>
+
+
+      <div class="currency">
+        دينار عراقي
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="operations">
+
+
+    <!-- سحب متفرقة -->
+
+    <div
+    class="operation
+    misc-withdraw"
+    >
+
+
+      <div class="operation-title">
+        📤 تسجيل سحب متفرقة
+      </div>
+
+
+      <div class="operation-fields">
+
+
+        <div class="money-row">
+
+          <label>
+            مبلغ السحب
+          </label>
+
+
+          <input
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="miscWithdrawAmount"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
+          >
+
+        </div>
+
+
+
+        <div class="person-action-row">
+
+
+          <div class="person-row">
+
+            <label>
+              اسم المستلم
+            </label>
+
+
+            <input
+            type="text"
+            id="miscWithdrawPerson"
+            placeholder="اسم المستلم"
+            >
+
+          </div>
+
+
+          <button
+          class="arrow-action debt-arrow"
+          onclick="addMiscMovement('misc_withdraw')"
+          >
+            ↑
+          </button>
+
+
+        </div>
+
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+
+          <textarea
+          id="miscWithdrawNote"
+          placeholder="اكتب بيان أو سبب السحب"
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- تسديد متفرقة -->
+
+    <div
+    class="operation
+    misc-payment"
+    >
+
+
+      <div class="operation-title">
+        📥 تسجيل تسديد متفرقة
+      </div>
+
+
+      <div class="operation-fields">
+
+
+        <div class="money-row">
+
+          <label>
+            مبلغ التسديد
+          </label>
+
+
+          <input
+          type="text"
+          inputmode="numeric"
+          class="money-input"
+          id="miscPaymentAmount"
+          placeholder="أدخل المبلغ"
+          oninput="formatMoneyInput(this)"
+          >
+
+        </div>
+
+
+
+        <div class="person-action-row">
+
+
+          <div class="person-row">
+
+            <label>
+              اسم المُسلِّم
+            </label>
+
+
+            <input
+            type="text"
+            id="miscPaymentPerson"
+            placeholder="اسم المُسلِّم"
+            >
+
+          </div>
+
+
+          <button
+          class="arrow-action payment-arrow"
+          onclick="addMiscMovement('misc_payment')"
+          >
+            ↓
+          </button>
+
+
+        </div>
+
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+
+          <textarea
+          id="miscPaymentNote"
+          placeholder="اكتب بيان أو تفاصيل التسديد"
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  `;
+
+
+  return card;
+
+}
+
+
+/* =========================================================
+   RENDER ALL CARDS
 ========================================================= */
 
 function renderAll(){
 
   const rahimGrid =
-  document.getElementById("rahimGrid");
+  document.getElementById(
+  "rahimGrid"
+  );
+
 
   const companiesGrid =
-  document.getElementById("companiesGrid");
+  document.getElementById(
+  "companiesGrid"
+  );
+
 
   const tuamaGrid =
-  document.getElementById("tuamaGrid");
+  document.getElementById(
+  "tuamaGrid"
+  );
 
 
-  rahimGrid.innerHTML = "";
+  rahimGrid.innerHTML =
+  "";
 
-  companiesGrid.innerHTML = "";
 
-  tuamaGrid.innerHTML = "";
+  companiesGrid.innerHTML =
+  "";
+
+
+  tuamaGrid.innerHTML =
+  "";
 
 
   partnerDefinitions.forEach(
   function(def){
 
     const card =
-    createPartnerCard(def);
+    createPartnerCard(
+    def
+    );
 
 
-    if(def.group === "rahim"){
+    if(
+      def.group ===
+      "rahim"
+    ){
 
-      rahimGrid.appendChild(card);
+      rahimGrid.appendChild(
+      card
+      );
 
     }
 
 
-    if(def.group === "companies"){
+    if(
+      def.group ===
+      "companies"
+    ){
 
-      companiesGrid.appendChild(card);
+      companiesGrid.appendChild(
+      card
+      );
 
     }
 
 
-    if(def.group === "tuama"){
+    if(
+      def.group ===
+      "tuama"
+    ){
 
-      tuamaGrid.appendChild(card);
+      tuamaGrid.appendChild(
+      card
+      );
 
     }
 
@@ -2916,7 +4304,12 @@ function renderAll(){
 
 
   tuamaGrid.appendChild(
-    createUsdCard()
+  createUsdCard()
+  );
+
+
+  tuamaGrid.appendChild(
+  createMiscCard()
   );
 
 
@@ -2933,34 +4326,42 @@ function addWithdrawal(id){
 
   const amountInput =
   document.getElementById(
-    "withdraw-" + id
+  "withdraw-" + id
   );
+
 
   const personInput =
   document.getElementById(
-    "withdraw-person-" + id
+  "withdraw-person-" + id
   );
+
 
   const noteInput =
   document.getElementById(
-    "withdraw-note-" + id
+  "withdraw-note-" + id
   );
 
 
   const amount =
-  parseMoney(amountInput.value);
+  parseMoney(
+  amountInput.value
+  );
+
 
   const person =
   personInput.value.trim();
+
 
   const note =
   noteInput.value.trim();
 
 
-  if(amount <= 0){
+  if(
+    amount <= 0
+  ){
 
     showToast(
-      "⚠️ أدخل مبلغ صحيح"
+    "⚠️ أدخل مبلغ صحيح"
     );
 
     return;
@@ -2968,10 +4369,12 @@ function addWithdrawal(id){
   }
 
 
-  if(!person){
+  if(
+    !person
+  ){
 
     showToast(
-      "⚠️ أدخل اسم المستلم"
+    "⚠️ أدخل اسم المستلم"
     );
 
     return;
@@ -2981,32 +4384,41 @@ function addWithdrawal(id){
 
   const def =
   partnerDefinitions.find(
-    p => p.id === id
+  p =>
+  p.id === id
   );
 
 
   const newBalance =
-  partners[id].debt + amount;
+  partners[
+  id
+  ].debt
+  +
+  amount;
 
 
   if(
     !confirm(
 
-      "تأكيد إضافة الدين\n\n" +
-
-      def.name +
-
-      "\nالمبلغ: " +
-
-      formatMoney(amount) +
-
-      " د.ع\nبيد: " +
-
-      person +
-
-      "\nالبيان: " +
-
-      (note || "-")
+    "تأكيد إضافة الدين\n\n"
+    +
+    def.name
+    +
+    "\nالمبلغ: "
+    +
+    formatMoney(
+    amount
+    )
+    +
+    " د.ع\nبيد: "
+    +
+    person
+    +
+    "\nالبيان: "
+    +
+    (
+    note || "-"
+    )
 
     )
   ){
@@ -3016,39 +4428,58 @@ function addWithdrawal(id){
   }
 
 
-  partners[id].debt =
+  partners[
+  id
+  ].debt =
   newBalance;
 
 
   addNormalHistory(
-    id,
-    "withdraw",
-    amount,
-    person,
-    note,
-    newBalance
+
+  id,
+
+  "withdraw",
+
+  amount,
+
+  person,
+
+  note,
+
+  newBalance
+
+  );
+
+
+  amountInput.value =
+  "";
+
+
+  personInput.value =
+  "";
+
+
+  noteInput.value =
+  "";
+
+
+  document.getElementById(
+  "debt-" + id
+  )
+  .innerText =
+  formatMoney(
+  newBalance
   );
 
 
   savePartners();
 
 
-  amountInput.value = "";
-
-  personInput.value = "";
-
-  noteInput.value = "";
-
-
-  document.getElementById(
-    "debt-" + id
-  ).innerText =
-  formatMoney(newBalance);
-
-
   updateSummary();
 
+
   renderHistory();
+
 
   updateTodaySummary();
 
@@ -3063,34 +4494,42 @@ function addPayment(id){
 
   const amountInput =
   document.getElementById(
-    "payment-" + id
+  "payment-" + id
   );
+
 
   const personInput =
   document.getElementById(
-    "payment-person-" + id
+  "payment-person-" + id
   );
+
 
   const noteInput =
   document.getElementById(
-    "payment-note-" + id
+  "payment-note-" + id
   );
 
 
   const amount =
-  parseMoney(amountInput.value);
+  parseMoney(
+  amountInput.value
+  );
+
 
   const person =
   personInput.value.trim();
+
 
   const note =
   noteInput.value.trim();
 
 
-  if(amount <= 0){
+  if(
+    amount <= 0
+  ){
 
     showToast(
-      "⚠️ أدخل مبلغ تسديد صحيح"
+    "⚠️ أدخل مبلغ تسديد صحيح"
     );
 
     return;
@@ -3098,10 +4537,12 @@ function addPayment(id){
   }
 
 
-  if(!person){
+  if(
+    !person
+  ){
 
     showToast(
-      "⚠️ أدخل اسم الشخص"
+    "⚠️ أدخل اسم الشخص"
     );
 
     return;
@@ -3109,10 +4550,15 @@ function addPayment(id){
   }
 
 
-  if(amount > partners[id].debt){
+  if(
+    amount >
+    partners[
+    id
+    ].debt
+  ){
 
     showToast(
-      "⚠️ مبلغ التسديد أكبر من الرصيد الحالي"
+    "⚠️ مبلغ التسديد أكبر من الرصيد الحالي"
     );
 
     return;
@@ -3122,32 +4568,41 @@ function addPayment(id){
 
   const def =
   partnerDefinitions.find(
-    p => p.id === id
+  p =>
+  p.id === id
   );
 
 
   const newBalance =
-  partners[id].debt - amount;
+  partners[
+  id
+  ].debt
+  -
+  amount;
 
 
   if(
     !confirm(
 
-      "تأكيد التسديد\n\n" +
-
-      def.name +
-
-      "\nالمبلغ: " +
-
-      formatMoney(amount) +
-
-      " د.ع\nبواسطة: " +
-
-      person +
-
-      "\nالبيان: " +
-
-      (note || "-")
+    "تأكيد التسديد\n\n"
+    +
+    def.name
+    +
+    "\nالمبلغ: "
+    +
+    formatMoney(
+    amount
+    )
+    +
+    " د.ع\nبواسطة: "
+    +
+    person
+    +
+    "\nالبيان: "
+    +
+    (
+    note || "-"
+    )
 
     )
   ){
@@ -3157,39 +4612,58 @@ function addPayment(id){
   }
 
 
-  partners[id].debt =
+  partners[
+  id
+  ].debt =
   newBalance;
 
 
   addNormalHistory(
-    id,
-    "payment",
-    amount,
-    person,
-    note,
-    newBalance
+
+  id,
+
+  "payment",
+
+  amount,
+
+  person,
+
+  note,
+
+  newBalance
+
+  );
+
+
+  amountInput.value =
+  "";
+
+
+  personInput.value =
+  "";
+
+
+  noteInput.value =
+  "";
+
+
+  document.getElementById(
+  "debt-" + id
+  )
+  .innerText =
+  formatMoney(
+  newBalance
   );
 
 
   savePartners();
 
 
-  amountInput.value = "";
-
-  personInput.value = "";
-
-  noteInput.value = "";
-
-
-  document.getElementById(
-    "debt-" + id
-  ).innerText =
-  formatMoney(newBalance);
-
-
   updateSummary();
 
+
   renderHistory();
+
 
   updateTodaySummary();
 
@@ -3211,8 +4685,10 @@ balance
 
   const def =
   partnerDefinitions.find(
-    p => p.id === id
+  p =>
+  p.id === id
   );
+
 
   const now =
   new Date();
@@ -3221,15 +4697,26 @@ balance
   history.unshift({
 
     id:
-    Date.now() +
-    "_" +
-    Math.random().toString(36).slice(2,8),
+    Date.now()
+    +
+    "_"
+    +
+    Math.random()
+    .toString(
+    36
+    )
+    .slice(
+    2,
+    8
+    ),
 
     timestamp:
     now.getTime(),
 
     isoDate:
-    getLocalISODate(now),
+    getLocalISODate(
+    now
+    ),
 
     partnerId:
     id,
@@ -3262,17 +4749,26 @@ balance
     note || "-",
 
     date:
-    now.toLocaleDateString("en-GB"),
+    now.toLocaleDateString(
+    "en-GB"
+    ),
 
     time:
     now.toLocaleTimeString(
-      "en-GB",
-      {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
-        hour12:false
-      }
+    "en-GB",
+    {
+      hour:
+      "2-digit",
+
+      minute:
+      "2-digit",
+
+      second:
+      "2-digit",
+
+      hour12:
+      false
+    }
     ),
 
     balance:
@@ -3287,7 +4783,7 @@ balance
 
 
 /* =========================================================
-   USD CALCULATION
+   USD CALCULATE
 ========================================================= */
 
 function calculateUsd(mode){
@@ -3297,7 +4793,10 @@ function calculateUsd(mode){
   let resultId;
 
 
-  if(mode === "purchase"){
+  if(
+    mode ===
+    "purchase"
+  ){
 
     valueId =
     "usdPurchaseValue";
@@ -3309,6 +4808,7 @@ function calculateUsd(mode){
     "usdPurchaseIqd";
 
   }
+
   else{
 
     valueId =
@@ -3325,30 +4825,38 @@ function calculateUsd(mode){
 
   const usdValue =
   parseMoney(
-    document.getElementById(valueId).value
+  document.getElementById(
+  valueId
+  ).value
   );
 
 
-  const exchangeRate =
+  const rate =
   parseMoney(
-    document.getElementById(rateId).value
+  document.getElementById(
+  rateId
+  ).value
   );
 
 
   const iqd =
-  usdValue * exchangeRate;
+  usdValue *
+  rate;
 
 
   document.getElementById(
-    resultId
-  ).innerText =
-  formatMoney(iqd);
+  resultId
+  )
+  .innerText =
+  formatMoney(
+  iqd
+  );
 
 }
 
 
 /* =========================================================
-   USD BALANCES
+   USD BALANCE
 ========================================================= */
 
 function getUsdBalances(){
@@ -3356,45 +4864,75 @@ function getUsdBalances(){
   let usd =
   0;
 
+
   let iqd =
   0;
 
 
   const records =
   history
+
   .filter(
-    r =>
-    r.type === "usd_purchase" ||
-    r.type === "usd_payment"
+  r =>
+  r.type ===
+  "usd_purchase"
+  ||
+  r.type ===
+  "usd_payment"
   )
+
   .sort(
-    (a,b) =>
-    Number(a.timestamp || 0) -
-    Number(b.timestamp || 0)
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
   );
 
 
   records.forEach(
   function(record){
 
-    if(record.type === "usd_purchase"){
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
 
       usd +=
-      Number(record.usdValue || 0);
+      Number(
+      record.usdValue || 0
+      );
+
 
       iqd +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
     }
 
 
-    if(record.type === "usd_payment"){
+    if(
+      record.type ===
+      "usd_payment"
+    ){
 
       usd -=
-      Number(record.usdValue || 0);
+      Number(
+      record.usdValue || 0
+      );
+
 
       iqd -=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
     }
 
@@ -3404,10 +4942,16 @@ function getUsdBalances(){
   return {
 
     usd:
-    Math.max(0,usd),
+    Math.max(
+    0,
+    usd
+    ),
 
     iqd:
-    Math.max(0,iqd)
+    Math.max(
+    0,
+    iqd
+    )
 
   };
 
@@ -3415,73 +4959,94 @@ function getUsdBalances(){
 
 
 /* =========================================================
-   ADD USD MOVEMENT
+   USD ADD
 ========================================================= */
 
 function addUsdMovement(type){
 
   const isPurchase =
-  type === "usd_purchase";
+  type ===
+  "usd_purchase";
 
 
   const valueId =
   isPurchase
-  ? "usdPurchaseValue"
-  : "usdPaymentValue";
+  ?
+  "usdPurchaseValue"
+  :
+  "usdPaymentValue";
 
 
   const rateId =
   isPurchase
-  ? "usdPurchaseRate"
-  : "usdPaymentRate";
+  ?
+  "usdPurchaseRate"
+  :
+  "usdPaymentRate";
 
 
   const personId =
   isPurchase
-  ? "usdPurchasePerson"
-  : "usdPaymentPerson";
+  ?
+  "usdPurchasePerson"
+  :
+  "usdPaymentPerson";
 
 
   const noteId =
   isPurchase
-  ? "usdPurchaseNote"
-  : "usdPaymentNote";
+  ?
+  "usdPurchaseNote"
+  :
+  "usdPaymentNote";
 
 
   const resultId =
   isPurchase
-  ? "usdPurchaseIqd"
-  : "usdPaymentIqd";
+  ?
+  "usdPurchaseIqd"
+  :
+  "usdPaymentIqd";
 
 
   const usdValue =
   parseMoney(
-    document.getElementById(valueId).value
+  document.getElementById(
+  valueId
+  ).value
   );
 
 
   const exchangeRate =
   parseMoney(
-    document.getElementById(rateId).value
+  document.getElementById(
+  rateId
+  ).value
   );
 
 
   const person =
   document.getElementById(
-    personId
-  ).value.trim();
+  personId
+  )
+  .value
+  .trim();
 
 
   const note =
   document.getElementById(
-    noteId
-  ).value.trim();
+  noteId
+  )
+  .value
+  .trim();
 
 
-  if(usdValue <= 0){
+  if(
+    usdValue <= 0
+  ){
 
     showToast(
-      "⚠️ أدخل قيمة الدولار"
+    "⚠️ أدخل قيمة الدولار"
     );
 
     return;
@@ -3489,10 +5054,12 @@ function addUsdMovement(type){
   }
 
 
-  if(exchangeRate <= 0){
+  if(
+    exchangeRate <= 0
+  ){
 
     showToast(
-      "⚠️ أدخل سعر الصرف"
+    "⚠️ أدخل سعر الصرف"
     );
 
     return;
@@ -3500,10 +5067,12 @@ function addUsdMovement(type){
   }
 
 
-  if(!person){
+  if(
+    !person
+  ){
 
     showToast(
-      "⚠️ أدخل اسم الشخص"
+    "⚠️ أدخل اسم الشخص"
     );
 
     return;
@@ -3511,20 +5080,26 @@ function addUsdMovement(type){
   }
 
 
-  const iqdEquivalent =
-  usdValue * exchangeRate;
+  const equivalent =
+  usdValue *
+  exchangeRate;
 
 
   const current =
   getUsdBalances();
 
 
-  if(!isPurchase){
+  if(
+    !isPurchase
+  ){
 
-    if(usdValue > current.usd){
+    if(
+      usdValue >
+      current.usd
+    ){
 
       showToast(
-        "⚠️ قيمة الدولار المسدد أكبر من رصيد الدولار الحالي"
+      "⚠️ قيمة الدولار المسدد أكبر من رصيد الدولار"
       );
 
       return;
@@ -3532,10 +5107,13 @@ function addUsdMovement(type){
     }
 
 
-    if(iqdEquivalent > current.iqd){
+    if(
+      equivalent >
+      current.iqd
+    ){
 
       showToast(
-        "⚠️ ما يعادل التسديد بالدينار أكبر من التزام الدولار الحالي"
+      "⚠️ المعادل العراقي أكبر من التزام الدولار الحالي"
       );
 
       return;
@@ -3547,46 +5125,66 @@ function addUsdMovement(type){
 
   const afterUsd =
   isPurchase
-  ? current.usd + usdValue
-  : current.usd - usdValue;
+  ?
+  current.usd +
+  usdValue
+  :
+  current.usd -
+  usdValue;
 
 
   const afterIqd =
   isPurchase
-  ? current.iqd + iqdEquivalent
-  : current.iqd - iqdEquivalent;
+  ?
+  current.iqd +
+  equivalent
+  :
+  current.iqd -
+  equivalent;
 
 
   const title =
   isPurchase
-  ? "شراء دولار"
-  : "تسديد دولار";
+  ?
+  "شراء دولار"
+  :
+  "تسديد دولار";
 
 
   if(
     !confirm(
 
-      "تأكيد " + title + "\n\n" +
-
-      "قيمة الدولار: " +
-
-      formatMoney(usdValue) +
-
-      " USD\nسعر الصرف: " +
-
-      formatMoney(exchangeRate) +
-
-      "\nالمعادل بالعراقي: " +
-
-      formatMoney(iqdEquivalent) +
-
-      " د.ع\nالشخص: " +
-
-      person +
-
-      "\nالبيان: " +
-
-      (note || "-")
+    "تأكيد "
+    +
+    title
+    +
+    "\n\nقيمة الدولار: "
+    +
+    formatMoney(
+    usdValue
+    )
+    +
+    " USD\nسعر الصرف: "
+    +
+    formatMoney(
+    exchangeRate
+    )
+    +
+    "\nالمعادل: "
+    +
+    formatMoney(
+    equivalent
+    )
+    +
+    " د.ع\nالشخص: "
+    +
+    person
+    +
+    "\nالبيان: "
+    +
+    (
+    note || "-"
+    )
 
     )
   ){
@@ -3603,15 +5201,26 @@ function addUsdMovement(type){
   history.unshift({
 
     id:
-    Date.now() +
-    "_usd_" +
-    Math.random().toString(36).slice(2,8),
+    Date.now()
+    +
+    "_usd_"
+    +
+    Math.random()
+    .toString(
+    36
+    )
+    .slice(
+    2,
+    8
+    ),
 
     timestamp:
     now.getTime(),
 
     isoDate:
-    getLocalISODate(now),
+    getLocalISODate(
+    now
+    ),
 
     partnerId:
     "usd_purchase",
@@ -3635,13 +5244,7 @@ function addUsdMovement(type){
     exchangeRate,
 
     iqdEquivalent:
-    iqdEquivalent,
-
-    usdBalanceAfter:
-    afterUsd,
-
-    usdIqdBalanceAfter:
-    afterIqd,
+    equivalent,
 
     person:
     person,
@@ -3650,18 +5253,33 @@ function addUsdMovement(type){
     note || "-",
 
     date:
-    now.toLocaleDateString("en-GB"),
+    now.toLocaleDateString(
+    "en-GB"
+    ),
 
     time:
     now.toLocaleTimeString(
-      "en-GB",
-      {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
-        hour12:false
-      }
+    "en-GB",
+    {
+      hour:
+      "2-digit",
+
+      minute:
+      "2-digit",
+
+      second:
+      "2-digit",
+
+      hour12:
+      false
+    }
     ),
+
+    usdBalanceAfter:
+    afterUsd,
+
+    usdIqdBalanceAfter:
+    afterIqd,
 
     balance:
     afterIqd
@@ -3673,43 +5291,53 @@ function addUsdMovement(type){
 
 
   document.getElementById(
-    valueId
-  ).value = "";
+  valueId
+  ).value =
+  "";
 
 
   document.getElementById(
-    rateId
-  ).value = "";
+  rateId
+  ).value =
+  "";
 
 
   document.getElementById(
-    personId
-  ).value = "";
+  personId
+  ).value =
+  "";
 
 
   document.getElementById(
-    noteId
-  ).value = "";
+  noteId
+  ).value =
+  "";
 
 
   document.getElementById(
-    resultId
-  ).innerText = "0";
+  resultId
+  ).innerText =
+  "0";
 
 
   updateUsdCardBalances();
 
+
   updateSummary();
 
+
   renderHistory();
+
 
   updateTodaySummary();
 
 
   showToast(
-    isPurchase
-    ? "💵 تم تسجيل شراء الدولار"
-    : "⬇ تم تسجيل تسديد الدولار"
+  isPurchase
+  ?
+  "💵 تم تسجيل شراء الدولار"
+  :
+  "⬇ تم تسجيل تسديد الدولار"
   );
 
 }
@@ -3727,28 +5355,37 @@ function updateUsdCardBalances(){
 
   const iqd =
   document.getElementById(
-    "usdBalanceIqd"
+  "usdBalanceIqd"
   );
 
 
   const usd =
   document.getElementById(
-    "usdBalanceUsd"
+  "usdBalanceUsd"
   );
 
 
-  if(iqd){
+  if(
+    iqd
+  ){
 
     iqd.innerText =
-    formatMoney(balances.iqd);
+    formatMoney(
+    balances.iqd
+    );
 
   }
 
 
-  if(usd){
+  if(
+    usd
+  ){
 
     usd.innerText =
-    formatMoney(balances.usd) +
+    formatMoney(
+    balances.usd
+    )
+    +
     " USD";
 
   }
@@ -3757,7 +5394,425 @@ function updateUsdCardBalances(){
 
 
 /* =========================================================
-   RECOMPUTE ALL
+   MISC BALANCE
+========================================================= */
+
+function getMiscBalance(){
+
+  let balance =
+  0;
+
+
+  const records =
+  history
+
+  .filter(
+  r =>
+  r.type ===
+  "misc_withdraw"
+  ||
+  r.type ===
+  "misc_payment"
+  )
+
+  .sort(
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
+  );
+
+
+  records.forEach(
+  function(record){
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      balance +=
+      Number(
+      record.amount || 0
+      );
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_payment"
+    ){
+
+      balance -=
+      Number(
+      record.amount || 0
+      );
+
+    }
+
+  });
+
+
+  return Math.max(
+  0,
+  balance
+  );
+
+}
+
+
+/* =========================================================
+   ADD MISC
+========================================================= */
+
+function addMiscMovement(type){
+
+  const isWithdraw =
+  type ===
+  "misc_withdraw";
+
+
+  const amountId =
+  isWithdraw
+  ?
+  "miscWithdrawAmount"
+  :
+  "miscPaymentAmount";
+
+
+  const personId =
+  isWithdraw
+  ?
+  "miscWithdrawPerson"
+  :
+  "miscPaymentPerson";
+
+
+  const noteId =
+  isWithdraw
+  ?
+  "miscWithdrawNote"
+  :
+  "miscPaymentNote";
+
+
+  const amountInput =
+  document.getElementById(
+  amountId
+  );
+
+
+  const personInput =
+  document.getElementById(
+  personId
+  );
+
+
+  const noteInput =
+  document.getElementById(
+  noteId
+  );
+
+
+  const amount =
+  parseMoney(
+  amountInput.value
+  );
+
+
+  const person =
+  personInput.value.trim();
+
+
+  const note =
+  noteInput.value.trim();
+
+
+  if(
+    amount <= 0
+  ){
+
+    showToast(
+    "⚠️ أدخل مبلغ صحيح"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !person
+  ){
+
+    showToast(
+    isWithdraw
+    ?
+    "⚠️ أدخل اسم المستلم"
+    :
+    "⚠️ أدخل اسم المُسلِّم"
+    );
+
+    return;
+
+  }
+
+
+  const current =
+  getMiscBalance();
+
+
+  if(
+    !isWithdraw
+    &&
+    amount >
+    current
+  ){
+
+    showToast(
+    "⚠️ مبلغ التسديد أكبر من رصيد الالتزامات المتفرقة"
+    );
+
+    return;
+
+  }
+
+
+  const newBalance =
+  isWithdraw
+  ?
+  current +
+  amount
+  :
+  current -
+  amount;
+
+
+  const title =
+  isWithdraw
+  ?
+  "سحب متفرقة"
+  :
+  "تسديد متفرقة";
+
+
+  if(
+    !confirm(
+
+    "تأكيد "
+    +
+    title
+    +
+    "\n\nالمبلغ: "
+    +
+    formatMoney(
+    amount
+    )
+    +
+    " د.ع\n"
+    +
+    (
+    isWithdraw
+    ?
+    "المستلم: "
+    :
+    "المُسلِّم: "
+    )
+    +
+    person
+    +
+    "\nالبيان: "
+    +
+    (
+    note || "-"
+    )
+    +
+    "\n\nالرصيد بعد الحركة: "
+    +
+    formatMoney(
+    newBalance
+    )
+    +
+    " د.ع"
+
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const now =
+  new Date();
+
+
+  history.unshift({
+
+    id:
+    Date.now()
+    +
+    "_misc_"
+    +
+    Math.random()
+    .toString(
+    36
+    )
+    .slice(
+    2,
+    8
+    ),
+
+    timestamp:
+    now.getTime(),
+
+    isoDate:
+    getLocalISODate(
+    now
+    ),
+
+    partnerId:
+    "misc_commitments",
+
+    partnerName:
+    "التزامات متفرقة",
+
+    group:
+    "التزامات متفرقة",
+
+    type:
+    type,
+
+    amount:
+    amount,
+
+    usdValue:
+    0,
+
+    exchangeRate:
+    0,
+
+    iqdEquivalent:
+    0,
+
+    person:
+    person,
+
+    note:
+    note || "-",
+
+    date:
+    now.toLocaleDateString(
+    "en-GB"
+    ),
+
+    time:
+    now.toLocaleTimeString(
+    "en-GB",
+    {
+      hour:
+      "2-digit",
+
+      minute:
+      "2-digit",
+
+      second:
+      "2-digit",
+
+      hour12:
+      false
+    }
+    ),
+
+    balance:
+    newBalance,
+
+    miscBalanceAfter:
+    newBalance
+
+  });
+
+
+  saveHistory();
+
+
+  /*
+  بعد التسجيل:
+  تصفير المبلغ والاسم والبيان
+  فقط الرصيد يبقى
+  */
+
+  amountInput.value =
+  "";
+
+
+  personInput.value =
+  "";
+
+
+  noteInput.value =
+  "";
+
+
+  updateMiscCardBalance();
+
+
+  updateSummary();
+
+
+  renderHistory();
+
+
+  updateTodaySummary();
+
+
+  showToast(
+  isWithdraw
+  ?
+  "📦 تم تسجيل السحب المتفرقة"
+  :
+  "✅ تم تسجيل تسديد المتفرقة"
+  );
+
+}
+
+
+/* =========================================================
+   MISC CARD UPDATE
+========================================================= */
+
+function updateMiscCardBalance(){
+
+  const element =
+  document.getElementById(
+  "miscBalanceNumber"
+  );
+
+
+  if(
+    element
+  ){
+
+    element.innerText =
+    formatMoney(
+    getMiscBalance()
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   RECOMPUTE
 ========================================================= */
 
 function recomputeBalances(){
@@ -3765,11 +5820,15 @@ function recomputeBalances(){
   partnerDefinitions.forEach(
   function(def){
 
-    partners[def.id] = {
+    partners[
+    def.id
+    ] = {
 
-      name:def.name,
+      name:
+      def.name,
 
-      debt:0
+      debt:
+      0
 
     };
 
@@ -3779,16 +5838,31 @@ function recomputeBalances(){
   let usdBalance =
   0;
 
+
   let usdIqdBalance =
   0;
 
 
+  let miscBalance =
+  0;
+
+
   const chronological =
-  [...history]
+  [
+  ...history
+  ]
   .sort(
-    (a,b) =>
-    Number(a.timestamp || 0) -
-    Number(b.timestamp || 0)
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
   );
 
 
@@ -3796,19 +5870,28 @@ function recomputeBalances(){
   function(record){
 
 
-    if(record.type === "withdraw"){
+    if(
+      record.type ===
+      "withdraw"
+    ){
 
-      if(partners[record.partnerId]){
+      if(
+        partners[
+        record.partnerId
+        ]
+      ){
 
         partners[
-          record.partnerId
+        record.partnerId
         ].debt +=
-        Number(record.amount || 0);
+        Number(
+        record.amount || 0
+        );
 
 
         record.balance =
         partners[
-          record.partnerId
+        record.partnerId
         ].debt;
 
       }
@@ -3816,19 +5899,28 @@ function recomputeBalances(){
     }
 
 
-    if(record.type === "payment"){
+    if(
+      record.type ===
+      "payment"
+    ){
 
-      if(partners[record.partnerId]){
+      if(
+        partners[
+        record.partnerId
+        ]
+      ){
 
         partners[
-          record.partnerId
+        record.partnerId
         ].debt -=
-        Number(record.amount || 0);
+        Number(
+        record.amount || 0
+        );
 
 
         record.balance =
         partners[
-          record.partnerId
+        record.partnerId
         ].debt;
 
       }
@@ -3836,20 +5928,30 @@ function recomputeBalances(){
     }
 
 
-    if(record.type === "usd_purchase"){
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
 
       usdBalance +=
-      Number(record.usdValue || 0);
+      Number(
+      record.usdValue || 0
+      );
+
 
       usdIqdBalance +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
 
       record.usdBalanceAfter =
       usdBalance;
 
+
       record.usdIqdBalanceAfter =
       usdIqdBalance;
+
 
       record.balance =
       usdIqdBalance;
@@ -3857,30 +5959,84 @@ function recomputeBalances(){
     }
 
 
-    if(record.type === "usd_payment"){
+    if(
+      record.type ===
+      "usd_payment"
+    ){
 
       usdBalance -=
-      Number(record.usdValue || 0);
+      Number(
+      record.usdValue || 0
+      );
+
 
       usdIqdBalance -=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
 
       record.usdBalanceAfter =
       usdBalance;
 
+
       record.usdIqdBalanceAfter =
       usdIqdBalance;
+
 
       record.balance =
       usdIqdBalance;
 
     }
+
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      miscBalance +=
+      Number(
+      record.amount || 0
+      );
+
+
+      record.miscBalanceAfter =
+      miscBalance;
+
+
+      record.balance =
+      miscBalance;
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_payment"
+    ){
+
+      miscBalance -=
+      Number(
+      record.amount || 0
+      );
+
+
+      record.miscBalanceAfter =
+      miscBalance;
+
+
+      record.balance =
+      miscBalance;
+
+    }
+
 
   });
 
 
   savePartners();
+
 
   saveHistory();
 
@@ -3888,7 +6044,7 @@ function recomputeBalances(){
 
 
 /* =========================================================
-   TOTAL SUMMARY
+   SUMMARY
 ========================================================= */
 
 function updateSummary(){
@@ -3902,7 +6058,9 @@ function updateSummary(){
 
     partnerDebt +=
     Number(
-      partners[def.id].debt || 0
+    partners[
+    def.id
+    ].debt || 0
     );
 
   });
@@ -3912,33 +6070,64 @@ function updateSummary(){
   getUsdBalances();
 
 
-  const companyTotal =
-  partnerDebt +
-  usd.iqd;
+  const misc =
+  getMiscBalance();
 
+
+  const companyTotal =
+  partnerDebt
+  +
+  usd.iqd
+  +
+  misc;
+
+
+  /*
+  عدد الشركاء الحقيقي يبقى 21
+  الدولار والمتفرقة ليست شركاء
+  */
 
   document.getElementById(
-    "totalPartners"
-  ).innerText =
+  "totalPartners"
+  )
+  .innerText =
   partnerDefinitions.length;
 
 
   document.getElementById(
-    "partnersDebtTotal"
-  ).innerText =
-  formatMoney(partnerDebt);
+  "partnersDebtTotal"
+  )
+  .innerText =
+  formatMoney(
+  partnerDebt
+  );
 
 
   document.getElementById(
-    "usdDebtTotal"
-  ).innerText =
-  formatMoney(usd.iqd);
+  "usdDebtTotal"
+  )
+  .innerText =
+  formatMoney(
+  usd.iqd
+  );
 
 
   document.getElementById(
-    "companyTotalDebt"
-  ).innerText =
-  formatMoney(companyTotal);
+  "miscDebtTotal"
+  )
+  .innerText =
+  formatMoney(
+  misc
+  );
+
+
+  document.getElementById(
+  "companyTotalDebt"
+  )
+  .innerText =
+  formatMoney(
+  companyTotal
+  );
 
 }
 
@@ -3952,40 +6141,90 @@ function getLocalISODate(date){
   const y =
   date.getFullYear();
 
+
   const m =
   String(
-    date.getMonth() + 1
-  ).padStart(2,"0");
+  date.getMonth()
+  +
+  1
+  )
+  .padStart(
+  2,
+  "0"
+  );
+
 
   const d =
   String(
-    date.getDate()
-  ).padStart(2,"0");
+  date.getDate()
+  )
+  .padStart(
+  2,
+  "0"
+  );
 
 
-  return `${y}-${m}-${d}`;
+  return (
+  y
+  +
+  "-"
+  +
+  m
+  +
+  "-"
+  +
+  d
+  );
 
 }
 
 
 function getRecordISODate(record){
 
-  if(record.isoDate){
+  if(
+    record.isoDate
+  ){
 
     return record.isoDate;
 
   }
 
 
-  if(record.date){
+  if(
+    record.date
+  ){
 
-    const p =
-    String(record.date).split("/");
+    const parts =
+    String(
+    record.date
+    )
+    .split(
+    "/"
+    );
 
 
-    if(p.length === 3){
+    if(
+      parts.length ===
+      3
+    ){
 
-      return `${p[2]}-${p[1]}-${p[0]}`;
+      return (
+      parts[
+      2
+      ]
+      +
+      "-"
+      +
+      parts[
+      1
+      ]
+      +
+      "-"
+      +
+      parts[
+      0
+      ]
+      );
 
     }
 
@@ -3998,22 +6237,22 @@ function getRecordISODate(record){
 
 
 /* =========================================================
-   FILTER LIST
+   FILTER PARTNERS
 ========================================================= */
 
 function buildPartnerFilter(){
 
   const select =
   document.getElementById(
-    "partnerFilter"
+  "partnerFilter"
   );
 
 
   select.innerHTML = `
 
-    <option value="">
-      جميع الشركاء
-    </option>
+  <option value="">
+    جميع الشركاء
+  </option>
 
   `;
 
@@ -4023,7 +6262,7 @@ function buildPartnerFilter(){
 
     const option =
     document.createElement(
-      "option"
+    "option"
     );
 
 
@@ -4036,7 +6275,7 @@ function buildPartnerFilter(){
 
 
     select.appendChild(
-      option
+    option
     );
 
   });
@@ -4044,7 +6283,7 @@ function buildPartnerFilter(){
 
   const usdOption =
   document.createElement(
-    "option"
+  "option"
   );
 
 
@@ -4057,7 +6296,26 @@ function buildPartnerFilter(){
 
 
   select.appendChild(
-    usdOption
+  usdOption
+  );
+
+
+  const miscOption =
+  document.createElement(
+  "option"
+  );
+
+
+  miscOption.value =
+  "misc_commitments";
+
+
+  miscOption.textContent =
+  "📦 التزامات متفرقة";
+
+
+  select.appendChild(
+  miscOption
   );
 
 }
@@ -4071,31 +6329,35 @@ function getFilteredHistory(){
 
   const partner =
   document.getElementById(
-    "partnerFilter"
-  ).value;
+  "partnerFilter"
+  )
+  .value;
 
 
   const type =
   document.getElementById(
-    "typeFilter"
-  ).value;
+  "typeFilter"
+  )
+  .value;
 
 
   const from =
   document.getElementById(
-    "fromDateFilter"
-  ).value;
+  "fromDateFilter"
+  )
+  .value;
 
 
   const to =
   document.getElementById(
-    "toDateFilter"
-  ).value;
+  "toDateFilter"
+  )
+  .value;
 
 
   const search =
   document.getElementById(
-    "searchHistory"
+  "searchHistory"
   )
   .value
   .trim()
@@ -4107,8 +6369,11 @@ function getFilteredHistory(){
 
 
     if(
-      partner &&
-      record.partnerId !== partner
+      partner
+      &&
+      record.partnerId
+      !==
+      partner
     ){
 
       return false;
@@ -4117,8 +6382,11 @@ function getFilteredHistory(){
 
 
     if(
-      type &&
-      record.type !== type
+      type
+      &&
+      record.type
+      !==
+      type
     ){
 
       return false;
@@ -4127,12 +6395,16 @@ function getFilteredHistory(){
 
 
     const date =
-    getRecordISODate(record);
+    getRecordISODate(
+    record
+    );
 
 
     if(
-      from &&
-      date < from
+      from
+      &&
+      date <
+      from
     ){
 
       return false;
@@ -4141,8 +6413,10 @@ function getFilteredHistory(){
 
 
     if(
-      to &&
-      date > to
+      to
+      &&
+      date >
+      to
     ){
 
       return false;
@@ -4150,22 +6424,58 @@ function getFilteredHistory(){
     }
 
 
-    if(search){
+    if(
+      search
+    ){
 
-      const text = (
+      const text =
+      (
 
-        (record.partnerName || "") +
-        " " +
-        (record.person || "") +
-        " " +
-        (record.note || "") +
-        " " +
-        (record.group || "")
+      (
+      record.partnerName
+      ||
+      ""
+      )
 
-      ).toLowerCase();
+      +
+      " "
+
+      +
+      (
+      record.person
+      ||
+      ""
+      )
+
+      +
+      " "
+
+      +
+      (
+      record.note
+      ||
+      ""
+      )
+
+      +
+      " "
+
+      +
+      (
+      record.group
+      ||
+      ""
+      )
+
+      )
+      .toLowerCase();
 
 
-      if(!text.includes(search)){
+      if(
+        !text.includes(
+        search
+        )
+      ){
 
         return false;
 
@@ -4182,58 +6492,123 @@ function getFilteredHistory(){
 
 
 /* =========================================================
-   MOVEMENT LABEL
+   TYPE
 ========================================================= */
 
 function getTypeInfo(type){
 
-  if(type === "withdraw"){
+  if(
+    type ===
+    "withdraw"
+  ){
 
     return {
-      text:"زيادة دين",
-      css:"badge-debt"
+
+      text:
+      "زيادة دين",
+
+      css:
+      "badge-debt"
+
     };
 
   }
 
 
-  if(type === "payment"){
+  if(
+    type ===
+    "payment"
+  ){
 
     return {
-      text:"تسديد شريك",
-      css:"badge-pay"
+
+      text:
+      "تسديد شريك",
+
+      css:
+      "badge-pay"
+
     };
 
   }
 
 
-  if(type === "usd_purchase"){
+  if(
+    type ===
+    "usd_purchase"
+  ){
 
     return {
-      text:"شراء دولار",
-      css:"badge-usd-buy"
+
+      text:
+      "شراء دولار",
+
+      css:
+      "badge-usd-buy"
+
+    };
+
+  }
+
+
+  if(
+    type ===
+    "usd_payment"
+  ){
+
+    return {
+
+      text:
+      "تسديد دولار",
+
+      css:
+      "badge-usd-pay"
+
+    };
+
+  }
+
+
+  if(
+    type ===
+    "misc_withdraw"
+  ){
+
+    return {
+
+      text:
+      "سحب متفرقة",
+
+      css:
+      "badge-misc-withdraw"
+
     };
 
   }
 
 
   return {
-    text:"تسديد دولار",
-    css:"badge-usd-pay"
+
+    text:
+    "تسديد متفرقة",
+
+    css:
+    "badge-misc-payment"
+
   };
 
 }
 
 
 /* =========================================================
-   HISTORY RENDER
+   RENDER HISTORY
 ========================================================= */
 
 function renderHistory(){
 
   const tbody =
   document.getElementById(
-    "historyTable"
+  "historyTable"
   );
 
 
@@ -4244,47 +6619,87 @@ function renderHistory(){
   let debt =
   0;
 
+
   let partnerPayment =
   0;
+
 
   let usdBuy =
   0;
 
+
   let usdPayment =
+  0;
+
+
+  let miscWithdraw =
   0;
 
 
   filtered.forEach(
   function(record){
 
-    if(record.type === "withdraw"){
+    if(
+      record.type ===
+      "withdraw"
+    ){
 
       debt +=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(record.type === "payment"){
+    if(
+      record.type ===
+      "payment"
+    ){
 
       partnerPayment +=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(record.type === "usd_purchase"){
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
 
       usdBuy +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
     }
 
 
-    if(record.type === "usd_payment"){
+    if(
+      record.type ===
+      "usd_payment"
+    ){
 
       usdPayment +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      miscWithdraw +=
+      Number(
+      record.amount || 0
+      );
 
     }
 
@@ -4292,60 +6707,88 @@ function renderHistory(){
 
 
   document.getElementById(
-    "filterResultCount"
-  ).innerText =
+  "filterResultCount"
+  )
+  .innerText =
   filtered.length;
 
 
   document.getElementById(
-    "filteredCount"
-  ).innerText =
+  "filteredCount"
+  )
+  .innerText =
   filtered.length;
 
 
   document.getElementById(
-    "filteredDebt"
-  ).innerText =
-  formatMoney(debt);
+  "filteredDebt"
+  )
+  .innerText =
+  formatMoney(
+  debt
+  );
 
 
   document.getElementById(
-    "filteredPayment"
-  ).innerText =
-  formatMoney(partnerPayment);
+  "filteredPayment"
+  )
+  .innerText =
+  formatMoney(
+  partnerPayment
+  );
 
 
   document.getElementById(
-    "filteredUsdBuy"
-  ).innerText =
-  formatMoney(usdBuy);
+  "filteredUsdBuy"
+  )
+  .innerText =
+  formatMoney(
+  usdBuy
+  );
 
 
   document.getElementById(
-    "filteredUsdPayment"
-  ).innerText =
-  formatMoney(usdPayment);
+  "filteredUsdPayment"
+  )
+  .innerText =
+  formatMoney(
+  usdPayment
+  );
 
 
-  tbody.innerHTML = "";
+  document.getElementById(
+  "filteredMiscWithdraw"
+  )
+  .innerText =
+  formatMoney(
+  miscWithdraw
+  );
 
 
-  if(filtered.length === 0){
+  tbody.innerHTML =
+  "";
+
+
+  if(
+    filtered.length ===
+    0
+  ){
 
     tbody.innerHTML = `
 
-      <tr>
+    <tr>
 
-        <td
-          colspan="13"
-          class="empty-history"
-        >
-          📭 لا توجد حركات مطابقة
-        </td>
+      <td
+      colspan="13"
+      class="empty-history"
+      >
+        📭 لا توجد حركات مطابقة
+      </td>
 
-      </tr>
+    </tr>
 
     `;
+
 
     return;
 
@@ -4353,153 +6796,221 @@ function renderHistory(){
 
 
   filtered.forEach(
-  function(record,index){
+  function(
+  record,
+  index
+  ){
 
     const info =
-    getTypeInfo(record.type);
+    getTypeInfo(
+    record.type
+    );
 
 
     const isUsd =
-    record.type === "usd_purchase" ||
-    record.type === "usd_payment";
+    record.type ===
+    "usd_purchase"
+    ||
+    record.type ===
+    "usd_payment";
 
 
     const amountText =
     isUsd
-    ? "-"
-    : formatMoney(record.amount) + " د.ع";
+    ?
+    "-"
+    :
+    formatMoney(
+    record.amount
+    )
+    +
+    " د.ع";
 
 
     const usdText =
     isUsd
-    ? formatMoney(record.usdValue) + " USD"
-    : "-";
+    ?
+    formatMoney(
+    record.usdValue
+    )
+    +
+    " USD"
+    :
+    "-";
 
 
     const rateText =
     isUsd
-    ? formatMoney(record.exchangeRate)
-    : "-";
+    ?
+    formatMoney(
+    record.exchangeRate
+    )
+    :
+    "-";
 
 
     const equivalentText =
     isUsd
-    ? formatMoney(record.iqdEquivalent) + " د.ع"
-    : "-";
-
-
-    const personPrefix =
-    record.type === "payment" ||
-    record.type === "usd_payment"
-    ? "بواسطة "
-    : "بيد ";
-
-
-    let balanceText =
+    ?
+    formatMoney(
+    record.iqdEquivalent
+    )
+    +
+    " د.ع"
+    :
     "-";
 
 
+    let personPrefix =
+    "بيد ";
+
+
     if(
-      record.type === "withdraw" ||
-      record.type === "payment"
+      record.type ===
+      "payment"
+      ||
+      record.type ===
+      "usd_payment"
     ){
 
-      balanceText =
-      formatMoney(record.balance) +
-      " د.ع";
+      personPrefix =
+      "بواسطة ";
 
     }
 
 
-    if(isUsd){
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
 
-      balanceText =
-      formatMoney(
-        record.usdIqdBalanceAfter ??
-        record.balance ??
-        0
-      )
-      +
-      " د.ع";
+      personPrefix =
+      "المستلم: ";
 
     }
+
+
+    if(
+      record.type ===
+      "misc_payment"
+    ){
+
+      personPrefix =
+      "المُسلِّم: ";
+
+    }
+
+
+    let balanceText =
+    formatMoney(
+    record.balance || 0
+    )
+    +
+    " د.ع";
 
 
     const row =
-    document.createElement("tr");
+    document.createElement(
+    "tr"
+    );
 
 
     row.innerHTML = `
 
-      <td>
-        ${index + 1}
-      </td>
+    <td>
+      ${index + 1}
+    </td>
 
-      <td>
-        ${record.partnerName}
-      </td>
 
-      <td>
+    <td>
+      ${escapeHtml(
+      record.partnerName
+      )}
+    </td>
 
-        <span
-          class="badge ${info.css}"
-        >
-          ${info.text}
-        </span>
 
-      </td>
+    <td>
 
-      <td class="num">
-        ${amountText}
-      </td>
+      <span
+      class="badge ${info.css}"
+      >
+        ${info.text}
+      </span>
 
-      <td class="num">
-        ${usdText}
-      </td>
+    </td>
 
-      <td class="num">
-        ${rateText}
-      </td>
 
-      <td class="num">
-        ${equivalentText}
-      </td>
+    <td class="num">
+      ${amountText}
+    </td>
 
-      <td>
-        ${personPrefix}${record.person}
-      </td>
 
-      <td class="history-note">
-        ${record.note || "-"}
-      </td>
+    <td class="num">
+      ${usdText}
+    </td>
 
-      <td>
-        ${record.date}
-      </td>
 
-      <td>
-        ${record.time}
-      </td>
+    <td class="num">
+      ${rateText}
+    </td>
 
-      <td class="num">
-        ${balanceText}
-      </td>
 
-      <td>
+    <td class="num">
+      ${equivalentText}
+    </td>
 
-        <button
-          class="delete-btn"
-          onclick="deleteHistoryRecord('${record.id}')"
-        >
-          🗑
-        </button>
 
-      </td>
+    <td>
+      ${personPrefix}
+      ${escapeHtml(
+      record.person
+      )}
+    </td>
+
+
+    <td class="history-note">
+      ${escapeHtml(
+      record.note || "-"
+      )}
+    </td>
+
+
+    <td>
+      ${escapeHtml(
+      record.date
+      )}
+    </td>
+
+
+    <td>
+      ${escapeHtml(
+      record.time
+      )}
+    </td>
+
+
+    <td class="num">
+      ${balanceText}
+    </td>
+
+
+    <td>
+
+      <button
+      class="delete-btn"
+      onclick="deleteHistoryRecord('${record.id}')"
+      >
+        🗑
+      </button>
+
+    </td>
 
     `;
 
 
-    tbody.appendChild(row);
+    tbody.appendChild(
+    row
+    );
 
   });
 
@@ -4507,68 +7018,112 @@ function renderHistory(){
 
 
 /* =========================================================
-   TODAY
+   TODAY SUMMARY
 ========================================================= */
 
 function updateTodaySummary(){
 
   const today =
   getLocalISODate(
-    new Date()
+  new Date()
   );
 
 
   const records =
   history.filter(
-    r =>
-    getRecordISODate(r) === today
+  r =>
+  getRecordISODate(
+  r
+  )
+  ===
+  today
   );
 
 
   let debt =
   0;
 
+
   let partnerPayment =
   0;
+
 
   let usdBuy =
   0;
 
+
   let usdPayment =
+  0;
+
+
+  let miscWithdraw =
   0;
 
 
   records.forEach(
   function(record){
 
-    if(record.type === "withdraw"){
+    if(
+      record.type ===
+      "withdraw"
+    ){
 
       debt +=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(record.type === "payment"){
+    if(
+      record.type ===
+      "payment"
+    ){
 
       partnerPayment +=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(record.type === "usd_purchase"){
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
 
       usdBuy +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
     }
 
 
-    if(record.type === "usd_payment"){
+    if(
+      record.type ===
+      "usd_payment"
+    ){
 
       usdPayment +=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      miscWithdraw +=
+      Number(
+      record.amount || 0
+      );
 
     }
 
@@ -4576,33 +7131,55 @@ function updateTodaySummary(){
 
 
   document.getElementById(
-    "todayCount"
-  ).innerText =
+  "todayCount"
+  )
+  .innerText =
   records.length;
 
 
   document.getElementById(
-    "todayDebt"
-  ).innerText =
-  formatMoney(debt);
+  "todayDebt"
+  )
+  .innerText =
+  formatMoney(
+  debt
+  );
 
 
   document.getElementById(
-    "todayPartnerPayment"
-  ).innerText =
-  formatMoney(partnerPayment);
+  "todayPartnerPayment"
+  )
+  .innerText =
+  formatMoney(
+  partnerPayment
+  );
 
 
   document.getElementById(
-    "todayUsdBuy"
-  ).innerText =
-  formatMoney(usdBuy);
+  "todayUsdBuy"
+  )
+  .innerText =
+  formatMoney(
+  usdBuy
+  );
 
 
   document.getElementById(
-    "todayUsdPayment"
-  ).innerText =
-  formatMoney(usdPayment);
+  "todayUsdPayment"
+  )
+  .innerText =
+  formatMoney(
+  usdPayment
+  );
+
+
+  document.getElementById(
+  "todayMiscWithdraw"
+  )
+  .innerText =
+  formatMoney(
+  miscWithdraw
+  );
 
 }
 
@@ -4615,19 +7192,21 @@ function filterToday(){
 
   const today =
   getLocalISODate(
-    new Date()
+  new Date()
   );
 
 
   document.getElementById(
-    "fromDateFilter"
-  ).value =
+  "fromDateFilter"
+  )
+  .value =
   today;
 
 
   document.getElementById(
-    "toDateFilter"
-  ).value =
+  "toDateFilter"
+  )
+  .value =
   today;
 
 
@@ -4639,14 +7218,37 @@ function filterToday(){
 function filterUsd(){
 
   document.getElementById(
-    "partnerFilter"
-  ).value =
+  "partnerFilter"
+  )
+  .value =
   "usd_purchase";
 
 
   document.getElementById(
-    "typeFilter"
-  ).value =
+  "typeFilter"
+  )
+  .value =
+  "";
+
+
+  renderHistory();
+
+}
+
+
+function filterMisc(){
+
+  document.getElementById(
+  "partnerFilter"
+  )
+  .value =
+  "misc_commitments";
+
+
+  document.getElementById(
+  "typeFilter"
+  )
+  .value =
   "";
 
 
@@ -4658,28 +7260,38 @@ function filterUsd(){
 function showAllHistory(){
 
   document.getElementById(
-    "partnerFilter"
-  ).value = "";
+  "partnerFilter"
+  )
+  .value =
+  "";
 
 
   document.getElementById(
-    "typeFilter"
-  ).value = "";
+  "typeFilter"
+  )
+  .value =
+  "";
 
 
   document.getElementById(
-    "fromDateFilter"
-  ).value = "";
+  "fromDateFilter"
+  )
+  .value =
+  "";
 
 
   document.getElementById(
-    "toDateFilter"
-  ).value = "";
+  "toDateFilter"
+  )
+  .value =
+  "";
 
 
   document.getElementById(
-    "searchHistory"
-  ).value = "";
+  "searchHistory"
+  )
+  .value =
+  "";
 
 
   renderHistory();
@@ -4691,69 +7303,96 @@ function clearHistoryFilters(){
 
   showAllHistory();
 
+
   showToast(
-    "تم مسح الفلاتر"
+  "تم مسح الفلاتر"
   );
 
 }
 
 
 /* =========================================================
-   DELETE HISTORY
+   DELETE
 ========================================================= */
 
-function deleteHistoryRecord(recordId){
+function deleteHistoryRecord(
+recordId
+){
 
   const record =
   history.find(
-    r =>
-    String(r.id) ===
-    String(recordId)
+  r =>
+  String(
+  r.id
+  )
+  ===
+  String(
+  recordId
+  )
   );
 
 
-  if(!record){
+  if(
+    !record
+  ){
+
     return;
+
   }
 
 
   const info =
-  getTypeInfo(record.type);
+  getTypeInfo(
+  record.type
+  );
 
 
-  let details;
+  let details =
+  "";
 
 
   if(
-    record.type === "usd_purchase" ||
-    record.type === "usd_payment"
+    record.type ===
+    "usd_purchase"
+    ||
+    record.type ===
+    "usd_payment"
   ){
 
     details =
 
-    "\nقيمة الدولار: " +
-
-    formatMoney(record.usdValue) +
-
-    " USD\nسعر الصرف: " +
-
-    formatMoney(record.exchangeRate) +
-
-    "\nالمعادل: " +
-
-    formatMoney(record.iqdEquivalent) +
-
+    "\nقيمة الدولار: "
+    +
+    formatMoney(
+    record.usdValue
+    )
+    +
+    " USD\nسعر الصرف: "
+    +
+    formatMoney(
+    record.exchangeRate
+    )
+    +
+    "\nالمعادل: "
+    +
+    formatMoney(
+    record.iqdEquivalent
+    )
+    +
     " د.ع";
 
   }
+
   else{
 
     details =
 
-    "\nالمبلغ: " +
-
-    formatMoney(record.amount) +
-
+    "\nالمبلغ: "
+    +
+    formatMoney(
+    record.amount
+    )
+    +
     " د.ع";
 
   }
@@ -4762,13 +7401,13 @@ function deleteHistoryRecord(recordId){
   if(
     !confirm(
 
-      "حذف الحركة؟\n\n" +
-
-      info.text +
-
-      details +
-
-      "\n\nسيتم إعادة احتساب جميع الأرصدة."
+    "حذف الحركة؟\n\n"
+    +
+    info.text
+    +
+    details
+    +
+    "\n\nسيتم إعادة احتساب الأرصدة تلقائياً."
 
     )
   ){
@@ -4780,30 +7419,37 @@ function deleteHistoryRecord(recordId){
 
   const newHistory =
   history.filter(
-    r =>
-    String(r.id) !==
-    String(recordId)
+  r =>
+  String(
+  r.id
+  )
+  !==
+  String(
+  recordId
+  )
   );
 
 
-  /*
-  التحقق من أرصدة الشركاء
-  */
-
   if(
-    record.type === "withdraw" ||
-    record.type === "payment"
+    record.type ===
+    "withdraw"
+    ||
+    record.type ===
+    "payment"
   ){
 
     if(
       !isPartnerHistoryValid(
-        newHistory,
-        record.partnerId
+
+      newHistory,
+
+      record.partnerId
+
       )
     ){
 
       alert(
-        "لا يمكن حذف الحركة لأن ذلك سيجعل رصيد الشريك سالباً."
+      "لا يمكن حذف الحركة لأن رصيد الشريك سيصبح سالباً."
       );
 
       return;
@@ -4813,21 +7459,47 @@ function deleteHistoryRecord(recordId){
   }
 
 
-  /*
-  التحقق من حساب الدولار
-  */
-
   if(
-    record.type === "usd_purchase" ||
-    record.type === "usd_payment"
+    record.type ===
+    "usd_purchase"
+    ||
+    record.type ===
+    "usd_payment"
   ){
 
     if(
-      !isUsdHistoryValid(newHistory)
+      !isUsdHistoryValid(
+      newHistory
+      )
     ){
 
       alert(
-        "لا يمكن حذف الحركة لأن ذلك سيجعل رصيد الدولار أو رصيد الدينار الخاص بالدولار سالباً."
+      "لا يمكن حذف هذه الحركة لأن رصيد الدولار سيصبح سالباً."
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  if(
+    record.type ===
+    "misc_withdraw"
+    ||
+    record.type ===
+    "misc_payment"
+  ){
+
+    if(
+      !isMiscHistoryValid(
+      newHistory
+      )
+    ){
+
+      alert(
+      "لا يمكن حذف هذه الحركة لأن رصيد الالتزامات المتفرقة سيصبح سالباً."
       );
 
       return;
@@ -4843,24 +7515,28 @@ function deleteHistoryRecord(recordId){
 
   recomputeBalances();
 
+
   renderAll();
+
 
   buildPartnerFilter();
 
+
   renderHistory();
+
 
   updateTodaySummary();
 
 
   showToast(
-    "🗑 تم حذف الحركة"
+  "🗑 تم حذف الحركة"
   );
 
 }
 
 
 /* =========================================================
-   VALIDATIONS
+   VALIDATE PARTNER
 ========================================================= */
 
 function isPartnerHistoryValid(
@@ -4874,36 +7550,64 @@ partnerId
 
   const records =
   historyArray
+
   .filter(
-    r =>
-    r.partnerId === partnerId
+  r =>
+  r.partnerId ===
+  partnerId
   )
+
   .sort(
-    (a,b) =>
-    Number(a.timestamp || 0) -
-    Number(b.timestamp || 0)
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
   );
 
 
-  for(const record of records){
+  for(
+    const record
+    of
+    records
+  ){
 
-    if(record.type === "withdraw"){
+    if(
+      record.type ===
+      "withdraw"
+    ){
 
       balance +=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(record.type === "payment"){
+    if(
+      record.type ===
+      "payment"
+    ){
 
       balance -=
-      Number(record.amount || 0);
+      Number(
+      record.amount || 0
+      );
 
     }
 
 
-    if(balance < 0){
+    if(
+      balance <
+      0
+    ){
 
       return false;
 
@@ -4917,10 +7621,17 @@ partnerId
 }
 
 
-function isUsdHistoryValid(historyArray){
+/* =========================================================
+   VALIDATE USD
+========================================================= */
+
+function isUsdHistoryValid(
+historyArray
+){
 
   let usd =
   0;
+
 
   let iqd =
   0;
@@ -4928,45 +7639,167 @@ function isUsdHistoryValid(historyArray){
 
   const records =
   historyArray
+
   .filter(
-    r =>
-    r.type === "usd_purchase" ||
-    r.type === "usd_payment"
+  r =>
+  r.type ===
+  "usd_purchase"
+  ||
+  r.type ===
+  "usd_payment"
   )
+
   .sort(
-    (a,b) =>
-    Number(a.timestamp || 0) -
-    Number(b.timestamp || 0)
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
   );
 
 
-  for(const record of records){
+  for(
+    const record
+    of
+    records
+  ){
 
-    if(record.type === "usd_purchase"){
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
 
       usd +=
-      Number(record.usdValue || 0);
+      Number(
+      record.usdValue || 0
+      );
+
 
       iqd +=
-      Number(record.iqdEquivalent || 0);
-
-    }
-
-
-    if(record.type === "usd_payment"){
-
-      usd -=
-      Number(record.usdValue || 0);
-
-      iqd -=
-      Number(record.iqdEquivalent || 0);
+      Number(
+      record.iqdEquivalent || 0
+      );
 
     }
 
 
     if(
-      usd < 0 ||
+      record.type ===
+      "usd_payment"
+    ){
+
+      usd -=
+      Number(
+      record.usdValue || 0
+      );
+
+
+      iqd -=
+      Number(
+      record.iqdEquivalent || 0
+      );
+
+    }
+
+
+    if(
+      usd < 0
+      ||
       iqd < 0
+    ){
+
+      return false;
+
+    }
+
+  }
+
+
+  return true;
+
+}
+
+
+/* =========================================================
+   VALIDATE MISC
+========================================================= */
+
+function isMiscHistoryValid(
+historyArray
+){
+
+  let balance =
+  0;
+
+
+  const records =
+  historyArray
+
+  .filter(
+  r =>
+  r.type ===
+  "misc_withdraw"
+  ||
+  r.type ===
+  "misc_payment"
+  )
+
+  .sort(
+  (
+  a,
+  b
+  ) =>
+  Number(
+  a.timestamp || 0
+  )
+  -
+  Number(
+  b.timestamp || 0
+  )
+  );
+
+
+  for(
+    const record
+    of
+    records
+  ){
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      balance +=
+      Number(
+      record.amount || 0
+      );
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_payment"
+    ){
+
+      balance -=
+      Number(
+      record.amount || 0
+      );
+
+    }
+
+
+    if(
+      balance <
+      0
     ){
 
       return false;
@@ -4991,10 +7824,13 @@ function printFilteredHistory(){
   getFilteredHistory();
 
 
-  if(filtered.length === 0){
+  if(
+    filtered.length ===
+    0
+  ){
 
     showToast(
-      "⚠️ لا توجد حركات للطباعة"
+    "⚠️ لا توجد حركات للطباعة"
     );
 
     return;
@@ -5004,42 +7840,68 @@ function printFilteredHistory(){
 
   const partnerId =
   document.getElementById(
-    "partnerFilter"
-  ).value;
+  "partnerFilter"
+  )
+  .value;
 
 
   const fromDate =
   document.getElementById(
-    "fromDateFilter"
-  ).value;
+  "fromDateFilter"
+  )
+  .value;
 
 
   const toDate =
   document.getElementById(
-    "toDateFilter"
-  ).value;
+  "toDateFilter"
+  )
+  .value;
 
 
   let partnerText =
-  "جميع الشركاء";
+  "جميع الشركاء والجهات";
 
 
-  if(partnerId === "usd_purchase"){
+  if(
+    partnerId ===
+    "usd_purchase"
+  ){
 
     partnerText =
     "شراء دولار";
 
   }
-  else if(partnerId){
 
-    const p =
+  else if(
+    partnerId ===
+    "misc_commitments"
+  ){
+
+    partnerText =
+    "التزامات متفرقة";
+
+  }
+
+  else if(
+    partnerId
+  ){
+
+    const partner =
     partnerDefinitions.find(
-      x => x.id === partnerId
+    p =>
+    p.id ===
+    partnerId
     );
 
 
-    if(p){
-      partnerText = p.name;
+    if(
+      partner
+    ){
+
+      partnerText =
+      partner.name;
+
     }
 
   }
@@ -5050,197 +7912,339 @@ function printFilteredHistory(){
 
 
   if(
-    fromDate &&
+    fromDate
+    &&
     toDate
   ){
 
     periodText =
-    fromDate === toDate
-    ? fromDate
-    : fromDate + " إلى " + toDate;
+    fromDate ===
+    toDate
+    ?
+    fromDate
+    :
+    fromDate
+    +
+    " إلى "
+    +
+    toDate;
 
   }
 
 
   document.getElementById(
-    "printPartner"
-  ).innerText =
+  "printPartner"
+  )
+  .innerText =
   partnerText;
 
 
   document.getElementById(
-    "printPeriod"
-  ).innerText =
+  "printPeriod"
+  )
+  .innerText =
   periodText;
 
 
   document.getElementById(
-    "printDate"
-  ).innerText =
-  new Date().toLocaleString("en-GB");
+  "printDate"
+  )
+  .innerText =
+  new Date()
+  .toLocaleString(
+  "en-GB"
+  );
 
 
-  let debt = 0;
-  let payment = 0;
-  let usdBuy = 0;
-  let usdPayment = 0;
+  let debt =
+  0;
+
+
+  let payment =
+  0;
+
+
+  let usdBuy =
+  0;
+
+
+  let usdPayment =
+  0;
+
+
+  let miscWithdraw =
+  0;
 
 
   filtered.forEach(
-  function(r){
+  function(record){
 
-    if(r.type === "withdraw"){
-      debt += Number(r.amount || 0);
+    if(
+      record.type ===
+      "withdraw"
+    ){
+
+      debt +=
+      Number(
+      record.amount || 0
+      );
+
     }
 
-    if(r.type === "payment"){
-      payment += Number(r.amount || 0);
+
+    if(
+      record.type ===
+      "payment"
+    ){
+
+      payment +=
+      Number(
+      record.amount || 0
+      );
+
     }
 
-    if(r.type === "usd_purchase"){
-      usdBuy += Number(r.iqdEquivalent || 0);
+
+    if(
+      record.type ===
+      "usd_purchase"
+    ){
+
+      usdBuy +=
+      Number(
+      record.iqdEquivalent || 0
+      );
+
     }
 
-    if(r.type === "usd_payment"){
-      usdPayment += Number(r.iqdEquivalent || 0);
+
+    if(
+      record.type ===
+      "usd_payment"
+    ){
+
+      usdPayment +=
+      Number(
+      record.iqdEquivalent || 0
+      );
+
+    }
+
+
+    if(
+      record.type ===
+      "misc_withdraw"
+    ){
+
+      miscWithdraw +=
+      Number(
+      record.amount || 0
+      );
+
     }
 
   });
 
 
   document.getElementById(
-    "printCount"
-  ).innerText =
+  "printCount"
+  )
+  .innerText =
   filtered.length;
 
 
   document.getElementById(
-    "printDebt"
-  ).innerText =
-  formatMoney(debt);
+  "printDebt"
+  )
+  .innerText =
+  formatMoney(
+  debt
+  );
 
 
   document.getElementById(
-    "printPayment"
-  ).innerText =
-  formatMoney(payment);
+  "printPayment"
+  )
+  .innerText =
+  formatMoney(
+  payment
+  );
 
 
   document.getElementById(
-    "printUsdBuy"
-  ).innerText =
-  formatMoney(usdBuy);
+  "printUsdBuy"
+  )
+  .innerText =
+  formatMoney(
+  usdBuy
+  );
 
 
   document.getElementById(
-    "printUsdPayment"
-  ).innerText =
-  formatMoney(usdPayment);
+  "printUsdPayment"
+  )
+  .innerText =
+  formatMoney(
+  usdPayment
+  );
+
+
+  document.getElementById(
+  "printMiscWithdraw"
+  )
+  .innerText =
+  formatMoney(
+  miscWithdraw
+  );
 
 
   const tbody =
   document.getElementById(
-    "printTableBody"
+  "printTableBody"
   );
 
 
-  tbody.innerHTML = "";
+  tbody.innerHTML =
+  "";
 
 
   filtered.forEach(
-  function(record,index){
+  function(
+  record,
+  index
+  ){
 
     const info =
-    getTypeInfo(record.type);
+    getTypeInfo(
+    record.type
+    );
 
 
     const isUsd =
-    record.type === "usd_purchase" ||
-    record.type === "usd_payment";
+    record.type ===
+    "usd_purchase"
+    ||
+    record.type ===
+    "usd_payment";
 
 
-    let balance =
-    "-";
+    const row =
+    document.createElement(
+    "tr"
+    );
 
 
-    if(isUsd){
+    row.innerHTML = `
 
-      balance =
+    <td>
+      ${index + 1}
+    </td>
+
+
+    <td>
+      ${escapeHtml(
+      record.partnerName
+      )}
+    </td>
+
+
+    <td>
+      ${info.text}
+    </td>
+
+
+    <td>
+      ${
+      isUsd
+      ?
+      "-"
+      :
       formatMoney(
-        record.usdIqdBalanceAfter ??
-        record.balance ??
-        0
-      );
+      record.amount
+      )
+      }
+    </td>
 
-    }
-    else{
 
-      balance =
+    <td>
+      ${
+      isUsd
+      ?
       formatMoney(
-        record.balance || 0
-      );
-
-    }
-
-
-    const tr =
-    document.createElement("tr");
+      record.usdValue
+      )
+      :
+      "-"
+      }
+    </td>
 
 
-    tr.innerHTML = `
+    <td>
+      ${
+      isUsd
+      ?
+      formatMoney(
+      record.exchangeRate
+      )
+      :
+      "-"
+      }
+    </td>
 
-      <td>${index + 1}</td>
 
-      <td>${record.partnerName}</td>
+    <td>
+      ${
+      isUsd
+      ?
+      formatMoney(
+      record.iqdEquivalent
+      )
+      :
+      "-"
+      }
+    </td>
 
-      <td>${info.text}</td>
 
-      <td>
-        ${
-          isUsd
-          ? "-"
-          : formatMoney(record.amount)
-        }
-      </td>
+    <td>
+      ${escapeHtml(
+      record.person
+      )}
+    </td>
 
-      <td>
-        ${
-          isUsd
-          ? formatMoney(record.usdValue)
-          : "-"
-        }
-      </td>
 
-      <td>
-        ${
-          isUsd
-          ? formatMoney(record.exchangeRate)
-          : "-"
-        }
-      </td>
+    <td>
+      ${escapeHtml(
+      record.note || "-"
+      )}
+    </td>
 
-      <td>
-        ${
-          isUsd
-          ? formatMoney(record.iqdEquivalent)
-          : "-"
-        }
-      </td>
 
-      <td>${record.person}</td>
+    <td>
+      ${escapeHtml(
+      record.date
+      )}
+    </td>
 
-      <td>${record.note || "-"}</td>
 
-      <td>${record.date}</td>
+    <td>
+      ${escapeHtml(
+      record.time
+      )}
+    </td>
 
-      <td>${record.time}</td>
 
-      <td>${balance}</td>
+    <td>
+      ${formatMoney(
+      record.balance || 0
+      )}
+    </td>
 
     `;
 
 
-    tbody.appendChild(tr);
+    tbody.appendChild(
+    row
+    );
 
   });
 
@@ -5262,10 +8266,10 @@ function exportExcel(){
 
   const balancesData = [
 
-    [
-      "الجهة",
-      "الرصيد الحالي د.ع"
-    ]
+  [
+    "الجهة",
+    "الرصيد الحالي د.ع"
+  ]
 
   ];
 
@@ -5275,62 +8279,89 @@ function exportExcel(){
 
     balancesData.push([
 
-      def.name,
+    def.name,
 
-      partners[def.id].debt
+    partners[
+    def.id
+    ].debt
 
     ]);
 
   });
 
 
-  const usdBalances =
+  const usd =
   getUsdBalances();
+
+
+  const misc =
+  getMiscBalance();
+
+
+  const partnerTotal =
+  partnerDefinitions.reduce(
+  (
+  sum,
+  def
+  ) =>
+  sum
+  +
+  Number(
+  partners[
+  def.id
+  ].debt || 0
+  ),
+  0
+  );
 
 
   balancesData.push([
 
-    "شراء دولار",
+  "شراء دولار",
 
-    usdBalances.iqd
+  usd.iqd
 
   ]);
 
 
   balancesData.push([
 
-    "مجموع التزامات الشركة",
+  "التزامات متفرقة",
 
-    partnerDefinitions.reduce(
-      (sum,def) =>
-      sum +
-      Number(
-        partners[def.id].debt || 0
-      ),
-      0
-    )
-    +
-    usdBalances.iqd
+  misc
+
+  ]);
+
+
+  balancesData.push([
+
+  "مجموع التزامات الشركة",
+
+  partnerTotal
+  +
+  usd.iqd
+  +
+  misc
 
   ]);
 
 
   const historyData = [
 
-    [
-      "المجموعة",
-      "الشريك / الجهة",
-      "نوع الحركة",
-      "مبلغ الشريك د.ع",
-      "قيمة الدولار USD",
-      "سعر الصرف",
-      "المعادل بالعراقي",
-      "بيد / بواسطة",
-      "بيان / رأي",
-      "التاريخ",
-      "الوقت",
-      "الرصيد بعد الحركة"
-    ]
+  [
+    "المجموعة",
+    "الشريك / الجهة",
+    "نوع الحركة",
+    "المبلغ د.ع",
+    "قيمة الدولار USD",
+    "سعر الصرف",
+    "المعادل بالعراقي",
+    "بيد / بواسطة",
+    "بيان / رأي",
+    "التاريخ",
+    "الوقت",
+    "الرصيد بعد الحركة"
+  ]
 
   ];
 
@@ -5339,45 +8370,62 @@ function exportExcel(){
   function(record){
 
     const info =
-    getTypeInfo(record.type);
+    getTypeInfo(
+    record.type
+    );
 
 
     const isUsd =
-    record.type === "usd_purchase" ||
-    record.type === "usd_payment";
+    record.type ===
+    "usd_purchase"
+    ||
+    record.type ===
+    "usd_payment";
 
 
     historyData.push([
 
-      record.group,
+    record.group,
 
-      record.partnerName,
+    record.partnerName,
 
-      info.text,
+    info.text,
 
-      isUsd ? "" : record.amount,
+    isUsd
+    ?
+    ""
+    :
+    record.amount,
 
-      isUsd ? record.usdValue : "",
+    isUsd
+    ?
+    record.usdValue
+    :
+    "",
 
-      isUsd ? record.exchangeRate : "",
+    isUsd
+    ?
+    record.exchangeRate
+    :
+    "",
 
-      isUsd ? record.iqdEquivalent : "",
+    isUsd
+    ?
+    record.iqdEquivalent
+    :
+    "",
 
-      record.person,
+    record.person,
 
-      record.note || "-",
+    record.note
+    ||
+    "-",
 
-      record.date,
+    record.date,
 
-      record.time,
+    record.time,
 
-      isUsd
-      ? (
-          record.usdIqdBalanceAfter ??
-          record.balance ??
-          0
-        )
-      : record.balance
+    record.balance
 
     ]);
 
@@ -5390,43 +8438,55 @@ function exportExcel(){
 
   const balancesSheet =
   XLSX.utils.aoa_to_sheet(
-    balancesData
+  balancesData
   );
 
 
   const historySheet =
   XLSX.utils.aoa_to_sheet(
-    historyData
+  historyData
   );
 
 
   XLSX.utils.book_append_sheet(
-    workbook,
-    balancesSheet,
-    "الأرصدة الحالية"
+
+  workbook,
+
+  balancesSheet,
+
+  "الأرصدة الحالية"
+
   );
 
 
   XLSX.utils.book_append_sheet(
-    workbook,
-    historySheet,
-    "سجل الحركات"
+
+  workbook,
+
+  historySheet,
+
+  "سجل الحركات"
+
   );
 
 
   XLSX.writeFile(
 
-    workbook,
+  workbook,
 
-    "التزامات_مالية_" +
-    getLocalISODate(new Date()) +
-    ".xlsx"
+  "التزامات_مالية_"
+  +
+  getLocalISODate(
+  new Date()
+  )
+  +
+  ".xlsx"
 
   );
 
 
   showToast(
-    "📊 تم إنشاء ملف Excel"
+  "📊 تم إنشاء ملف Excel"
   );
 
 }
@@ -5444,10 +8504,11 @@ function downloadBackup(){
     "Anhar Alhayat Financial Commitments",
 
     version:
-    "FINAL-USD-PAYMENT-2",
+    "FINAL-USD-MISC-3",
 
     exportedAt:
-    new Date().toISOString(),
+    new Date()
+    .toISOString(),
 
     partners:
     partners,
@@ -5460,26 +8521,30 @@ function downloadBackup(){
 
   const blob =
   new Blob(
-    [
-      JSON.stringify(
-        backupData,
-        null,
-        2
-      )
-    ],
-    {
-      type:
-      "application/json;charset=utf-8"
-    }
+  [
+    JSON.stringify(
+    backupData,
+    null,
+    2
+    )
+  ],
+  {
+    type:
+    "application/json;charset=utf-8"
+  }
   );
 
 
   const url =
-  URL.createObjectURL(blob);
+  URL.createObjectURL(
+  blob
+  );
 
 
   const link =
-  document.createElement("a");
+  document.createElement(
+  "a"
+  );
 
 
   link.href =
@@ -5488,24 +8553,33 @@ function downloadBackup(){
 
   link.download =
 
-  "backup_financial_commitments_" +
-
-  getLocalISODate(new Date()) +
-
+  "backup_financial_commitments_"
+  +
+  getLocalISODate(
+  new Date()
+  )
+  +
   ".json";
 
 
-  document.body.appendChild(link);
+  document.body.appendChild(
+  link
+  );
+
 
   link.click();
 
+
   link.remove();
 
-  URL.revokeObjectURL(url);
+
+  URL.revokeObjectURL(
+  url
+  );
 
 
   showToast(
-    "💾 تم إنشاء النسخة الاحتياطية"
+  "💾 تم إنشاء النسخة الاحتياطية"
   );
 
 }
@@ -5518,8 +8592,9 @@ function downloadBackup(){
 function openRestore(){
 
   document.getElementById(
-    "backupInput"
-  ).click();
+  "backupInput"
+  )
+  .click();
 
 }
 
@@ -5527,14 +8602,21 @@ function openRestore(){
 function restoreBackup(event){
 
   const file =
-  event.target.files[0];
+  event.target.files[
+  0
+  ];
 
 
-  event.target.value = "";
+  event.target.value =
+  "";
 
 
-  if(!file){
+  if(
+    !file
+  ){
+
     return;
+
   }
 
 
@@ -5547,16 +8629,18 @@ function restoreBackup(event){
 
     try{
 
+
       const backup =
       JSON.parse(
-        e.target.result
+      e.target.result
       );
 
 
       if(
-        !backup ||
+        !backup
+        ||
         !Array.isArray(
-          backup.history
+        backup.history
         )
       ){
 
@@ -5567,7 +8651,9 @@ function restoreBackup(event){
 
       if(
         !confirm(
-          "سيتم استبدال البيانات الحالية بالنسخة الاحتياطية.\n\nهل أنت متأكد؟"
+
+        "سيتم استبدال البيانات الحالية بالنسخة الاحتياطية.\n\nهل أنت متأكد؟"
+
         )
       ){
 
@@ -5586,19 +8672,22 @@ function restoreBackup(event){
         record.note =
         record.note || "-";
 
+
         record.usdValue =
         Number(
-          record.usdValue || 0
+        record.usdValue || 0
         );
+
 
         record.exchangeRate =
         Number(
-          record.exchangeRate || 0
+        record.exchangeRate || 0
         );
+
 
         record.iqdEquivalent =
         Number(
-          record.iqdEquivalent || 0
+        record.iqdEquivalent || 0
         );
 
       });
@@ -5606,24 +8695,30 @@ function restoreBackup(event){
 
       recomputeBalances();
 
+
       renderAll();
+
 
       buildPartnerFilter();
 
+
       renderHistory();
+
 
       updateTodaySummary();
 
 
       showToast(
-        "♻️ تم استعادة النسخة الاحتياطية"
+      "♻️ تم استعادة النسخة الاحتياطية"
       );
 
+
     }
+
     catch(error){
 
       alert(
-        "ملف النسخة الاحتياطية غير صحيح أو تالف."
+      "ملف النسخة الاحتياطية غير صحيح أو تالف."
       );
 
     }
@@ -5631,7 +8726,9 @@ function restoreBackup(event){
   };
 
 
-  reader.readAsText(file);
+  reader.readAsText(
+  file
+  );
 
 }
 
@@ -5644,7 +8741,7 @@ function showToast(message){
 
   const toast =
   document.getElementById(
-    "toast"
+  "toast"
   );
 
 
@@ -5653,7 +8750,7 @@ function showToast(message){
 
 
   toast.classList.add(
-    "show"
+  "show"
   );
 
 
@@ -5661,7 +8758,7 @@ function showToast(message){
   function(){
 
     toast.classList.remove(
-      "show"
+    "show"
     );
 
   },2500);
@@ -5671,4 +8768,5 @@ function showToast(message){
 </script>
 
 </body>
+
 </html>
