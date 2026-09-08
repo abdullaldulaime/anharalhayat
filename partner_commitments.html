@@ -72,11 +72,9 @@ body{
   max-width:480px;
 
   background:white;
-
   padding:45px 36px;
 
   border-radius:34px;
-
   text-align:center;
 
   box-shadow:
@@ -86,7 +84,6 @@ body{
 }
 
 @keyframes loginIn{
-
   from{
     opacity:0;
     transform:translateY(30px) scale(.96);
@@ -96,7 +93,6 @@ body{
     opacity:1;
     transform:none;
   }
-
 }
 
 .login-logo{
@@ -135,13 +131,11 @@ body{
   letter-spacing:12px;
 
   outline:none;
-
   background:#f8fbff;
 }
 
 .pin-input:focus{
   border-color:#2563eb;
-
   box-shadow:
   0 0 0 6px rgba(37,99,235,.10);
 }
@@ -191,7 +185,6 @@ body{
 }
 
 @keyframes pageIn{
-
   from{
     opacity:0;
     transform:translateY(20px);
@@ -201,7 +194,6 @@ body{
     opacity:1;
     transform:none;
   }
-
 }
 
 .wrapper{
@@ -217,7 +209,6 @@ body{
 
 .top-header{
   background:white;
-
   border:1px solid #dbeafe;
   border-radius:32px;
 
@@ -487,7 +478,6 @@ body{
 }
 
 @keyframes cardIn{
-
   from{
     opacity:0;
     transform:translateY(18px);
@@ -497,7 +487,6 @@ body{
     opacity:1;
     transform:none;
   }
-
 }
 
 .partner-card:hover{
@@ -574,7 +563,6 @@ body{
 }
 
 @keyframes numberPulse{
-
   0%{
     transform:scale(1);
   }
@@ -586,7 +574,6 @@ body{
   100%{
     transform:scale(1);
   }
-
 }
 
 .currency{
@@ -664,7 +651,8 @@ body{
 }
 
 .money-row label,
-.person-row label{
+.person-row label,
+.note-row label{
   display:block;
 
   margin:0 4px 9px;
@@ -675,14 +663,12 @@ body{
   font-weight:900;
 }
 
-.operation-fields input{
+.operation-fields input,
+.operation-fields textarea{
   width:100%;
-  height:68px;
 
   border:3px solid #b9c9df;
   border-radius:15px;
-
-  padding:0 15px;
 
   background:white;
 
@@ -698,18 +684,48 @@ body{
   transition:.2s;
 }
 
-.operation-fields input::placeholder{
+.operation-fields input{
+  height:68px;
+  padding:0 15px;
+}
+
+.operation-fields textarea{
+  min-height:100px;
+  padding:14px 15px;
+
+  resize:vertical;
+
+  line-height:1.7;
+}
+
+.operation-fields input::placeholder,
+.operation-fields textarea::placeholder{
   color:#64748b;
   font-size:19px;
   font-weight:900;
   opacity:1;
 }
 
-.operation-fields input:focus{
+.operation-fields input:focus,
+.operation-fields textarea:focus{
   border-color:#2563eb;
 
   box-shadow:
   0 0 0 5px rgba(37,99,235,.09);
+}
+
+.withdraw-operation textarea:focus{
+  border-color:#eab308;
+
+  box-shadow:
+  0 0 0 5px rgba(234,179,8,.13);
+}
+
+.payment-operation textarea:focus{
+  border-color:#16a34a;
+
+  box-shadow:
+  0 0 0 5px rgba(22,163,74,.12);
 }
 
 .money-input{
@@ -735,6 +751,31 @@ body{
 
 .person-row{
   min-width:0;
+}
+
+.note-row{
+  width:100%;
+  margin-top:15px;
+}
+
+.note-box{
+  font-size:21px !important;
+}
+
+.withdraw-operation .note-row{
+  background:rgba(254,243,199,.35);
+
+  padding:12px;
+
+  border-radius:17px;
+}
+
+.payment-operation .note-row{
+  background:rgba(220,252,231,.45);
+
+  padding:12px;
+
+  border-radius:17px;
 }
 
 .arrow-action{
@@ -1193,7 +1234,7 @@ body{
 .history-table{
   width:100%;
 
-  min-width:1350px;
+  min-width:1550px;
 
   border-collapse:collapse;
 }
@@ -1257,6 +1298,17 @@ body{
   color:#1d4ed8 !important;
 
   font-size:21px !important;
+}
+
+.history-note{
+  min-width:240px;
+  max-width:360px;
+
+  line-height:1.7;
+
+  white-space:normal;
+
+  color:#334155 !important;
 }
 
 .badge-withdraw{
@@ -1504,23 +1556,25 @@ body{
 
   color:white;
 
-  padding:9px;
+  padding:8px;
 
   border:1px solid #cbd5e1;
 
-  font-size:12px;
+  font-size:11px;
 }
 
 .print-table td{
-  padding:8px;
+  padding:7px;
 
   border:1px solid #cbd5e1;
 
   text-align:center;
 
-  font-size:11px;
+  font-size:10px;
 
   font-weight:900;
+
+  line-height:1.5;
 }
 
 .print-footer{
@@ -1833,9 +1887,7 @@ onchange="restoreBackup(event)"
 
 
 
-<!-- =========================================================
-     RAHIM
-========================================================= -->
+<!-- RAHIM -->
 
 <div class="group-section">
 
@@ -1868,9 +1920,7 @@ onchange="restoreBackup(event)"
 
 
 
-<!-- =========================================================
-     COMPANIES
-========================================================= -->
+<!-- COMPANIES -->
 
 <div class="group-section">
 
@@ -1903,9 +1953,7 @@ onchange="restoreBackup(event)"
 
 
 
-<!-- =========================================================
-     TUAMA
-========================================================= -->
+<!-- TUAMA -->
 
 <div class="group-section">
 
@@ -1938,9 +1986,7 @@ onchange="restoreBackup(event)"
 
 
 
-<!-- =========================================================
-     HISTORY
-========================================================= -->
+<!-- HISTORY -->
 
 <div class="history-section">
 
@@ -1953,7 +1999,7 @@ onchange="restoreBackup(event)"
       </h2>
 
       <p>
-        سجل كامل للسحب والتسديد بالتاريخ والوقت والشخص المستلم
+        سجل كامل للدين والتسديد والبيان بالتاريخ والوقت
       </p>
 
     </div>
@@ -1961,8 +2007,6 @@ onchange="restoreBackup(event)"
   </div>
 
 
-
-  <!-- TODAY SUMMARY -->
 
   <div class="today-summary">
 
@@ -2007,8 +2051,6 @@ onchange="restoreBackup(event)"
   </div>
 
 
-
-  <!-- FILTER PANEL -->
 
   <div class="filter-panel">
 
@@ -2135,7 +2177,7 @@ onchange="restoreBackup(event)"
         <input
         type="text"
         id="searchHistory"
-        placeholder="اسم الشريك أو المستلم"
+        placeholder="الشريك أو المستلم أو البيان"
         oninput="renderHistory()"
         >
 
@@ -2169,8 +2211,6 @@ onchange="restoreBackup(event)"
   </div>
 
 
-
-  <!-- FILTERED TOTALS -->
 
   <div class="filtered-summary">
 
@@ -2216,8 +2256,6 @@ onchange="restoreBackup(event)"
 
 
 
-  <!-- TABLE -->
-
   <div class="history-table-wrap">
 
     <table class="history-table">
@@ -2245,6 +2283,10 @@ onchange="restoreBackup(event)"
           </th>
 
           <th>
+            بيان / رأي
+          </th>
+
+          <th>
             التاريخ
           </th>
 
@@ -2265,9 +2307,7 @@ onchange="restoreBackup(event)"
       </thead>
 
 
-      <tbody
-      id="historyTable"
-      ></tbody>
+      <tbody id="historyTable"></tbody>
 
     </table>
 
@@ -2288,9 +2328,7 @@ id="toast"
 
 
 
-<!-- =========================================================
-     PRINTABLE REPORT
-========================================================= -->
+<!-- PRINT -->
 
 <div
 class="print-report"
@@ -2335,34 +2373,24 @@ id="printReport"
   <div class="print-meta">
 
     <div>
-
       نطاق التقرير:
-
       <strong id="printPartner">
         جميع الشركاء
       </strong>
-
     </div>
 
 
     <div>
-
       الفترة:
-
       <strong id="printPeriod">
         جميع التواريخ
       </strong>
-
     </div>
 
 
     <div>
-
       تاريخ الطباعة:
-
-      <strong id="printDate">
-      </strong>
-
+      <strong id="printDate"></strong>
     </div>
 
   </div>
@@ -2371,35 +2399,26 @@ id="printReport"
   <div class="print-summary">
 
     <div>
-
       عدد الحركات
-
       <strong id="printCount">
         0
       </strong>
-
     </div>
 
 
     <div>
-
       إجمالي زيادة الدين
-
       <strong id="printWithdraw">
         0
       </strong>
-
     </div>
 
 
     <div>
-
       إجمالي التسديد
-
       <strong id="printPayment">
         0
       </strong>
-
     </div>
 
   </div>
@@ -2412,42 +2431,21 @@ id="printReport"
       <tr>
 
         <th>#</th>
-
-        <th>
-          الشريك / الجهة
-        </th>
-
-        <th>
-          الحركة
-        </th>
-
-        <th>
-          المبلغ
-        </th>
-
-        <th>
-          بيد / بواسطة
-        </th>
-
-        <th>
-          التاريخ
-        </th>
-
-        <th>
-          الوقت
-        </th>
-
-        <th>
-          الرصيد
-        </th>
+        <th>الشريك / الجهة</th>
+        <th>الحركة</th>
+        <th>المبلغ</th>
+        <th>بيد / بواسطة</th>
+        <th>بيان / رأي</th>
+        <th>التاريخ</th>
+        <th>الوقت</th>
+        <th>الرصيد</th>
 
       </tr>
 
     </thead>
 
 
-    <tbody id="printTableBody">
-    </tbody>
+    <tbody id="printTableBody"></tbody>
 
   </table>
 
@@ -2555,12 +2553,8 @@ pinInput.addEventListener(
 "keydown",
 function(event){
 
-  if(
-    event.key === "Enter"
-  ){
-
+  if(event.key === "Enter"){
     checkPin();
-
   }
 
 });
@@ -2755,9 +2749,7 @@ icon:"👤"
 
 
 /* =========================================================
-   STORAGE - FINAL PRODUCTION KEYS
-
-   لا تغير أسماء المفاتيح بعد بدء الاستخدام الحقيقي
+   STORAGE
 ========================================================= */
 
 const PARTNERS_KEY =
@@ -2779,7 +2771,6 @@ let history = [];
 function loadData(){
 
   let savedPartners = {};
-
   let savedHistory = [];
 
 
@@ -2817,26 +2808,18 @@ function loadData(){
   }
 
 
-  /*
-  أول تشغيل:
-  جميع الأرصدة تبدأ من صفر
-  */
-
   partnerDefinitions.forEach(
   function(def){
 
     partners[def.id] = {
 
       name:def.name,
-
       debt:0
 
     };
 
 
-    if(
-      savedPartners[def.id]
-    ){
+    if(savedPartners[def.id]){
 
       partners[def.id] =
       savedPartners[def.id];
@@ -2852,16 +2835,23 @@ function loadData(){
   : [];
 
 
-  /*
-  الأرصدة يتم احتسابها
-  من سجل الحركات نفسه
-  */
+  history.forEach(function(record){
+
+    if(
+      typeof record.note === "undefined"
+    ){
+
+      record.note = "-";
+
+    }
+
+  });
+
 
   recomputeBalances();
 
 
   savePartners();
-
   saveHistory();
 
   renderAll();
@@ -3037,8 +3027,6 @@ function createPartnerCard(def){
   <div class="operations">
 
 
-    <!-- زيادة الدين -->
-
     <div
     class="operation
     withdraw-operation"
@@ -3112,13 +3100,28 @@ function createPartnerCard(def){
 
         </div>
 
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+
+          <textarea
+          id="withdraw-note-${def.id}"
+          class="note-box"
+          placeholder="اكتب بيان أو تفاصيل هذه الحركة"
+          ></textarea>
+
+        </div>
+
       </div>
 
     </div>
 
 
-
-    <!-- التسديد -->
 
     <div
     class="operation
@@ -3193,6 +3196,23 @@ function createPartnerCard(def){
 
         </div>
 
+
+
+        <div class="note-row">
+
+          <label>
+            📝 بيان / رأي
+          </label>
+
+
+          <textarea
+          id="payment-note-${def.id}"
+          class="note-box"
+          placeholder="اكتب بيان أو تفاصيل عملية التسديد"
+          ></textarea>
+
+        </div>
+
       </div>
 
     </div>
@@ -3255,10 +3275,7 @@ function renderAll(){
     "ms";
 
 
-    if(
-      def.group ===
-      "rahim"
-    ){
+    if(def.group === "rahim"){
 
       rahimGrid.appendChild(
         card
@@ -3267,10 +3284,7 @@ function renderAll(){
     }
 
 
-    if(
-      def.group ===
-      "companies"
-    ){
+    if(def.group === "companies"){
 
       companiesGrid.appendChild(
         card
@@ -3279,10 +3293,7 @@ function renderAll(){
     }
 
 
-    if(
-      def.group ===
-      "tuama"
-    ){
+    if(def.group === "tuama"){
 
       tuamaGrid.appendChild(
         card
@@ -3316,6 +3327,12 @@ function addWithdrawal(id){
   );
 
 
+  const noteInput =
+  document.getElementById(
+    "withdraw-note-" + id
+  );
+
+
   const amount =
   parseMoney(
     amountInput.value
@@ -3326,9 +3343,11 @@ function addWithdrawal(id){
   personInput.value.trim();
 
 
-  if(
-    amount <= 0
-  ){
+  const note =
+  noteInput.value.trim();
+
+
+  if(amount <= 0){
 
     showToast(
       "⚠️ أدخل مبلغ صحيح"
@@ -3341,9 +3360,7 @@ function addWithdrawal(id){
   }
 
 
-  if(
-    !person
-  ){
+  if(!person){
 
     showToast(
       "⚠️ أدخل اسم الشخص المستلم"
@@ -3382,7 +3399,11 @@ function addWithdrawal(id){
 
       " د.ع\nبيد: " +
 
-      person
+      person +
+
+      "\nالبيان: " +
+
+      (note || "-")
 
     )
   ){
@@ -3406,6 +3427,8 @@ function addWithdrawal(id){
 
     person,
 
+    note,
+
     newBalance
 
   );
@@ -3423,6 +3446,8 @@ function addWithdrawal(id){
   amountInput.value = "";
 
   personInput.value = "";
+
+  noteInput.value = "";
 
 
   updateSummary();
@@ -3457,6 +3482,12 @@ function addPayment(id){
   );
 
 
+  const noteInput =
+  document.getElementById(
+    "payment-note-" + id
+  );
+
+
   const amount =
   parseMoney(
     amountInput.value
@@ -3467,9 +3498,11 @@ function addPayment(id){
   personInput.value.trim();
 
 
-  if(
-    amount <= 0
-  ){
+  const note =
+  noteInput.value.trim();
+
+
+  if(amount <= 0){
 
     showToast(
       "⚠️ أدخل مبلغ تسديد صحيح"
@@ -3482,9 +3515,7 @@ function addPayment(id){
   }
 
 
-  if(
-    !person
-  ){
+  if(!person){
 
     showToast(
       "⚠️ أدخل اسم الشخص"
@@ -3537,7 +3568,11 @@ function addPayment(id){
 
       " د.ع\nبواسطة: " +
 
-      person
+      person +
+
+      "\nالبيان: " +
+
+      (note || "-")
 
     )
   ){
@@ -3561,6 +3596,8 @@ function addPayment(id){
 
     person,
 
+    note,
+
     newBalance
 
   );
@@ -3578,6 +3615,8 @@ function addPayment(id){
   amountInput.value = "";
 
   personInput.value = "";
+
+  noteInput.value = "";
 
 
   updateSummary();
@@ -3644,6 +3683,7 @@ id,
 type,
 amount,
 person,
+note,
 balance
 ){
 
@@ -3691,6 +3731,9 @@ balance
 
     person:
     person,
+
+    note:
+    note || "-",
 
     date:
     now.toLocaleDateString(
@@ -3766,18 +3809,14 @@ function getRecordISODate(
 record
 ){
 
-  if(
-    record.isoDate
-  ){
+  if(record.isoDate){
 
     return record.isoDate;
 
   }
 
 
-  if(
-    record.date
-  ){
+  if(record.date){
 
     const parts =
     String(
@@ -3788,9 +3827,7 @@ record
     );
 
 
-    if(
-      parts.length === 3
-    ){
+    if(parts.length === 3){
 
       return (
         parts[2] +
@@ -3962,6 +3999,10 @@ function getFilteredHistory(){
 
         " " +
 
+        (record.note || "") +
+
+        " " +
+
         (record.group || "")
 
       ).toLowerCase();
@@ -4091,7 +4132,7 @@ function renderHistory(){
     row.innerHTML = `
 
       <td
-      colspan="9"
+      colspan="10"
       class="empty-history"
       >
 
@@ -4125,9 +4166,7 @@ function renderHistory(){
     );
 
 
-    if(
-      index === 0
-    ){
+    if(index === 0){
 
       row.classList.add(
         "latest-row"
@@ -4204,6 +4243,11 @@ function renderHistory(){
 
       <td>
         ${personText}
+      </td>
+
+
+      <td class="history-note">
+        ${record.note || "-"}
       </td>
 
 
@@ -4592,9 +4636,11 @@ recordId
     record.amount
   ) +
 
-  " د.ع\n\n" +
+  " د.ع\nالبيان: " +
 
-  "سيتم إعادة احتساب رصيد الشخص تلقائياً.";
+  (record.note || "-") +
+
+  "\n\nسيتم إعادة احتساب رصيد الشخص تلقائياً.";
 
 
   if(
@@ -4607,11 +4653,6 @@ recordId
 
   }
 
-
-  /*
-  نحاكي الحساب بعد الحذف
-  للتأكد أنه لن يصبح سالباً
-  */
 
   const simulatedHistory =
   history.filter(
@@ -4781,7 +4822,7 @@ function updateSummary(){
 
 
 /* =========================================================
-   PRINT CURRENT FILTER
+   PRINT
 ========================================================= */
 
 function printFilteredHistory(){
@@ -4831,9 +4872,7 @@ function printFilteredHistory(){
   "جميع الشركاء";
 
 
-  if(
-    partnerId
-  ){
+  if(partnerId){
 
     const partner =
     partnerDefinitions.find(
@@ -4917,9 +4956,7 @@ function printFilteredHistory(){
   }
 
 
-  if(
-    partnerId
-  ){
+  if(partnerId){
 
     reportTitle +=
     " - " +
@@ -5071,37 +5108,23 @@ function printFilteredHistory(){
 
     row.innerHTML = `
 
-      <td>
-        ${index + 1}
-      </td>
+      <td>${index + 1}</td>
 
-      <td>
-        ${record.partnerName}
-      </td>
+      <td>${record.partnerName}</td>
 
-      <td>
-        ${typeText}
-      </td>
+      <td>${typeText}</td>
 
-      <td>
-        ${formatMoney(record.amount)}
-      </td>
+      <td>${formatMoney(record.amount)}</td>
 
-      <td>
-        ${personText}
-      </td>
+      <td>${personText}</td>
 
-      <td>
-        ${record.date}
-      </td>
+      <td>${record.note || "-"}</td>
 
-      <td>
-        ${record.time}
-      </td>
+      <td>${record.date}</td>
 
-      <td>
-        ${formatMoney(record.balance)}
-      </td>
+      <td>${record.time}</td>
+
+      <td>${formatMoney(record.balance)}</td>
 
     `;
 
@@ -5161,7 +5184,7 @@ value
 
 
 /* =========================================================
-   EXCEL - CURRENT FILTER
+   EXCEL
 ========================================================= */
 
 function exportExcel(){
@@ -5207,6 +5230,7 @@ function exportExcel(){
       "نوع الحركة",
       "المبلغ",
       "بيد / بواسطة",
+      "بيان / رأي",
       "التاريخ",
       "الوقت",
       "الرصيد بعد الحركة"
@@ -5232,6 +5256,8 @@ function exportExcel(){
       record.amount,
 
       record.person,
+
+      record.note || "-",
 
       record.date,
 
@@ -5263,9 +5289,7 @@ function exportExcel(){
   balancesSheet["!cols"] = [
 
     {wch:28},
-
     {wch:34},
-
     {wch:22}
 
   ];
@@ -5274,19 +5298,13 @@ function exportExcel(){
   historySheet["!cols"] = [
 
     {wch:28},
-
     {wch:34},
-
     {wch:18},
-
     {wch:20},
-
     {wch:28},
-
+    {wch:38},
     {wch:16},
-
     {wch:16},
-
     {wch:23}
 
   ];
@@ -5337,7 +5355,7 @@ function exportExcel(){
 
 
 /* =========================================================
-   BACKUP DOWNLOAD
+   BACKUP
 ========================================================= */
 
 function downloadBackup(){
@@ -5348,7 +5366,7 @@ function downloadBackup(){
     "Anhar Alhayat Partner Commitments",
 
     version:
-    "FINAL-1",
+    "FINAL-2-NOTE",
 
     exportedAt:
     new Date()
@@ -5432,7 +5450,7 @@ function downloadBackup(){
 
 
 /* =========================================================
-   OPEN RESTORE
+   RESTORE
 ========================================================= */
 
 function openRestore(){
@@ -5445,10 +5463,6 @@ function openRestore(){
 
 }
 
-
-/* =========================================================
-   RESTORE BACKUP
-========================================================= */
 
 function restoreBackup(event){
 
@@ -5512,11 +5526,6 @@ function restoreBackup(event){
       backup.history;
 
 
-      /*
-      نتأكد من الحقول
-      الأساسية للسجلات
-      */
-
       history =
       history.filter(
       function(record){
@@ -5531,6 +5540,21 @@ function restoreBackup(event){
           ) >= 0
 
         );
+
+      });
+
+
+      history.forEach(
+      function(record){
+
+        if(
+          typeof record.note ===
+          "undefined"
+        ){
+
+          record.note = "-";
+
+        }
 
       });
 
