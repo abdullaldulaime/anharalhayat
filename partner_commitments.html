@@ -1941,9 +1941,7 @@ id="mainContent"
 <div class="wrapper">
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- HEADER -->
 
 <div class="top-header">
 
@@ -2116,7 +2114,7 @@ onchange="restoreBackup(event)"
     </div>
 
     <div class="group-count">
-      8 شركاء
+      9 شركاء
     </div>
 
   </div>
@@ -2220,10 +2218,7 @@ onchange="restoreBackup(event)"
 
 
 
-  <!-- TODAY -->
-
   <div class="today-summary">
-
 
     <div class="today-card today-count">
 
@@ -2302,12 +2297,9 @@ onchange="restoreBackup(event)"
 
     </div>
 
-
   </div>
 
 
-
-  <!-- FILTER -->
 
   <div class="filter-panel">
 
@@ -2477,7 +2469,6 @@ onchange="restoreBackup(event)"
 
       </div>
 
-
     </div>
 
 
@@ -2508,10 +2499,7 @@ onchange="restoreBackup(event)"
 
 
 
-  <!-- FILTER TOTAL -->
-
   <div class="filtered-summary">
-
 
     <div class="filtered-card fc-count">
 
@@ -2590,12 +2578,9 @@ onchange="restoreBackup(event)"
 
     </div>
 
-
   </div>
 
 
-
-  <!-- TABLE -->
 
   <div class="history-table-wrap">
 
@@ -2607,53 +2592,29 @@ onchange="restoreBackup(event)"
 
           <th>#</th>
 
-          <th>
-            الشريك / الجهة
-          </th>
+          <th>الشريك / الجهة</th>
 
-          <th>
-            نوع الحركة
-          </th>
+          <th>نوع الحركة</th>
 
-          <th>
-            المبلغ د.ع
-          </th>
+          <th>المبلغ د.ع</th>
 
-          <th>
-            قيمة الدولار
-          </th>
+          <th>قيمة الدولار</th>
 
-          <th>
-            سعر الصرف
-          </th>
+          <th>سعر الصرف</th>
 
-          <th>
-            المعادل بالعراقي
-          </th>
+          <th>المعادل بالعراقي</th>
 
-          <th>
-            بيد / بواسطة
-          </th>
+          <th>بيد / بواسطة</th>
 
-          <th>
-            بيان / رأي
-          </th>
+          <th>بيان / رأي</th>
 
-          <th>
-            التاريخ
-          </th>
+          <th>التاريخ</th>
 
-          <th>
-            الوقت
-          </th>
+          <th>الوقت</th>
 
-          <th>
-            الرصيد بعد الحركة
-          </th>
+          <th>الرصيد بعد الحركة</th>
 
-          <th>
-            حذف
-          </th>
+          <th>حذف</th>
 
         </tr>
 
@@ -2667,7 +2628,6 @@ onchange="restoreBackup(event)"
     </table>
 
   </div>
-
 
 </div>
 
@@ -2684,9 +2644,7 @@ id="toast"
 
 
 
-<!-- =========================================================
-     PRINT REPORT
-========================================================= -->
+<!-- PRINT REPORT -->
 
 <div
 class="print-report"
@@ -3019,6 +2977,14 @@ icon:"👤"
 {
 id:"shahomi_firas",
 name:"شحومي فراس رحيم مجيسر",
+group:"rahim",
+groupName:"عائلة الحاج رحيم مجيسر",
+icon:"👤"
+},
+
+{
+id:"mustafa_rahim",
+name:"الحاج مصطفى رحيم",
 group:"rahim",
 groupName:"عائلة الحاج رحيم مجيسر",
 icon:"👤"
@@ -3993,7 +3959,6 @@ function createMiscCard(){
 
   <div class="partner-top">
 
-
     <div class="partner-icon">
       📦
     </div>
@@ -4027,7 +3992,6 @@ function createMiscCard(){
 
     </div>
 
-
   </div>
 
 
@@ -4035,13 +3999,10 @@ function createMiscCard(){
   <div class="operations">
 
 
-    <!-- سحب متفرقة -->
-
     <div
     class="operation
     misc-withdraw"
     >
-
 
       <div class="operation-title">
         📤 تسجيل سحب متفرقة
@@ -4123,13 +4084,10 @@ function createMiscCard(){
 
 
 
-    <!-- تسديد متفرقة -->
-
     <div
     class="operation
     misc-payment"
     >
-
 
       <div class="operation-title">
         📥 تسجيل تسديد متفرقة
@@ -5744,12 +5702,6 @@ function addMiscMovement(type){
   saveHistory();
 
 
-  /*
-  بعد التسجيل:
-  تصفير المبلغ والاسم والبيان
-  فقط الرصيد يبقى
-  */
-
   amountInput.value =
   "";
 
@@ -6031,7 +5983,6 @@ function recomputeBalances(){
 
     }
 
-
   });
 
 
@@ -6081,11 +6032,6 @@ function updateSummary(){
   +
   misc;
 
-
-  /*
-  عدد الشركاء الحقيقي يبقى 21
-  الدولار والمتفرقة ليست شركاء
-  */
 
   document.getElementById(
   "totalPartners"
@@ -8504,7 +8450,7 @@ function downloadBackup(){
     "Anhar Alhayat Financial Commitments",
 
     version:
-    "FINAL-USD-MISC-3",
+    "FINAL-USD-MISC-MUSTAFA-4",
 
     exportedAt:
     new Date()
